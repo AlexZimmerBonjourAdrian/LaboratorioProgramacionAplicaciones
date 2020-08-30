@@ -9,8 +9,6 @@ import Datatypes.DTEdicion;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  *
@@ -25,8 +23,8 @@ public class Edicion {
     Date fecha_fin;
     int cupo_max;
     Date fecha_pub;
-    Map docentes;
-    Map inscripciones;
+    List docentes;
+    List inscripciones;
     
     //Metodos
     
@@ -36,8 +34,8 @@ public class Edicion {
         this.fecha_fin=fecha_fin;
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
-        docentes = new TreeMap();
-        inscripciones = new TreeMap();
+        docentes = new LinkedList();
+        inscripciones = new LinkedList();
     }
     
     public DTEdicion getDatos(){
