@@ -467,7 +467,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 396, 562);
+        jInternalFrameConsUsr.setBounds(0, 0, 386, 553);
 
         jMenuUsuarios.setText("Usuarios");
 
