@@ -30,6 +30,9 @@ public class Curso {
     
     private String URL;
     
+    List Ediciones;
+    List Programas;
+    List Previas;
     
     
     public Curso(String n, String desc, String dur, double ch, double c, Date r, String url){
@@ -60,6 +63,16 @@ public class Curso {
           //Metodo
           return true;
       }
-    
+      
+     public void EditarCurso(DTCurso DataCurso)
+     {
+         //Metodo
+     }
+     
+
+    public void Cancelar()
+    {
+        
+    }
     
 }

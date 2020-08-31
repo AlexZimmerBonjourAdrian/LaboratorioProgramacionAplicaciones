@@ -42,6 +42,14 @@ public class Edicion {
         return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub);
     }
     
+    public void cancelar()
+    {
+        //Metodo.
+    }
     
+    public void EditarEdicion(DTEdicion dataEdicion)
+    {
+        //Metodo
+    }
     
 }

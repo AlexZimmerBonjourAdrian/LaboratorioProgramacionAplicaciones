@@ -37,5 +37,7 @@ public class DTEdicion {
 	public Date getFechaPub() {
 		return this.fecha_pub;
 	}
+        
+        
 	
 }

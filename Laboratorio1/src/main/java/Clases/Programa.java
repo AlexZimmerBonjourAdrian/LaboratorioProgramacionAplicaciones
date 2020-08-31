@@ -33,4 +33,10 @@ public class Programa {
             return new DTPrograma(this.nombre,this.descripcion,this.fecha_ini,this.fecha_fin);
             
         }
+        
+       public boolean CheckPrograma()
+       {
+           //Metodo
+           return true;
+       }
 }
