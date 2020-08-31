@@ -53,6 +53,10 @@ public class Singleton {
         return usuarios.get(nick);
     }
     
+    public Map<String,Usuario> getUsuarios(){
+        return this.usuarios;
+    }
+    
     public void agregarInstituto(Instituto inst){
         if (this.obtenerInstituto(inst.getNombre()) == null) {
             institutos.put(inst.getNombre(),inst);

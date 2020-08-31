@@ -7,7 +7,9 @@ package LOGICA;
 
 import Clases.*;
 import Datatypes.*;
-import java.util.Date;
+//import java.util.Date;
+//import java.util.Iterator;
+import java.util.*;
 
 import java.util.Set;
 /**
@@ -36,8 +38,20 @@ public class Sistema implements ISistema{
         }else{
             return false;
         }
-        
     }
+    
+    public boolean chekuUsuarioEmail(String email){
+        Singleton sm = Singleton.getInstance();
+        boolean existeMail = false;
+        Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
+        while(it.hasNext() && !existeMail){
+           Map.Entry<String, Usuario> usr = it.next();
+           if(usr.getValue().getCorreo().equalsIgnoreCase(email)){
+               existeMail = true;
+           }
+        }
+        return existeMail;
+    };
     
     public DTInstituto buscarInstituto(String nombInst){return null;};
     

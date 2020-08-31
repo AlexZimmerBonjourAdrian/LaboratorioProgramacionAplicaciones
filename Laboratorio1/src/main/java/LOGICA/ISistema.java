@@ -24,6 +24,8 @@ public interface ISistema {
     
     public boolean chekusuario(String nick);
     
+    public boolean chekuUsuarioEmail(String email);
+    
     public DTInstituto buscarInstituto(String nombInst);
     
     public Set<DTEdicion> mostrarEdicion(String nick);

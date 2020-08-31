@@ -5,17 +5,24 @@
  */
 package PRESENTACION;
 
+import Datatypes.DTUsuario;
+import LOGICA.FabricaLab;
+import LOGICA.ISistema;
+import java.util.*;
 /**
  *
  * @author Surface
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    
+    private ISistema ICU; 
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
+        FabricaLab fabrica = FabricaLab.getInstance();
+        ICU = fabrica.getISistema();
     }
 
     /**
@@ -287,6 +294,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1DocInst.setText("Instituto:");
 
         jButtonConfAlta.setText("Confirmar ");
+        jButtonConfAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfAltaActionPerformed(evt);
+            }
+        });
 
         jButtonCancAlta.setText("Cancelar");
         jButtonCancAlta.addActionListener(new java.awt.event.ActionListener() {
@@ -324,7 +336,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                 .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jInternalFrameAltaUsrLayout.createSequentialGroup()
                                         .addComponent(jButtonConfAlta)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                                         .addComponent(jButtonCancAlta))
                                     .addGroup(jInternalFrameAltaUsrLayout.createSequentialGroup()
                                         .addGap(36, 36, 36)
@@ -591,7 +603,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 396, 553);
+        jInternalFrameConsUsr.setBounds(0, 0, 396, 562);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -790,7 +802,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabelCrearProgForDesc))
                             .addComponent(jLabelCrearProgForFechaFn, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelCrearProgForFechAlt, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jInternalFrameCrearProgForLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jSpinnerCrearProgForFechaIni)
                             .addComponent(jTextFieldCrearProgForNom)
@@ -1987,6 +1999,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jInternalFrameInscEdCurs.setVisible(false);
 
     }//GEN-LAST:event_jButtonInscEdCurCancActionPerformed
+
+    private void jButtonConfAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfAltaActionPerformed
+        // TODO add your handling code here:
+        String nick = jTextFieldNickUsr.getText().trim();
+        String nombre = jTextFieldNombreUsuario.getText().trim();
+        String apellido = jTextFieldApellUsuario.getText().trim();
+        String correo = jTextFieldEmailUsr.getText().trim();
+        Date fecha_de_nac = (Date)jSpinnerNacAnioUsr.getModel().getValue();
+        DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fecha_de_nac);
+        ICU.altaUsuario(datos);
+    }//GEN-LAST:event_jButtonConfAltaActionPerformed
 
     /**
      * @param args the command line arguments

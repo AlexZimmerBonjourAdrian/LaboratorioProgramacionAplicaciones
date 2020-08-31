@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Bruno
  */
-public class Usuario {
+public class Usuario{
     
     //Atributos
     
