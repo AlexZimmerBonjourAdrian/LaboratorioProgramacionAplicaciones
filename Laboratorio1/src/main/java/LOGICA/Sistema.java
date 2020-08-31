@@ -18,7 +18,26 @@ public class Sistema implements ISistema{
     
     public Sistema(){};
     
-    public boolean altaUsuario(DTUsuario datos){return false;};
+    
+    
+    public void altaUsuario(DTUsuario datos){
+        
+        Singleton sm = Singleton.getInstance();
+        Usuario u = new Usuario(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+        sm.agregarUsuario(u);
+    
+    };
+    
+    public boolean chekusuario(String nick){
+        
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerUsuario(nick)!=null){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
     
     public DTInstituto buscarInstituto(String nombInst){return null;};
     

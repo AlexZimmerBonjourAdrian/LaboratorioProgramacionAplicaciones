@@ -17,11 +17,11 @@ public class Singleton {
     
     private Map<String,Usuario> usuarios;
     
-    private Map institutos;
+    private Map<String,Instituto> institutos;
     
     private Map<String,Programa> programas;
     
-    private static Sistema instancia = null;
+    private static Singleton instancia = null;
     
     private Singleton(){ 
         
@@ -33,14 +33,45 @@ public class Singleton {
         
     }
     
-    public static Sistema getInstance(){
+    public static Singleton getInstance(){
     
         if (instancia == null){
             
-            instancia = new Sistema();
+            instancia = new Singleton();
         }
         
         return instancia;
     }
+    
+    public void agregarUsuario(Usuario usr){
+        if (this.obtenerUsuario(usr.getNick()) == null) {
+            usuarios.put(usr.getNick(),usr);
+        }
+    }
+    
+    public Usuario obtenerUsuario(String nick){
+        return usuarios.get(nick);
+    }
+    
+    public void agregarInstituto(Instituto inst){
+        if (this.obtenerInstituto(inst.getNombre()) == null) {
+            institutos.put(inst.getNombre(),inst);
+        }
+    }
+    
+    public Instituto obtenerInstituto(String nombre){
+        return institutos.get(nombre);
+    }
+    
+    public void agregarPrograma(Programa prog){
+        if (this.obtenerPrograma(prog.getNombre()) == null) {
+            programas.put(prog.getNombre(),prog);
+        }
+    }
+    
+    public Programa obtenerPrograma(String nombre){
+        return programas.get(nombre);
+    }
+    
     
 }
