@@ -13,6 +13,7 @@ import Datatypes.DTPrograma;
 import Datatypes.DTUsuario;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -53,9 +54,9 @@ public interface ISistema {
     
     public void agregarCursoPrograma(String nombreP, String nombreC);
     
-    public Set<DTCurso> mostrarCursos();
+    public List mostrarCursos();
     
-    public Set<DTPrograma> mostrarProgramas();
+    public List mostrarProgramas();
     
     public DTCurso mostrarCurso(String nombreC);
     
