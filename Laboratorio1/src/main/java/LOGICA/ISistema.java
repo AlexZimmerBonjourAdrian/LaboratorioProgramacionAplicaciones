@@ -11,6 +11,7 @@ import Datatypes.DTEdicion;
 import Datatypes.DTInstituto;
 import Datatypes.DTPrograma;
 import Datatypes.DTUsuario;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 
@@ -25,6 +26,14 @@ public interface ISistema {
     public boolean chekusuario(String nick);
     
     public boolean chekuUsuarioEmail(String email);
+    
+    public boolean sintaxisEmailCorrecta(String email);
+    
+    public ArrayList<String> listarNickUsuarios();
+    
+    public Usuario obtenerUsuario(String nick);
+    
+    public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac);
     
     public DTInstituto buscarInstituto(String nombInst);
     

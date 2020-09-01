@@ -8,7 +8,12 @@ package PRESENTACION;
 import Datatypes.DTUsuario;
 import LOGICA.FabricaLab;
 import LOGICA.ISistema;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.SpinnerModel;
 /**
  *
  * @author Surface
@@ -76,7 +81,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabelConsUsrAp = new javax.swing.JLabel();
         jTextFieldConsUsrEmail = new javax.swing.JTextField();
         jLabelConsUsrEmail = new javax.swing.JLabel();
-        jTextFieldConsUsrFechNac = new javax.swing.JTextField();
         jLabelConsUsrFechNac = new javax.swing.JLabel();
         jComboBoxConsUsrProg = new javax.swing.JComboBox<>();
         jComboBoxConsUsrCursos = new javax.swing.JComboBox<>();
@@ -85,6 +89,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabelConsUsrCurso = new javax.swing.JLabel();
         jLabelConsUsrEd = new javax.swing.JLabel();
         jButtonConUsrSalir = new javax.swing.JButton();
+        jSpinnerConsUsrFechNac = new javax.swing.JSpinner();
         jInternalFrameConsEdicCurso = new javax.swing.JInternalFrame();
         jComboBoxConsEdCurInst = new javax.swing.JComboBox<>();
         jLabelConsEdCurIns = new javax.swing.JLabel();
@@ -400,6 +405,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jInternalFrameModUsr.setVisible(false);
 
         jComboBoxListaUsr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxListaUsr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxListaUsrActionPerformed(evt);
+            }
+        });
 
         jLabelNickModUsr.setText("Nickname:");
 
@@ -416,6 +426,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabelModUsrNac.setText("Fecha de Nac:");
 
         jButtonConfModUsr.setText("Confirmar");
+        jButtonConfModUsr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfModUsrActionPerformed(evt);
+            }
+        });
 
         jButtonCancModUsr.setText("Cancelar");
         jButtonCancModUsr.addActionListener(new java.awt.event.ActionListener() {
@@ -432,7 +447,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addGroup(jInternalFrameModUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrameModUsrLayout.createSequentialGroup()
-                        .addGap(0, 131, Short.MAX_VALUE)
+                        .addGap(0, 175, Short.MAX_VALUE)
                         .addComponent(jButtonConfModUsr)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonCancModUsr))
@@ -491,6 +506,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jInternalFrameConsUsr.setVisible(false);
 
         jComboBoxConsUsrList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxConsUsrList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxConsUsrListActionPerformed(evt);
+            }
+        });
 
         jLabelConsUsrNick.setText("Nickname:");
 
@@ -505,8 +525,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextFieldConsUsrEmail.setEnabled(false);
 
         jLabelConsUsrEmail.setText("Email:");
-
-        jTextFieldConsUsrFechNac.setEnabled(false);
 
         jLabelConsUsrFechNac.setText("Fecha de Nac.:");
 
@@ -528,6 +546,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jButtonConUsrSalirActionPerformed(evt);
             }
         });
+
+        jSpinnerConsUsrFechNac.setModel(new javax.swing.SpinnerDateModel());
+        jSpinnerConsUsrFechNac.setEnabled(false);
 
         javax.swing.GroupLayout jInternalFrameConsUsrLayout = new javax.swing.GroupLayout(jInternalFrameConsUsr.getContentPane());
         jInternalFrameConsUsr.getContentPane().setLayout(jInternalFrameConsUsrLayout);
@@ -552,11 +573,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(jTextFieldConsUsrNom)
                             .addComponent(jComboBoxConsUsrList, 0, 193, Short.MAX_VALUE)
                             .addComponent(jTextFieldConsUsrEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldConsUsrFechNac, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldConsUsrAp, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jComboBoxConsUsrProg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxConsUsrCursos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxConsUsrEd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxConsUsrEd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSpinnerConsUsrFechNac, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(44, 44, 44))
         );
         jInternalFrameConsUsrLayout.setVerticalGroup(
@@ -584,10 +605,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                         .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jTextFieldConsUsrEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabelConsUsrEmail))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldConsUsrFechNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabelConsUsrFechNac))
-                                .addGap(56, 56, 56)
+                                        .addGap(40, 40, 40))
+                                    .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelConsUsrFechNac)
+                                        .addComponent(jSpinnerConsUsrFechNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(53, 53, 53)
                                 .addComponent(jComboBoxConsUsrProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabelConsUsrProg))
                         .addGap(18, 18, 18)
@@ -599,7 +621,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabelConsUsrEd))
                 .addGap(49, 49, 49)
                 .addComponent(jButtonConUsrSalir)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         getContentPane().add(jInternalFrameConsUsr);
@@ -1784,6 +1806,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItemModUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModUsuarioActionPerformed
         // TODO add your handling code here:
         jInternalFrameModUsr.setVisible(true);
+        jComboBoxListaUsr.setModel(new DefaultComboBoxModel<String>(ICU.listarNickUsuarios().toArray(new String[ICU.listarNickUsuarios().size()])));
     }//GEN-LAST:event_jMenuItemModUsuarioActionPerformed
 
     private void jButtonCancAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancAltaActionPerformed
@@ -1799,6 +1822,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItemConsultaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaUsuarioActionPerformed
         // TODO add your handling code here:
         jInternalFrameConsUsr.setVisible(true);
+        jComboBoxConsUsrList.setModel(new DefaultComboBoxModel<String>(ICU.listarNickUsuarios().toArray(new String[ICU.listarNickUsuarios().size()])));
     }//GEN-LAST:event_jMenuItemConsultaUsuarioActionPerformed
 
     private void jButtonConUsrSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConUsrSalirActionPerformed
@@ -2007,9 +2031,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String apellido = jTextFieldApellUsuario.getText().trim();
         String correo = jTextFieldEmailUsr.getText().trim();
         Date fecha_de_nac = (Date)jSpinnerNacAnioUsr.getModel().getValue();
-        DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fecha_de_nac);
-        ICU.altaUsuario(datos);
+        if(ICU.chekuUsuarioEmail(correo)){
+            DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fecha_de_nac);
+            ICU.altaUsuario(datos);
+            JOptionPane.showMessageDialog(this, "Usuario creado con exito", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(this, "Email ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButtonConfAltaActionPerformed
+
+    private void jComboBoxConsUsrListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsUsrListActionPerformed
+        // TODO add your handling code here:
+        String nick = jComboBoxConsUsrList.getSelectedItem().toString();
+        jTextFieldConsUsrNom.setText(ICU.obtenerUsuario(nick).getNombre());
+        jTextFieldConsUsrAp.setText(ICU.obtenerUsuario(nick).getApellido());
+        jTextFieldConsUsrEmail.setText(ICU.obtenerUsuario(nick).getCorreo());
+        jSpinnerConsUsrFechNac.setValue(ICU.obtenerUsuario(nick).getFecha_de_nac());
+    }//GEN-LAST:event_jComboBoxConsUsrListActionPerformed
+
+    private void jButtonConfModUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfModUsrActionPerformed
+        // TODO add your handling code here:
+        String nick = jComboBoxListaUsr.getSelectedItem().toString();
+        String nuevoNombre = jTextFieldModUsrNom.getText().trim();
+        String nuevoApellido = jTextFieldModUsrAp.getText().trim();
+        Date nuevFechaNac = (Date)jSpinnerModUsrDiaNc.getModel().getValue();
+        ICU.modificarDatosUsuario(nick, nuevoNombre, nuevoApellido, nuevFechaNac);
+        JOptionPane.showMessageDialog(this, "Usuario modificado con exito", "Modificar Usuario", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButtonConfModUsrActionPerformed
+
+    private void jComboBoxListaUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListaUsrActionPerformed
+        // TODO add your handling code here:
+        String nick = jComboBoxListaUsr.getSelectedItem().toString();
+        jTextFieldModUsrNom.setText(ICU.obtenerUsuario(nick).getNombre());
+        jTextFieldModUsrAp.setText(ICU.obtenerUsuario(nick).getApellido());
+        jTextFieldModUsrEmail.setText(ICU.obtenerUsuario(nick).getCorreo());
+        jSpinnerModUsrDiaNc.setValue(ICU.obtenerUsuario(nick).getFecha_de_nac());
+    }//GEN-LAST:event_jComboBoxListaUsrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2215,6 +2273,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerAltaEdFechPub;
     private javax.swing.JSpinner jSpinnerConsProgFechFin;
     private javax.swing.JSpinner jSpinnerConsProgFechIni;
+    private javax.swing.JSpinner jSpinnerConsUsrFechNac;
     private javax.swing.JSpinner jSpinnerCrearProgForFechAlt;
     private javax.swing.JSpinner jSpinnerCrearProgForFechaFn;
     private javax.swing.JSpinner jSpinnerCrearProgForFechaIni;
@@ -2240,7 +2299,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldConsProgNom;
     private javax.swing.JTextField jTextFieldConsUsrAp;
     private javax.swing.JTextField jTextFieldConsUsrEmail;
-    private javax.swing.JTextField jTextFieldConsUsrFechNac;
     private javax.swing.JTextField jTextFieldConsUsrNom;
     private javax.swing.JTextField jTextFieldCrearProgForNom;
     private javax.swing.JTextField jTextFieldEmailUsr;

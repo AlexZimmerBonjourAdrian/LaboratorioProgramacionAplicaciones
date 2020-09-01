@@ -42,16 +42,58 @@ public class Sistema implements ISistema{
     
     public boolean chekuUsuarioEmail(String email){
         Singleton sm = Singleton.getInstance();
-        boolean existeMail = false;
+        boolean existeMail = true;
         Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
-        while(it.hasNext() && !existeMail){
+        while(it.hasNext() && existeMail){
            Map.Entry<String, Usuario> usr = it.next();
            if(usr.getValue().getCorreo().equalsIgnoreCase(email)){
-               existeMail = true;
+               existeMail = false;
            }
         }
         return existeMail;
     };
+    
+    public boolean sintaxisEmailCorrecta(String email){
+        boolean resultado = true;
+        int cantarrobas = 0;
+        int i = 0;
+        while(cantarrobas<2 && i<email.length() && resultado){
+            if(email.charAt(0)=='@'||email.charAt(0)=='.'){
+                resultado = false;
+            }
+            if(email.charAt(i)=='@'){
+                cantarrobas++;
+            }
+            i++;
+        }
+        if(cantarrobas!=1){
+            resultado = false;
+        }
+        return resultado;
+    }
+    
+    public ArrayList<String> listarNickUsuarios(){
+        Singleton sm = Singleton.getInstance();
+        Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
+        ArrayList<String> nicks = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Usuario> usr = it.next();
+           nicks.add(usr.getValue().getNick());
+        }
+        return nicks;
+    }
+    
+    public Usuario obtenerUsuario(String nick){
+        Singleton sm = Singleton.getInstance();
+        return sm.obtenerUsuario(nick);
+    }
+    
+    public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac){
+        Usuario u = obtenerUsuario(nick);
+        u.setNombre(nuevoNom);
+        u.setApellido(nuevoApe);
+        u.setFecha_de_nac(nuevaFechaNac);
+    }
     
     public DTInstituto buscarInstituto(String nombInst){return null;};
     

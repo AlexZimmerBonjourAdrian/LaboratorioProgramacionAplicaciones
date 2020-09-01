@@ -46,6 +46,8 @@ public class Singleton {
     public void agregarUsuario(Usuario usr){
         if (this.obtenerUsuario(usr.getNick()) == null) {
             usuarios.put(usr.getNick(),usr);
+            // hay que sacar esto
+            System.out.println("se creo el usuario: " + usr.getNick());
         }
     }
     
