@@ -7,19 +7,8 @@ package LOGICA;
 
 import Clases.*;
 import Datatypes.*;
-<<<<<<< HEAD
-//import java.util.Date;
-//import java.util.Iterator;
 import java.util.*;
 
-=======
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
->>>>>>> 8f117bfc233d2d98af35686cde2492a9c80df951
-import java.util.Set;
 /**
  *
  * @author arena
@@ -159,11 +148,33 @@ public class Sistema implements ISistema{
     
     public DTEdicion pickEdicion(String nombreE){return null;};
     
-    public boolean checkPrograma(DTPrograma datos){return false;};
+    public boolean checkPrograma(String nombrep){
+        Singleton sm = Singleton.getInstance();
+        Programa p = sm.obtenerPrograma(nombrep);
+        if(p != null)
+           return true;
+        else
+            return false;  
+    };
     
-    public void modificarDatosPrograma(DTPrograma datos){};
+    public void modificarDatosPrograma(DTPrograma datos){
+        Singleton sm = Singleton.getInstance();
+        Programa p = sm.obtenerPrograma(datos.getNombre());
+        p.setNombre(datos.getNombre());
+        p.setDescripcion(datos.getDescripcion());
+        p.setFecha_ini(datos.getFechaInicial());
+        p.setFecha_fin(datos.getFechaFinal());
+        p.setFechaAlta(datos.getFechaAlta());
     
-    public Programa crearPrograma(DTPrograma datos){return null;}; 
+    };
+    
+    public void crearPrograma(DTPrograma datos){
+        Singleton sm = Singleton.getInstance();
+        Programa p = new Programa(datos.getNombre(),datos.getDescripcion(),datos.getFechaInicial(),
+                                    datos.getFechaFinal(),datos.getFechaAlta());
+        sm.agregarPrograma(p);
+        
+    }; 
     
     public boolean checkEdicionCurso(String nombreC, Date FechaInsc){return false;};
     

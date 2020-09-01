@@ -5,27 +5,6 @@
  */
 package Clases;
 
-<<<<<<< HEAD
-/**
- *
- * @author pablogb
- */
-public class Instituto {
-
-    public Instituto(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    private String nombre;
-=======
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -48,6 +27,16 @@ public class Instituto {
     private Map<String,Docente> docentes;
     
     //Metodos
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
     
     public Instituto(String nombre) {
     	this.nombre=nombre;
@@ -72,5 +61,4 @@ public class Instituto {
     
     }
     
->>>>>>> 8f117bfc233d2d98af35686cde2492a9c80df951
 }
