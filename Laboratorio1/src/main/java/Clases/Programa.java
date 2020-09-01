@@ -43,8 +43,8 @@ public class Programa<Curso> {
     
         return new DTPrograma(this.nombre,this.descripcion,this.fecha_ini,this.fecha_fin,this.fecha_alta);
             
-<<<<<<< HEAD
-        }
+
+    }
 
     public String getNombre() {
         return nombre;
@@ -79,7 +79,7 @@ public class Programa<Curso> {
     }
         
         
-=======
-     }
->>>>>>> 8f117bfc233d2d98af35686cde2492a9c80df951
+
 }
+
+

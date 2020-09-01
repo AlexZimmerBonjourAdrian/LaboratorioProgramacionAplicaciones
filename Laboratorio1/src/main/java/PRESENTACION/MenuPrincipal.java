@@ -2033,7 +2033,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Date fecha_de_nac = (Date)jSpinnerNacAnioUsr.getModel().getValue();
         if(ICU.chekuUsuarioEmail(correo)){
             DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fecha_de_nac);
-            ICU.altaUsuario(datos);
+            ICU.altaUsuario(datos,jRadioButtonSiDocente.isSelected());
             JOptionPane.showMessageDialog(this, "Usuario creado con exito", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(this, "Email ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);

@@ -8,6 +8,7 @@ package LOGICA;
 import java.util.HashMap;
 import java.util.Map;
 import Clases.*;
+import javax.swing.JOptionPane;
 
 /**
  *

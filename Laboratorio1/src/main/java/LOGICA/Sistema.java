@@ -7,19 +7,8 @@ package LOGICA;
 
 import Clases.*;
 import Datatypes.*;
-<<<<<<< HEAD
-//import java.util.Date;
-//import java.util.Iterator;
 import java.util.*;
 
-=======
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
->>>>>>> 8f117bfc233d2d98af35686cde2492a9c80df951
-import java.util.Set;
 /**
  *
  * @author arena
@@ -35,12 +24,16 @@ public class Sistema implements ISistema{
     
     
     
-    public void altaUsuario(DTUsuario datos){
+    public void altaUsuario(DTUsuario datos, boolean docente){
         
         Singleton sm = Singleton.getInstance();
-        Usuario u = new Usuario(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+        Usuario u;
+        if(docente){
+              u = new Docente(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+        }else{
+              u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+        }
         sm.agregarUsuario(u);
-    
     };
     
     public boolean chekusuario(String nick){
