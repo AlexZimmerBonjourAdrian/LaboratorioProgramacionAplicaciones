@@ -7,8 +7,11 @@ package LOGICA;
 
 import Clases.*;
 import Datatypes.*;
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 /**
  *
@@ -16,6 +19,11 @@ import java.util.Set;
  */
 public class Sistema implements ISistema{
     
+    
+    private Map<String,Programa> programas;
+
+    private Map<String,Instituto> institutos;
+	
     public Sistema(){};
     
     public boolean altaUsuario(DTUsuario datos){return false;};
@@ -38,9 +46,26 @@ public class Sistema implements ISistema{
     
     public void agregarCursoPrograma(String nombreP, String nombreC){};
     
-    public Set<DTCurso> mostrarCursos(){return null;};
+    public List mostrarCursos(){
+    	List cur = new ArrayList();
+        for(Map.Entry<String,Instituto> entry : this.institutos.entrySet()){
+            Instituto i1 = (Instituto)entry.getValue();
+            List agr = i1.getCursos();
+            cur.addAll(agr);
+            
+        }
+        return cur;
+    }
     
-    public Set<DTPrograma> mostrarProgramas(){return null;};
+    public List mostrarProgramas(){
+        List prog = new LinkedList();
+        for(Map.Entry<String,Programa> entry : this.programas.entrySet()){
+            Programa p1 = (Programa)entry.getValue();
+            DTPrograma dprog = p1.getDatos();
+            prog.add(dprog);
+        }
+        return prog;
+    }
     
     public DTCurso mostrarCurso(String nombreC){return null;};
     

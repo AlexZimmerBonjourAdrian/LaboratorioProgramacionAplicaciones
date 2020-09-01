@@ -36,6 +36,7 @@ public class Usuario {
         return new DTUsuario(this.nick, this.nombre, this.apellido, this.correo, this.fecha_de_nac);
     }
     
+    
     public void modificarDatos(DTUsuario datos){
         this.nombre=datos.getNombre();
         this.apellido=datos.getApellido();

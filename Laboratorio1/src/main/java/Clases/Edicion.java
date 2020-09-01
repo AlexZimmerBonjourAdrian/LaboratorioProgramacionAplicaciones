@@ -7,8 +7,11 @@ package Clases;
 
 import Datatypes.DTEdicion;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -23,8 +26,8 @@ public class Edicion {
     Date fecha_fin;
     int cupo_max;
     Date fecha_pub;
-    List docentes;
-    List inscripciones;
+    Map docentes;
+    Map inscripciones;
     
     //Metodos
     
@@ -34,12 +37,27 @@ public class Edicion {
         this.fecha_fin=fecha_fin;
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
-        docentes = new LinkedList();
-        inscripciones = new LinkedList();
+        docentes = new HashMap();
+        inscripciones = new HashMap();
     }
     
     public DTEdicion getDatos(){
-        return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub);
+        
+        //Se genera una lista con los datatypes de todos los docentes
+        Iterator it = this.docentes.entrySet().iterator();
+        List doc = new LinkedList();
+        while(it.hasNext()){
+            doc.add(it.getClass());
+            it.next();
+        }
+        //Se genera una lista con los datatypes de todas las inscripciones
+        it = this.inscripciones.entrySet().iterator();
+        List insc = new LinkedList();
+        while(it.hasNext()){
+            insc.add(it.getClass());
+            it.next();
+        }
+        return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub,doc,insc);
     }
     
     
