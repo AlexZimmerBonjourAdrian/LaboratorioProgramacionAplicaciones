@@ -39,7 +39,7 @@ public class Edicion {
     }
     
     public DTEdicion getDatos(){
-        return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub);
+        return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub,this.docentes,this.inscripciones);
     }
     
     public void cancelar()
@@ -47,9 +47,15 @@ public class Edicion {
         //Metodo.
     }
     
-    public void EditarEdicion(DTEdicion dataEdicion)
+    public void EditarEdicion(DTEdicion datos)
     {
-        //Metodo
+        this.nombre = datos.getNombre();
+        this.fecha_fin = datos.getFechaFin();
+        this.fecha_ini = datos.getFechaIni();
+        this.fecha_pub = datos.getFechaPub();
+        this.cupo_max = datos.getCuposMax();
+        this.docentes = datos.getDocente();
+        this.inscripciones = datos.getInscrippciones();
     }
     
 }

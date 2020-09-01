@@ -10,7 +10,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import Datatypes.DTInstituto;
-
+import Datatypes.DTEdicion;
+import java.util.Iterator;
 
 
 /**
@@ -54,6 +55,21 @@ public class Instituto {
    {
        //Metodo
    }
+   
+   public void seleccinarEdicion(String nombre, DTEdicion Dato)
+   {
+       
+       Iterator it=Cursos.iterator();
+       Curso *C;
+       while(it->Cursos.listIterator().)
+       
+    //Curso Cur = (Curso*) Cursos;
+    
+        
+     //while(C)
+        
+   }
+           
   
   
   
