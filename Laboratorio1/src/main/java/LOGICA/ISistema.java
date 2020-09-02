@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public interface ISistema {
     
-    public void altaUsuario(DTUsuario datos, boolean docente);
+    public void altaUsuario(DTUsuario datos, boolean docente, String nomInst);
     
     public boolean chekusuario(String nick);
     
@@ -35,6 +35,10 @@ public interface ISistema {
     public Usuario obtenerUsuario(String nick);
     
     public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac);
+    
+    public void altaInstituto(String nom);
+    
+    public ArrayList<String> listarInstitutos();
     
     public DTInstituto buscarInstituto(String nombInst);
     
@@ -49,9 +53,7 @@ public interface ISistema {
     public Set<DTUsuario> consultaUsuarios();
     
     public DTUsuario seleccionarUsuario(String nick);
-    
-    public void modificarDatosUsuario(DTUsuario nuevo);
-    
+   
     public void agregarCursoPrograma(String nombreP, String nombreC);
     
     public List mostrarCursos();

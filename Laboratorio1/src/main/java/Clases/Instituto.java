@@ -36,6 +36,35 @@ public class Instituto {
         this.nombre = nombre;
     }
     
+    public Map<String,Curso> getCursos2(){
+        return this.cursos;
+    }
+    
+    public Map<String,Docente> getDocentes(){
+        return this.docentes;
+    }
+    
+    public Curso obtenerCurso(String nomCurso){
+        return cursos.get(nomCurso);
+    }
+    
+    public Docente obtenerDocente(String nickDocente){
+        return docentes.get(nickDocente);
+    }
+    
+    public void addDocente(Docente d){
+        if(obtenerDocente(d.getNick())==null){
+            docentes.put(d.getNick(), d);
+            //borrar esto
+            System.out.println("Se agrego al instituto: " + getNombre() + "el docente: " + d.getNick());
+        }
+    }
+    
+    public void addCurso(Curso c){
+        if(obtenerCurso(c.getNombre())==null){
+            cursos.put(c.getNombre(), c);
+        }
+    }
     
     
     public Instituto(String nombre) {

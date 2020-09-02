@@ -35,6 +35,7 @@ public class main {
            DTUsuario d3 = d2.getDatos();
            System.out.print("El profesor es: " + d3.getNombre()+ " " + d3.getApellido());
         }
+        
     }
     
 }

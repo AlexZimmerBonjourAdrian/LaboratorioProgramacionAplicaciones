@@ -69,8 +69,10 @@ public class Curso {
         }
         return prev;
     }
-    
-    
+
+    public String getNombre() {
+        return nombre;
+    }
     
     
 }

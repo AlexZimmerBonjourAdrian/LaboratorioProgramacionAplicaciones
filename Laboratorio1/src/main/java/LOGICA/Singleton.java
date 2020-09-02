@@ -60,6 +60,14 @@ public class Singleton {
         return this.usuarios;
     }
     
+    public Map<String,Instituto> getInstitutos(){
+        return this.institutos;
+    }
+    
+    public Map<String,Programa> getPrograma(){
+        return this.programas;
+    }
+    
     public void agregarInstituto(Instituto inst){
         if (this.obtenerInstituto(inst.getNombre()) == null) {
             institutos.put(inst.getNombre(),inst);

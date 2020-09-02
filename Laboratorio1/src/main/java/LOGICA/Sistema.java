@@ -24,12 +24,13 @@ public class Sistema implements ISistema{
     
     
     
-    public void altaUsuario(DTUsuario datos, boolean docente){
+    public void altaUsuario(DTUsuario datos, boolean docente, String nomInst){
         
         Singleton sm = Singleton.getInstance();
         Usuario u;
         if(docente){
               u = new Docente(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+              sm.obtenerInstituto(nomInst).addDocente((Docente)u);
         }else{
               u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
         }
@@ -101,6 +102,22 @@ public class Sistema implements ISistema{
         u.setFecha_de_nac(nuevaFechaNac);
     }
     
+    public void altaInstituto(String nom){
+        Singleton sm = Singleton.getInstance();
+        sm.agregarInstituto(new Instituto(nom));
+    }
+    
+    public ArrayList<String> listarInstitutos(){
+        Singleton sm = Singleton.getInstance();
+        Iterator<Map.Entry<String, Instituto>> it = sm.getInstitutos().entrySet().iterator();
+        ArrayList<String> nombresInst = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Instituto> inst = it.next();
+           nombresInst.add(inst.getValue().getNombre());
+        }
+        return nombresInst;
+    }
+    
     public DTInstituto buscarInstituto(String nombInst){return null;};
     
     public Set<DTEdicion> mostrarEdicion(String nick){return null;};
@@ -115,7 +132,7 @@ public class Sistema implements ISistema{
     
     public DTUsuario seleccionarUsuario(String nick){return null;};
     
-    public void modificarDatosUsuario(DTUsuario nuevo){};
+    //public void modificarDatosUsuario(DTUsuario nuevo){};
     
     public void agregarCursoPrograma(String nombreP, String nombreC){};
     
@@ -213,6 +230,5 @@ public class Sistema implements ISistema{
     public void cancelar(){};
     
     public void aceptar(){};
-    
     
 }
