@@ -33,7 +33,7 @@ public class Programa {
             return new DTPrograma(this.nombre,this.descripcion,this.fecha_ini,this.fecha_fin);
             
         }
-        
+
     public String getNombre() {
         return nombre;
     }
@@ -66,10 +66,5 @@ public class Programa {
         this.fecha_fin = fecha_fin;
     }
         
-       public boolean CheckPrograma()
-       {
-           //Metodo
-           return true;
-       }
-       
+        
 }

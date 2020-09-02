@@ -44,7 +44,7 @@ public class DTEdicion {
         {
             return this.Docente;
         }
-        public List getInscrippciones()
+        public List getInscripciones()
         {
            return this.Inscripciones; 
         }

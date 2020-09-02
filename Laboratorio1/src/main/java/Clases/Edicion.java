@@ -42,7 +42,7 @@ public class Edicion {
         return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub,this.docentes,this.inscripciones);
     }
     
-    public void cancelar()
+      public void cancelar()
     {
         //Metodo.
     }
@@ -55,7 +55,8 @@ public class Edicion {
         this.fecha_pub = datos.getFechaPub();
         this.cupo_max = datos.getCuposMax();
         this.docentes = datos.getDocente();
-        this.inscripciones = datos.getInscrippciones();
+        this.inscripciones = datos.getInscripciones();
     }
+    
     
 }

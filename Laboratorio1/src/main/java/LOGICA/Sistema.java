@@ -7,8 +7,9 @@ package LOGICA;
 
 import Clases.*;
 import Datatypes.*;
-import java.util.Date;
-
+//import java.util.Date;
+//import java.util.Iterator;
+import java.util.*;
 import java.util.Set;
 /**
  *
@@ -17,11 +18,92 @@ import java.util.Set;
 public class Sistema implements ISistema{
     
     public Sistema(){};
+    private String nombre;
     
-    public boolean altaUsuario(DTUsuario datos){return false;};
     
-    public DTInstituto buscarInstituto(String nombInst){return null;};
+    public void altaUsuario(DTUsuario datos){
+        
+        Singleton sm = Singleton.getInstance();
+        Usuario u = new Usuario(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+        sm.agregarUsuario(u);
     
+    };
+    
+    public boolean chekusuario(String nick){
+        
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerUsuario(nick)!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public boolean chekuUsuarioEmail(String email){
+        Singleton sm = Singleton.getInstance();
+        boolean existeMail = true;
+        Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
+        while(it.hasNext() && existeMail){
+           Map.Entry<String, Usuario> usr = it.next();
+           if(usr.getValue().getCorreo().equalsIgnoreCase(email)){
+               existeMail = false;
+           }
+        }
+        return existeMail;
+    };
+    
+    public boolean sintaxisEmailCorrecta(String email){
+        boolean resultado = true;
+        int cantarrobas = 0;
+        int i = 0;
+        while(cantarrobas<2 && i<email.length() && resultado){
+            if(email.charAt(0)=='@'||email.charAt(0)=='.'){
+                resultado = false;
+            }
+            if(email.charAt(i)=='@'){
+                cantarrobas++;
+            }
+            i++;
+        }
+        if(cantarrobas!=1){
+            resultado = false;
+        }
+        return resultado;
+    }
+    
+    public ArrayList<String> listarNickUsuarios(){
+        Singleton sm = Singleton.getInstance();
+        Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
+        ArrayList<String> nicks = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Usuario> usr = it.next();
+           nicks.add(usr.getValue().getNick());
+        }
+        return nicks;
+    }
+    
+    public Usuario obtenerUsuario(String nick){
+        Singleton sm = Singleton.getInstance();
+        return sm.obtenerUsuario(nick);
+    }
+    
+    public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac){
+        Usuario u = obtenerUsuario(nick);
+        u.setNombre(nuevoNom);
+        u.setApellido(nuevoApe);
+        u.setFecha_de_nac(nuevaFechaNac);
+    }
+    
+    
+    //Buscar Instituto Completo
+    //Revistar la operacion
+    public DTInstituto buscarInstituto(String nombInst)
+    {
+      Singleton sm = Singleton.getInstance();
+      nombre= sm.obtenerInstituto(nombInst).getDatos().getNombre();
+      return sm.obtenerInstituto(nombInst).getDatos();
+      
+    }
     public Set<DTEdicion> mostrarEdicion(String nick){return null;};
     
     public Set<DTPrograma> mostrarProgramasEst(String nick){return null;};
@@ -70,17 +152,45 @@ public class Sistema implements ISistema{
     
     public InscripcionE crearRegistro(String correo, Date FechaInsc){return null;};
     
-    public Set<DTCurso> indicarInstitucion(String nombre){return null;};
     
-    public DTCurso seleccionarCurso(String nombre){return null;};
-    
+    //Caso de Uso ConsultarCurso
+    //IndicarOperacion
+    //Operacion Terminada 
+    public Set<DTCurso> indicarInstitucion(String nombre)
+    {
+        Singleton sm = Singleton.getInstance();
+        Instituto Inst = sm.obtenerInstituto(nombre);
+        return (Set<DTCurso>) Inst.getDataCurso();
+    }
+    public DTCurso seleccionarCurso(String nombre)
+    {
+      //
+        /*
+       Singleton sm = Singleton.getInstance();
+      nombre= sm.ObtenerCurso(nombre).getDatos().getNombre();
+      return sm.ObtenerCurso(nombre).getDatos();
+        */
+        return null;
+    }
     public boolean seleccionarEdicionOPrograma(String nombre, DTEdicion edicion){return false;};
     
     public Set<DTEdicion> listaEdicion(String Instituto){return null;};
     
-    public DTEdicion seleccionarEdicion(String nombre, DTEdicion edicion){return null;};
+    public DTEdicion seleccionarEdicion(String nombreEdicion, DTEdicion edicion)
+    {
+       Singleton sm = Singleton.getInstance();
+       Instituto inst = sm.obtenerInstituto(nombre);
+        //inst.selecionarEdicion(nombre, edicion);
+        return null;
+       
+    }
+          
     
-    public void editarEdicion(DTEdicion dataedicion){};
+    public void editarEdicion(DTEdicion data)
+    {
+       
+       
+    }
     
     public void indicarInstitucion2(String nombreI){}; // que hace?
     
@@ -93,6 +203,12 @@ public class Sistema implements ISistema{
     public void cancelar(){};
     
     public void aceptar(){};
+/*
+    @Override
+    public DTEdicion seleccionarEdicion(String nombre, DTEdicion edicion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+*/
     
     
 }
