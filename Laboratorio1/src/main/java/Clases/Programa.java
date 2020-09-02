@@ -80,6 +80,16 @@ public class Programa<Curso> {
         
         
 
+
+
+    public Date getFecha_Alta(){
+        return fecha_alta;
+    }
+    
+    public void setFechaAlta(Date fecha_alta){
+        this.fecha_alta = fecha_alta;
+    }
+
 }
 
 

@@ -70,11 +70,11 @@ public interface ISistema {
     
     public DTEdicion pickEdicion(String nombreE);
     
-    public boolean checkPrograma(DTPrograma datos);
+    public boolean checkPrograma(String datos);
     
     public void modificarDatosPrograma(DTPrograma datos);
     
-    public Programa crearPrograma(DTPrograma datos); 
+    public void crearPrograma(DTPrograma datos); 
     
     public boolean checkEdicionCurso(String nombreC, Date FechaInsc);
     
