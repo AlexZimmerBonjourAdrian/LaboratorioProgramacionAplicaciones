@@ -16,9 +16,9 @@ import java.util.*;
 public class Sistema implements ISistema{
     
     
-    private Map<String,Programa> programas;
+    private Map<String,Programa> programas; //estos creo que no van 
 
-    private Map<String,Instituto> institutos;
+    private Map<String,Instituto> institutos; //este tampoco
 	
     public Sistema(){};
     
@@ -90,13 +90,20 @@ public class Sistema implements ISistema{
         return nicks;
     }
     
+    public DTUsuario obtenerUsuario(String nick){
+       Singleton sm = Singleton.getInstance();
+       Usuario u = sm.obtenerUsuario(nick);
+       return new DTUsuario(u.getNick(), u.getNombre(), u.getApellido(), u.getCorreo(), u.getFecha_de_nac());
+    }
+    /*
     public Usuario obtenerUsuario(String nick){
         Singleton sm = Singleton.getInstance();
         return sm.obtenerUsuario(nick);
-    }
+    }*/
     
     public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac){
-        Usuario u = obtenerUsuario(nick);
+        Singleton sm = Singleton.getInstance();
+        Usuario u = sm.obtenerUsuario(nick);
         u.setNombre(nuevoNom);
         u.setApellido(nuevoApe);
         u.setFecha_de_nac(nuevaFechaNac);
@@ -179,39 +186,9 @@ public class Sistema implements ISistema{
     
     public void modificarNombreInstituto(String nombreI, String nuevonombre){};
     
-    public ArrayList<String> cursosInstituto(String nombreI){
-        Singleton sm = Singleton.getInstance();
-        Instituto inst = sm.obtenerInstituto(nombreI);
-        Iterator<Map.Entry<String,Curso>> it = inst.getCursos2().entrySet().iterator();
-        ArrayList<String> cursosInst = new ArrayList<String>();
-        while(it.hasNext()){
-            Map.Entry<String,Curso> cur = it.next();
-            cursosInst.add(cur.getValue().getNombre());
-        }
-        return cursosInst;
-    };
+    public Set<String> cursosInstituto(String nombreI){return null;};
     
-    public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso){
-        Singleton sm = Singleton.getInstance();
-        Instituto inst = sm.obtenerInstituto(nombreI);
-        Curso cur = inst.obtenerCurso(nombreCurso);
-        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones2().entrySet().iterator();
-        ArrayList<String> edicionesCurso = new ArrayList<String>();
-        while(it.hasNext()){
-            Map.Entry<String,Edicion> edic = it.next();
-            edicionesCurso.add(edic.getValue().getNombreEdicion());
-        }
-        return edicionesCurso;
-    };
-    
-    public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion){
-        Singleton sm = Singleton.getInstance();
-        Instituto inst = sm.obtenerInstituto(nombreI);
-        Curso cur = inst.obtenerCurso(nombreCurso);
-        Edicion edi;
-        edi = cur.obtenerEdicion(nombreEdicion);
-        return new DTEdicion(edi.getNombreEdicion(),edi.getFechaIni(),edi.getFechaFin(),edi.getCuposMax(),edi.getFechaPub());
-    }
+    public DTEdicion pickEdicion(String nombreE){return null;};
     
     public boolean checkPrograma(String nombrep){
         Singleton sm = Singleton.getInstance();
@@ -267,9 +244,9 @@ public class Sistema implements ISistema{
     
     public boolean indicarNombreCurso(String nombreC){return false;}; // que hace?
     
-    public void registrarCurso(DTCurso datoscurso){};
+    public void registrarCurso(DTCurso datoscurso){}; 
     
-    public void editarCursoInst(DTCurso datos){};//Probandoo
+    public void editarCursoInst(DTCurso datos){};
     
     public void cancelar(){};
     

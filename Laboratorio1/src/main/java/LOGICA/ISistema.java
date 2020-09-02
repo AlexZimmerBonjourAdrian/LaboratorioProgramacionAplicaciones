@@ -32,7 +32,9 @@ public interface ISistema {
     
     public ArrayList<String> listarNickUsuarios();
     
-    public Usuario obtenerUsuario(String nick);
+    public DTUsuario obtenerUsuario(String nick);
+    
+    //public Usuario obtenerUsuario(String nick);
     
     public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac);
     
@@ -68,11 +70,9 @@ public interface ISistema {
     
     public void modificarNombreInstituto(String nombreI, String nuevonombre);
     
-    public ArrayList<String> cursosInstituto(String nombreI);
+    public Set<String> cursosInstituto(String nombreI);
     
-    public ArrayList<String> EdicionesCurso(String nombreI, String nombreC);
-    
-    public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion);
+    public DTEdicion pickEdicion(String nombreE);
     
     public boolean checkPrograma(String datos);
     
@@ -108,7 +108,7 @@ public interface ISistema {
     
     public void registrarCurso(DTCurso datoscurso);
     
-    public void editarCursoInst(DTCurso datos);//Probandoo
+    public void editarCursoInst(DTCurso datos);
     
     public void cancelar();
     
