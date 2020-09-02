@@ -108,7 +108,7 @@ public interface ISistema {
     
     public void registrarCurso(DTCurso datoscurso);
     
-    public void editarCursoInst(DTCurso datos);
+    public void editarCursoInst(DTCurso datos);//Probandoo
     
     public void cancelar();
     
