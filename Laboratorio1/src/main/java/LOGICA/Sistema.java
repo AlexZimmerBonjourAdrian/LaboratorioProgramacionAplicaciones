@@ -179,9 +179,39 @@ public class Sistema implements ISistema{
     
     public void modificarNombreInstituto(String nombreI, String nuevonombre){};
     
-    public Set<String> cursosInstituto(String nombreI){return null;};
+    public ArrayList<String> cursosInstituto(String nombreI){
+        Singleton sm = Singleton.getInstance();
+        Instituto inst = sm.obtenerInstituto(nombreI);
+        Iterator<Map.Entry<String,Curso>> it = inst.getCursos2().entrySet().iterator();
+        ArrayList<String> cursosInst = new ArrayList<String>();
+        while(it.hasNext()){
+            Map.Entry<String,Curso> cur = it.next();
+            cursosInst.add(cur.getValue().getNombre());
+        }
+        return cursosInst;
+    };
     
-    public DTEdicion pickEdicion(String nombreE){return null;};
+    public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso){
+        Singleton sm = Singleton.getInstance();
+        Instituto inst = sm.obtenerInstituto(nombreI);
+        Curso cur = inst.obtenerCurso(nombreCurso);
+        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones2().entrySet().iterator();
+        ArrayList<String> edicionesCurso = new ArrayList<String>();
+        while(it.hasNext()){
+            Map.Entry<String,Edicion> edic = it.next();
+            edicionesCurso.add(edic.getValue().getNombreEdicion());
+        }
+        return edicionesCurso;
+    };
+    
+    public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion){
+        Singleton sm = Singleton.getInstance();
+        Instituto inst = sm.obtenerInstituto(nombreI);
+        Curso cur = inst.obtenerCurso(nombreCurso);
+        Edicion edi;
+        edi = cur.obtenerEdicion(nombreEdicion);
+        return new DTEdicion(edi.getNombreEdicion(),edi.getFechaIni(),edi.getFechaFin(),edi.getCuposMax(),edi.getFechaPub());
+    }
     
     public boolean checkPrograma(String nombrep){
         Singleton sm = Singleton.getInstance();
