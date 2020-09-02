@@ -77,11 +77,11 @@ public class Programa<Curso> {
     public void setFecha_fin(Date fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
-        
-        
-
-
-
+       
+    
+    
+    
+    
     public Date getFecha_Alta(){
         return fecha_alta;
     }
@@ -90,6 +90,12 @@ public class Programa<Curso> {
         this.fecha_alta = fecha_alta;
     }
 
+    public Map<String, Curso> getCursos() {
+        return Cursos;
+    }
+
+    public List getInscripciones() {
+        return inscripciones;
+    }
+    
 }
-
-

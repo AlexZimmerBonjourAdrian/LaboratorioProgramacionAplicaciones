@@ -122,7 +122,21 @@ public class Sistema implements ISistema{
     
     public Set<DTEdicion> mostrarEdicion(String nick){return null;};
     
-    public Set<DTPrograma> mostrarProgramasEst(String nick){return null;};
+    public ArrayList<String> mostrarProgramasEst(String nick){
+        Singleton sm = Singleton.getInstance();
+        ArrayList<String> programasEst = new ArrayList<>();
+        Iterator<Map.Entry<String, Programa>> it = sm.getProgramas().entrySet().iterator();
+        while(it.hasNext()){
+           Map.Entry<String, Programa> prog = it.next();
+           for (Iterator it2 = prog.getValue().getInscripciones().iterator(); it2.hasNext();) {
+                InscripcionP ip = (InscripcionP) it2.next();
+                if(ip.getEst().getNick().equals(nick)){
+                    programasEst.add(prog.getValue().getNombre());
+                }
+            }
+        }
+        return programasEst;
+    }
     
     public Set<Curso> mostrarCursosDocente(String nick){return null;}; 
     

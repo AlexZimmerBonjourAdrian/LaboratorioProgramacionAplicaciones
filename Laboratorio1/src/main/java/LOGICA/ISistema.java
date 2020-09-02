@@ -44,7 +44,7 @@ public interface ISistema {
     
     public Set<DTEdicion> mostrarEdicion(String nick);
     
-    public Set<DTPrograma> mostrarProgramasEst(String nick);
+    public ArrayList<String> mostrarProgramasEst(String nick);
     
     public Set<Curso> mostrarCursosDocente(String nick); // da error porque no esta implementado Curso
     

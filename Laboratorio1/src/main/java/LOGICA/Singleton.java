@@ -64,7 +64,7 @@ public class Singleton {
         return this.institutos;
     }
     
-    public Map<String,Programa> getPrograma(){
+    public Map<String,Programa> getProgramas(){
         return this.programas;
     }
     
