@@ -21,8 +21,8 @@ import java.util.Set;
 public class Instituto {
 
      String Nombre;
-    List Cursos;
-    List Docentes;
+     private  Map<String,Curso>Cursos;
+    private  Map<String,Decentes>Docentes;
     
     public Instituto(String nombre) {
         this.nombre = nombre;
@@ -41,8 +41,9 @@ public class Instituto {
     public Instituto(String nombre,List Cursos, List Docente)
     {
         this.Nombre= nombre;
-        Cursos= new LinkedList();
-        Docentes = new LinkedList();
+        Cursos = new HashMap();
+        Docentes = new HashMap();
+      
     }
     
    public boolean  IndicarNombreCurso(String nombreCurso)
@@ -121,8 +122,17 @@ public class Instituto {
         }
         return Cur;
     }
-    
-   
+    public boolean IndicarNombreCurso(String nombreCurso)
+    {
+        return Ediciones.get(nombre).getDatos();
+        if(Cursos.get(nombreCurso)!= null)
+        {
+            return true;
+        }
+        
+    }
+            
+   //public void EditarCurso(DTCurso data)
         //Singleton sm = Singleton.getInstance();
        // Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
     
