@@ -16,7 +16,7 @@ import Clases.Curso;
  * @author arena
  
  */
-public class Programa<Curso> {
+public class Programa {
     
 	//Atributos
 	

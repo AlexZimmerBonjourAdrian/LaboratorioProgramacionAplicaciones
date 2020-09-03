@@ -36,7 +36,7 @@ public class Instituto {
         this.nombre = nombre;
     }
     
-    public Map<String,Curso> getCursos2(){
+    public Map<String,Curso> getCursos(){
         return this.cursos;
     }
     
@@ -73,15 +73,6 @@ public class Instituto {
     	docentes = new HashMap();
     }
     
-    public List getCursos() {
-    	List cur = new LinkedList();
-        for(Map.Entry<String,Curso> entry : this.cursos.entrySet()){
-           Curso c1 = (Curso) entry.getValue();
-           DTCurso dtc = c1.getDatos();
-           cur.add(dtc);
-        }
-        return cur;
-    }
     
     public DTInstituto getDatos() {
     	
