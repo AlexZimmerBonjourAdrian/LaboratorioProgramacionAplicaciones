@@ -51,7 +51,14 @@ public class Curso {
     
         return new DTCurso(this.nombre, this.descripcion,this.duracion,this.cant_horas,this.creditos,this.registro,this.URL);
     }
-    public List getEdiciones(){
+     public Map<String,Edicion> getEdiciones2(){
+        return this.ediciones;
+    }
+     public Edicion obtenerEdicion(String nombreEdicion){
+        return ediciones.get(nombreEdicion);
+    }
+    
+    /*public List getEdiciones(){
         List edic = new LinkedList();
         for(Map.Entry<String,Edicion> entry : this.ediciones.entrySet()){
             Edicion e1 = (Edicion)entry.getValue();
@@ -59,7 +66,7 @@ public class Curso {
             edic.add(dte);
         }
         return edic;
-    }
+    }*/
      public List getPrevias(){
         List prev = new LinkedList();
         for(Map.Entry<String,Curso> entry : this.previas.entrySet()){

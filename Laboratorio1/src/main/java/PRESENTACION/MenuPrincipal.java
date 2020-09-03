@@ -628,7 +628,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 428, 562);
+        jInternalFrameConsUsr.setBounds(0, 0, 428, 555);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -1865,24 +1865,46 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemConsEdCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsEdCursoActionPerformed
         // TODO add your handling code here:
+        jComboBoxConsEdCurInst.setModel(new DefaultComboBoxModel<>(ICU.listarInstitutos().toArray(
+                                        new String [ICU.listarInstitutos().size()])));
         jInternalFrameConsEdicCurso.setVisible(true);
     }//GEN-LAST:event_jMenuItemConsEdCursoActionPerformed
 
     private void jComboBoxConsEdCurInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsEdCurInstActionPerformed
         // TODO add your handling code here:
+         String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
+        jComboBoxConsEdCurCurso.setModel(new DefaultComboBoxModel<>(ICU.cursosInstituto(instituto).toArray(
+                                         new String [ICU.cursosInstituto(instituto).size()])));
+        
+       
         jComboBoxConsEdCurCurso.setEnabled(true);
     }//GEN-LAST:event_jComboBoxConsEdCurInstActionPerformed
 
     private void jComboBoxConsEdCurCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsEdCurCursoActionPerformed
         // TODO add your handling code here:
+         String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
+        String curso = jComboBoxConsEdCurCurso.getSelectedItem().toString();
+        jComboBoxConsEdCurEdic.setModel(new DefaultComboBoxModel<>(ICU.EdicionesCurso(instituto, curso).toArray(
+                                        new String [ICU.EdicionesCurso(instituto, curso).size()])));
+
         jComboBoxConsEdCurEdic.setEnabled(true);
     }//GEN-LAST:event_jComboBoxConsEdCurCursoActionPerformed
 
     private void jComboBoxConsEdCurEdicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsEdCurEdicActionPerformed
         // TODO add your handling code here:
-        Object obj = jComboBoxConsEdCurEdic.getSelectedItem();
-        String text = (String) obj;
-        jTextFieldlConsEdCurNom.setText(text);
+        String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
+       String curso = jComboBoxConsEdCurCurso.getSelectedItem().toString(); 
+       String edicion = jComboBoxConsEdCurEdic.getSelectedItem().toString(); 
+       DTEdicion datos = ICU.datosEdicion(instituto,curso,edicion);
+       jTextFieldlConsEdCurNom.setText(datos.getNombre());
+       jTextFieldConsEdCurFechIn.setText(datos.getFechaIni().toString());
+       jTextFieldConsEdCurFechFn.setText(datos.getFechaFin().toString());
+   //    jTextFieldConsEdCurCupo.setText(datos.getCuposMax().toString(); // convertir a String ?
+       jTextFieldConsEdCurFechPub.setText(datos.getFechaPub().toString());
+        
+    //        Object obj = jComboBoxConsEdCurEdic.getSelectedItem();
+  //      String text = (String) obj;
+  //      jTextFieldlConsEdCurNom.setText(text);
     }//GEN-LAST:event_jComboBoxConsEdCurEdicActionPerformed
 
     private void jButtonCrearProgForAceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearProgForAceptActionPerformed

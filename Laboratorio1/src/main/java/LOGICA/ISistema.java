@@ -70,9 +70,11 @@ public interface ISistema {
     
     public void modificarNombreInstituto(String nombreI, String nuevonombre);
     
-    public Set<String> cursosInstituto(String nombreI);
+    public ArrayList<String> cursosInstituto(String nombreI);
     
-    public DTEdicion pickEdicion(String nombreE);
+     public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso);
+     
+     public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion);
     
     public boolean checkPrograma(String datos);
     

@@ -41,7 +41,7 @@ public class Edicion {
         inscripciones = new HashMap();
     }
     
-    public DTEdicion getDatos(){
+   /* public DTEdicion getDatos(){
         
         //Se genera una lista con los datatypes de todos los docentes
         Iterator it = this.docentes.entrySet().iterator();
@@ -58,8 +58,28 @@ public class Edicion {
             it.next();
         }
         return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub,doc,insc);
+    } */
+    
+    public String getNombreEdicion(){
+        return this.nombre;
     }
-    
-    
-    
+    public Date getFechaIni() {
+		return this.fecha_ini;
+	}
+	public Date getFechaFin() {
+		return this.fecha_fin;
+	}
+	public int getCuposMax() {
+		return this.cupo_max;
+	}
+	public Date getFechaPub() {
+		return this.fecha_pub;
+	}
+	public Map getDocentes(){
+            return this.docentes;
+    }
+    public Map getInscripciones(){
+        return this.inscripciones;
+    }
 }
+    
