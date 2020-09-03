@@ -14,11 +14,11 @@ public class DTEdicion {
 	private int cupo_max;
 	private Date fecha_pub;
     private Map docentes;
-    private Map inscripciones;
+    private List inscripciones;
 
 	//Metodos
 	
-    public DTEdicion(String nombre,Date fecha_ini,Date fecha_fin,int cupo_max,Date fecha_pub, Map docentes, Map inscripciones){
+    public DTEdicion(String nombre,Date fecha_ini,Date fecha_fin,int cupo_max,Date fecha_pub, Map docentes, List inscripciones){
         this.nombre=nombre;
         this.fecha_ini=fecha_ini;
         this.fecha_fin=fecha_fin;
@@ -53,7 +53,7 @@ public class DTEdicion {
 	public Map getDocentes(){
             return this.docentes;
     }
-    public Map getInscripciones(){
+    public List getInscripciones(){
         return this.inscripciones;
     }
 }

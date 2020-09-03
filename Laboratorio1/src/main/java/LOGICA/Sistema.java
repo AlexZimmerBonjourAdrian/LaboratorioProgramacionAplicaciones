@@ -199,10 +199,15 @@ public class Sistema implements ISistema{
     
     };
     
-     public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso){
-     Singleton sm = Singleton.getInstance();
+    public Curso obtenerCursoDelInstituto(String nombreI, String nombreC){
+        Singleton sm = Singleton.getInstance();
         Instituto inst = sm.obtenerInstituto(nombreI);
-        Curso cur = inst.obtenerCurso(nombreCurso);
+        Curso cur = inst.obtenerCurso(nombreC);
+        return cur;
+        }
+    
+     public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso){
+        Curso cur = obtenerCursoDelInstituto( nombreI,  nombreCurso);
         Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones2().entrySet().iterator();
         ArrayList<String> edicionesCurso = new ArrayList<String>();
         while(it.hasNext()){
@@ -213,9 +218,7 @@ public class Sistema implements ISistema{
      };
     
      public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion){
-     Singleton sm = Singleton.getInstance();
-        Instituto inst = sm.obtenerInstituto(nombreI);
-        Curso cur = inst.obtenerCurso(nombreCurso);
+        Curso cur = obtenerCursoDelInstituto( nombreI, nombreCurso);
         Edicion edi;
         edi = cur.obtenerEdicion(nombreEdicion);
         return new DTEdicion(edi.getNombreEdicion(),edi.getFechaIni(),edi.getFechaFin(),edi.getCuposMax(),edi.getFechaPub());
@@ -250,9 +253,24 @@ public class Sistema implements ISistema{
         
     }; 
     
-    public boolean checkEdicionCurso(String nombreC, Date FechaInsc){return false;};
+    public String checkEdicionCurso(String nombreI,String nombreC, Date FechaInsc){
+        Curso cur = obtenerCursoDelInstituto( nombreI, nombreC);
+        Edicion vigente;
+        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones2().entrySet().iterator();
+        while(it.hasNext()){
+           Edicion edic = (Edicion) it.next();
+           if (FechaInsc.compareTo(edic.getFechaIni()) < 0 ){
+               return edic.getNombreEdicion();
+           }     
+        }
+        return null;
+    };
     
-    public boolean checkRegistro(String correo, String nombreC, String nombreE){return false;};
+    public boolean ExisteRegistroInscripcionE(String nombreI, Estudiante e, String nombreC, String nombreE){
+        Curso cur = obtenerCursoDelInstituto( nombreI, nombreC);
+        Edicion edi  = cur.obtenerEdicion(nombreE);
+        return edi.obtenerInscripcionE(e) != null;
+    };
     
     public Set<String> pickCurso (String nombreC){return null;};
     

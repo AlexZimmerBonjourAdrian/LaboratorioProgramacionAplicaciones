@@ -72,6 +72,8 @@ public interface ISistema {
     
     public ArrayList<String> cursosInstituto(String nombreI);
     
+    public Curso obtenerCursoDelInstituto(String nombreI, String nombreC);
+ 
      public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso);
      
      public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion);
@@ -82,9 +84,9 @@ public interface ISistema {
     
     public void crearPrograma(DTPrograma datos); 
     
-    public boolean checkEdicionCurso(String nombreC, Date FechaInsc);
+    public String checkEdicionCurso(String nombreI, String nombreC, Date FechaInsc);
     
-    public boolean checkRegistro(String correo, String nombreC, String nombreE);
+    public boolean ExisteRegistroInscripcionE(String nombreI, Estudiante e, String nombreC, String nombreE);
     
     public Set<String> pickCurso (String nombreC);
     

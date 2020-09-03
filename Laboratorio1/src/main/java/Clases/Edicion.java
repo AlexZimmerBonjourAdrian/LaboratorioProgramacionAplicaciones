@@ -6,6 +6,7 @@
 package Clases;
 
 import Datatypes.DTEdicion;
+import Clases.InscripcionE;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,8 +27,8 @@ public class Edicion {
     Date fecha_fin;
     int cupo_max;
     Date fecha_pub;
-    Map docentes;
-    Map inscripciones;
+    Map<String, Usuario> docentes;
+    List inscripciones;
     
     //Metodos
     
@@ -38,7 +39,7 @@ public class Edicion {
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
         docentes = new HashMap();
-        inscripciones = new HashMap();
+        inscripciones = new LinkedList();
     }
     
    /* public DTEdicion getDatos(){
@@ -78,8 +79,21 @@ public class Edicion {
 	public Map getDocentes(){
             return this.docentes;
     }
-    public Map getInscripciones(){
+    public List getInscripciones(){
         return this.inscripciones;
     }
+    
+    public InscripcionE obtenerInscripcionE(Estudiante e){
+        Iterator it = this.inscripciones.iterator();
+        while(it.hasNext()){
+            InscripcionE insc = (InscripcionE) it.next();
+            if(insc.est.equals(e))
+                return insc;
+        }
+    return null;
 }
     
+    
+}
+
+

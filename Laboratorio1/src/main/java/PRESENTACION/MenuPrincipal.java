@@ -698,7 +698,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jInternalFrameConsEdicCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jInternalFrameConsEdicCursoLayout.createSequentialGroup()
-                        .addGap(0, 14, Short.MAX_VALUE)
+                        .addGap(0, 53, Short.MAX_VALUE)
                         .addGroup(jInternalFrameConsEdicCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelConsEdCurIns, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelConsEdCurEdic, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2066,11 +2066,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemInscEdCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInscEdCursoActionPerformed
         // TODO add your handling code here:
+        jComboBoxInscEdCurInst.setModel(new DefaultComboBoxModel<>(ICU.listarInstitutos().toArray(
+                                        new String [ICU.listarInstitutos().size()])));
         jInternalFrameInscEdCurs.setVisible(true);
     }//GEN-LAST:event_jMenuItemInscEdCursoActionPerformed
 
     private void jComboBoxInscEdCurInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxInscEdCurInstActionPerformed
         // TODO add your handling code here:
+         String instituto = jComboBoxInscEdCurInst.getSelectedItem().toString();
+        jComboBoxInscEdCurCur.setModel(new DefaultComboBoxModel<>(ICU.cursosInstituto(instituto).toArray(
+                                         new String [ICU.cursosInstituto(instituto).size()])));
         jComboBoxInscEdCurCur.setEnabled(true);
     }//GEN-LAST:event_jComboBoxInscEdCurInstActionPerformed
 
