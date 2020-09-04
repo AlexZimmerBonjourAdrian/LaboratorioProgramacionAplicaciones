@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author arena
+ 
  */
 public class Singleton {
     
