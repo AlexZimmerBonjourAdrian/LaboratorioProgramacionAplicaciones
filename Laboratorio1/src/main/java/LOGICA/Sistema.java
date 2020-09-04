@@ -205,18 +205,13 @@ public class Sistema implements ISistema{
     public Curso obtenerCursoDelInstituto(String nombreI, String nombreC){
         Singleton sm = Singleton.getInstance();
         Instituto inst = sm.obtenerInstituto(nombreI);
-<<<<<<< HEAD
         Curso cur = inst.obtenerCurso(nombreC);
         return cur;
         }
     
      public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso){
         Curso cur = obtenerCursoDelInstituto( nombreI,  nombreCurso);
-        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones2().entrySet().iterator();
-=======
-        Curso cur = inst.obtenerCurso(nombreCurso);
         Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
->>>>>>> Bruno
         ArrayList<String> edicionesCurso = new ArrayList<String>();
         while(it.hasNext()){
             Map.Entry<String,Edicion> edic = it.next();
@@ -264,7 +259,7 @@ public class Sistema implements ISistema{
     public String checkEdicionCurso(String nombreI,String nombreC, Date FechaInsc){
         Curso cur = obtenerCursoDelInstituto( nombreI, nombreC);
         Edicion vigente;
-        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones2().entrySet().iterator();
+        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
         while(it.hasNext()){
            Edicion edic = (Edicion) it.next();
            if (FechaInsc.compareTo(edic.getFechaIni()) < 0 ){

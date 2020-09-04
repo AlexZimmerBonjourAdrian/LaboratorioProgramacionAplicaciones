@@ -628,7 +628,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 428, 562);
+        jInternalFrameConsUsr.setBounds(0, 0, 418, 555);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -698,11 +698,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jInternalFrameConsEdicCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jInternalFrameConsEdicCursoLayout.createSequentialGroup()
-<<<<<<< HEAD
-                        .addGap(0, 53, Short.MAX_VALUE)
-=======
                         .addGap(0, 44, Short.MAX_VALUE)
->>>>>>> Bruno
                         .addGroup(jInternalFrameConsEdicCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelConsEdCurIns, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelConsEdCurEdic, javax.swing.GroupLayout.Alignment.TRAILING)
