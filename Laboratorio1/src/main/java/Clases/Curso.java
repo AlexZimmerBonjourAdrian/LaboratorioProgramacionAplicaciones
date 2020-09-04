@@ -7,6 +7,7 @@ package Clases;
 
 import Datatypes.DTCurso;
 import Datatypes.DTEdicion;
+import Datatypes.DTUsuario;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,7 +36,7 @@ public class Curso {
     
     //Metodos
     
-    public Curso(String n, String desc, String dur, double ch, double c, Date r, String url){
+    public Curso(String n, String desc, String dur, double ch, double c, Date r, String url,Map<String,Curso> previas){
         
         nombre = n;
         descripcion = desc;
@@ -49,6 +50,10 @@ public class Curso {
         programas = new HashMap();
         
     }   
+
+    public Curso(String nombre, String descripcion, String duracion, double horas, Date fechaReg, String url) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     public DTCurso getDatos(){
     
         return new DTCurso(this.nombre, this.descripcion,this.duracion,this.cant_horas,this.creditos,this.registro,this.URL);
@@ -64,5 +69,23 @@ public class Curso {
         return nombre;
     }
     
+    public DTEdicion seleccinarEdicion(String nombre, DTEdicion Dato)
+   {
+       return ediciones.get(nombre).getDatos();
+
+    }
     
+   
+    
+    public void EditarCurso(DTCurso datos)
+    {
+        this.nombre=datos.getNombre();
+        this.descripcion=datos.getDescripcion();
+        this.URL=datos.getUrl();
+        this.duracion=datos.getDuracion();
+        this.creditos=datos.getCreditos();
+        this.cant_horas=datos.getHoras(); 
+    }
+    
+
 }

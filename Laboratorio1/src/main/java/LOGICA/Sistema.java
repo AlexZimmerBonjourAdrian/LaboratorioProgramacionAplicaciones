@@ -120,11 +120,27 @@ public class Sistema implements ISistema{
         }
         return nombresInst;
     }
+    /*
+    public Set<DTEdicion> mostrarEdicion(String nick)
+    {
+     Singleton sm = Singleton.getInstance();
+     Iterator<Map.Entry<String, Curso>>it = sm.getCursos().entrySet().iterator();
+     ArrayList<String> nombreInst = new ArrayList<String>();
+     while(it.hasNext())
+     {
+         Map.Entry<String, Instituto> Inst= it.next();
+     }
+    */
+    }
     
-    public DTInstituto buscarInstituto(String nombInst){return null;};
     
-    public Set<DTEdicion> mostrarEdicion(String nick){return null;};
-    
+    public DTInstituto buscarInstituto(String nombInst)
+    {
+        Singleton sm = Singleton.getInstance();
+       Instituto inst = sm.obtenerInstituto(nombInst);
+       return new DTInstituto(inst.getNombre()); 
+    }
+   
     public ArrayList<String> mostrarProgramasEst(String nick){
         Singleton sm = Singleton.getInstance();
         ArrayList<String> programasEst = new ArrayList<>();
@@ -281,7 +297,13 @@ public class Sistema implements ISistema{
     
     public InscripcionE crearRegistro(String correo, Date FechaInsc){return null;};
     
-    public Set<DTCurso> indicarInstitucion(String nombre){return null;};
+     public Set<DTCurso> indicarInstitucion(String nombre)
+    {
+        Singleton sm = Singleton.getInstance();
+        Instituto Inst = sm.obtenerInstituto(nombre);
+        return (Set<DTCurso>) Inst.getCursos();
+    }
+     
     
     public DTCurso seleccionarCurso(String nombre){return null;};
     
@@ -295,14 +317,68 @@ public class Sistema implements ISistema{
     
     public void indicarInstitucion2(String nombreI){}; // que hace?
     
-    public boolean indicarNombreCurso(String nombreC){return false;}; // que hace?
+      public boolean IndicarNombreCurso(String nombreCurso)
+    {
+        Singleton sm = Singleton.getInstance();
+        //Edicion = Edicion.get(nombre).getDatos();
+        if( sm.obtenerCurso(nombreCurso) != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public void registrarCurso(DTCurso datoscursdo)
+    {
+       Singleton sm = Singleton.getInstance();
+        Curso Cur = new Curso(datoscursdo.getNombre(),datoscursdo.getDescripcion(),datoscursdo.getDuracion(),datoscursdo.getHoras(),datoscursdo.getFechaReg(), datoscursdo.getUrl());
+        sm.agregarCurso(Cur);
+        
+             // (String n, String desc, String dur, double ch, double c, Date r, String url){
+              //sm.obtenerInstituto(nomInst).addDocente((Docente)u);
+        //}else{
+            //  u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+       // }
+       // sm.agregarUsuario(u);
+/*
+         Singleton sm = Singleton.getInstance();
+        Usuario u;
+        if(docente){
+              u = new Docente(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+              sm.obtenerInstituto(nomInst).addDocente((Docente)u);
+        }else{
+              u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
+        }
+        sm.agregarUsuario(u);
+*/
+    }
+    public void editarCursoInst(DTCurso datos)
+    {
+          
+       Singleton sm = Singleton.getInstance();
+       Curso Cur = sm.obtenerCurso(datos.getNombre());
+       //DTUsuario(u.getNick(), u.getNombre(), u.getApellido(), u.getCorreo(), u.getFecha_de_nac());
+       Cur.EditarCurso(datos);
+    }
     
-    public void registrarCurso(DTCurso datoscurso){}; 
-    
-    public void editarCursoInst(DTCurso datos){};
     
     public void cancelar(){};
     
     public void aceptar(){};
-    
+
+    /*
+    @Override
+    public boolean indicarNombreCurso(String nombreC) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    */
+
+    @Override
+    public boolean indicarNombreCurso(String nombreC) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
+

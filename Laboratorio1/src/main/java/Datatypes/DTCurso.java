@@ -1,8 +1,10 @@
 package Datatypes;
 
+import Clases.Curso;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class DTCurso {
 	
@@ -15,7 +17,7 @@ public class DTCurso {
 	private double cant_cred;
 	private Date fecha_reg;
 	private String url;
-        
+       //private  Map<String,Curso> Previas; 
 	//Metodos
 	
 	public DTCurso(String nombre,String descripcion, String duracion,double cant_horas,double cant_cred, Date fecha_reg, String url) {

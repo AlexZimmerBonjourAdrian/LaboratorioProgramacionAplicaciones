@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
+import LOGICA.Singleton;
 import Datatypes.DTCurso;
 import Datatypes.DTInstituto;
 
@@ -81,4 +81,33 @@ public class Instituto {
     
     }
     
+    
+      /*
+         public ArrayList<DTCurso>  getDataCurso()
+    {
+        Iterator<Map.Entry<String, Curso>> it = cursos.;
+        ArrayList<DTCurso> Cur = new ArrayList<DTCurso>();
+        while(it.hasNext())
+        {
+          Map.Entry<String, Curso> usr = it.next(); 
+          Cur.add(usr.getValue().getDatos());
+        }
+        return Cur;
+    }
+       */
+      public void RegistraCurso(DTCurso dataCurso)
+   {
+       //Metodo a aplicar
+   }
+   
+   public void EditarCursoins(DTCurso dataCurso)
+   {
+      //Metodo 
+   }
+   
+   public void cancelar()
+   {
+       //Metodo
+   }
+   
 }

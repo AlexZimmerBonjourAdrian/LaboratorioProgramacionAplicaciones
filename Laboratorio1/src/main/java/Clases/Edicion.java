@@ -42,7 +42,9 @@ public class Edicion {
         inscripciones = new LinkedList();
     }
     
-
+ public DTEdicion getDatos(){
+        return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub,this.docentes,this.inscripciones);
+    }
     
     public String getNombreEdicion(){
         return this.nombre;
@@ -75,6 +77,10 @@ public class Edicion {
         }
     return null;
 }
+       public void cancelar()
+    {
+        //Metodo.
+    }
     
     
 }
