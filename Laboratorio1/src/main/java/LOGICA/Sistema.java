@@ -16,10 +16,6 @@ import java.util.*;
 public class Sistema implements ISistema{
     
     
-    private Map<String,Programa> programas; //estos creo que no van 
-
-    private Map<String,Instituto> institutos; //este tampoco
-	
     public Sistema(){};
     
     
@@ -156,26 +152,33 @@ public class Sistema implements ISistema{
     //public void modificarDatosUsuario(DTUsuario nuevo){};
     
     public void agregarCursoPrograma(String nombreP, String nombreC){};
+    //corregir
     
     public List mostrarCursos(){
-    	List cur = new ArrayList();
+    	
+        /*
+        List cur = new ArrayList();
         for(Map.Entry<String,Instituto> entry : this.institutos.entrySet()){
             Instituto i1 = (Instituto)entry.getValue();
-            List agr = i1.getCursos();
+            List agr = (List) i1.getCursos();
             cur.addAll(agr);
             
         }
-        return cur;
+        */
+        return null;
     }
     
     public List mostrarProgramas(){
+        /*
         List prog = new LinkedList();
         for(Map.Entry<String,Programa> entry : this.programas.entrySet()){
             Programa p1 = (Programa)entry.getValue();
             DTPrograma dprog = p1.getDatos();
             prog.add(dprog);
         }
-        return prog;
+        */
+        return null;
+          
     }
     
     public DTCurso mostrarCurso(String nombreC){return null;};
@@ -189,7 +192,7 @@ public class Sistema implements ISistema{
     public ArrayList<String> cursosInstituto(String nombreI){
     Singleton sm = Singleton.getInstance();
         Instituto inst = sm.obtenerInstituto(nombreI);
-        Iterator<Map.Entry<String,Curso>> it = inst.getCursos2().entrySet().iterator();
+        Iterator<Map.Entry<String,Curso>> it = inst.getCursos().entrySet().iterator();
         ArrayList<String> cursosInst = new ArrayList<String>();
         while(it.hasNext()){
             Map.Entry<String,Curso> cur = it.next();
@@ -208,7 +211,7 @@ public class Sistema implements ISistema{
     
      public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso){
         Curso cur = obtenerCursoDelInstituto( nombreI,  nombreCurso);
-        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones2().entrySet().iterator();
+        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
         ArrayList<String> edicionesCurso = new ArrayList<String>();
         while(it.hasNext()){
             Map.Entry<String,Edicion> edic = it.next();
@@ -256,7 +259,7 @@ public class Sistema implements ISistema{
     public String checkEdicionCurso(String nombreI,String nombreC, Date FechaInsc){
         Curso cur = obtenerCursoDelInstituto( nombreI, nombreC);
         Edicion vigente;
-        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones2().entrySet().iterator();
+        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
         while(it.hasNext()){
            Edicion edic = (Edicion) it.next();
            if (FechaInsc.compareTo(edic.getFechaIni()) < 0 ){

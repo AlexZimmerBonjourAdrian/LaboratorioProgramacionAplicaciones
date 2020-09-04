@@ -42,24 +42,7 @@ public class Edicion {
         inscripciones = new LinkedList();
     }
     
-   /* public DTEdicion getDatos(){
-        
-        //Se genera una lista con los datatypes de todos los docentes
-        Iterator it = this.docentes.entrySet().iterator();
-        List doc = new LinkedList();
-        while(it.hasNext()){
-            doc.add(it.getClass());
-            it.next();
-        }
-        //Se genera una lista con los datatypes de todas las inscripciones
-        it = this.inscripciones.entrySet().iterator();
-        List insc = new LinkedList();
-        while(it.hasNext()){
-            insc.add(it.getClass());
-            it.next();
-        }
-        return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub,doc,insc);
-    } */
+
     
     public String getNombreEdicion(){
         return this.nombre;

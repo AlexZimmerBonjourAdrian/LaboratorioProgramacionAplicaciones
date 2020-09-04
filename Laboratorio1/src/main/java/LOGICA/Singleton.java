@@ -22,6 +22,8 @@ public class Singleton {
     
     private Map<String,Programa> programas;
     
+    private Map<String,Curso> cursos; 
+    
     private static Singleton instancia = null;
     
     private Singleton(){ 
@@ -31,6 +33,8 @@ public class Singleton {
         institutos = new HashMap();
         
         programas = new HashMap();
+        
+        cursos = new HashMap();
         
     }
     
@@ -87,6 +91,18 @@ public class Singleton {
     public Programa obtenerPrograma(String nombre){
         return programas.get(nombre);
     }
+
+    public Map<String, Curso> getCursos() {
+        return cursos;
+    }
     
+    public Curso obtenerCurso(String nombre){
+        return cursos.get(nombre);
+    }
     
+    public void agregarCurso(Curso cur){
+        if (this.obtenerCurso(cur.getNombre()) == null) {
+            cursos.put(cur.getNombre(),cur);
+        }
+    }
 }
