@@ -108,7 +108,7 @@ public interface ISistema {
     
     public void indicarInstitucion2(String nombreI); // que hace?
     
-    public boolean indicarNombreCurso(String nombreC); // que hace?
+   public boolean IndicarNombreCurso(String nombreCurso); // que hace?
     
     public void registrarCurso(DTCurso datoscurso);
     

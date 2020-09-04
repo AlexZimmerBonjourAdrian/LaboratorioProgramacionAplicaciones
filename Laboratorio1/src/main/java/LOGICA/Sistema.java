@@ -120,6 +120,10 @@ public class Sistema implements ISistema{
         }
         return nombresInst;
     }
+    public Set<DTEdicion> mostrarEdicion(String nick)
+    {
+        return null;
+    }
     /*
     public Set<DTEdicion> mostrarEdicion(String nick)
     {
@@ -130,10 +134,10 @@ public class Sistema implements ISistema{
      {
          Map.Entry<String, Instituto> Inst= it.next();
      }
-    */
+    
     }
     
-    
+    */
     public DTInstituto buscarInstituto(String nombInst)
     {
         Singleton sm = Singleton.getInstance();
@@ -223,7 +227,7 @@ public class Sistema implements ISistema{
         Instituto inst = sm.obtenerInstituto(nombreI);
         Curso cur = inst.obtenerCurso(nombreC);
         return cur;
-        }
+        };
     
      public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso){
         Curso cur = obtenerCursoDelInstituto( nombreI,  nombreCurso);
@@ -317,17 +321,18 @@ public class Sistema implements ISistema{
     
     public void indicarInstitucion2(String nombreI){}; // que hace?
     
-      public boolean IndicarNombreCurso(String nombreCurso)
+   public boolean IndicarNombreCurso(String nombreCurso)
     {
         Singleton sm = Singleton.getInstance();
+        Boolean IsCur = false;
         //Edicion = Edicion.get(nombre).getDatos();
         if( sm.obtenerCurso(nombreCurso) != null)
         {
-            return true;
+            return IsCur= true;
         }
         else
         {
-            return false;
+            return IsCur=false;
         }
     }
     public void registrarCurso(DTCurso datoscursdo)
@@ -374,11 +379,6 @@ public class Sistema implements ISistema{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     */
-
-    @Override
-    public boolean indicarNombreCurso(String nombreC) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }
 
