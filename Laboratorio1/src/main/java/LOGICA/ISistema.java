@@ -13,6 +13,7 @@ import Datatypes.DTPrograma;
 import Datatypes.DTUsuario;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -21,7 +22,7 @@ import java.util.Set;
  */
 public interface ISistema {
     
-    public void altaUsuario(DTUsuario datos);
+    public void altaUsuario(DTUsuario datos, boolean docente, String nomInst);
     
     public boolean chekusuario(String nick);
     
@@ -31,15 +32,21 @@ public interface ISistema {
     
     public ArrayList<String> listarNickUsuarios();
     
-    public Usuario obtenerUsuario(String nick);
+    public DTUsuario obtenerUsuario(String nick);
+    
+    //public Usuario obtenerUsuario(String nick);
     
     public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac);
+    
+    public void altaInstituto(String nom);
+    
+    public ArrayList<String> listarInstitutos();
     
     public DTInstituto buscarInstituto(String nombInst);
     
     public Set<DTEdicion> mostrarEdicion(String nick);
     
-    public Set<DTPrograma> mostrarProgramasEst(String nick);
+    public ArrayList<String> mostrarProgramasEst(String nick);
     
     public Set<Curso> mostrarCursosDocente(String nick); // da error porque no esta implementado Curso
     
@@ -48,14 +55,12 @@ public interface ISistema {
     public Set<DTUsuario> consultaUsuarios();
     
     public DTUsuario seleccionarUsuario(String nick);
-    
-    public void modificarDatosUsuario(DTUsuario nuevo);
-    
+   
     public void agregarCursoPrograma(String nombreP, String nombreC);
     
-    public Set<DTCurso> mostrarCursos();
+    public List mostrarCursos();
     
-    public Set<DTPrograma> mostrarProgramas();
+    public List mostrarProgramas();
     
     public DTCurso mostrarCurso(String nombreC);
     
@@ -65,19 +70,23 @@ public interface ISistema {
     
     public void modificarNombreInstituto(String nombreI, String nuevonombre);
     
-    public Set<String> cursosInstituto(String nombreI);
+    public ArrayList<String> cursosInstituto(String nombreI);
     
-    public DTEdicion pickEdicion(String nombreE);
+    public Curso obtenerCursoDelInstituto(String nombreI, String nombreC);
+ 
+     public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso);
+     
+     public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion);
     
-    public boolean checkPrograma(DTPrograma datos);
+    public boolean checkPrograma(String datos);
     
     public void modificarDatosPrograma(DTPrograma datos);
     
-    public Programa crearPrograma(DTPrograma datos); 
+    public void crearPrograma(DTPrograma datos); 
     
-    public boolean checkEdicionCurso(String nombreC, Date FechaInsc);
+    public String checkEdicionCurso(String nombreI, String nombreC, Date FechaInsc);
     
-    public boolean checkRegistro(String correo, String nombreC, String nombreE);
+    public boolean ExisteRegistroInscripcionE(String nombreI, Estudiante e, String nombreC, String nombreE);
     
     public Set<String> pickCurso (String nombreC);
     

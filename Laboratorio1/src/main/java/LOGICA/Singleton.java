@@ -8,7 +8,7 @@ package LOGICA;
 import java.util.HashMap;
 import java.util.Map;
 import Clases.*;
-import Datatypes.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,8 +21,8 @@ public class Singleton {
     private Map<String,Instituto> institutos;
     
     private Map<String,Programa> programas;
-    private Map<String,Edicion> ediciones;
-    private Map<String,Curso> cursos;
+    
+    private Map<String,Curso> cursos; 
     
     private static Singleton instancia = null;
     
@@ -34,8 +34,8 @@ public class Singleton {
         
         programas = new HashMap();
         
-        ediciones = new HashMap();
         cursos = new HashMap();
+        
     }
     
     public static Singleton getInstance(){
@@ -64,6 +64,13 @@ public class Singleton {
         return this.usuarios;
     }
     
+    public Map<String,Instituto> getInstitutos(){
+        return this.institutos;
+    }
+    
+    public Map<String,Programa> getProgramas(){
+        return this.programas;
+    }
     
     public void agregarInstituto(Instituto inst){
         if (this.obtenerInstituto(inst.getNombre()) == null) {
@@ -84,18 +91,18 @@ public class Singleton {
     public Programa obtenerPrograma(String nombre){
         return programas.get(nombre);
     }
-    
-    public Edicion seleccionarEdicion(String nombre)
-    {
-      return ediciones.get(nombre);
+
+    public Map<String, Curso> getCursos() {
+        return cursos;
     }
-         
     
-    public Curso ObtenerCurso(String nombre)
-    {
-       return cursos.get(nombre);
+    public Curso obtenerCurso(String nombre){
+        return cursos.get(nombre);
     }
-            
-            
-        
+    
+    public void agregarCurso(Curso cur){
+        if (this.obtenerCurso(cur.getNombre()) == null) {
+            cursos.put(cur.getNombre(),cur);
+        }
+    }
 }

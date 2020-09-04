@@ -5,28 +5,28 @@
  */
 package Clases;
 
-import Datatypes.DTCurso;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import Datatypes.DTCurso;
 import Datatypes.DTInstituto;
-import Datatypes.DTEdicion;
-import LOGICA.Singleton;
-import java.util.*;
-import java.util.Set;
+
 /**
  *
- * @author pablogb
+ * @author Bruno
  */
 public class Instituto {
-
-     String Nombre;
-     private  Map<String,Curso>Cursos;
-    private  Map<String,Decentes>Docentes;
     
-    public Instituto(String nombre) {
-        this.nombre = nombre;
-    }
+	//Atributos
+	
+    private String nombre;
+    private Map<String,Curso> cursos;
+    private Map<String,Docente> docentes;
+    
+    //Metodos
 
     public String getNombre() {
         return nombre;
@@ -36,104 +36,49 @@ public class Instituto {
         this.nombre = nombre;
     }
     
-    private String nombre;
-    
-    public Instituto(String nombre,List Cursos, List Docente)
-    {
-        this.Nombre= nombre;
-        Cursos = new HashMap();
-        Docentes = new HashMap();
-      
+    public Map<String,Curso> getCursos(){
+        return this.cursos;
     }
     
-   public boolean  IndicarNombreCurso(String nombreCurso)
-   {
-       //Metodo
-       return true;
-   }
-   
-    public DTInstituto getDatos(){
-    
-        return new DTInstituto(this.Nombre,this.Cursos,this.Docentes);
+    public Map<String,Docente> getDocentes(){
+        return this.docentes;
     }
-   
-   public void RegistraCurso(DTCurso dataCurso)
-   {
-       //Metodo a aplicar
-   }
-   
-   public void EditarCursoins(DTCurso dataCurso)
-   {
-      //Metodo 
-   }
-   
-   public void cancelar()
-   {
-       //Metodo
-   }
-   /*
-   public DTEdicion  selecionarEdicion(String nombre, DTEdicion Dato)
-   {
-       
-       Iterator<Map.Entry<String, Curso>> it = Cursos.iterator();
-       Map.Entry<String, Curso> Cur;
-       DTEdicion Ed;
-       //ArrayList<String> nicks = new ArrayList<String>();
-       
-       while(it.hasNext())
-       {
-           //map<int,Curso>::Iterator t;
-         //  Map.Entry<Integer, Curso> Cur = it.next();
-           Cur.getValue().seleccinarEdicion(nombre, Dato);
-           //Curs.getValue().
-       }
-       
-        
-        
-        //ArrayList<DTCurso> Cur = new ArrayList<DTCurso>();
-        while(it.hasNext()){
-          Cur = it.next();
-         Ed = Cur.getValue().seleccinarEdicion(nombre, Dato);
+    
+    public Curso obtenerCurso(String nomCurso){
+        return cursos.get(nomCurso);
+    }
+    
+    public Docente obtenerDocente(String nickDocente){
+        return docentes.get(nickDocente);
+    }
+    
+    public void addDocente(Docente d){
+        if(obtenerDocente(d.getNick())==null){
+            docentes.put(d.getNick(), d);
+            //borrar esto
+            System.out.println("Se agrego al instituto: " + getNombre() + "el docente: " + d.getNick());
         }
-          return Ed;
     }
-       
-               
-       
-       Iterator it=Cursos.iterator();
-       Curso *C;
-       while(it->Cursos.listIterator().)
-      *
-    //Curso Cur = (Curso*) Cursos;
     
-        
-     //while(C)
-        
-   }
-*/
-    public ArrayList<DTCurso>  getDataCurso()
-    {
-        Iterator<Map.Entry<String, Curso>> it = Cursos.iterator();
-        ArrayList<DTCurso> Cur = new ArrayList<DTCurso>();
-        while(it.hasNext())
-        {
-          Map.Entry<String, Curso> usr = it.next(); 
-          Cur.add(usr.getValue().getDatos());
+    public void addCurso(Curso c){
+        if(obtenerCurso(c.getNombre())==null){
+            cursos.put(c.getNombre(), c);
         }
-        return Cur;
     }
-    public boolean IndicarNombreCurso(String nombreCurso)
-    {
-        return Ediciones.get(nombre).getDatos();
-        if(Cursos.get(nombreCurso)!= null)
-        {
-            return true;
-        }
-        
+    
+    
+    public Instituto(String nombre) {
+        this.nombre=nombre;
+    	cursos = new HashMap();
+    	docentes = new HashMap();
     }
-            
-   //public void EditarCurso(DTCurso data)
-        //Singleton sm = Singleton.getInstance();
-       // Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
+    
+    
+    public DTInstituto getDatos() {
+    	
+    	
+    	return new DTInstituto(this.nombre);
+    
+    }
     
 }

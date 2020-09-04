@@ -10,10 +10,9 @@ import Datatypes.DTEdicion;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Dictionary;
+import java.util.Map;
 
 /**
  *
@@ -21,50 +20,49 @@ import java.util.Dictionary;
  */
 public class Curso {
     
+    //Atributos
+       
     private String nombre;
-    
     private String descripcion;
-    
     private String duracion;
-    
-    private double cantHoras;
-    
+    private double cant_horas;
     private double creditos;
-    
     private Date registro;
-    
     private String URL;
+    private Map<String,Curso> previas;
+    private Map<String,Edicion>ediciones;
+    private Map<String,Programa>programas;
     
-    private  Map<String,Edicion>Ediciones;
-    
-
+    //Metodos
     
     public Curso(String n, String desc, String dur, double ch, double c, Date r, String url){
         
         nombre = n;
         descripcion = desc;
         duracion = dur;
-        cantHoras = ch;
+        cant_horas = ch;
         creditos = c;
-        r = registro;
+        registro = r;
         URL = url;
-        //this.Ediciones = Ediciones;
-        Ediciones = new HashMap();
+        previas = new HashMap();
+        ediciones = new HashMap();
+        programas = new HashMap();
         
-    } 
-    
+    }   
     public DTCurso getDatos(){
     
-        return new DTCurso(this.nombre, this.descripcion,this.duracion,this.cantHoras,this.creditos,this.registro,this.URL);
+        return new DTCurso(this.nombre, this.descripcion,this.duracion,this.cant_horas,this.creditos,this.registro,this.URL);
+    }
+     public Map<String,Edicion> getEdiciones(){
+        return this.ediciones;
+    }
+     public Edicion obtenerEdicion(String nombreEdicion){
+        return ediciones.get(nombreEdicion);
     }
     
-    public DTEdicion seleccinarEdicion(String nombre, DTEdicion Dato)
-   {
-       return Ediciones.get(nombre).getDatos();
-
+    public String getNombre() {
+        return nombre;
     }
-    
-    
     
     
 }

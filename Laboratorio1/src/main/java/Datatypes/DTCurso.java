@@ -1,6 +1,8 @@
 package Datatypes;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DTCurso {
 	
@@ -13,17 +15,18 @@ public class DTCurso {
 	private double cant_cred;
 	private Date fecha_reg;
 	private String url;
-	
+        
 	//Metodos
 	
 	public DTCurso(String nombre,String descripcion, String duracion,double cant_horas,double cant_cred, Date fecha_reg, String url) {
-		this.nombre=nombre;
-		this.descripcion=descripcion;
-		this.duracion=duracion;
-		this.cant_horas=cant_horas;
-		this.cant_cred=cant_cred;
-		this.fecha_reg=fecha_reg;
-		this.url=url;
+            this.nombre=nombre;
+            this.descripcion=descripcion;
+            this.duracion=duracion;
+            this.cant_horas=cant_horas;
+            this.cant_cred=cant_cred;
+            this.fecha_reg=fecha_reg;
+            this.url=url;
+           
 	}
 	
 	public String getNombre(){
@@ -47,4 +50,5 @@ public class DTCurso {
 	public String getUrl() {
 		return this.url;
 	}
+  
 }
