@@ -86,6 +86,28 @@ public class Sistema implements ISistema{
         return nicks;
     }
     
+     public ArrayList<String> listarNombreProgramas(){
+        Singleton sm = Singleton.getInstance();
+        Iterator<Map.Entry<String, Programa>> it = sm.getProgramas().entrySet().iterator();
+        ArrayList<String> nombres = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Programa> usr = it.next();
+           nombres.add(usr.getValue().getNombre());
+        }
+        return nombres;
+    }
+     
+     public ArrayList<String> listarNombreCursos(){
+        Singleton sm = Singleton.getInstance();
+        Iterator<Map.Entry<String, Curso>> it = sm.getCursos().entrySet().iterator();
+        ArrayList<String> nombres = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Curso> usr = it.next();
+           nombres.add(usr.getValue().getNombre());
+        }
+        return nombres;
+    }
+    
     public DTUsuario obtenerUsuario(String nick){
        Singleton sm = Singleton.getInstance();
        Usuario u = sm.obtenerUsuario(nick);
@@ -151,39 +173,71 @@ public class Sistema implements ISistema{
     
     //public void modificarDatosUsuario(DTUsuario nuevo){};
     
-    public void agregarCursoPrograma(String nombreP, String nombreC){};
+    public void agregarCursoPrograma(String nombreP, String nombreC){
+        
+        Singleton sm = Singleton.getInstance();
+        Programa p1 = sm.obtenerPrograma(nombreP);
+        Curso c1 = sm.obtenerCurso(nombreC);
+        p1.agregarCurso(c1);
+        
+    };
     //corregir
     
     public List mostrarCursos(){
     	
-        /*
+        Singleton sm = Singleton.getInstance();
         List cur = new ArrayList();
-        for(Map.Entry<String,Instituto> entry : this.institutos.entrySet()){
-            Instituto i1 = (Instituto)entry.getValue();
-            List agr = (List) i1.getCursos();
-            cur.addAll(agr);
+        for(Map.Entry<String,Curso> entry : sm.getCursos().entrySet()){
+            Curso c1 = (Curso)entry.getValue();
+            DTCurso dtc = c1.getDatos();
+            cur.add(dtc);
             
         }
-        */
-        return null;
+        
+        return cur;
     }
     
     public List mostrarProgramas(){
-        /*
+        Singleton sm = Singleton.getInstance();
         List prog = new LinkedList();
-        for(Map.Entry<String,Programa> entry : this.programas.entrySet()){
+        for(Map.Entry<String,Programa> entry : sm.getProgramas().entrySet()){
             Programa p1 = (Programa)entry.getValue();
             DTPrograma dprog = p1.getDatos();
             prog.add(dprog);
         }
-        */
-        return null;
+        
+        return prog;
           
     }
     
-    public DTCurso mostrarCurso(String nombreC){return null;};
+    public DTCurso obtenerCurso(String nombreC){
+        Singleton sm = Singleton.getInstance();
+        Curso c1 = sm.obtenerCurso(nombreC);
+        DTCurso dtc = c1.getDatos();
+        return dtc;
+    }
     
-    public DTPrograma mostrarPrograma(String nombreP){return null;};
+    public DTPrograma obtenerPrograma(String nombreP){
+        
+        Singleton sm = Singleton.getInstance();
+        Programa p1 = sm.obtenerPrograma(nombreP);
+        DTPrograma dtp = p1.getDatos();
+        return dtp;
+    }
+    
+    public ArrayList<String> cursosPrograma(String nombreP){
+        
+        Singleton sm = Singleton.getInstance();
+        Programa p1 = sm.obtenerPrograma(nombreP);
+        Iterator<Map.Entry<String, Curso>> it = p1.getCursos().entrySet().iterator();
+        ArrayList<String> nombresC = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Curso> inst = it.next();
+           nombresC.add(inst.getValue().getNombre());
+        }
+        return nombresC;
+        
+    }
     
     public boolean chequearInstituto(String nombreI){return false;};
     

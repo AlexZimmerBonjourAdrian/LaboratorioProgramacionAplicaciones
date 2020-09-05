@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import Clases.Curso;
+import java.util.HashMap;
 /**
  *
  * @author arena
@@ -36,6 +37,7 @@ public class Programa {
 	    this.fecha_ini=fecha_ini;
 	    this.fecha_fin=fecha_fin;
 	    this.fecha_alta=fecha_alta;
+            this.Cursos = new HashMap();
 	    this.inscripciones=new LinkedList();
     }
     
@@ -46,6 +48,10 @@ public class Programa {
 
     }
 
+    public void agregarCurso(Curso c1){
+        this.Cursos.put(c1.getNombre(), c1);
+    }
+    
     public String getNombre() {
         return nombre;
     }

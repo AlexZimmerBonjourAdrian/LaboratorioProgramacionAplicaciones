@@ -8,6 +8,7 @@ package LOGICA;
 import java.util.HashMap;
 import java.util.Map;
 import Clases.*;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,6 +36,14 @@ public class Singleton {
         programas = new HashMap();
         
         cursos = new HashMap();
+        
+        Curso c1 = new Curso("Programacion avanzada","UML-DSS-DC-IMPL","12",150.0,20,new Date(),"www.nuncaseusa.com");
+        Curso c2 = new Curso("Ingenieria de software","No entiendo nada","20",130.0,25,new Date(),"www.lalaland.com");
+        Curso c3 = new Curso("Arquitecura de sistemas","GIT-UBUNTU","1500",800.0,10,new Date(),"www.zzzzzz.com");
+        
+        this.cursos.put(c1.getNombre(),c1);
+        this.cursos.put(c2.getNombre(),c2);
+        this.cursos.put(c3.getNombre(),c3);
         
     }
     
