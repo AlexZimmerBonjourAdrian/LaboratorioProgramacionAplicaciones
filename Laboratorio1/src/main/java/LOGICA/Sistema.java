@@ -7,6 +7,8 @@ package LOGICA;
 
 import Clases.*;
 import Datatypes.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 /**
@@ -86,6 +88,28 @@ public class Sistema implements ISistema{
         return nicks;
     }
     
+     public ArrayList<String> listarNombreProgramas(){
+        Singleton sm = Singleton.getInstance();
+        Iterator<Map.Entry<String, Programa>> it = sm.getProgramas().entrySet().iterator();
+        ArrayList<String> nombres = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Programa> usr = it.next();
+           nombres.add(usr.getValue().getNombre());
+        }
+        return nombres;
+    }
+     
+     public ArrayList<String> listarNombreCursos(){
+        Singleton sm = Singleton.getInstance();
+        Iterator<Map.Entry<String, Curso>> it = sm.getCursos().entrySet().iterator();
+        ArrayList<String> nombres = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Curso> usr = it.next();
+           nombres.add(usr.getValue().getNombre());
+        }
+        return nombres;
+    }
+    
     public DTUsuario obtenerUsuario(String nick){
        Singleton sm = Singleton.getInstance();
        Usuario u = sm.obtenerUsuario(nick);
@@ -151,46 +175,78 @@ public class Sistema implements ISistema{
     
     //public void modificarDatosUsuario(DTUsuario nuevo){};
     
-    public void agregarCursoPrograma(String nombreP, String nombreC){};
+    public void agregarCursoPrograma(String nombreP, String nombreC){
+        
+        Singleton sm = Singleton.getInstance();
+        Programa p1 = sm.obtenerPrograma(nombreP);
+        Curso c1 = sm.obtenerCurso(nombreC);
+        p1.agregarCurso(c1);
+        
+    };
     //corregir
     
     public List mostrarCursos(){
     	
-        /*
+        Singleton sm = Singleton.getInstance();
         List cur = new ArrayList();
-        for(Map.Entry<String,Instituto> entry : this.institutos.entrySet()){
-            Instituto i1 = (Instituto)entry.getValue();
-            List agr = (List) i1.getCursos();
-            cur.addAll(agr);
+        for(Map.Entry<String,Curso> entry : sm.getCursos().entrySet()){
+            Curso c1 = (Curso)entry.getValue();
+            DTCurso dtc = c1.getDatos();
+            cur.add(dtc);
             
         }
-        */
-        return null;
+        
+        return cur;
     }
     
     public List mostrarProgramas(){
-        /*
+        Singleton sm = Singleton.getInstance();
         List prog = new LinkedList();
-        for(Map.Entry<String,Programa> entry : this.programas.entrySet()){
+        for(Map.Entry<String,Programa> entry : sm.getProgramas().entrySet()){
             Programa p1 = (Programa)entry.getValue();
             DTPrograma dprog = p1.getDatos();
             prog.add(dprog);
         }
-        */
-        return null;
+        
+        return prog;
           
     }
     
-    public DTCurso mostrarCurso(String nombreC){return null;};
+    public DTCurso obtenerCurso(String nombreC){
+        Singleton sm = Singleton.getInstance();
+        Curso c1 = sm.obtenerCurso(nombreC);
+        DTCurso dtc = c1.getDatos();
+        return dtc;
+    }
     
-    public DTPrograma mostrarPrograma(String nombreP){return null;};
+    public DTPrograma obtenerPrograma(String nombreP){
+        
+        Singleton sm = Singleton.getInstance();
+        Programa p1 = sm.obtenerPrograma(nombreP);
+        DTPrograma dtp = p1.getDatos();
+        return dtp;
+    }
+    
+    public ArrayList<String> cursosPrograma(String nombreP){
+        
+        Singleton sm = Singleton.getInstance();
+        Programa p1 = sm.obtenerPrograma(nombreP);
+        Iterator<Map.Entry<String, Curso>> it = p1.getCursos().entrySet().iterator();
+        ArrayList<String> nombresC = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Curso> inst = it.next();
+           nombresC.add(inst.getValue().getNombre());
+        }
+        return nombresC;
+        
+    }
     
     public boolean chequearInstituto(String nombreI){return false;};
     
     public void modificarNombreInstituto(String nombreI, String nuevonombre){};
     
     public ArrayList<String> cursosInstituto(String nombreI){
-    Singleton sm = Singleton.getInstance();
+        Singleton sm = Singleton.getInstance();
         Instituto inst = sm.obtenerInstituto(nombreI);
         Iterator<Map.Entry<String,Curso>> it = inst.getCursos().entrySet().iterator();
         ArrayList<String> cursosInst = new ArrayList<String>();
@@ -256,24 +312,62 @@ public class Sistema implements ISistema{
         
     }; 
     
-    public String checkEdicionCurso(String nombreI,String nombreC, Date FechaInsc){
-        Curso cur = obtenerCursoDelInstituto( nombreI, nombreC);
-        Edicion vigente;
-        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
-        while(it.hasNext()){
-           Edicion edic = (Edicion) it.next();
-           if (FechaInsc.compareTo(edic.getFechaIni()) < 0 ){
-               return edic.getNombreEdicion();
-           }     
-        }
-        return null;
+    public String checkEdicionCurso(String nombreC){
+        Singleton sm = Singleton.getInstance();
+        Curso cur = sm.obtenerCurso(nombreC);
+      //  ZoneId zone = ZoneId.of("America/Buenos_Aires");
+       // LocalDate today = LocalDate.now(zone);
+      //  Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
+      //  while(it.hasNext()){
+      //     Edicion edic = (Edicion) it.next();
+           //if (today.compareTo(edic.getFechaIni()) < 0 ){
+          //     return edic.getNombreEdicion();
+           //} 
+        if(cur.getEdiciones() != null)   return "Prueba";
+     //   }
+       else return null;
     };
     
-    public boolean ExisteRegistroInscripcionE(String nombreI, Estudiante e, String nombreC, String nombreE){
-        Curso cur = obtenerCursoDelInstituto( nombreI, nombreC);
+    
+    
+    public boolean ExisteRegistroInscripcionE(String nombreEst, String nombreC, String nombreE){
+        Singleton sm = Singleton.getInstance();
+        Curso cur = sm.obtenerCurso(nombreC);
         Edicion edi  = cur.obtenerEdicion(nombreE);
-        return edi.obtenerInscripcionE(e) != null;
+        return edi.obtenerInscripcionE(nombreEst) != null;
     };
+    
+    public ArrayList<String> listarEstudiantes(){
+        Singleton sm = Singleton.getInstance();
+        Iterator <Map.Entry<String,Usuario>> it = sm.getUsuarios().entrySet().iterator();
+        ArrayList<String> estudiantes = new ArrayList<String>();
+        while(it.hasNext()){
+         //  Usuario u = (Usuario) it.next();
+            Map.Entry<String, Usuario> usr = it.next();
+        //   if(usr instanceof Estudiante){
+               estudiantes.add(usr.getValue().getNick());
+         //  }
+        }
+        return estudiantes;
+    };
+    
+    public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date fecha_insc){
+        Singleton sm = Singleton.getInstance();
+        Usuario u =  sm.obtenerUsuario(nombreEst);
+        Estudiante e = (Estudiante) u;
+        InscripcionE nueva = new InscripcionE(fecha_insc, e);
+        Curso curso = sm.obtenerCurso(nombreC);
+        Edicion edicion = curso.obtenerEdicion(nombreEdi);
+        edicion.agregarInscripcionE(nueva);
+    }
+   public void modificarInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date nueva_fecha){
+       Singleton sm = Singleton.getInstance();
+       Curso curso = sm.obtenerCurso(nombreC);
+       Edicion edicion = curso.obtenerEdicion(nombreEdi);
+       InscripcionE insc = edicion.obtenerInscripcionE(nombreEst);
+       insc.modificarDatos(nueva_fecha);
+       
+   }
     
     public Set<String> pickCurso (String nombreC){return null;};
     

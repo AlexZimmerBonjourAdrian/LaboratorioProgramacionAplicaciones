@@ -8,11 +8,12 @@ package LOGICA;
 import java.util.HashMap;
 import java.util.Map;
 import Clases.*;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
  *
- 
+ * @author arena
  */
 public class Singleton {
     
@@ -35,6 +36,41 @@ public class Singleton {
         programas = new HashMap();
         
         cursos = new HashMap();
+        
+        
+        Instituto i1 = new Instituto("Instituto de Prueba");
+        Instituto i2 = new Instituto("Segundo");
+        this.institutos.put(i1.getNombre(), i1);
+        this.institutos.put(i2.getNombre(), i2);
+        
+        Curso c1 = new Curso("Programacion avanzada","UML-DSS-DC-IMPL","12",150.0,20,new Date(),"www.nuncaseusa.com");
+        Curso c2 = new Curso("Ingenieria de software","No entiendo nada","20",130.0,25,new Date(),"www.lalaland.com");
+        Curso c3 = new Curso("Arquitecura de sistemas","GIT-UBUNTU","1500",800.0,10,new Date(),"www.zzzzzz.com");
+        
+        this.cursos.put(c1.getNombre(),c1);
+        this.cursos.put(c2.getNombre(),c2);
+        this.cursos.put(c3.getNombre(),c3);
+        
+        i1.addCurso(c1);
+        i1.addCurso(c2);
+        i1.addCurso(c3);
+    
+        Edicion e1 = new Edicion("Edicion 2005 PA");
+        Edicion e2 = new Edicion("Edicion 2010 PA", new Date(222222), new Date(444444), 30, new Date(111111));
+        
+        c1.addEdicion(e1);
+        c1.addEdicion(e2);
+        
+        Map<String,Edicion> edic2 = c2.getEdiciones();
+        edic2 = null;
+        
+        Usuario est1 = new Estudiante("Pablogb83", "pablo", "gaione", "pablo@gaione", new Date());
+        Usuario est2 = new Estudiante("Fedor123", "Fedor", "Caceres", "fed@cac", new Date());
+        Usuario est3 = new Estudiante("elwico07", "quehue", "wisconsin", "qwe@tyu", new Date());
+        
+        usuarios.put(est1.getNick(), est1);
+        usuarios.put(est2.getNick(), est2);
+        usuarios.put(est3.getNick(), est3);
         
     }
     
