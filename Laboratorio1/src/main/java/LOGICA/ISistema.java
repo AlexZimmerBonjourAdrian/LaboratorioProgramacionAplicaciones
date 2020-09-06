@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public interface ISistema {
     
-    public void altaUsuario(DTUsuario datos, boolean docente, String nomInst);
+    public void altaUsuario(DTUsuario datos, boolean docente, List nomInst);
     
     public boolean chekusuario(String nick);
     

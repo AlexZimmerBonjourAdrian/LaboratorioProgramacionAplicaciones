@@ -20,13 +20,18 @@ public class Sistema implements ISistema{
     
     
     
-    public void altaUsuario(DTUsuario datos, boolean docente, String nomInst){
+    public void altaUsuario(DTUsuario datos, boolean docente, List nomInst){
         
         Singleton sm = Singleton.getInstance();
         Usuario u;
+        String nombreInst;
         if(docente){
               u = new Docente(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
-              sm.obtenerInstituto(nomInst).addDocente((Docente)u);
+              for(Object nombre : nomInst){
+                  nombreInst = nombre.toString();
+                  sm.obtenerInstituto(nombreInst).addDocente((Docente)u);
+              }
+              
         }else{
               u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
         }
@@ -37,9 +42,9 @@ public class Sistema implements ISistema{
         
         Singleton sm = Singleton.getInstance();
         if(sm.obtenerUsuario(nick)!=null){
-            return true;
-        }else{
             return false;
+        }else{
+            return true;
         }
     }
     
