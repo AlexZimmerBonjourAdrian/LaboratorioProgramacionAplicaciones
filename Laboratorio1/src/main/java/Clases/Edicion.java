@@ -73,9 +73,24 @@ public class Edicion {
             if(insc.est.equals(e))
                 return insc;
         }
-    return null;
-}
+        return null;
+    }
     
+    public Usuario obtenerDocente(String nick){
+        return docentes.get(nick);
+    }
+    
+    public void agregarDocente(Usuario u){
+        if(obtenerDocente(u.getNick())==null){
+            docentes.put(u.getNick(), u);
+        }
+    }
+    
+    public void agregarInscripcion(InscripcionE insc){
+        if(!inscripciones.contains(insc)){
+            inscripciones.add(insc);
+        }
+    }
     
 }
 

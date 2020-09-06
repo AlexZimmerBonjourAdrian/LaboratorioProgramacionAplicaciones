@@ -628,7 +628,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 418, 555);
+        jInternalFrameConsUsr.setBounds(0, 0, 428, 562);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -2116,10 +2116,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jComboBoxConsUsrListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsUsrListActionPerformed
         // TODO add your handling code here:
         String nick = jComboBoxConsUsrList.getSelectedItem().toString();
-        jTextFieldConsUsrNom.setText(ICU.obtenerUsuario(nick).getNombre());
-        jTextFieldConsUsrAp.setText(ICU.obtenerUsuario(nick).getApellido());
-        jTextFieldConsUsrEmail.setText(ICU.obtenerUsuario(nick).getCorreo());
-        jSpinnerConsUsrFechNac.setValue(ICU.obtenerUsuario(nick).getFecha());
+        DTUsuario usr = ICU.obtenerUsuario(nick);
+        jTextFieldConsUsrNom.setText(usr.getNombre());
+        jTextFieldConsUsrAp.setText(usr.getApellido());
+        jTextFieldConsUsrEmail.setText(usr.getCorreo());
+        jSpinnerConsUsrFechNac.setValue(usr.getFecha());
+        jComboBoxConsUsrProg.setModel(new DefaultComboBoxModel<>(ICU.mostrarProgramasUsuario(nick).toArray(new String [ICU.mostrarProgramasUsuario(nick).size()])));
+        jComboBoxConsUsrCursos.setModel(new DefaultComboBoxModel<>(ICU.mostrarCursosDocente(nick).toArray(new String [ICU.mostrarCursosDocente(nick).size()])));
+        jComboBoxConsUsrEd.setModel(new DefaultComboBoxModel<>(ICU.mostrarEdicion(nick).toArray(new String [ICU.mostrarEdicion(nick).size()])));
     }//GEN-LAST:event_jComboBoxConsUsrListActionPerformed
 
     private void jButtonConfModUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfModUsrActionPerformed
@@ -2135,10 +2139,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jComboBoxListaUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListaUsrActionPerformed
         // TODO add your handling code here:
         String nick = jComboBoxListaUsr.getSelectedItem().toString();
-        jTextFieldModUsrNom.setText(ICU.obtenerUsuario(nick).getNombre());
-        jTextFieldModUsrAp.setText(ICU.obtenerUsuario(nick).getApellido());
-        jTextFieldModUsrEmail.setText(ICU.obtenerUsuario(nick).getCorreo());
-        jSpinnerModUsrDiaNc.setValue(ICU.obtenerUsuario(nick).getFecha());
+        DTUsuario usr = ICU.obtenerUsuario(nick);
+        jTextFieldModUsrNom.setText(usr.getNombre());
+        jTextFieldModUsrAp.setText(usr.getApellido());
+        jTextFieldModUsrEmail.setText(usr.getCorreo());
+        jSpinnerModUsrDiaNc.setValue(usr.getFecha());
     }//GEN-LAST:event_jComboBoxListaUsrActionPerformed
 
     private void jTextFieldCrearProgForNomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCrearProgForNomFocusLost
