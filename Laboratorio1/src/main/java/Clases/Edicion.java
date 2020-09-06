@@ -34,7 +34,7 @@ public class Edicion {
     
     public Edicion(String nombre, Date fecha_ini, Date fecha_fin, int cupo_max, Date fecha_pub){
         this.nombre=nombre;
-        this.fecha_fin=fecha_ini;
+        this.fecha_ini=fecha_ini;
         this.fecha_fin=fecha_fin;
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
