@@ -315,21 +315,21 @@ public class Sistema implements ISistema{
     public String checkEdicionCurso(String nombreC){
         Singleton sm = Singleton.getInstance();
         Curso cur = sm.obtenerCurso(nombreC);
-      //  ZoneId zone = ZoneId.of("America/Buenos_Aires");
-       // LocalDate today = LocalDate.now(zone);
-      //  Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
-      //  while(it.hasNext()){
-      //     Edicion edic = (Edicion) it.next();
-           //if (today.compareTo(edic.getFechaIni()) < 0 ){
-          //     return edic.getNombreEdicion();
-           //} 
-        if(cur.getEdiciones() != null)   return "Prueba";
-     //   }
-       else return null;
+       // ZoneId zone = ZoneId.of("America/Buenos_Aires");
+        //LocalDate today = LocalDate.now(zone);
+        Date today = new Date();
+        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
+        while(it.hasNext()){
+           Map.Entry<String, Edicion> edic = it.next();
+           System.out.print("ACA: " + today.getYear());
+           if (today.getYear() == edic.getValue().getFechaIni().getYear() ){
+               return edic.getValue().getNombreEdicion();   
+           } 
+        }
+       return null;
     };
     
-    
-    
+   
     public boolean ExisteRegistroInscripcionE(String nombreEst, String nombreC, String nombreE){
         Singleton sm = Singleton.getInstance();
         Curso cur = sm.obtenerCurso(nombreC);
@@ -342,11 +342,10 @@ public class Sistema implements ISistema{
         Iterator <Map.Entry<String,Usuario>> it = sm.getUsuarios().entrySet().iterator();
         ArrayList<String> estudiantes = new ArrayList<String>();
         while(it.hasNext()){
-         //  Usuario u = (Usuario) it.next();
             Map.Entry<String, Usuario> usr = it.next();
-        //   if(usr instanceof Estudiante){
+            if(usr.getValue() instanceof Estudiante){
                estudiantes.add(usr.getValue().getNick());
-         //  }
+           }
         }
         return estudiantes;
     };

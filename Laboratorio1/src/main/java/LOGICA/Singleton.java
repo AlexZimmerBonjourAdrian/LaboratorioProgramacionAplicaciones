@@ -55,10 +55,11 @@ public class Singleton {
         i1.addCurso(c2);
         i1.addCurso(c3);
     
-        Edicion e1 = new Edicion("Edicion 2005 PA");
-        Edicion e2 = new Edicion("Edicion 2010 PA", new Date(222222), new Date(444444), 30, new Date(111111));
+        Edicion e1 = new Edicion("Edicion Ing 2005", new Date(2005,5,15), new Date(2005,10,10), 30, new Date(2005,03,01));
+        Edicion e2 = new Edicion("Edicion 2020 PA", new Date(), new Date(), 30, new Date());
+       
         
-        c1.addEdicion(e1);
+        c2.addEdicion(e1);
         c1.addEdicion(e2);
         
         Map<String,Edicion> edic2 = c2.getEdiciones();
@@ -67,11 +68,11 @@ public class Singleton {
         Usuario est1 = new Estudiante("Pablogb83", "pablo", "gaione", "pablo@gaione", new Date());
         Usuario est2 = new Estudiante("Fedor123", "Fedor", "Caceres", "fed@cac", new Date());
         Usuario est3 = new Estudiante("elwico07", "quehue", "wisconsin", "qwe@tyu", new Date());
-        
+        Usuario prof1 = new Docente("profe12", "sor", "elprofe", "sad@as", new Date());
         usuarios.put(est1.getNick(), est1);
         usuarios.put(est2.getNick(), est2);
         usuarios.put(est3.getNick(), est3);
-        
+        usuarios.put(prof1.getNick(), prof1);
     }
     
     public static Singleton getInstance(){

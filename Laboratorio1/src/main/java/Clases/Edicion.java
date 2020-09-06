@@ -22,19 +22,19 @@ public class Edicion {
     
     //Atributos
     
-    String nombre;
-    Date fecha_ini;
-    Date fecha_fin;
-    int cupo_max;
-    Date fecha_pub;
-    Map<String, Usuario> docentes;
-    List inscripciones;
+    private String nombre;
+    private Date fecha_ini;
+    private Date fecha_fin;
+    private int cupo_max;
+    private Date fecha_pub;
+    private Map<String, Usuario> docentes;
+    private List inscripciones;
     
     //Metodos
     
     public Edicion(String nombre, Date fecha_ini, Date fecha_fin, int cupo_max, Date fecha_pub){
         this.nombre=nombre;
-        this.fecha_fin=fecha_ini;
+        this.fecha_ini=fecha_ini;
         this.fecha_fin=fecha_fin;
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
@@ -78,13 +78,15 @@ public class Edicion {
     }
     
     public InscripcionE obtenerInscripcionE(String nombreE){
+        
         Iterator it = this.inscripciones.iterator();
         while(it.hasNext()){
             InscripcionE insc = (InscripcionE) it.next();
+            
             if(insc.est.getNick().equals(nombreE))
                 return insc;
         }
-    return null;
+   return null;
 }
     
     

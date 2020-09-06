@@ -594,7 +594,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <EmptySpace pref="63" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jButtonConUsrSalir" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
@@ -843,7 +843,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelConsEdCurIns" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelConsEdCurEdic" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -865,12 +865,12 @@
                               <Component id="jLabelConsEdCurFechPub" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextFieldConsEdCurCupo" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="jTextFieldConsEdCurFechFn" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="jTextFieldConsEdCurFechIn" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="jTextFieldlConsEdCurNom" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="jTextFieldConsEdCurFechPub" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jTextFieldConsEdCurCupo" pref="143" max="32767" attributes="0"/>
+                              <Component id="jTextFieldlConsEdCurNom" alignment="0" pref="143" max="32767" attributes="0"/>
+                              <Component id="jTextFieldlConsEdCurNomfchpub" alignment="0" pref="143" max="32767" attributes="0"/>
+                              <Component id="jTextFieldlConsEdCurNomfchfn" max="32767" attributes="0"/>
+                              <Component id="jTextFieldlConsEdCurNomfini" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -908,13 +908,13 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFieldConsEdCurFechIn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelConsEdCurFechIn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldlConsEdCurNomfini" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFieldConsEdCurFechFn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelConsEdCurFechFn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldlConsEdCurNomfchfn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -923,8 +923,8 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFieldConsEdCurFechPub" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelConsEdCurFechPub" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldlConsEdCurNomfchpub" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Component id="jButtonConsEdCurSalir" min="-2" max="-2" attributes="0"/>
@@ -1010,21 +1010,6 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldConsEdCurFechPub">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldConsEdCurFechFn">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldConsEdCurFechIn">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldConsEdCurCupo">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
@@ -1062,6 +1047,21 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsEdCurSalirActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldlConsEdCurNomfchpub">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldlConsEdCurNomfchfn">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldlConsEdCurNomfini">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
