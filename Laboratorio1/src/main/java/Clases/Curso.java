@@ -59,14 +59,11 @@ public class Curso {
      public Edicion obtenerEdicion(String nombreEdicion){
         return ediciones.get(nombreEdicion);
     }
-      
-    public void addEdicion(Edicion e){
-        if(obtenerEdicion(e.getNombreEdicion())==null){
-            ediciones.put(e.getNombreEdicion(), e);
+    public void agregarEdicion(Edicion ed){
+        if(obtenerEdicion(ed.getNombreEdicion())==null){
+            ediciones.put(ed.getNombreEdicion(),ed);
         }
     }
-     
-     
     public String getNombre() {
         return nombre;
     }

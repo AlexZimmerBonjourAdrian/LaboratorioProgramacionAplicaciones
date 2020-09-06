@@ -57,10 +57,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabelDocente = new javax.swing.JLabel();
         jRadioButtonSiDocente = new javax.swing.JRadioButton();
         jRadioButtonNoDocente = new javax.swing.JRadioButton();
-        jComboBoxDocInstituto = new javax.swing.JComboBox<>();
         jLabel1DocInst = new javax.swing.JLabel();
         jButtonConfAlta = new javax.swing.JButton();
         jButtonCancAlta = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jListAltaUsrInstDoc = new javax.swing.JList<>();
         jInternalFrameModUsr = new javax.swing.JInternalFrame();
         jComboBoxListaUsr = new javax.swing.JComboBox<>();
         jLabelNickModUsr = new javax.swing.JLabel();
@@ -264,6 +265,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jInternalFrameAltaUsr.setTitle("Alta Usuario");
+        jInternalFrameAltaUsr.setNormalBounds(new java.awt.Rectangle(25, 25, 460, 620));
+        jInternalFrameAltaUsr.setPreferredSize(new java.awt.Dimension(460, 620));
         jInternalFrameAltaUsr.setVisible(false);
 
         jLabelNomUsu.setText("Nombre:");
@@ -297,9 +300,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxDocInstituto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxDocInstituto.setEnabled(false);
-
         jLabel1DocInst.setText("Instituto:");
 
         jButtonConfAlta.setText("Confirmar ");
@@ -316,52 +316,51 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jListAltaUsrInstDoc.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jListAltaUsrInstDoc.setEnabled(false);
+        jScrollPane7.setViewportView(jListAltaUsrInstDoc);
+
         javax.swing.GroupLayout jInternalFrameAltaUsrLayout = new javax.swing.GroupLayout(jInternalFrameAltaUsr.getContentPane());
         jInternalFrameAltaUsr.getContentPane().setLayout(jInternalFrameAltaUsrLayout);
         jInternalFrameAltaUsrLayout.setHorizontalGroup(
             jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameAltaUsrLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelDocente)
-                    .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabelNomUsu)
-                        .addComponent(jLabelApellUsr)
-                        .addComponent(jLabelFechNacUsr, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel1DocInst)
-                    .addComponent(jLabelNickUsr)
-                    .addComponent(jLabelEmailUsr))
+                .addGap(41, 41, 41)
                 .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabelDocente)
+                        .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelNomUsu)
+                            .addComponent(jLabelApellUsr)
+                            .addComponent(jLabelFechNacUsr, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(jLabelNickUsr)
+                        .addComponent(jLabelEmailUsr)
+                        .addComponent(jLabel1DocInst))
                     .addGroup(jInternalFrameAltaUsrLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButtonConfAlta)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextFieldNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                        .addComponent(jTextFieldApellUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                        .addComponent(jSpinnerNacAnioUsr))
+                    .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jInternalFrameAltaUsrLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldApellUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                                    .addComponent(jSpinnerNacAnioUsr)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameAltaUsrLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jInternalFrameAltaUsrLayout.createSequentialGroup()
-                                        .addComponent(jButtonConfAlta)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                                        .addComponent(jButtonCancAlta))
-                                    .addGroup(jInternalFrameAltaUsrLayout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jRadioButtonSiDocente)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButtonNoDocente)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(46, 46, 46))
-                    .addGroup(jInternalFrameAltaUsrLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBoxDocInstituto, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jRadioButtonSiDocente)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioButtonNoDocente))
                             .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextFieldEmailUsr, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                .addComponent(jTextFieldNickUsr)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jTextFieldNickUsr))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonCancAlta)))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jInternalFrameAltaUsrLayout.setVerticalGroup(
             jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,24 +385,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNickUsr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNickUsr))
-                .addGap(46, 46, 46)
+                .addGap(31, 31, 31)
                 .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDocente)
                     .addComponent(jRadioButtonSiDocente)
                     .addComponent(jRadioButtonNoDocente))
-                .addGap(35, 35, 35)
-                .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxDocInstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1DocInst))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1DocInst)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jInternalFrameAltaUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConfAlta)
                     .addComponent(jButtonCancAlta))
-                .addGap(31, 31, 31))
+                .addGap(66, 66, 66))
         );
 
         getContentPane().add(jInternalFrameAltaUsr);
-        jInternalFrameAltaUsr.setBounds(40, 40, 410, 550);
+        jInternalFrameAltaUsr.setBounds(25, 25, 460, 620);
 
         jInternalFrameModUsr.setTitle("Modificar datos del usuario");
         jInternalFrameModUsr.setVisible(false);
@@ -629,7 +628,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 441, 555);
+        jInternalFrameConsUsr.setBounds(0, 0, 428, 562);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -1853,17 +1852,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItemAltaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaUsuarioActionPerformed
         // TODO add your handling code here:
         jInternalFrameAltaUsr.setVisible(true);
-        jComboBoxDocInstituto.setModel(new DefaultComboBoxModel<String>(ICU.listarInstitutos().toArray(new String[ICU.listarInstitutos().size()])));
+        jListAltaUsrInstDoc.setModel(new DefaultComboBoxModel<String>(ICU.listarInstitutos().toArray(new String[ICU.listarInstitutos().size()])));
     }//GEN-LAST:event_jMenuItemAltaUsuarioActionPerformed
 
     private void jRadioButtonSiDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiDocenteActionPerformed
         // TODO add your handling code here:
-        jComboBoxDocInstituto.setEnabled(true);
+        jListAltaUsrInstDoc.setEnabled(true);
     }//GEN-LAST:event_jRadioButtonSiDocenteActionPerformed
 
     private void jRadioButtonNoDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNoDocenteActionPerformed
         // TODO add your handling code here:
-        jComboBoxDocInstituto.setEnabled(false);
+        jListAltaUsrInstDoc.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonNoDocenteActionPerformed
 
     private void jMenuItemModUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModUsuarioActionPerformed
@@ -2177,18 +2176,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String apellido = jTextFieldApellUsuario.getText().trim();
         String correo = jTextFieldEmailUsr.getText().trim();
         Date fecha_de_nac = (Date)jSpinnerNacAnioUsr.getModel().getValue();
-        String nomInst;
+        List nomInst = new LinkedList();
+        boolean correoOK = ICU.chekuUsuarioEmail(correo);
+        boolean nickOK = ICU.chekusuario(nick);
         if(jRadioButtonSiDocente.isSelected()){
-            nomInst = jComboBoxDocInstituto.getSelectedItem().toString();
+            nomInst = jListAltaUsrInstDoc.getSelectedValuesList();
         }else{
-            nomInst="";
+            nomInst=null;
         }
-        if(ICU.chekuUsuarioEmail(correo)){
+        if(correoOK && nickOK){
             DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fecha_de_nac);
             ICU.altaUsuario(datos,jRadioButtonSiDocente.isSelected(),nomInst);
             JOptionPane.showMessageDialog(this, "Usuario creado con exito", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
+            jTextFieldNickUsr.setText(null);
+            jTextFieldNombreUsuario.setText(null);
+            jTextFieldApellUsuario.setText(null);
+            jTextFieldEmailUsr.setText(null);
+            jSpinnerNacAnioUsr.setValue(new Date());
+            jRadioButtonNoDocente.setSelected(true);
+            jListAltaUsrInstDoc.setSelectedValue(null, true); // esto hay que re verlo
         }else{
-            JOptionPane.showMessageDialog(this, "Email ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
+            if(nickOK){
+                JOptionPane.showMessageDialog(this, "Email ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "Nick ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
+            }
+            
         }
         
     }//GEN-LAST:event_jButtonConfAltaActionPerformed
@@ -2196,10 +2209,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jComboBoxConsUsrListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsUsrListActionPerformed
         // TODO add your handling code here:
         String nick = jComboBoxConsUsrList.getSelectedItem().toString();
-        jTextFieldConsUsrNom.setText(ICU.obtenerUsuario(nick).getNombre());
-        jTextFieldConsUsrAp.setText(ICU.obtenerUsuario(nick).getApellido());
-        jTextFieldConsUsrEmail.setText(ICU.obtenerUsuario(nick).getCorreo());
-        jSpinnerConsUsrFechNac.setValue(ICU.obtenerUsuario(nick).getFecha());
+        DTUsuario usr = ICU.obtenerUsuario(nick);
+        jTextFieldConsUsrNom.setText(usr.getNombre());
+        jTextFieldConsUsrAp.setText(usr.getApellido());
+        jTextFieldConsUsrEmail.setText(usr.getCorreo());
+        jSpinnerConsUsrFechNac.setValue(usr.getFecha());
+        jComboBoxConsUsrProg.setModel(new DefaultComboBoxModel<>(ICU.mostrarProgramasUsuario(nick).toArray(new String [ICU.mostrarProgramasUsuario(nick).size()])));
+        jComboBoxConsUsrCursos.setModel(new DefaultComboBoxModel<>(ICU.mostrarCursosDocente(nick).toArray(new String [ICU.mostrarCursosDocente(nick).size()])));
+        jComboBoxConsUsrEd.setModel(new DefaultComboBoxModel<>(ICU.mostrarEdicion(nick).toArray(new String [ICU.mostrarEdicion(nick).size()])));
     }//GEN-LAST:event_jComboBoxConsUsrListActionPerformed
 
     private void jButtonConfModUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfModUsrActionPerformed
@@ -2215,10 +2232,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jComboBoxListaUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListaUsrActionPerformed
         // TODO add your handling code here:
         String nick = jComboBoxListaUsr.getSelectedItem().toString();
-        jTextFieldModUsrNom.setText(ICU.obtenerUsuario(nick).getNombre());
-        jTextFieldModUsrAp.setText(ICU.obtenerUsuario(nick).getApellido());
-        jTextFieldModUsrEmail.setText(ICU.obtenerUsuario(nick).getCorreo());
-        jSpinnerModUsrDiaNc.setValue(ICU.obtenerUsuario(nick).getFecha());
+        DTUsuario usr = ICU.obtenerUsuario(nick);
+        jTextFieldModUsrNom.setText(usr.getNombre());
+        jTextFieldModUsrAp.setText(usr.getApellido());
+        jTextFieldModUsrEmail.setText(usr.getCorreo());
+        jSpinnerModUsrDiaNc.setValue(usr.getFecha());
     }//GEN-LAST:event_jComboBoxListaUsrActionPerformed
 
     private void jTextFieldCrearProgForNomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCrearProgForNomFocusLost
@@ -2362,7 +2380,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxConsUsrEd;
     private javax.swing.JComboBox<String> jComboBoxConsUsrList;
     private javax.swing.JComboBox<String> jComboBoxConsUsrProg;
-    private javax.swing.JComboBox<String> jComboBoxDocInstituto;
     private javax.swing.JComboBox<String> jComboBoxInscEdCurCur;
     private javax.swing.JComboBox<String> jComboBoxInscEdCurEst;
     private javax.swing.JComboBox<String> jComboBoxInscEdCurInst;
@@ -2457,6 +2474,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNomUsu;
     private javax.swing.JList<String> jList1AltaEdDoc;
     private javax.swing.JList<String> jListAltaCursoPrev;
+    private javax.swing.JList<String> jListAltaUsrInstDoc;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuCursos;
     private javax.swing.JMenu jMenuInstitutos;
@@ -2484,6 +2502,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSpinner jSpinnerAltaCursoHrs;
     private javax.swing.JSpinner jSpinnerAltaCursoICrd;
     private javax.swing.JSpinner jSpinnerAltaEdCupos;
