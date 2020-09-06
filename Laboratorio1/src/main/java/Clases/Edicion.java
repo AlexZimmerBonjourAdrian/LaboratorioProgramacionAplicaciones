@@ -22,13 +22,13 @@ public class Edicion {
     
     //Atributos
     
-    String nombre;
-    Date fecha_ini;
-    Date fecha_fin;
-    int cupo_max;
-    Date fecha_pub;
-    Map<String, Usuario> docentes;
-    List inscripciones;
+    private String nombre;
+    private Date fecha_ini;
+    private Date fecha_fin;
+    private int cupo_max;
+    private Date fecha_pub;
+    private Map<String, Usuario> docentes;
+    private List inscripciones;
     
     //Metodos
     
