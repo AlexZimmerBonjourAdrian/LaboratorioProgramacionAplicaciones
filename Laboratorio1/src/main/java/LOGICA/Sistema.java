@@ -20,13 +20,18 @@ public class Sistema implements ISistema{
     
     
     
-    public void altaUsuario(DTUsuario datos, boolean docente, String nomInst){
+    public void altaUsuario(DTUsuario datos, boolean docente, List nomInst){
         
         Singleton sm = Singleton.getInstance();
         Usuario u;
+        String nombreInst;
         if(docente){
               u = new Docente(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
-              sm.obtenerInstituto(nomInst).addDocente((Docente)u);
+              for(Object nombre : nomInst){
+                  nombreInst = nombre.toString();
+                  sm.obtenerInstituto(nombreInst).addDocente((Docente)u);
+              }
+              
         }else{
               u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
         }
@@ -37,9 +42,9 @@ public class Sistema implements ISistema{
         
         Singleton sm = Singleton.getInstance();
         if(sm.obtenerUsuario(nick)!=null){
-            return true;
-        }else{
             return false;
+        }else{
+            return true;
         }
     }
     
@@ -145,25 +150,99 @@ public class Sistema implements ISistema{
     
     public DTInstituto buscarInstituto(String nombInst){return null;};
     
-    public Set<DTEdicion> mostrarEdicion(String nick){return null;};
-    
-    public ArrayList<String> mostrarProgramasEst(String nick){
+    public ArrayList<String> mostrarEdicion(String nick){
         Singleton sm = Singleton.getInstance();
-        ArrayList<String> programasEst = new ArrayList<>();
-        Iterator<Map.Entry<String, Programa>> it = sm.getProgramas().entrySet().iterator();
+        Usuario u = sm.obtenerUsuario(nick);
+        ArrayList<String> ediciones = new ArrayList<>();
+        Iterator<Map.Entry<String, Curso>> it = sm.getCursos().entrySet().iterator();
         while(it.hasNext()){
-           Map.Entry<String, Programa> prog = it.next();
-           for (Iterator it2 = prog.getValue().getInscripciones().iterator(); it2.hasNext();) {
-                InscripcionP ip = (InscripcionP) it2.next();
-                if(ip.getEst().getNick().equals(nick)){
-                    programasEst.add(prog.getValue().getNombre());
+            Map.Entry<String, Curso> curso = it.next();
+            Iterator<Map.Entry<String, Edicion>> ite = curso.getValue().getEdiciones().entrySet().iterator();
+            while(ite.hasNext()){
+                Map.Entry<String, Edicion> edic = ite.next();
+                if(u instanceof Estudiante){
+                    for(Iterator itinsc = edic.getValue().getInscripciones().iterator(); itinsc.hasNext();){
+                        InscripcionE ie = (InscripcionE) itinsc.next();
+                        if(ie.getEst().getNick().equals(nick)){
+                            ediciones.add(edic.getValue().getNombreEdicion());
+                        }
+                    }
+                }else{
+                    if(edic.getValue().obtenerDocente(nick)!=null){
+                        ediciones.add(edic.getValue().getNombreEdicion());
+                    }
+                } 
+            }
+        }
+        return ediciones;
+    }
+    
+    public ArrayList<String> mostrarProgramasUsuario(String nick){
+        Singleton sm = Singleton.getInstance();
+        Usuario u = sm.obtenerUsuario(nick);
+        ArrayList<String> programas = new ArrayList<>();
+        //if(sm.getProgramas()!=null){
+            Iterator<Map.Entry<String, Programa>> it = sm.getProgramas().entrySet().iterator();
+            while(it.hasNext()){
+                Map.Entry<String, Programa> prog = it.next();
+                if(u instanceof Estudiante){
+                    //if(prog.getValue().getInscripciones()!=null){
+                       for (Iterator it2 = prog.getValue().getInscripciones().iterator(); it2.hasNext();) {
+                            InscripcionP ip = (InscripcionP) it2.next();
+                            if(ip.getEst().getNick().equals(nick)){
+                                programas.add(prog.getValue().getNombre());
+                            }
+                        } 
+                    //}else System.out.println("hay programas pero no inscripciones");
+                }else{
+                    //if(prog.getValue().getCursos()!=null){
+                        Iterator<Map.Entry<String, Curso>> itc = prog.getValue().getCursos().entrySet().iterator();
+                        while(itc.hasNext()){
+                            Map.Entry<String, Curso> curso = itc.next();
+                            //if(curso.getValue().getEdiciones()!=null){
+                                Iterator<Map.Entry<String, Edicion>> ite = curso.getValue().getEdiciones().entrySet().iterator();
+                                while(ite.hasNext()){
+                                    Map.Entry<String, Edicion> edic = ite.next();
+                                    if(edic.getValue().getDocentes()!=null){
+                                        Iterator<Map.Entry<String, Usuario>> itd = edic.getValue().getDocentes().entrySet().iterator();
+                                        while(itd.hasNext()){
+                                            Map.Entry<String, Usuario> docente = itd.next();
+                                            if(docente.getValue().getNick().equals(nick)){
+                                                programas.add(prog.getValue().getNombre());
+                                            }
+                                        } 
+                                    }   
+                                } 
+                            //}else System.out.println("hay cursos pero no tienen ediciones");
+                            
+                        } 
+                    //}else System.out.println("hay programas pero no tienen cursos"); 
+                }
+            }
+        //}else System.out.println("no hay programas en el sistema");
+        return programas;
+    }
+    
+    public ArrayList<String> mostrarCursosDocente(String nick){
+        Singleton sm = Singleton.getInstance();
+        ArrayList<String> cursos = new ArrayList<>();
+        Iterator<Map.Entry<String, Curso>> it = sm.getCursos().entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<String, Curso> curso = it.next();
+            Iterator<Map.Entry<String, Edicion>> ite = curso.getValue().getEdiciones().entrySet().iterator();
+            while(ite.hasNext()){
+                Map.Entry<String, Edicion> edic = ite.next();
+                Iterator<Map.Entry<String, Usuario>> itd = edic.getValue().getDocentes().entrySet().iterator();
+                while(itd.hasNext()){
+                    Map.Entry<String, Usuario> docente = itd.next();
+                    if(docente.getValue().getNick().equals(nick)){
+                        cursos.add(curso.getValue().getNombre());
+                    }  
                 }
             }
         }
-        return programasEst;
-    }
-    
-    public Set<Curso> mostrarCursosDocente(String nick){return null;}; 
+        return cursos;
+    } 
     
     public Set<DTPrograma> mostrarProgramaDoc(String nick){return null;};
     

@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public interface ISistema {
     
-    public void altaUsuario(DTUsuario datos, boolean docente, String nomInst);
+    public void altaUsuario(DTUsuario datos, boolean docente, List nomInst);
     
     public boolean chekusuario(String nick);
     
@@ -48,13 +48,13 @@ public interface ISistema {
     
     public DTInstituto buscarInstituto(String nombInst);
     
-    public Set<DTEdicion> mostrarEdicion(String nick);
+    public ArrayList<String> mostrarEdicion(String nick);
     
-    public ArrayList<String> mostrarProgramasEst(String nick);
+    public ArrayList<String> mostrarProgramasUsuario(String nick);
     
-    public Set<Curso> mostrarCursosDocente(String nick); // da error porque no esta implementado Curso
+    public ArrayList<String> mostrarCursosDocente(String nick); // da error porque no esta implementado Curso
     
-    public Set<DTPrograma> mostrarProgramaDoc(String nick);
+    public Set<DTPrograma> mostrarProgramaDoc(String nick); //no es necesaria
     
     public Set<DTUsuario> consultaUsuarios();
     
