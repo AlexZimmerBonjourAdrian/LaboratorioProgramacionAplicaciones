@@ -42,6 +42,8 @@ public class Edicion {
         inscripciones = new LinkedList();
     }
     
+ public DTEdicion getDatos(){
+        return new DTEdicion(this.nombre, this.fecha_ini, this.fecha_fin, this.cupo_max,this.fecha_pub,this.docentes,this.inscripciones);
     public Edicion(String nombre){ //CONSTRUCTOR PARA PRUEBA
         this.nombre = nombre;
         this.cupo_max = 40;
@@ -70,41 +72,56 @@ public class Edicion {
         return this.inscripciones;
     }
     
+    public InscripcionE obtenerInscripcionE(Estudiante e){
+        Iterator it = this.inscripciones.iterator();
+        while(it.hasNext()){
+            InscripcionE insc = (InscripcionE) it.next();
+            if(insc.est.equals(e))
+                return insc;
+        }
+    return null;
     public void agregarInscripcionE(InscripcionE ie){
         if(obtenerInscripcionE(ie.est.getNick()) == null){
             inscripciones.add(ie);
         }
-    
     }
-    
     public InscripcionE obtenerInscripcionE(String nombreE){
-        
         Iterator it = this.inscripciones.iterator();
         while(it.hasNext()){
             InscripcionE insc = (InscripcionE) it.next();
-            
             if(insc.est.getNick().equals(nombreE))
                 return insc;
         }
         return null;
     }
-    
     public Usuario obtenerDocente(String nick){
         return docentes.get(nick);
     }
-    
     public void agregarDocente(Usuario u){
         if(obtenerDocente(u.getNick())==null){
             docentes.put(u.getNick(), u);
         }
     }
-    
     public void agregarInscripcion(InscripcionE insc){
         if(!inscripciones.contains(insc)){
             inscripciones.add(insc);
         }
     }
-    
+}
+       public void cancelar()
+    {
+        //Metodo.
+    }
+   
+     public void EditarCurso(DTEdicion datos)
+    {
+        this.nombre=datos.getNombre();
+        this.fecha_fin=datos.getFechaFin();
+        this.fecha_ini=datos.getFechaIni();
+        this.fecha_pub=datos.getFechaPub();
+        this.cupo_max=datos.getCuposMax();
+       
+    }
 }
 
 

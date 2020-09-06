@@ -34,7 +34,6 @@ public class DTEdicion {
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
     }    
-    
 	public String getNombre() {
 		return this.nombre;
 	}

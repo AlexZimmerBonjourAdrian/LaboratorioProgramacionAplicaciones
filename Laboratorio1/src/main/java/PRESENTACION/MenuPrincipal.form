@@ -201,6 +201,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -218,9 +219,23 @@
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jButtonConfAlta" min="-2" max="-2" attributes="0"/>
                       </Group>
+=======
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabelDocente" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="1" attributes="0">
+                          <Component id="jLabelNomUsu" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelApellUsr" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelFechNacUsr" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel1DocInst" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNickUsr" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelEmailUsr" alignment="1" min="-2" max="-2" attributes="0"/>
+>>>>>>> Alex
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jTextFieldNombreUsuario" pref="204" max="32767" attributes="0"/>
                           <Component id="jTextFieldApellUsuario" pref="204" max="32767" attributes="0"/>
@@ -233,16 +248,59 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jRadioButtonNoDocente" min="-2" max="-2" attributes="0"/>
                               </Group>
+=======
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTextFieldNombreUsuario" pref="204" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldApellUsuario" pref="204" max="32767" attributes="0"/>
+                                      <Component id="jSpinnerNacAnioUsr" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jButtonConfAlta" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="128" max="32767" attributes="0"/>
+                                          <Component id="jButtonCancAlta" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonSiDocente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonNoDocente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jComboBoxDocInstituto" min="-2" pref="199" max="-2" attributes="0"/>
+>>>>>>> Alex
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jTextFieldEmailUsr" pref="201" max="32767" attributes="0"/>
                                   <Component id="jTextFieldNickUsr" max="32767" attributes="0"/>
                               </Group>
+<<<<<<< HEAD
                               <Component id="jScrollPane7" alignment="0" min="-2" pref="197" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jButtonCancAlta" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="74" max="32767" attributes="0"/>
+=======
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+>>>>>>> Alex
               </Group>
           </Group>
         </DimensionLayout>
@@ -597,7 +655,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace pref="63" max="32767" attributes="0"/>
+=======
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
+>>>>>>> Alex
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jButtonConUsrSalir" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
@@ -846,7 +908,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
+<<<<<<< HEAD
                           <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
+=======
+                          <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
+>>>>>>> Alex
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelConsEdCurIns" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelConsEdCurEdic" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -868,12 +934,21 @@
                               <Component id="jLabelConsEdCurFechPub" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
+<<<<<<< HEAD
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jTextFieldConsEdCurCupo" pref="143" max="32767" attributes="0"/>
                               <Component id="jTextFieldlConsEdCurNom" alignment="0" pref="143" max="32767" attributes="0"/>
                               <Component id="jTextFieldlConsEdCurNomfchpub" alignment="0" pref="143" max="32767" attributes="0"/>
                               <Component id="jTextFieldlConsEdCurNomfchfn" max="32767" attributes="0"/>
                               <Component id="jTextFieldlConsEdCurNomfini" alignment="1" max="32767" attributes="0"/>
+=======
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextFieldConsEdCurCupo" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="jTextFieldConsEdCurFechFn" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="jTextFieldConsEdCurFechIn" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="jTextFieldlConsEdCurNom" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="jTextFieldConsEdCurFechPub" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+>>>>>>> Alex
                           </Group>
                       </Group>
                   </Group>
@@ -911,6 +986,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+<<<<<<< HEAD
                       <Component id="jLabelConsEdCurFechIn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldlConsEdCurNomfini" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -918,6 +994,15 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelConsEdCurFechFn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldlConsEdCurNomfchfn" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                      <Component id="jTextFieldConsEdCurFechIn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelConsEdCurFechIn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jTextFieldConsEdCurFechFn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelConsEdCurFechFn" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> Alex
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -926,8 +1011,13 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+<<<<<<< HEAD
                       <Component id="jLabelConsEdCurFechPub" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldlConsEdCurNomfchpub" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                      <Component id="jTextFieldConsEdCurFechPub" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelConsEdCurFechPub" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> Alex
                   </Group>
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Component id="jButtonConsEdCurSalir" min="-2" max="-2" attributes="0"/>
@@ -1013,6 +1103,24 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
+<<<<<<< HEAD
+=======
+        <Component class="javax.swing.JTextField" name="jTextFieldConsEdCurFechPub">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldConsEdCurFechFn">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldConsEdCurFechIn">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+>>>>>>> Alex
         <Component class="javax.swing.JTextField" name="jTextFieldConsEdCurCupo">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
@@ -1051,6 +1159,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsEdCurSalirActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JTextField" name="jTextFieldlConsEdCurNomfchpub">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
@@ -1066,6 +1175,8 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
+=======
+>>>>>>> Alex
       </SubComponents>
     </Container>
     <Container class="javax.swing.JInternalFrame" name="jInternalFrameCrearProgFor">
@@ -1167,7 +1278,10 @@
         <Component class="javax.swing.JTextField" name="jTextFieldCrearProgForNom">
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCrearProgForNomFocusLost"/>
+<<<<<<< HEAD
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextFieldCrearProgForNomMouseClicked"/>
+=======
+>>>>>>> Alex
           </Events>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinnerCrearProgForFechaIni">
@@ -2170,7 +2284,11 @@
                       <Component id="jComboBoxAddCurProgProg" max="32767" attributes="0"/>
                       <Component id="jComboBoxAddCurProgCur" max="32767" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
                   <EmptySpace pref="63" max="32767" attributes="0"/>
+=======
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
+>>>>>>> Alex
               </Group>
           </Group>
         </DimensionLayout>
@@ -2228,10 +2346,15 @@
                 <StringItem index="3" value="Item 4"/>
               </StringArray>
             </Property>
+<<<<<<< HEAD
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAddCurProgCurActionPerformed"/>
           </Events>
+=======
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+>>>>>>> Alex
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -2240,9 +2363,12 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
+<<<<<<< HEAD
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddCurProgAgregActionPerformed"/>
           </Events>
+=======
+>>>>>>> Alex
         </Component>
         <Component class="javax.swing.JButton" name="jButtonAddCurProgCancel">
           <Properties>
@@ -2287,7 +2413,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace pref="38" max="32767" attributes="0"/>
+=======
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
+>>>>>>> Alex
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelConsProgProg" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelConsProgNom" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -2372,9 +2502,12 @@
               </StringArray>
             </Property>
           </Properties>
+<<<<<<< HEAD
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxConsProgProgActionPerformed"/>
           </Events>
+=======
+>>>>>>> Alex
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -2419,9 +2552,12 @@
               </StringArray>
             </Property>
           </Properties>
+<<<<<<< HEAD
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxConsProgCursosActionPerformed"/>
           </Events>
+=======
+>>>>>>> Alex
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -2570,6 +2706,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Group type="102" attributes="0">
                   <EmptySpace pref="29" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -2580,6 +2717,12 @@
                           <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
+=======
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="90" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+>>>>>>> Alex
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelInscEdCurFechInsc" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelInscEdCurEst" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -2595,6 +2738,7 @@
                               <Component id="jSpinnerInscEdCurFechInsc" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jComboBoxInscEdCurEst" alignment="0" max="32767" attributes="0"/>
                           </Group>
+<<<<<<< HEAD
                           <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -2602,6 +2746,17 @@
                           <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+=======
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jButtonInscEdCurAcep" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="jButtonInscEdCurCanc" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+>>>>>>> Alex
               </Group>
           </Group>
         </DimensionLayout>
@@ -2623,9 +2778,13 @@
                       <Component id="jTextFieldInscEdCurEdic" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelInscEdCurEdic" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabelInscEdCurEstAdv" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+=======
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+>>>>>>> Alex
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jComboBoxInscEdCurEst" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelInscEdCurEst" min="-2" max="-2" attributes="0"/>
@@ -2676,9 +2835,12 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+<<<<<<< HEAD
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxInscEdCurCurActionPerformed"/>
           </Events>
+=======
+>>>>>>> Alex
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -2715,9 +2877,12 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+<<<<<<< HEAD
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jComboBoxInscEdCurEstFocusLost"/>
           </Events>
+=======
+>>>>>>> Alex
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -2756,6 +2921,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonInscEdCurCancActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JLabel" name="jLabelInscEdCurEstAdv">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -2764,6 +2930,8 @@
             <Property name="text" type="java.lang.String" value="ADVERTENCIA: Ya existe una inscripcion"/>
           </Properties>
         </Component>
+=======
+>>>>>>> Alex
       </SubComponents>
     </Container>
   </SubComponents>

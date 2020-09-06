@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Bruno\Desktop\Labortorio 1\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\InscripcionE.java
 C:\Users\Bruno\Desktop\Labortorio 1\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Datatypes\DTCurso.java
 C:\Users\Bruno\Desktop\Labortorio 1\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\LOGICA\Sistema.java
@@ -18,3 +19,25 @@ C:\Users\Bruno\Desktop\Labortorio 1\LaboratorioProgramacionAplicaciones\Laborato
 C:\Users\Bruno\Desktop\Labortorio 1\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\LOGICA\FabricaLab.java
 C:\Users\Bruno\Desktop\Labortorio 1\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Estudiante.java
 C:\Users\Bruno\Desktop\Labortorio 1\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Instituto.java
+=======
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Estudiante.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Edicion.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Datatypes\DTUsuario.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\LOGICA\ISistema.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Docente.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Instituto.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\InscripcionP.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Usuario.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Datatypes\DTCurso.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\LOGICA\FabricaLab.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Datatypes\DTInstituto.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\LOGICA\Singleton.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\LOGICA\Sistema.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\main.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Datatypes\DTPrograma.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Programa.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\PRESENTACION\MenuPrincipal.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Datatypes\DTEdicion.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\Curso.java
+F:\GitHub\LaboratorioProgramacionAplicaciones\Laboratorio1\src\main\java\Clases\InscripcionE.java
+>>>>>>> Alex
