@@ -90,9 +90,15 @@ public interface ISistema {
     
     public void crearPrograma(DTPrograma datos); 
     
-    public String checkEdicionCurso(String nombreI, String nombreC, Date FechaInsc);
+    public String checkEdicionCurso(String nombreC);
     
-    public boolean ExisteRegistroInscripcionE(String nombreI, Estudiante e, String nombreC, String nombreE);
+    public boolean ExisteRegistroInscripcionE(String nombreEst, String nombreC, String nombreE);
+    
+    public ArrayList<String> listarEstudiantes();
+    
+    public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date fecha_insc);
+    
+    public void modificarInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date nueva_fecha);
     
     public Set<String> pickCurso (String nombreC);
     
