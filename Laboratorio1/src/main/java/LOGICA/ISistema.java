@@ -58,7 +58,7 @@ public interface ISistema {
    
     public void agregarCursoPrograma(String nombreP, String nombreC);
     
-    public List mostrarCursos();
+    public Set<DTCurso> mostrarCursos();
     
     public List mostrarProgramas();
     
@@ -98,7 +98,7 @@ public interface ISistema {
     
     public DTCurso seleccionarCurso(String nombre);
     
-    public boolean seleccionarEdicionOPrograma(String nombre, DTEdicion edicion);
+    public boolean seleccionarEdicionOPrograma(String nombre);
     
     public Set<DTEdicion> listaEdicion(String Instituto);
     
@@ -106,13 +106,15 @@ public interface ISistema {
     
     public void editarEdicion(DTEdicion dataedicion);
     
-    public void indicarInstitucion2(String nombreI); // que hace?
+  // que hace?
     
    public boolean IndicarNombreCurso(String nombreCurso); // que hace?
     
     public void registrarCurso(DTCurso datoscurso);
     
     public void editarCursoInst(DTCurso datos);
+    
+    
     
     public void cancelar();
     

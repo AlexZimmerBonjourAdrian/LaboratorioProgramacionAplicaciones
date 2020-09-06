@@ -8,12 +8,15 @@ package Clases;
 import Datatypes.DTCurso;
 import Datatypes.DTEdicion;
 import Datatypes.DTUsuario;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -87,5 +90,47 @@ public class Curso {
         this.cant_horas=datos.getHoras(); 
     }
     
+    public Set<DTEdicion> ListarEdicion()
+    {
+       //return ediciones;
+        Iterator<Map.Entry<String, Edicion>> it= getEdiciones().entrySet().iterator();
+        Set<DTEdicion> Edit = new HashSet();
+        while(it.hasNext())
+        {
+            Map.Entry<String, Edicion> Ed= it.next();
+            Edit.add(Ed.getValue().getDatos());
+        }
+        
+        return Edit;
+            
+       /*
+        Singleton sm = Singleton.getInstance();
+        Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
+        ArrayList<String> nicks = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Usuario> usr = it.next();
+           nicks.add(usr.getValue().getNick());
+        }
+        return nicks;
+       
+        Iterator it = this.inscripciones.iterator();
+        while(it.hasNext()){
+            InscripcionE insc = (InscripcionE) it.next();
+            if(insc.est.equals(e))
+                return insc;
+        }
+*/
+    }
+    
+   public void EditarEdicion (DTEdicion dato)
+   {
+     ediciones.get(dato.getNombre()).EditarCurso(dato);
+   }
+  
 
 }
+
+           
+            
+            
+

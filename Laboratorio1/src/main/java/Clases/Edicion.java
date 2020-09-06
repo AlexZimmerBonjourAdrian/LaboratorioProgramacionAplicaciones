@@ -81,8 +81,16 @@ public class Edicion {
     {
         //Metodo.
     }
-    
-    
+   
+     public void EditarCurso(DTEdicion datos)
+    {
+        this.nombre=datos.getNombre();
+        this.fecha_fin=datos.getFechaFin();
+        this.fecha_ini=datos.getFechaIni();
+        this.fecha_pub=datos.getFechaPub();
+        this.cupo_max=datos.getCuposMax();
+       
+    }
 }
 
 

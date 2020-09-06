@@ -95,19 +95,10 @@ public class Instituto {
         return Cur;
     }
        */
-      public void RegistraCurso(DTCurso dataCurso)
-   {
-       //Metodo a aplicar
-   }
+
    
-   public void EditarCursoins(DTCurso dataCurso)
-   {
-      //Metodo 
-   }
+ 
    
-   public void cancelar()
-   {
-       //Metodo
-   }
+
    
 }
