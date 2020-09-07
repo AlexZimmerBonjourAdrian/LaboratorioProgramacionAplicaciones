@@ -2284,8 +2284,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextFieldConsCurNom.setText(c1.getNombre());
         jTextPaneDesc.setText(c1.getDescripcion());
     }//GEN-LAST:event_jComboBoxConsProgCursosActionPerformed
-    private void jComboBoxAddCurProgCurActionPerformed(java.awt.event.ActionEvent evt){}                                         
-    private void jTextFieldCrearProgForNomMouseClicked(java.awt.event.MouseEvent evt){}                                                     
+    private void jComboBoxAddCurProgCurActionPerformed(java.awt.event.ActionEvent evt) {}                                                       
+    private void jTextFieldCrearProgForNomMouseClicked(java.awt.event.MouseEvent evt) {}                                                       
     private void jComboBoxInscEdCurCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxInscEdCurCurActionPerformed
         String curso = jComboBoxInscEdCurCur.getSelectedItem().toString();
         String edicionvigente = ICU.checkEdicionCurso(curso);
