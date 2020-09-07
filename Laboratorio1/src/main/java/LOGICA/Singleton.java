@@ -131,6 +131,7 @@ public class Singleton {
     public void agregarCurso(Curso cur){
         if (this.obtenerCurso(cur.getNombre()) == null) {
             cursos.put(cur.getNombre(),cur);
+            System.out.println("se creo el curso: " + cur.getNombre());
         }
     }
 }

@@ -68,5 +68,34 @@ public class Curso {
         return nombre;
     }
     
+    public Curso obtenerPrevias(String nombrePrevia){
+        return previas.get(nombrePrevia);
+    }
+    
+    public void agregarPrevias(Curso c){
+        if(obtenerPrevias(c.nombre) == null){
+            previas.put(c.getNombre(), c);
+        }
+    }
+
+    public Map<String, Curso> getPrevias() {
+        return previas;
+    }
+
+    public Map<String, Programa> getProgramas() {
+        return programas;
+    }
+    
+    public Programa obtenerPrograma(String nombrePrograma){
+        return programas.get(nombrePrograma);
+    }
+    
+    public void agregarPrograma(Programa p){
+        if(obtenerPrograma(p.getNombre()) == null){
+            programas.put(p.getNombre(), p);
+            System.out.println("se agrego el programa: " + p.getNombre() + "al curso: " + this.nombre);
+        }
+    }
+    
     
 }

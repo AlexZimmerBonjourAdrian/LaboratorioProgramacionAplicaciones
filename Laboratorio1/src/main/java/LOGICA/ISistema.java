@@ -78,6 +78,8 @@ public interface ISistema {
     
     public ArrayList<String> cursosPrograma(String nombreP);
     
+    public ArrayList<String> ProgramasCursos(String nombreC);
+    
     public Curso obtenerCursoDelInstituto(String nombreI, String nombreC);
  
     public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso);
@@ -95,6 +97,8 @@ public interface ISistema {
     public boolean ExisteRegistroInscripcionE(String nombreEst, String nombreC, String nombreE);
     
     public ArrayList<String> listarEstudiantes();
+    
+    public ArrayList<String> listarDocentesInstituo(String nomInst);
     
     public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date fecha_insc);
     
@@ -122,7 +126,9 @@ public interface ISistema {
     
     public boolean indicarNombreCurso(String nombreC); // que hace?
     
-    public void registrarCurso(DTCurso datoscurso);
+    public void registrarCurso(String nomInst, DTCurso datoscurso, List previas);
+    
+    public void altaEdicionCurso(String nomCurso, DTEdicion datos, List docentes);
     
     public void editarCursoInst(DTCurso datos);
     
