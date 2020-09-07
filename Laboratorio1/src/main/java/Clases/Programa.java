@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import Clases.Curso;
+import java.util.HashMap;
 /**
  *
  * @author arena
@@ -36,7 +37,9 @@ public class Programa {
 	    this.fecha_ini=fecha_ini;
 	    this.fecha_fin=fecha_fin;
 	    this.fecha_alta=fecha_alta;
+            this.Cursos = new HashMap();
 	    this.inscripciones=new LinkedList();
+            this.Cursos = new HashMap<>();
     }
     
     public DTPrograma getDatos(){
@@ -46,6 +49,10 @@ public class Programa {
 
     }
 
+    public void agregarCurso(Curso c1){
+        this.Cursos.put(c1.getNombre(), c1);
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -96,6 +103,16 @@ public class Programa {
 
     public List getInscripciones() {
         return inscripciones;
+    }
+    
+    public Curso obtenerCurso(String nombre){
+        return Cursos.get(nombre);
+    }
+    
+    public void agregarCurso(Curso c){
+        if(this.obtenerCurso(c.getNombre()) == null){
+            Cursos.put(c.getNombre(), c);
+        }
     }
     
 }

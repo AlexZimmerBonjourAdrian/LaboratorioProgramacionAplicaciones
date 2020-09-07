@@ -29,6 +29,9 @@ public class InscripcionE {
     public void modificarDatos(Date fecha_nueva){
         this.fecha_insc=fecha_nueva;
     }
-    
+
+    public Estudiante getEst() {
+        return est;
+    }
     
 }

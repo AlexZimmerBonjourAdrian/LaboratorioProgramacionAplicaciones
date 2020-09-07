@@ -26,9 +26,7 @@ public class DTEdicion {
         this.fecha_pub=fecha_pub;
         this.docentes=docentes;
         this.inscripciones=inscripciones;
-        this.docentes=docentes;
     }
-    /*
     public DTEdicion(String nombre,Date fecha_ini,Date fecha_fin,int cupo_max,Date fecha_pub){
         this.nombre=nombre;
         this.fecha_ini=fecha_ini;
@@ -36,7 +34,7 @@ public class DTEdicion {
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
     }    
-    */
+    
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -52,18 +50,10 @@ public class DTEdicion {
 	public Date getFechaPub() {
 		return this.fecha_pub;
 	}
-
-    /**
-     *
-     * @return
-     */
-    public Map getDocentes(){
+	public Map getDocentes(){
             return this.docentes;
     }
     public List getInscripciones(){
         return this.inscripciones;
     }
-    
-   
-   
 }

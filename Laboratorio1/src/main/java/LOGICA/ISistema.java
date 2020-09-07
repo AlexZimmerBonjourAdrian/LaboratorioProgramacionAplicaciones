@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public interface ISistema {
     
-    public void altaUsuario(DTUsuario datos, boolean docente, String nomInst);
+    public void altaUsuario(DTUsuario datos, boolean docente, List nomInst);
     
     public boolean chekusuario(String nick);
     
@@ -36,6 +36,10 @@ public interface ISistema {
     
     //public Usuario obtenerUsuario(String nick);
     
+    public ArrayList<String> listarNombreProgramas();
+    
+    public ArrayList<String> listarNombreCursos();
+    
     public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac);
     
     public void altaInstituto(String nom);
@@ -44,13 +48,13 @@ public interface ISistema {
     
     public DTInstituto buscarInstituto(String nombInst);
     
-    public Set<DTEdicion> mostrarEdicion(String nick);
+    public ArrayList<String> mostrarEdicion(String nick);
     
-    public ArrayList<String> mostrarProgramasEst(String nick);
+    public ArrayList<String> mostrarProgramasUsuario(String nick);
     
-    public Set<Curso> mostrarCursosDocente(String nick); // da error porque no esta implementado Curso
+    public ArrayList<String> mostrarCursosDocente(String nick); // da error porque no esta implementado Curso
     
-    public Set<DTPrograma> mostrarProgramaDoc(String nick);
+    public Set<DTPrograma> mostrarProgramaDoc(String nick); //no es necesaria
     
     public Set<DTUsuario> consultaUsuarios();
     
@@ -58,13 +62,13 @@ public interface ISistema {
    
     public void agregarCursoPrograma(String nombreP, String nombreC);
     
-    public Set<DTCurso> mostrarCursos();
+    public List mostrarCursos();
     
     public List mostrarProgramas();
     
-    public DTCurso mostrarCurso(String nombreC);
+    public DTCurso obtenerCurso(String nombreC);
     
-    public DTPrograma mostrarPrograma(String nombreP);
+    public DTPrograma obtenerPrograma(String nombreP);
     
     public boolean chequearInstituto(String nombreI);
     
@@ -72,11 +76,13 @@ public interface ISistema {
     
     public ArrayList<String> cursosInstituto(String nombreI);
     
+    public ArrayList<String> cursosPrograma(String nombreP);
+    
     public Curso obtenerCursoDelInstituto(String nombreI, String nombreC);
  
-     public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso);
+    public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso);
      
-     public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion);
+    public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion);
     
     public boolean checkPrograma(String datos);
     
@@ -84,9 +90,15 @@ public interface ISistema {
     
     public void crearPrograma(DTPrograma datos); 
     
-    public String checkEdicionCurso(String nombreI, String nombreC, Date FechaInsc);
+    public String checkEdicionCurso(String nombreC);
     
-    public boolean ExisteRegistroInscripcionE(String nombreI, Estudiante e, String nombreC, String nombreE);
+    public boolean ExisteRegistroInscripcionE(String nombreEst, String nombreC, String nombreE);
+    
+    public ArrayList<String> listarEstudiantes();
+    
+    public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date fecha_insc);
+    
+    public void modificarInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date nueva_fecha);
     
     public Set<String> pickCurso (String nombreC);
     
@@ -98,7 +110,7 @@ public interface ISistema {
     
     public DTCurso seleccionarCurso(String nombre);
     
-    public boolean seleccionarEdicionOPrograma(String nombre);
+    public boolean seleccionarEdicionOPrograma(String nombre, DTEdicion edicion);
     
     public Set<DTEdicion> listaEdicion(String Instituto);
     
@@ -106,15 +118,13 @@ public interface ISistema {
     
     public void editarEdicion(DTEdicion dataedicion);
     
-  // que hace?
+    public void indicarInstitucion2(String nombreI); // que hace?
     
-   public boolean IndicarNombreCurso(String nombreCurso); // que hace?
+    public boolean indicarNombreCurso(String nombreC); // que hace?
     
     public void registrarCurso(DTCurso datoscurso);
     
     public void editarCursoInst(DTCurso datos);
-    
-    
     
     public void cancelar();
     
