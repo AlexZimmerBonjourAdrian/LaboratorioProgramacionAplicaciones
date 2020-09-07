@@ -48,10 +48,6 @@ public class Programa {
             
 
     }
-
-    public void agregarCurso(Curso c1){
-        this.Cursos.put(c1.getNombre(), c1);
-    }
     
     public String getNombre() {
         return nombre;

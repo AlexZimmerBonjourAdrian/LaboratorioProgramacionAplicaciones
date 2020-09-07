@@ -52,8 +52,8 @@ public class Singleton {
         i1.addCurso(c3);
         Edicion e1 = new Edicion("Edicion Ing 2005", new Date(2005,5,15), new Date(2005,10,10), 30, new Date(2005,03,01));
         Edicion e2 = new Edicion("Edicion 2020 PA", new Date(), new Date(), 30, new Date());
-        c2.addEdicion(e1);
-        c1.addEdicion(e2);
+        c2.agregarEdicion(e1);
+        c1.agregarEdicion(e2);
         Map<String,Edicion> edic2 = c2.getEdiciones();
         edic2 = null;
         Usuario est1 = new Estudiante("Pablogb83", "pablo", "gaione", "pablo@gaione", new Date());
