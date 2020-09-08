@@ -86,6 +86,8 @@ public interface ISistema {
      
     public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion);
     
+    public boolean checkCurso(String nomCurso);
+    
     public boolean checkPrograma(String datos);
     
     public void modificarDatosPrograma(DTPrograma datos);
@@ -129,6 +131,8 @@ public interface ISistema {
     public void registrarCurso(String nomInst, DTCurso datoscurso, List previas);
     
     public void altaEdicionCurso(String nomCurso, DTEdicion datos, List docentes);
+    
+    public boolean checkExisteEdicionCurso(String nomCurso, String nomEdic);
     
     public void editarCursoInst(DTCurso datos);
     

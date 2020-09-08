@@ -335,7 +335,13 @@ public class Sistema implements ISistema{
         
     }
     
-    public boolean chequearInstituto(String nombreI){return false;};
+    public boolean chequearInstituto(String nombreI){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerInstituto(nombreI)!=null){
+            return true;
+        }else
+            return false;
+    }
     
     public void modificarNombreInstituto(String nombreI, String nuevonombre){};
     
@@ -377,6 +383,15 @@ public class Sistema implements ISistema{
         return new DTEdicion(edi.getNombreEdicion(),edi.getFechaIni(),edi.getFechaFin(),edi.getCuposMax(),edi.getFechaPub());
      
      }
+     
+    public boolean checkCurso(String nomCurso){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerCurso(nomCurso)!=null){
+            return true;
+        }else
+            return false;
+        
+    } 
      
     public boolean checkPrograma(String nombrep){
         Singleton sm = Singleton.getInstance();
@@ -522,6 +537,13 @@ public class Sistema implements ISistema{
             e.agregarDocente(sm.obtenerUsuario(doc));
         }
         sm.obtenerCurso(nombCurso).agregarEdicion(e);
+    }
+    
+    public boolean checkExisteEdicionCurso(String nomCurso, String nomEdic){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerCurso(nomCurso).obtenerEdicion(nomEdic)!=null){
+            return true;
+        }else return false;
     }
     
     public void editarCursoInst(DTCurso datos){};

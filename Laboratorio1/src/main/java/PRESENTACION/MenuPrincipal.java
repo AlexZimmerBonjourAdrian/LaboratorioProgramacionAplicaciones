@@ -12,9 +12,12 @@ import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerModel;
+//import jdk.internal.org.objectweb.asm.tree.analysis.Value;
+import sun.awt.SunHints;
 /**
  *
  * @author Surface
@@ -962,9 +965,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(jScrollPane2)
                             .addComponent(jTextFieldAltaCursoURL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                             .addComponent(jTextFieldAltaCursoNom, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jInternalFrameAltaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jSpinnerAltaCursoICrd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                                .addComponent(jSpinnerAltaCursoHrs, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addComponent(jSpinnerAltaCursoICrd, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(jSpinnerAltaCursoHrs)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrameAltaCursoLayout.createSequentialGroup()
                         .addGroup(jInternalFrameAltaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButtonAltaCursoAceptar)
@@ -1189,7 +1191,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                             .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(jLabelConsCurFechReg)
                                                 .addComponent(jSpinnerConsCurFechReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
                                         .addComponent(jTextFieldConsCurUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabelConsCurUrl))
                                 .addGap(18, 18, 18)
@@ -1200,15 +1201,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabelConsCurEd))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonConsCurSalir)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         getContentPane().add(jInternalFrameConsCur);
         jInternalFrameConsCur.setBounds(0, 0, 396, 650);
 
         jInternalFrameAltaEd.setTitle("Alta de edición de curso");
-        jInternalFrameAltaEd.setNormalBounds(new java.awt.Rectangle(30, 20, 396, 553));
-        jInternalFrameAltaEd.setPreferredSize(new java.awt.Dimension(396, 553));
+        jInternalFrameAltaEd.setNormalBounds(new java.awt.Rectangle(30, 20, 396, 600));
+        jInternalFrameAltaEd.setPreferredSize(new java.awt.Dimension(396, 600));
         jInternalFrameAltaEd.setVisible(false);
 
         jComboBoxAltaEdIns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1301,42 +1302,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jInternalFrameAltaEdLayout.setHorizontalGroup(
             jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldAltaEdNomEd, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
-                            .addComponent(jButtonAltaEdAcep)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAltaEdCancel))
-                        .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
-                            .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabelAltaEdFechIni)
-                                .addComponent(jLabelAltaEdCur)
-                                .addComponent(jLabelAltaEdInst)
-                                .addComponent(jLabelAltaEdNomEd)
-                                .addComponent(jLabelAltaEdFechFin)
-                                .addComponent(jLabelAltaEdCupo)
-                                .addComponent(jLabelAltaEdFechPub)
-                                .addComponent(jLabelAltaEdDoc))
-                            .addGap(45, 45, 45)
+                .addGap(52, 52, 52)
+                .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
+                        .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelAltaEdFechIni)
+                            .addComponent(jLabelAltaEdCur)
+                            .addComponent(jLabelAltaEdInst)
+                            .addComponent(jLabelAltaEdNomEd)
+                            .addComponent(jLabelAltaEdFechFin)
+                            .addComponent(jLabelAltaEdCupo)
+                            .addComponent(jLabelAltaEdFechPub)
+                            .addComponent(jLabelAltaEdDoc))
+                        .addGap(45, 45, 45)
+                        .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxAltaEdIns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBoxAltaEdCur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxAltaEdIns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxAltaEdCur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jSpinnerAltaEdFechFin)
+                                .addComponent(jSpinnerAltaEdFechIni)
                                 .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
-                                    .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jScrollPane4)
-                                        .addComponent(jSpinnerAltaEdFechFin)
-                                        .addComponent(jSpinnerAltaEdFechIni)
-                                        .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
-                                            .addComponent(jSpinnerAltaEdCupos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jRadioButtonAltaEdCupSi))
-                                        .addComponent(jSpinnerAltaEdFechPub))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jRadioButtonAltaEdCupNo))))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                    .addComponent(jSpinnerAltaEdCupos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jRadioButtonAltaEdCupSi)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jRadioButtonAltaEdCupNo))
+                                .addComponent(jSpinnerAltaEdFechPub)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldAltaEdNomEd, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jButtonAltaEdAcep)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAltaEdCancel)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jInternalFrameAltaEdLayout.setVerticalGroup(
             jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1352,15 +1352,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                             .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
                                                 .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(jInternalFrameAltaEdLayout.createSequentialGroup()
-                                                        .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                             .addComponent(jComboBoxAltaEdIns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jLabelAltaEdInst))
                                                         .addGap(28, 28, 28)
                                                         .addComponent(jComboBoxAltaEdCur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(jLabelAltaEdCur))
-                                                .addGap(28, 28, 28)
-                                                .addComponent(jTextFieldAltaEdNomEd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabelAltaEdNomEd))
+                                                .addGap(50, 50, 50))
+                                            .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabelAltaEdNomEd)
+                                                .addComponent(jTextFieldAltaEdNomEd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
                                         .addComponent(jSpinnerAltaEdFechIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabelAltaEdFechIni))
@@ -1380,15 +1381,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAltaEdDoc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAltaEdAcep)
                     .addComponent(jButtonAltaEdCancel))
-                .addGap(38, 38, 38))
+                .addGap(76, 76, 76))
         );
 
         getContentPane().add(jInternalFrameAltaEd);
-        jInternalFrameAltaEd.setBounds(0, 0, 396, 553);
+        jInternalFrameAltaEd.setBounds(0, 0, 396, 600);
 
         jInternalFrameAddCurProg.setTitle("Agregar curso a programa de formación");
         jInternalFrameAddCurProg.setNormalBounds(new java.awt.Rectangle(30, 20, 396, 350));
@@ -2245,12 +2246,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         List nomInst = new LinkedList();
         boolean correoOK = ICU.chekuUsuarioEmail(correo);
         boolean nickOK = ICU.chekusuario(nick);
+        boolean nickYemail = !nick.equalsIgnoreCase("") && !correo.equalsIgnoreCase("");
         if(jRadioButtonSiDocente.isSelected()){
             nomInst = jListAltaUsrInstDoc.getSelectedValuesList();
         }else{
             nomInst=null;
         }
-        if(correoOK && nickOK){
+        if(nickYemail && correoOK && nickOK){
             DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fecha_de_nac);
             ICU.altaUsuario(datos,jRadioButtonSiDocente.isSelected(),nomInst);
             JOptionPane.showMessageDialog(this, "Usuario creado con exito", "Alta Usuario", JOptionPane.INFORMATION_MESSAGE);
@@ -2263,12 +2265,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jListAltaUsrInstDoc.setEnabled(false); 
             jListAltaUsrInstDoc.removeSelectionInterval(0, 100);
         }else{
-            if(nickOK){
-                JOptionPane.showMessageDialog(this, "Email ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
+            if(nickYemail){
+                if(nickOK){
+                    JOptionPane.showMessageDialog(this, "Email ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Nick ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
+                }
             }else{
-                JOptionPane.showMessageDialog(this, "Nick ya registrado en el sistema", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Debe ingresar nick y correo", "Alta Usuario", JOptionPane.ERROR_MESSAGE);
             }
-            
         }
         
     }//GEN-LAST:event_jButtonConfAltaActionPerformed
@@ -2317,8 +2322,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButtonAltaInstAceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaInstAceptActionPerformed
         // TODO add your handling code here:
-        ICU.altaInstituto(jTextFieldAltaInstNom.getText().trim());
-        JOptionPane.showMessageDialog(this, "Instituto creado con exito", "Alta instituto", JOptionPane.INFORMATION_MESSAGE);
+        String nomInst = jTextFieldAltaInstNom.getText().trim();
+        if(!ICU.chequearInstituto(nomInst) && !nomInst.equalsIgnoreCase("")){
+            ICU.altaInstituto(nomInst);
+            JOptionPane.showMessageDialog(this, "Instituto creado con exito", "Alta instituto", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            if(!nomInst.equalsIgnoreCase("")){
+                JOptionPane.showMessageDialog(this, "Ya existe un instituto con ese nombre", "Alta instituto", JOptionPane.ERROR_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "Debe asignarle un nombre al instituto", "Alta instituto", JOptionPane.ERROR_MESSAGE);
+            }
+        }
         jTextFieldAltaInstNom.setText("");
     }//GEN-LAST:event_jButtonAltaInstAceptActionPerformed
 
@@ -2384,11 +2398,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Date fechaReg = (Date)jSpinnerAltaCurFechaReg.getModel().getValue();
         DTCurso datos = new DTCurso(nombreCurso, descripCurs, duracion, cantHoras, creditos, fechaReg, URL);
         ///********************************************************************************************************************
-        ICU.registrarCurso(instituo, datos, jListAltaCursoPrev.getSelectedValuesList());
-        JOptionPane.showMessageDialog(this,"Se creo el curso correctamente", "Alta Curso",
-              JOptionPane.INFORMATION_MESSAGE);
-        jInternalFrameAltaEd.setVisible(false);
-        
+        if(!ICU.checkCurso(nombreCurso)&& !nombreCurso.equalsIgnoreCase("")){
+            ICU.registrarCurso(instituo, datos, jListAltaCursoPrev.getSelectedValuesList());
+            JOptionPane.showMessageDialog(this,"Se creo el curso correctamente", "Alta Curso",JOptionPane.INFORMATION_MESSAGE);
+            jInternalFrameAltaCurso.setVisible(false);
+            jTextFieldAltaCursoNom.setText("");
+            jTextPaneAltaCursoDesc.setText("");
+            jTextFieldAltaCursoDur.setText("");
+            jSpinnerAltaCursoHrs.setValue(1);
+            jSpinnerAltaCursoICrd.setValue(1);
+            jTextFieldAltaCursoURL.setText("");
+            jSpinnerAltaCurFechaReg.setValue(new Date());
+        }else{
+            if(!nombreCurso.equalsIgnoreCase("")){
+                JOptionPane.showMessageDialog(this,"Ya existe un curso con ese nombre", "Alta Curso",JOptionPane.ERROR_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this,"Debe asignarle al menos nombre al curso", "Alta Curso",JOptionPane.ERROR_MESSAGE);
+            }
+             
+        }
     }//GEN-LAST:event_jButtonAltaCursoAceptarActionPerformed
 
     private void jButtonAltaEdAcepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaEdAcepActionPerformed
@@ -2405,10 +2433,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         Date fechaPub = (Date)jSpinnerAltaEdFechPub.getModel().getValue();
         List docentes = jList1AltaEdDoc.getSelectedValuesList();
-        DTEdicion datos = new DTEdicion(nombrEd, fechaIni, fechaFin, cupos, fechaPub);
-        ICU.altaEdicionCurso(nombreCurso, datos, docentes);
-        JOptionPane.showMessageDialog(this,"Se creo la edicion correctamente", "Alta Edicion",
-              JOptionPane.INFORMATION_MESSAGE);
+        if(!nombrEd.equalsIgnoreCase("") && !ICU.checkExisteEdicionCurso(nombreCurso, nombrEd)){
+            DTEdicion datos = new DTEdicion(nombrEd, fechaIni, fechaFin, cupos, fechaPub);
+            ICU.altaEdicionCurso(nombreCurso, datos, docentes);
+            JOptionPane.showMessageDialog(this,"Se creo la edicion correctamente", "Alta Edicion",JOptionPane.INFORMATION_MESSAGE);
+            jSpinnerAltaEdFechIni.setValue(new Date());
+            jSpinnerAltaEdFechFin.setValue(new Date());
+            jTextFieldAltaEdNomEd.setText(null);
+            jRadioButtonAltaEdCupNo.setSelected(true);
+            jSpinnerAltaEdFechPub.setValue(new Date());
+            jList1AltaEdDoc.removeSelectionInterval(0, 100);
+            jSpinnerAltaEdCupos.setEnabled(false);
+            jSpinnerAltaEdCupos.setValue(1);
+            jComboBoxAltaEdCur.setModel(new DefaultComboBoxModel<>());
+            jInternalFrameAltaEd.setVisible(false);
+        }else{
+            if(!nombrEd.equalsIgnoreCase("")){
+                    JOptionPane.showMessageDialog(this,"Ya existe una edición con ese nombre", "Alta Edicion",JOptionPane.ERROR_MESSAGE);
+            }else{
+                    JOptionPane.showMessageDialog(this,"Debe asignarle un nombre", "Alta Edicion",JOptionPane.ERROR_MESSAGE); 
+            }     
+        }
     }//GEN-LAST:event_jButtonAltaEdAcepActionPerformed
     /**
      * @param args the command line arguments
