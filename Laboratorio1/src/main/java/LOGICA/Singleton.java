@@ -8,6 +8,7 @@ package LOGICA;
 import java.util.HashMap;
 import java.util.Map;
 import Clases.*;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +37,33 @@ public class Singleton {
         
         cursos = new HashMap();
         
+        Instituto i1 = new Instituto("Instituto de Prueba");
+        Instituto i2 = new Instituto("Segundo");
+        this.institutos.put(i1.getNombre(), i1);
+        this.institutos.put(i2.getNombre(), i2);
+        Curso c1 = new Curso("Programacion avanzada","UML-DSS-DC-IMPL","12",150.0,20,new Date(),"www.nuncaseusa.com");
+        Curso c2 = new Curso("Ingenieria de software","No entiendo nada","20",130.0,25,new Date(),"www.lalaland.com");
+        Curso c3 = new Curso("Arquitecura de sistemas","GIT-UBUNTU","1500",800.0,10,new Date(),"www.zzzzzz.com");
+        this.cursos.put(c1.getNombre(),c1);
+        this.cursos.put(c2.getNombre(),c2);
+        this.cursos.put(c3.getNombre(),c3);
+        i1.addCurso(c1);
+        i1.addCurso(c2);
+        i1.addCurso(c3);
+        Edicion e1 = new Edicion("Edicion Ing 2005", new Date(2005,5,15), new Date(2005,10,10), 30, new Date(2005,03,01));
+        Edicion e2 = new Edicion("Edicion 2020 PA", new Date(), new Date(), 30, new Date());
+        c2.agregarEdicion(e1);
+        c1.agregarEdicion(e2);
+        Map<String,Edicion> edic2 = c2.getEdiciones();
+        edic2 = null;
+        Usuario est1 = new Estudiante("Pablogb83", "pablo", "gaione", "pablo@gaione", new Date());
+        Usuario est2 = new Estudiante("Fedor123", "Fedor", "Caceres", "fed@cac", new Date());
+        Usuario est3 = new Estudiante("elwico07", "quehue", "wisconsin", "qwe@tyu", new Date());
+        Usuario prof1 = new Docente("profe12", "sor", "elprofe", "sad@as", new Date());
+        usuarios.put(est1.getNick(), est1);
+        usuarios.put(est2.getNick(), est2);
+        usuarios.put(est3.getNick(), est3);
+        usuarios.put(prof1.getNick(), prof1);
     }
     
     public static Singleton getInstance(){
@@ -103,6 +131,7 @@ public class Singleton {
     public void agregarCurso(Curso cur){
         if (this.obtenerCurso(cur.getNombre()) == null) {
             cursos.put(cur.getNombre(),cur);
+            System.out.println("se creo el curso: " + cur.getNombre());
         }
     }
 }

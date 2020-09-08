@@ -37,6 +37,7 @@ public class Programa {
 	    this.fecha_ini=fecha_ini;
 	    this.fecha_fin=fecha_fin;
 	    this.fecha_alta=fecha_alta;
+            this.Cursos = new HashMap();
 	    this.inscripciones=new LinkedList();
             this.Cursos = new HashMap<>();
     }
@@ -47,7 +48,7 @@ public class Programa {
             
 
     }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -107,6 +108,7 @@ public class Programa {
     public void agregarCurso(Curso c){
         if(this.obtenerCurso(c.getNombre()) == null){
             Cursos.put(c.getNombre(), c);
+            System.out.println("se agrego el curso: " + c.getNombre() + "al programa: " + this.nombre);
         }
     }
     

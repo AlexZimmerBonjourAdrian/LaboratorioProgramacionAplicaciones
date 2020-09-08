@@ -42,7 +42,11 @@ public class Edicion {
         inscripciones = new LinkedList();
     }
     
-
+    public Edicion(String nombre){ //CONSTRUCTOR PARA PRUEBA
+        this.nombre = nombre;
+        this.cupo_max = 40;
+      
+    }
     
     public String getNombreEdicion(){
         return this.nombre;
@@ -66,12 +70,18 @@ public class Edicion {
         return this.inscripciones;
     }
     
-    public InscripcionE obtenerInscripcionE(Estudiante e){
-        Iterator it = this.inscripciones.iterator();
-        while(it.hasNext()){
-            InscripcionE insc = (InscripcionE) it.next();
-            if(insc.est.equals(e))
-                return insc;
+    public void agregarInscripcionE(InscripcionE ie){
+        if(obtenerInscripcionE(ie.est.getNick()) == null){
+            inscripciones.add(ie);
+        }
+    
+    }
+    
+    public InscripcionE obtenerInscripcionE(String nombreE){
+        InscripcionE ie;
+        for(Object e : inscripciones){
+          ie = (InscripcionE) e;
+          if(ie.getEst().getNick().equals(nombreE)) return ie;
         }
         return null;
     }
