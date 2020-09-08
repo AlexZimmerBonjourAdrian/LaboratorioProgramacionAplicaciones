@@ -1336,7 +1336,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonAltaEdAcep)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAltaEdCancel)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jInternalFrameAltaEdLayout.setVerticalGroup(
             jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1381,7 +1381,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAltaEdDoc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAltaEdAcep)
                     .addComponent(jButtonAltaEdCancel))
@@ -2348,8 +2348,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         DTPrograma p1 = ICU.obtenerPrograma(prog);
         jTextFieldConsProgNom.setText(p1.getNombre());
         jTextPaneConsProgDesc.setText(p1.getDescripcion());
-        jSpinnerConsProgFechIni.setValue(p1.getFechaInicial());
-        jSpinnerConsProgFechFin.setValue(p1.getFechaFinal());
+       // jSpinnerConsProgFechIni.setValue(p1.getFechaInicial());
+       // jSpinnerConsProgFechFin.setValue(p1.getFechaFinal());
         ArrayList<String> cur = ICU.cursosPrograma(prog);
         jComboBoxConsProgCursos.setModel(new DefaultComboBoxModel<String>(cur.toArray(new String[cur.size()])));
     }//GEN-LAST:event_jComboBoxConsProgProgActionPerformed
