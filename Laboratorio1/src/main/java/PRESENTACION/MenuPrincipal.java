@@ -628,11 +628,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-<<<<<<< HEAD
-        jInternalFrameConsUsr.setBounds(0, 0, 418, 555);
-=======
         jInternalFrameConsUsr.setBounds(0, 0, 431, 555);
->>>>>>> 60ed1abaf6f1a2c6f31a67b7af173e6b46133e10
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -2271,8 +2267,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         DTPrograma p1 = ICU.obtenerPrograma(prog);
         jTextFieldConsProgNom.setText(p1.getNombre());
         jTextPaneConsProgDesc.setText(p1.getDescripcion());
-        jSpinnerConsProgFechIni.setValue(p1.getFechaInicial());
-        jSpinnerConsProgFechFin.setValue(p1.getFechaFinal());
+       // jSpinnerConsProgFechIni.setValue(p1.getFechaInicial());
+       // jSpinnerConsProgFechFin.setValue(p1.getFechaFinal());
         ArrayList<String> cur = ICU.cursosPrograma(prog);
         jComboBoxConsProgCursos.setModel(new DefaultComboBoxModel<String>(cur.toArray(new String[cur.size()])));
     }//GEN-LAST:event_jComboBoxConsProgProgActionPerformed
@@ -2281,8 +2277,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jInternalFrameConsCur.setVisible(true);
         String cur = jComboBoxConsProgCursos.getSelectedItem().toString();
         DTCurso c1 = ICU.obtenerCurso(cur);
-        jTextFieldConsCurNom.setText(c1.getNombre());
-        jTextPaneDesc.setText(c1.getDescripcion());
+        if(c1!=null){
+            jComboBoxConsCurCur.getModel().setSelectedItem(c1.getNombre());
+        }
+        
     }//GEN-LAST:event_jComboBoxConsProgCursosActionPerformed
     private void jComboBoxAddCurProgCurActionPerformed(java.awt.event.ActionEvent evt) {}                                                       
     private void jTextFieldCrearProgForNomMouseClicked(java.awt.event.MouseEvent evt) {}                                                       
