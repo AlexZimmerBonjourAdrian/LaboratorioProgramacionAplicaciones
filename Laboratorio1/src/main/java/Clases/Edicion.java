@@ -78,13 +78,10 @@ public class Edicion {
     }
     
     public InscripcionE obtenerInscripcionE(String nombreE){
-        
-        Iterator it = this.inscripciones.iterator();
-        while(it.hasNext()){
-            InscripcionE insc = (InscripcionE) it.next();
-            
-            if(insc.est.getNick().equals(nombreE))
-                return insc;
+        InscripcionE ie;
+        for(Object e : inscripciones){
+          ie = (InscripcionE) e;
+          if(ie.getEst().getNick().equals(nombreE)) return ie;
         }
         return null;
     }

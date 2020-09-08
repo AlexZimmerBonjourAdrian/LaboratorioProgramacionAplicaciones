@@ -259,6 +259,7 @@ public class Sistema implements ISistema{
         Singleton sm = Singleton.getInstance();
         Programa p1 = sm.obtenerPrograma(nombreP);
         Curso c1 = sm.obtenerCurso(nombreC);
+        c1.agregarPrograma(p1);
         p1.agregarCurso(c1);
         System.out.print("Se agrego \n");
         
@@ -318,6 +319,20 @@ public class Sistema implements ISistema{
            nombresC.add(inst.getValue().getNombre());
         }
         return nombresC;
+        
+    }
+    
+    public ArrayList<String> ProgramasCursos(String nombreC){
+        
+        Singleton sm = Singleton.getInstance();
+        Curso c1 = sm.obtenerCurso(nombreC);
+        Iterator<Map.Entry<String, Programa>> it = c1.getProgramas().entrySet().iterator();
+        ArrayList<String> nombresP = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Programa> prog = it.next();
+           nombresP.add(prog.getValue().getNombre());
+        }
+        return nombresP;
         
     }
     
@@ -414,7 +429,12 @@ public class Sistema implements ISistema{
         Singleton sm = Singleton.getInstance();
         Curso cur = sm.obtenerCurso(nombreC);
         Edicion edi  = cur.obtenerEdicion(nombreE);
-        return edi.obtenerInscripcionE(nombreEst) != null;
+        if(edi != null){
+            InscripcionE existe = edi.obtenerInscripcionE(nombreEst);
+            if( existe != null) return true;
+            else return false;
+        }
+        else return false;
     };
     
     public ArrayList<String> listarEstudiantes(){
@@ -429,6 +449,18 @@ public class Sistema implements ISistema{
         }
         return estudiantes;
     };
+    
+    public ArrayList<String> listarDocentesInstituo(String nomInst){
+        Singleton sm = Singleton.getInstance();
+        Instituto inst = sm.obtenerInstituto(nomInst);
+        ArrayList<String> docentes = new ArrayList<String>();
+        Iterator <Map.Entry<String,Docente>> it = inst.getDocentes().entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<String, Docente> doc = it.next();
+            docentes.add(doc.getValue().getNick());
+        }
+        return docentes;
+    }
     
     public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date fecha_insc){
         Singleton sm = Singleton.getInstance();
@@ -470,7 +502,28 @@ public class Sistema implements ISistema{
     
     public boolean indicarNombreCurso(String nombreC){return false;}; // que hace?
     
-    public void registrarCurso(DTCurso datoscurso){}; 
+    public void registrarCurso(String nomInst, DTCurso datoscurso, List previas){
+        Singleton sm = Singleton.getInstance();
+        Curso c = new Curso(datoscurso.getNombre(), datoscurso.getDescripcion(), datoscurso.getDuracion(), datoscurso.getHoras(), datoscurso.getCreditos(), datoscurso.getFechaReg(), datoscurso.getUrl());
+        String previaCurso;
+        for(Object previa : previas){
+            previaCurso = previa.toString();
+            c.agregarPrevias(sm.obtenerCurso(previaCurso));
+        }
+        sm.agregarCurso(c);
+        sm.obtenerInstituto(nomInst).addCurso(c);
+    }; 
+    
+    public void altaEdicionCurso(String nombCurso, DTEdicion datos, List docentes){
+        Singleton sm = Singleton.getInstance();
+        Edicion e = new Edicion(datos.getNombre(), datos.getFechaIni(), datos.getFechaFin(), datos.getCuposMax(), datos.getFechaPub());
+        String doc;
+        for(Object docente : docentes){
+            doc = docente.toString();
+            e.agregarDocente(sm.obtenerUsuario(doc));
+        }
+        sm.obtenerCurso(nombCurso).agregarEdicion(e);
+    }
     
     public void editarCursoInst(DTCurso datos){};
     

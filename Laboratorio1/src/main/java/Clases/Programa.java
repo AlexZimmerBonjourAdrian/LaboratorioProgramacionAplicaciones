@@ -108,6 +108,7 @@ public class Programa {
     public void agregarCurso(Curso c){
         if(this.obtenerCurso(c.getNombre()) == null){
             Cursos.put(c.getNombre(), c);
+            System.out.println("se agrego el curso: " + c.getNombre() + "al programa: " + this.nombre);
         }
     }
     

@@ -63,6 +63,7 @@ public class Instituto {
     public void addCurso(Curso c){
         if(obtenerCurso(c.getNombre())==null){
             cursos.put(c.getNombre(), c);
+             System.out.println("se agrego el curso: " + c.getNombre() + "al instuto: " + nombre);
         }
     }
     
