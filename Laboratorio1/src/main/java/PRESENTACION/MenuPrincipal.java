@@ -1799,15 +1799,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuCursos.add(jMenuItemAltaCurso);
 
         jMenuItemConsultaCurso.setText("Consulta de curso");
-        jMenuItemConsultaCurso.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jMenuItemConsultaCursoAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
+       
         jMenuItemConsultaCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemConsultaCursoActionPerformed(evt);

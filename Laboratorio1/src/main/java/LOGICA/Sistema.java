@@ -335,22 +335,6 @@ public class Sistema implements ISistema{
         
     }
     
-    public boolean chequearInstituto(String nombreI){return false;};
-    
-    public ArrayList<String> ProgramasCursos(String nombreC){
-        
-        Singleton sm = Singleton.getInstance();
-        Curso c1 = sm.obtenerCurso(nombreC);
-        Iterator<Map.Entry<String, Programa>> it = c1.getProgramas().entrySet().iterator();
-        ArrayList<String> nombresP = new ArrayList<String>();
-        while(it.hasNext()){
-           Map.Entry<String, Programa> prog = it.next();
-           nombresP.add(prog.getValue().getNombre());
-        }
-        return nombresP;
-        
-    }
-    
     public boolean chequearInstituto(String nombreI){
         Singleton sm = Singleton.getInstance();
         if(sm.obtenerInstituto(nombreI)!=null){
