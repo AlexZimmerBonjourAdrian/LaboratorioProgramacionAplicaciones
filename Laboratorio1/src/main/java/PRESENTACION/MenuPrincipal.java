@@ -9,6 +9,8 @@ import Datatypes.*;
 import LOGICA.FabricaLab;
 import LOGICA.ISistema;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -630,7 +632,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 441, 562);
+        jInternalFrameConsUsr.setBounds(0, 0, 431, 555);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -962,9 +964,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(jScrollPane2)
                             .addComponent(jTextFieldAltaCursoURL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                             .addComponent(jTextFieldAltaCursoNom, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jInternalFrameAltaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jSpinnerAltaCursoICrd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                                .addComponent(jSpinnerAltaCursoHrs, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addComponent(jSpinnerAltaCursoICrd, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(jSpinnerAltaCursoHrs)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrameAltaCursoLayout.createSequentialGroup()
                         .addGroup(jInternalFrameAltaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButtonAltaCursoAceptar)
@@ -1189,7 +1190,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                             .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(jLabelConsCurFechReg)
                                                 .addComponent(jSpinnerConsCurFechReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
                                         .addComponent(jTextFieldConsCurUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabelConsCurUrl))
                                 .addGap(18, 18, 18)
@@ -1200,7 +1200,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabelConsCurEd))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonConsCurSalir)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         getContentPane().add(jInternalFrameConsCur);
@@ -1798,6 +1798,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuCursos.add(jMenuItemAltaCurso);
 
         jMenuItemConsultaCurso.setText("Consulta de curso");
+        jMenuItemConsultaCurso.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jMenuItemConsultaCursoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jMenuItemConsultaCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemConsultaCursoActionPerformed(evt);
@@ -2166,6 +2175,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButtonConsProgSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsProgSalirActionPerformed
         // TODO add your handling code here:
+        
         jInternalFrameConsProg.setVisible(false);
     }//GEN-LAST:event_jButtonConsProgSalirActionPerformed
 
@@ -2275,6 +2285,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jComboBoxConsUsrListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsUsrListActionPerformed
         // TODO add your handling code here:
+        
         String nick = jComboBoxConsUsrList.getSelectedItem().toString();
         DTUsuario usr = ICU.obtenerUsuario(nick);
         jTextFieldConsUsrNom.setText(usr.getNombre());
@@ -2334,19 +2345,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         DTPrograma p1 = ICU.obtenerPrograma(prog);
         jTextFieldConsProgNom.setText(p1.getNombre());
         jTextPaneConsProgDesc.setText(p1.getDescripcion());
-       // jSpinnerConsProgFechIni.setValue(p1.getFechaInicial());
-       // jSpinnerConsProgFechFin.setValue(p1.getFechaFinal());
+        //jSpinnerConsProgFechIni.setValue(p1.getFechaInicial());
+        //jSpinnerConsProgFechFin.setValue(p1.getFechaFinal());
         ArrayList<String> cur = ICU.cursosPrograma(prog);
         jComboBoxConsProgCursos.setModel(new DefaultComboBoxModel<String>(cur.toArray(new String[cur.size()])));
     }//GEN-LAST:event_jComboBoxConsProgProgActionPerformed
     private void jComboBoxConsProgCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsProgCursosActionPerformed
         // TODO add your handling code here:
+        jComboBoxConsCurInst.setModel(new DefaultComboBoxModel<>(ICU.listarInstitutos().toArray(new String [ICU.listarInstitutos().size()])));
         jInternalFrameConsCur.setVisible(true);
         String cur = jComboBoxConsProgCursos.getSelectedItem().toString();
-        DTCurso c1 = ICU.obtenerCurso(cur);
-        if(c1!=null){
-            jComboBoxConsCurCur.getModel().setSelectedItem(c1.getNombre());
-        }
+        jComboBoxConsCurCur.getModel().setSelectedItem(cur);
+        jComboBoxConsProgCursos.addActionListener(jComboBoxConsCurCur);
         
     }//GEN-LAST:event_jComboBoxConsProgCursosActionPerformed
     private void jComboBoxAddCurProgCurActionPerformed(java.awt.event.ActionEvent evt) {}                                                       
@@ -2411,6 +2421,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,"Se creo la edicion correctamente", "Alta Edicion",
               JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonAltaEdAcepActionPerformed
+ 
+    private void jMenuItemConsultaCursoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jMenuItemConsultaCursoAncestorAdded
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuItemConsultaCursoAncestorAdded
     /**
      * @param args the command line arguments
      */
