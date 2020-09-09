@@ -337,6 +337,28 @@ public class Sistema implements ISistema{
     
     public boolean chequearInstituto(String nombreI){return false;};
     
+    public ArrayList<String> ProgramasCursos(String nombreC){
+        
+        Singleton sm = Singleton.getInstance();
+        Curso c1 = sm.obtenerCurso(nombreC);
+        Iterator<Map.Entry<String, Programa>> it = c1.getProgramas().entrySet().iterator();
+        ArrayList<String> nombresP = new ArrayList<String>();
+        while(it.hasNext()){
+           Map.Entry<String, Programa> prog = it.next();
+           nombresP.add(prog.getValue().getNombre());
+        }
+        return nombresP;
+        
+    }
+    
+    public boolean chequearInstituto(String nombreI){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerInstituto(nombreI)!=null){
+            return true;
+        }else
+            return false;
+    }
+    
     public void modificarNombreInstituto(String nombreI, String nuevonombre){};
     
     public ArrayList<String> cursosInstituto(String nombreI){
@@ -377,6 +399,15 @@ public class Sistema implements ISistema{
         return new DTEdicion(edi.getNombreEdicion(),edi.getFechaIni(),edi.getFechaFin(),edi.getCuposMax(),edi.getFechaPub());
      
      }
+     
+    public boolean checkCurso(String nomCurso){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerCurso(nomCurso)!=null){
+            return true;
+        }else
+            return false;
+        
+    } 
      
     public boolean checkPrograma(String nombrep){
         Singleton sm = Singleton.getInstance();
@@ -524,6 +555,12 @@ public class Sistema implements ISistema{
         sm.obtenerCurso(nombCurso).agregarEdicion(e);
     }
     
+    public boolean checkExisteEdicionCurso(String nomCurso, String nomEdic){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerCurso(nomCurso).obtenerEdicion(nomEdic)!=null){
+            return true;
+        }else return false;
+    }
     public void editarCursoInst(DTCurso datos){};
     
     public void cancelar(){};
