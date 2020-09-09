@@ -261,7 +261,6 @@ public class Sistema implements ISistema{
         Curso c1 = sm.obtenerCurso(nombreC);
         c1.agregarPrograma(p1);
         p1.agregarCurso(c1);
-        System.out.print("Se agrego \n");
         
     };
     //corregir
