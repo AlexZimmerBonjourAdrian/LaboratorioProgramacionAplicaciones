@@ -406,6 +406,8 @@ public class Sistema implements ISistema{
         
     }; 
     
+  
+    
     public String checkEdicionCurso(String nombreC){
         Singleton sm = Singleton.getInstance();
         Curso cur = sm.obtenerCurso(nombreC);
@@ -423,14 +425,41 @@ public class Sistema implements ISistema{
        return null;
     };
     
+   public boolean InscripcionCorrectaEstEdi(String nombreC, String nombreE, Date fecha){
+       Singleton sm = Singleton.getInstance();
+       Curso curso = sm.obtenerCurso(nombreC);
+   //    boolean flag;
+       if(curso != null){
+            Edicion edicion = curso.obtenerEdicion(nombreE);
+             return (edicion.getFechaIni().getYear() == fecha.getYear()) && fecha.after(edicion.getFechaIni());
+        //     if (flag) System.out.println("La fecha es menor a la de inicio");
+        //     else System.out.println("La fecha es MAYOR a la de inicio");
+        //    if( /*(edicion.getFechaIni().getYear() == fecha.getYear()) &&*/ fecha.before(edicion.getFechaIni())  ){
+        //             flag = true;
+                     
+        //    }
+       //     else{
+      //           flag = false;
+       //     }
+       //     return !flag;
+       }
+       else return false;
+   }
+   
+   public boolean InscripcionEstEdiIsNull(String nombreI, String nombreC, String nombreEdi, String nombreEst, Date fecha ){
+       return nombreI.isEmpty() && nombreC.isEmpty() && nombreEdi.isEmpty() && nombreEst.isEmpty() && fecha == null;
+   }
    
     public boolean ExisteRegistroInscripcionE(String nombreEst, String nombreC, String nombreE){
         Singleton sm = Singleton.getInstance();
         Curso cur = sm.obtenerCurso(nombreC);
-        Edicion edi  = cur.obtenerEdicion(nombreE);
-        if(edi != null){
-            InscripcionE existe = edi.obtenerInscripcionE(nombreEst);
-            if( existe != null) return true;
+        if (cur != null){ 
+            Edicion edi  = cur.obtenerEdicion(nombreE);
+            if(edi != null){
+                InscripcionE existe = edi.obtenerInscripcionE(nombreEst);
+                if( existe != null) return true;
+                else return false;
+            }
             else return false;
         }
         else return false;
@@ -461,14 +490,19 @@ public class Sistema implements ISistema{
         return docentes;
     }
     
-    public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date fecha_insc){
+    public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date fecha_insc){//FALTA CONTROLAR CUPO MAXIMO DE LA EDICION
         Singleton sm = Singleton.getInstance();
-        Usuario u =  sm.obtenerUsuario(nombreEst);
-        Estudiante e = (Estudiante) u;
-        InscripcionE nueva = new InscripcionE(fecha_insc, e);
         Curso curso = sm.obtenerCurso(nombreC);
-        Edicion edicion = curso.obtenerEdicion(nombreEdi);
-        edicion.agregarInscripcionE(nueva);
+        if (curso != null){
+            Edicion edicion = curso.obtenerEdicion(nombreEdi);
+            if (edicion != null){
+                Usuario u =  sm.obtenerUsuario(nombreEst);
+                Estudiante e = (Estudiante) u;
+                InscripcionE nueva = new InscripcionE(fecha_insc, e);
+                edicion.agregarInscripcionE(nueva);
+            }
+        }
+ 
     }
    public void modificarInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date nueva_fecha){
        Singleton sm = Singleton.getInstance();

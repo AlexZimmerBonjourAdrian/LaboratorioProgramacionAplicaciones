@@ -871,9 +871,9 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jTextFieldConsEdCurCupo" pref="143" max="32767" attributes="0"/>
                               <Component id="jTextFieldlConsEdCurNom" alignment="0" pref="143" max="32767" attributes="0"/>
-                              <Component id="jTextFieldlConsEdCurNomfchpub" alignment="0" pref="143" max="32767" attributes="0"/>
-                              <Component id="jTextFieldlConsEdCurNomfchfn" max="32767" attributes="0"/>
-                              <Component id="jTextFieldlConsEdCurNomfini" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jSpinnerConsEdiCurFechaIni" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jSpinnerConsEdiCurFechaFn" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jSpinnerConsEdiCurFechaPub" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -912,12 +912,12 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelConsEdCurFechIn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldlConsEdCurNomfini" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinnerConsEdiCurFechaIni" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelConsEdCurFechFn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldlConsEdCurNomfchfn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinnerConsEdiCurFechaFn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -927,7 +927,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelConsEdCurFechPub" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldlConsEdCurNomfchpub" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSpinnerConsEdiCurFechaPub" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Component id="jButtonConsEdCurSalir" min="-2" max="-2" attributes="0"/>
@@ -1051,18 +1051,27 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsEdCurSalirActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldlConsEdCurNomfchpub">
+        <Component class="javax.swing.JSpinner" name="jSpinnerConsEdiCurFechaIni">
           <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldlConsEdCurNomfchfn">
+        <Component class="javax.swing.JSpinner" name="jSpinnerConsEdiCurFechaFn">
           <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldlConsEdCurNomfini">
+        <Component class="javax.swing.JSpinner" name="jSpinnerConsEdiCurFechaPub">
           <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1173,21 +1182,21 @@
         <Component class="javax.swing.JSpinner" name="jSpinnerCrearProgForFechaIni">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="now" maximum="now" minimum="967518780000" stepSize="5" type="date"/>
+              <SpinnerModel initial="now" minimum="967518780000" stepSize="5" type="date"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinnerCrearProgForFechaFn">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="now" maximum="now" minimum="967518780000" stepSize="5" type="date"/>
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinnerCrearProgForFechAlt">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="now" maximum="now" minimum="967518780000" stepSize="5" type="date"/>
+              <SpinnerModel initial="now" maximum="now" minimum="now" stepSize="5" type="date"/>
             </Property>
           </Properties>
         </Component>
@@ -1290,10 +1299,8 @@
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <Component id="jTextFieldAltaCursoURL" alignment="1" pref="178" max="32767" attributes="0"/>
                               <Component id="jTextFieldAltaCursoNom" alignment="1" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jSpinnerAltaCursoICrd" alignment="0" pref="95" max="32767" attributes="0"/>
-                                  <Component id="jSpinnerAltaCursoHrs" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jSpinnerAltaCursoICrd" alignment="0" pref="178" max="32767" attributes="0"/>
+                              <Component id="jSpinnerAltaCursoHrs" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -1648,7 +1655,6 @@
                                                   <Component id="jSpinnerConsCurFechReg" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jTextFieldConsCurUrl" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabelConsCurUrl" min="-2" max="-2" attributes="0"/>
@@ -1665,7 +1671,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButtonConsCurSalir" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="122" max="32767" attributes="0"/>
+                  <EmptySpace pref="153" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -2610,7 +2616,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="56" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jButtonInscEdCurAcep" min="-2" max="-2" attributes="0"/>
@@ -2764,7 +2770,7 @@
         <Component class="javax.swing.JSpinner" name="jSpinnerInscEdCurFechInsc">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="now" maximum="now" stepSize="5" type="date"/>
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>

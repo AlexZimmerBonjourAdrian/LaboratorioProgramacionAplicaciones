@@ -94,6 +94,10 @@ public interface ISistema {
     
     public String checkEdicionCurso(String nombreC);
     
+    public boolean InscripcionCorrectaEstEdi(String nombreC, String nombreE, Date fecha);
+    
+    public boolean InscripcionEstEdiIsNull(String nombreI, String nombreC, String nombreEdi, String nombreEst, Date fecha );
+    
     public boolean ExisteRegistroInscripcionE(String nombreEst, String nombreC, String nombreE);
     
     public ArrayList<String> listarEstudiantes();
