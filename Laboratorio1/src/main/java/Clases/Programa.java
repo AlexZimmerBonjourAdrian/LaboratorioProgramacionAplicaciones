@@ -12,22 +12,42 @@ import java.util.List;
 import java.util.Map;
 import Clases.Curso;
 import java.util.HashMap;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  *
  * @author arena
  
  */
-public class Programa {
-    
-	//Atributos
-	
+@Entity
+public class Programa implements Serializable {
+        private static final long serialVersionUID = 1L;
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long id;
 	private String nombre;
 	private String descripcion;
+        @Temporal(TemporalType.DATE)
 	private Date fecha_ini;
+        @Temporal(TemporalType.DATE)
 	private Date fecha_fin;
+        @Temporal(TemporalType.DATE)
 	private Date fecha_alta;
+        @ManyToMany(mappedBy = "programas")
 	private Map<String,Curso> Cursos;
 	private List inscripciones;
+
+    public Programa() {
+    }
 	
 	//Metodos
 	

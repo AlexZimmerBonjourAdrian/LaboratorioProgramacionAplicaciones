@@ -13,24 +13,42 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  *
  * @author Bruno
  */
-public class Edicion {
-    
-    //Atributos
-    
+@Entity
+public class Edicion implements Serializable{
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    private long id;
     private String nombre;
+    @Temporal(TemporalType.DATE)
     private Date fecha_ini;
+    @Temporal(TemporalType.DATE)
     private Date fecha_fin;
     private int cupo_max;
+    @Temporal(TemporalType.DATE)
     private Date fecha_pub;
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Map<String, Usuario> docentes;
     private List inscripciones;
+
+    public Edicion() {
+    }
     
-    //Metodos
+    
     
     public Edicion(String nombre, Date fecha_ini, Date fecha_fin, int cupo_max, Date fecha_pub){
         this.nombre=nombre;

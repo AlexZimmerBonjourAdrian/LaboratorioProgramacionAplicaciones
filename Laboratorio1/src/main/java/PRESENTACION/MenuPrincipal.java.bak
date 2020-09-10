@@ -634,7 +634,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 441, 555);
+        jInternalFrameConsUsr.setBounds(0, 0, 441, 562);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -2462,27 +2462,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         Date fechaPub = (Date)jSpinnerAltaEdFechPub.getModel().getValue();
         List docentes = jList1AltaEdDoc.getSelectedValuesList();
-        if(!nombrEd.equalsIgnoreCase("") && !ICU.checkExisteEdicionCurso(nombreCurso, nombrEd)){
-            DTEdicion datos = new DTEdicion(nombrEd, fechaIni, fechaFin, cupos, fechaPub);
-            ICU.altaEdicionCurso(nombreCurso, datos, docentes);
-            JOptionPane.showMessageDialog(this,"Se creo la edicion correctamente", "Alta Edicion",JOptionPane.INFORMATION_MESSAGE);
-            jSpinnerAltaEdFechIni.setValue(new Date());
-            jSpinnerAltaEdFechFin.setValue(new Date());
-            jTextFieldAltaEdNomEd.setText(null);
-            jRadioButtonAltaEdCupNo.setSelected(true);
-            jSpinnerAltaEdFechPub.setValue(new Date());
-            jList1AltaEdDoc.removeSelectionInterval(0, 100);
-            jSpinnerAltaEdCupos.setEnabled(false);
-            jSpinnerAltaEdCupos.setValue(1);
-            jComboBoxAltaEdCur.setModel(new DefaultComboBoxModel<>());
-            jInternalFrameAltaEd.setVisible(false);
-        }else{
-            if(!nombrEd.equalsIgnoreCase("")){
-                    JOptionPane.showMessageDialog(this,"Ya existe una edición con ese nombre", "Alta Edicion",JOptionPane.ERROR_MESSAGE);
-            }else{
-                    JOptionPane.showMessageDialog(this,"Debe asignarle un nombre", "Alta Edicion",JOptionPane.ERROR_MESSAGE); 
-            }     
-        }
+        DTEdicion datos = new DTEdicion(nombrEd, fechaIni, fechaFin, cupos, fechaPub);
+        ICU.altaEdicionCurso(nombreCurso, datos, docentes);
+        JOptionPane.showMessageDialog(this,"Se creo la edicion correctamente", "Alta Edicion",
+              JOptionPane.INFORMATION_MESSAGE);
+        jInternalFrameAltaEd.setVisible(false);
     }//GEN-LAST:event_jButtonAltaEdAcepActionPerformed
     /**
      * @param args the command line arguments

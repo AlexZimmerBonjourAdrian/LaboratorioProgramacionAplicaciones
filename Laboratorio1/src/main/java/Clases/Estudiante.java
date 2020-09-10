@@ -6,15 +6,26 @@
 package Clases;
 
 import java.util.Date;
-
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 /**
  *
  * @author Bruno
  */
-public class Estudiante extends Usuario {
-    
-//Atributos    
+@Entity
+public class Estudiante extends Usuario implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    private Long id;
 
+    public Estudiante() {
+    }
 //Metodos
     public Estudiante(String nick, String nombre,String apellido, String correo, Date fecha_de_nac ){
         super(nick, nombre, apellido, correo, fecha_de_nac);

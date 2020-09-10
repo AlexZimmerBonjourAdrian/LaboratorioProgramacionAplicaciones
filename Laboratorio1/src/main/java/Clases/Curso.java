@@ -7,33 +7,54 @@ package Clases;
 
 import Datatypes.DTCurso;
 import Datatypes.DTEdicion;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author arena
  */
-public class Curso {
-    
-    //Atributos
-       
+@Entity
+public class Curso implements Serializable {  
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;   
     private String nombre;
     private String descripcion;
     private String duracion;
     private double cant_horas;
     private double creditos;
+    @Temporal(TemporalType.DATE)
     private Date registro;
     private String URL;
+    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
     private Map<String,Curso> previas;
+    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
     private Map<String,Edicion>ediciones;
+    @ManyToMany 
     private Map<String,Programa>programas;
     
     //Metodos
+
+    public Curso() {
+    }
+    
     
     public Curso(String n, String desc, String dur, double ch, double c, Date r, String url){
         

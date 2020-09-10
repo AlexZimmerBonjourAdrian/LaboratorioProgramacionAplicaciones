@@ -13,18 +13,34 @@ import java.util.Map;
 
 import Datatypes.DTCurso;
 import Datatypes.DTInstituto;
-
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 /**
  *
  * @author Bruno
  */
-public class Instituto {
+@Entity
+public class Instituto implements Serializable {
     
 	//Atributos
-	
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id; 
     private String nombre;
+    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
     private Map<String,Curso> cursos;
+    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
     private Map<String,Docente> docentes;
+
+    public Instituto() {
+    }
     
     //Metodos
 

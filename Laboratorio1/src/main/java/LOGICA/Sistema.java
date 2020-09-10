@@ -6,10 +6,14 @@
 package LOGICA;
 
 import Clases.*;
+import DATABASE.Persistencia;
 import Datatypes.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -17,13 +21,14 @@ import java.util.*;
  */
 public class Sistema implements ISistema{
     
-    
-    public Sistema(){};
-    
-    
+
+    public Sistema(){
+        
+    };
     
     public void altaUsuario(DTUsuario datos, boolean docente, List nomInst){
-        
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
         Usuario u;
         String nombreInst;
@@ -38,10 +43,13 @@ public class Sistema implements ISistema{
               u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
         }
         sm.agregarUsuario(u);
+        em.getTransaction().begin();
+        em.persist(u);
+        em.getTransaction().commit();
+
     };
     
     public boolean chekusuario(String nick){
-        
         Singleton sm = Singleton.getInstance();
         if(sm.obtenerUsuario(nick)!=null){
             return false;
@@ -127,16 +135,26 @@ public class Sistema implements ISistema{
     }*/
     
     public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac){
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
         Usuario u = sm.obtenerUsuario(nick);
         u.setNombre(nuevoNom);
         u.setApellido(nuevoApe);
         u.setFecha_de_nac(nuevaFechaNac);
+        em.getTransaction().begin();
+        em.persist(u);
+        em.getTransaction().commit();
     }
     
     public void altaInstituto(String nom){
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
         sm.agregarInstituto(new Instituto(nom));
+        em.getTransaction().begin();
+        em.persist(new Instituto(nom));
+        em.getTransaction().commit();
     }
     
     public ArrayList<String> listarInstitutos(){
@@ -255,13 +273,17 @@ public class Sistema implements ISistema{
     //public void modificarDatosUsuario(DTUsuario nuevo){};
     
     public void agregarCursoPrograma(String nombreP, String nombreC){
-        
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
         Programa p1 = sm.obtenerPrograma(nombreP);
         Curso c1 = sm.obtenerCurso(nombreC);
         c1.agregarPrograma(p1);
         p1.agregarCurso(c1);
-        
+        em.getTransaction().begin();
+        em.persist(p1);
+        em.persist(c1);
+        em.getTransaction().commit();
     };
     //corregir
     
@@ -335,7 +357,13 @@ public class Sistema implements ISistema{
         
     }
     
-    public boolean chequearInstituto(String nombreI){return false;};
+    public boolean chequearInstituto(String nombreI){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerInstituto(nombreI)!=null){
+            return true;
+        }else
+            return false;
+    }
     
     public void modificarNombreInstituto(String nombreI, String nuevonombre){};
     
@@ -378,6 +406,15 @@ public class Sistema implements ISistema{
      
      }
      
+    public boolean checkCurso(String nomCurso){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerCurso(nomCurso)!=null){
+            return true;
+        }else
+            return false;
+        
+    } 
+     
     public boolean checkPrograma(String nombrep){
         Singleton sm = Singleton.getInstance();
         Programa p = sm.obtenerPrograma(nombrep);
@@ -399,11 +436,15 @@ public class Sistema implements ISistema{
     };
     
     public void crearPrograma(DTPrograma datos){
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
-        Programa p = new Programa(datos.getNombre(),datos.getDescripcion(),datos.getFechaInicial(),
+        Programa pr = new Programa(datos.getNombre(),datos.getDescripcion(),datos.getFechaInicial(),
                                     datos.getFechaFinal(),datos.getFechaAlta());
-        sm.agregarPrograma(p);
-        
+        sm.agregarPrograma(pr);
+        em.getTransaction().begin();
+        em.persist(pr);
+        em.getTransaction().commit();
     }; 
     
   
@@ -491,6 +532,8 @@ public class Sistema implements ISistema{
     }
     
     public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date fecha_insc){//FALTA CONTROLAR CUPO MAXIMO DE LA EDICION
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
         Curso curso = sm.obtenerCurso(nombreC);
         if (curso != null){
@@ -500,16 +543,24 @@ public class Sistema implements ISistema{
                 Estudiante e = (Estudiante) u;
                 InscripcionE nueva = new InscripcionE(fecha_insc, e);
                 edicion.agregarInscripcionE(nueva);
+                em.getTransaction().begin();
+                em.persist(nueva);
+                em.getTransaction().commit();
             }
         }
  
     }
    public void modificarInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date nueva_fecha){
+       Persistencia p = Persistencia.getInstance();
+       EntityManager em = p.obtenerEntityManager();
        Singleton sm = Singleton.getInstance();
        Curso curso = sm.obtenerCurso(nombreC);
        Edicion edicion = curso.obtenerEdicion(nombreEdi);
        InscripcionE insc = edicion.obtenerInscripcionE(nombreEst);
        insc.modificarDatos(nueva_fecha);
+       em.getTransaction().begin();
+       em.persist(insc);
+       em.getTransaction().commit();
        
    }
     
@@ -536,6 +587,8 @@ public class Sistema implements ISistema{
     public boolean indicarNombreCurso(String nombreC){return false;}; // que hace?
     
     public void registrarCurso(String nomInst, DTCurso datoscurso, List previas){
+       Persistencia p = Persistencia.getInstance();
+       EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
         Curso c = new Curso(datoscurso.getNombre(), datoscurso.getDescripcion(), datoscurso.getDuracion(), datoscurso.getHoras(), datoscurso.getCreditos(), datoscurso.getFechaReg(), datoscurso.getUrl());
         String previaCurso;
@@ -545,9 +598,15 @@ public class Sistema implements ISistema{
         }
         sm.agregarCurso(c);
         sm.obtenerInstituto(nomInst).addCurso(c);
+        em.getTransaction().begin();
+        em.persist(c);
+        em.getTransaction().commit();
     }; 
     
     public void altaEdicionCurso(String nombCurso, DTEdicion datos, List docentes){
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
+        
         Singleton sm = Singleton.getInstance();
         Edicion e = new Edicion(datos.getNombre(), datos.getFechaIni(), datos.getFechaFin(), datos.getCuposMax(), datos.getFechaPub());
         String doc;
@@ -556,8 +615,17 @@ public class Sistema implements ISistema{
             e.agregarDocente(sm.obtenerUsuario(doc));
         }
         sm.obtenerCurso(nombCurso).agregarEdicion(e);
+        em.getTransaction().begin();
+        em.persist(e);
+        em.getTransaction().commit();
     }
     
+    public boolean checkExisteEdicionCurso(String nomCurso, String nomEdic){
+        Singleton sm = Singleton.getInstance();
+        if(sm.obtenerCurso(nomCurso).obtenerEdicion(nomEdic)!=null){
+            return true;
+        }else return false;
+    }
     public void editarCursoInst(DTCurso datos){};
     
     public void cancelar(){};

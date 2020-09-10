@@ -7,20 +7,35 @@ package Clases;
 
 import Datatypes.DTUsuario;
 import java.util.Date;
-
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  *
  * @author Bruno
  */
-public class Usuario{
-    
-    //Atributos
-    
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class Usuario implements Serializable{
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    private Long id;
     private String nick;
     private String nombre;
     private String apellido;
     private String correo;
+    @Temporal(TemporalType.DATE)
     private Date fecha_de_nac;
+
+    public Usuario() {
+    }
     
     //Metodos
     
