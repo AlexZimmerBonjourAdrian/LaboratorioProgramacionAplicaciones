@@ -23,6 +23,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import Datatypes.DTUsuario;
 /**
  *
  * @author arena
