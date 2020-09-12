@@ -12,26 +12,7 @@
     <class>Clases.Programa</class>
     <class>Clases.Usuario</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Laboratorio1"/>
-      <property name="javax.persistence.jdbc.user" value="postgres"/>
-      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="user"/>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
-    </properties>
-  </persistence-unit>
-  <persistence-unit name="Lab1" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Clases.Curso</class>
-    <class>Clases.Docente</class>
-    <class>Clases.Edicion</class>
-    <class>Clases.Estudiante</class>
-    <class>Clases.InscripcionE</class>
-    <class>Clases.InscripcionP</class>
-    <class>Clases.Instituto</class>
-    <class>Clases.Programa</class>
-    <class>Clases.Usuario</class>
-    <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Laboratorio1"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Laboratorio"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="user"/>

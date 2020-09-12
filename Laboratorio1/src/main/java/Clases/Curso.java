@@ -20,6 +20,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -46,8 +48,12 @@ public class Curso implements Serializable {
     @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
     private Map<String,Curso> previas;
     @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+    @JoinTable(name="curso_edicion", joinColumns = @JoinColumn(name = "curso_id"),
+                inverseJoinColumns = @JoinColumn(name = "ediciones_id") )
     private Map<String,Edicion>ediciones;
     @ManyToMany 
+    @JoinTable(name="curso_programa", joinColumns = @JoinColumn(name = "cursos_id"),
+                inverseJoinColumns = @JoinColumn(name = "programas_id") )
     private Map<String,Programa>programas;
     
     //Metodos

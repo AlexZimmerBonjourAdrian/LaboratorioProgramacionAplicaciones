@@ -35,7 +35,6 @@ public abstract class Usuario implements Serializable{
     private Date fecha_de_nac;
 
     public Usuario() {
-        
     }
     
     //Metodos

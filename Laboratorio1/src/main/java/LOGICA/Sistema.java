@@ -36,17 +36,19 @@ public class Sistema implements ISistema{
               u = new Docente(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
               for(Object nombre : nomInst){
                   nombreInst = nombre.toString();
-                  sm.obtenerInstituto(nombreInst).addDocente((Docente)u);
+                  sm.obtenerInstituto(nombreInst).addDocente((Docente)u); 
               }
               
         }else{
               u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
         }
         sm.agregarUsuario(u);
+        
+        
         em.getTransaction().begin();
         em.persist(u);
         em.getTransaction().commit();
-
+        
     };
     
     public boolean chekusuario(String nick){
@@ -587,20 +589,24 @@ public class Sistema implements ISistema{
     public boolean indicarNombreCurso(String nombreC){return false;}; // que hace?
     
     public void registrarCurso(String nomInst, DTCurso datoscurso, List previas){
-       Persistencia p = Persistencia.getInstance();
-       EntityManager em = p.obtenerEntityManager();
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
         Curso c = new Curso(datoscurso.getNombre(), datoscurso.getDescripcion(), datoscurso.getDuracion(), datoscurso.getHoras(), datoscurso.getCreditos(), datoscurso.getFechaReg(), datoscurso.getUrl());
+       
         String previaCurso;
         for(Object previa : previas){
             previaCurso = previa.toString();
             c.agregarPrevias(sm.obtenerCurso(previaCurso));
         }
-        sm.agregarCurso(c);
         sm.obtenerInstituto(nomInst).addCurso(c);
+        sm.agregarCurso(c);
         em.getTransaction().begin();
         em.persist(c);
         em.getTransaction().commit();
+        
+        
+        
     }; 
     
     public void altaEdicionCurso(String nombCurso, DTEdicion datos, List docentes){

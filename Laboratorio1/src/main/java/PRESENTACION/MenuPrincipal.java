@@ -5,6 +5,7 @@
  */
 package PRESENTACION;
 
+import DATABASE.Persistencia;
 import Datatypes.*;
 import LOGICA.FabricaLab;
 import LOGICA.ISistema;
@@ -634,7 +635,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 454, 577);
+        jInternalFrameConsUsr.setBounds(0, 0, 441, 555);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -2514,6 +2515,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+               // Persistencia p = Persistencia.getInstance();
+             //   p.inicializarBaseDeDatos();
                 new MenuPrincipal().setVisible(true);
             }
         });

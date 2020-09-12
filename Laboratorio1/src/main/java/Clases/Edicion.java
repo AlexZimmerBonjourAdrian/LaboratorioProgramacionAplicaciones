@@ -20,6 +20,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,6 +44,8 @@ public class Edicion implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date fecha_pub;
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(name="edicion_usuario", joinColumns = @JoinColumn(name = "edicion_id"),
+                inverseJoinColumns = @JoinColumn(name = "docentes_id") )
     private Map<String, Usuario> docentes;
     private List inscripciones;
 

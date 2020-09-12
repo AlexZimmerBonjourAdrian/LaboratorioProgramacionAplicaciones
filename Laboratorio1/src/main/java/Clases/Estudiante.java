@@ -19,10 +19,10 @@ import javax.persistence.Id;
  */
 @Entity
 public class Estudiante extends Usuario implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private Long id;
+//    private static final long serialVersionUID = 1L;
+//    @Id
+//    @GeneratedValue (strategy = GenerationType.AUTO)
+//    private Long id;
 
     public Estudiante() {
     }
