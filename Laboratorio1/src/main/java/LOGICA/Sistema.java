@@ -13,7 +13,9 @@ import java.time.ZoneId;
 import java.util.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -32,19 +34,30 @@ public class Sistema implements ISistema{
         Singleton sm = Singleton.getInstance();
         Usuario u;
         String nombreInst;
+        Instituto inst;
         if(docente){
               u = new Docente(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
               for(Object nombre : nomInst){
                   nombreInst = nombre.toString();
-                  sm.obtenerInstituto(nombreInst).addDocente((Docente)u); 
+                  inst = sm.obtenerInstituto(nombreInst);
+                  inst.addDocente((Docente)u);
+                  //trycatch
+                  /*
+                  Query q = em.createQuery("SELECT i FROM Instituto i WHERE i.nombre = ?1");
+                  q.setParameter(1, inst.getNombre());
+                  inst = (Instituto) q.getSingleResult();
+                  inst.addDocente((Docente)u);
+                  em.getTransaction().begin();
+                  em.persist(inst);
+                  em.getTransaction().commit();
+                  */
               }
               
         }else{
               u = new Estudiante(datos.getNick(),datos.getNombre(),datos.getApellido(),datos.getCorreo(),datos.getFecha());
         }
         sm.agregarUsuario(u);
-        
-        
+        //try catch
         em.getTransaction().begin();
         em.persist(u);
         em.getTransaction().commit();
@@ -153,9 +166,15 @@ public class Sistema implements ISistema{
         Persistencia p = Persistencia.getInstance();
         EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
-        sm.agregarInstituto(new Instituto(nom));
         em.getTransaction().begin();
-        em.persist(new Instituto(nom));
+        //Query q = em.createQuery("SELECT i FROM Instituto i WHERE i.nombre = ?1");
+        //q.setParameter(1, nom);
+        
+        //if(q.getSingleResult()==null){
+            Instituto inst = new Instituto(nom); 
+            sm.agregarInstituto(inst);
+            em.persist(inst);
+        //}
         em.getTransaction().commit();
     }
     
@@ -361,7 +380,20 @@ public class Sistema implements ISistema{
     
     public boolean chequearInstituto(String nombreI){
         Singleton sm = Singleton.getInstance();
-        if(sm.obtenerInstituto(nombreI)!=null){
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
+        boolean ok = true;
+        try{
+            //em.getTransaction().begin();
+            Query q = em.createQuery("SELECT i FROM Instituto i WHERE i.nombre = ?1");
+            q.setParameter(1, nombreI);
+            if(q.getSingleResult()!=null);
+            
+        } catch(NoResultException e) {
+            return ok=false;
+        }
+        //em.getTransaction().commit();
+        if(sm.obtenerInstituto(nombreI)!=null || ok){
             return true;
         }else
             return false;
@@ -428,12 +460,17 @@ public class Sistema implements ISistema{
     
     public void modificarDatosPrograma(DTPrograma datos){
         Singleton sm = Singleton.getInstance();
+        Persistencia p1 = Persistencia.getInstance();
+        EntityManager em = p1.obtenerEntityManager();
         Programa p = sm.obtenerPrograma(datos.getNombre());
         p.setNombre(datos.getNombre());
         p.setDescripcion(datos.getDescripcion());
         p.setFecha_ini(datos.getFechaInicial());
         p.setFecha_fin(datos.getFechaFinal());
         p.setFechaAlta(datos.getFechaAlta());
+        em.getTransaction().begin();
+        em.persist(p);
+        em.getTransaction().commit();
     
     };
     
@@ -592,21 +629,25 @@ public class Sistema implements ISistema{
         Persistencia p = Persistencia.getInstance();
         EntityManager em = p.obtenerEntityManager();
         Singleton sm = Singleton.getInstance();
+        
         Curso c = new Curso(datoscurso.getNombre(), datoscurso.getDescripcion(), datoscurso.getDuracion(), datoscurso.getHoras(), datoscurso.getCreditos(), datoscurso.getFechaReg(), datoscurso.getUrl());
-       
         String previaCurso;
         for(Object previa : previas){
             previaCurso = previa.toString();
             c.agregarPrevias(sm.obtenerCurso(previaCurso));
         }
-        sm.obtenerInstituto(nomInst).addCurso(c);
+        //hay que hacer un try catch
+        
+        sm.obtenerInstituto(nomInst).addCurso(c);  
+        //Query q = em.createQuery("SELECT i FROM Instituto i WHERE i.nombre = ?1");
+        //q.setParameter(1, nomInst/*inst.getNombre()*/);
+        //Instituto inst1 = (Instituto) q.getSingleResult();
+        //inst1.addCurso(c);
         sm.agregarCurso(c);
         em.getTransaction().begin();
         em.persist(c);
+        //em.persist(inst1);
         em.getTransaction().commit();
-        
-        
-        
     }; 
     
     public void altaEdicionCurso(String nombCurso, DTEdicion datos, List docentes){
@@ -618,7 +659,7 @@ public class Sistema implements ISistema{
         String doc;
         for(Object docente : docentes){
             doc = docente.toString();
-            e.agregarDocente(sm.obtenerUsuario(doc));
+            e.agregarDocente((Docente)sm.obtenerUsuario(doc));//****************************************************
         }
         sm.obtenerCurso(nombCurso).agregarEdicion(e);
         em.getTransaction().begin();

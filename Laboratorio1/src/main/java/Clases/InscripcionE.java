@@ -13,6 +13,8 @@ import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 /**
@@ -21,6 +23,7 @@ import javax.persistence.TemporalType;
  */
 //HACE REFERENCiA AL TIPO ASOCIATIVO ESTUDIANTE/EDICION
 @Entity
+@Table (name = "inscripcionEstu")
 public class InscripcionE implements Serializable{
     
     //Atributos
@@ -30,6 +33,7 @@ public class InscripcionE implements Serializable{
     private Long id;
     @Temporal(TemporalType.DATE)
     Date fecha_insc;
+    @OneToOne
     Estudiante est;
 
     public InscripcionE() {

@@ -20,7 +20,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 /**
@@ -42,9 +45,12 @@ public class Programa implements Serializable {
 	private Date fecha_fin;
         @Temporal(TemporalType.DATE)
 	private Date fecha_alta;
+        //@ElementCollection
         @ManyToMany(mappedBy = "programas")
-	private Map<String,Curso> Cursos;
-	private List inscripciones;
+	@MapKey(name = "nombre") 
+        private Map<String,Curso> Cursos;
+	@JoinTable(name = "programaInscripcionP")
+        private List <InscripcionP>inscripciones;
 
     public Programa() {
     }

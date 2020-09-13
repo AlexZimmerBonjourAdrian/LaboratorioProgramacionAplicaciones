@@ -15,6 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,15 +47,22 @@ public class Curso implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date registro;
     private String URL;
-    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+    //@ElementCollection
+    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
+    @JoinTable(name = "cursoCurso")
+    @MapKey(name = "nombre")  
     private Map<String,Curso> previas;
-    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
-    @JoinTable(name="curso_edicion", joinColumns = @JoinColumn(name = "curso_id"),
+    //@ElementCollection
+    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
+    @JoinTable(name="cursoEdicion", joinColumns = @JoinColumn(name = "curso_id"),
                 inverseJoinColumns = @JoinColumn(name = "ediciones_id") )
+    @MapKey(name = "nombre")  
     private Map<String,Edicion>ediciones;
+    //@ElementCollection
     @ManyToMany 
-    @JoinTable(name="curso_programa", joinColumns = @JoinColumn(name = "cursos_id"),
+    @JoinTable(name="cursoPrograma", joinColumns = @JoinColumn(name = "cursos_id"),
                 inverseJoinColumns = @JoinColumn(name = "programas_id") )
+    @MapKey(name = "nombre")  
     private Map<String,Programa>programas;
     
     //Metodos

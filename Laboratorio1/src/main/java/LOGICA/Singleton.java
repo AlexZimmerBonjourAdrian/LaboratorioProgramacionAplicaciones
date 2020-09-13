@@ -8,7 +8,9 @@ package LOGICA;
 import java.util.HashMap;
 import java.util.Map;
 import Clases.*;
+import DATABASE.Persistencia;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,6 +23,8 @@ import javax.swing.JOptionPane;
 public class Singleton {
     
     private Map<String,Usuario> usuarios;
+    
+    //private Map usuarios;
     
     private Map<String,Instituto> institutos;
     
@@ -40,56 +44,39 @@ public class Singleton {
         
         cursos = new HashMap();
         
-       
-  /*      try{
-            
-            em.getTransaction().begin();
-            Instituto i1 = new Instituto("Instituto de Prueba");
-            Instituto i2 = new Instituto("Segundo");
-            this.institutos.put(i1.getNombre(), i1);
-            this.institutos.put(i2.getNombre(), i2);
-            em.persist(i1);
-            em.persist(i2);
-            Curso c1 = new Curso("Programacion avanzada","UML-DSS-DC-IMPL","12",150.0,20,new Date(),"www.nuncaseusa.com");
-            Curso c2 = new Curso("Ingenieria de software","No entiendo nada","20",130.0,25,new Date(),"www.lalaland.com");
-            Curso c3 = new Curso("Arquitecura de sistemas","GIT-UBUNTU","1500",800.0,10,new Date(),"www.zzzzzz.com");
-            this.cursos.put(c1.getNombre(),c1);
-            this.cursos.put(c2.getNombre(),c2);
-            this.cursos.put(c3.getNombre(),c3);
-            i1.addCurso(c1);
-            i1.addCurso(c2);
-            i1.addCurso(c3);
-            em.persist(c1);
-            em.persist(c2);
-            em.persist(c3);
-            Edicion e1 = new Edicion("Edicion Ing 2005", new Date(2005,5,15), new Date(2005,10,10), 30, new Date(2005,03,01));
-            Edicion e2 = new Edicion("Edicion 2020 PA", new Date(), new Date(), 30, new Date());
-            c2.agregarEdicion(e1);
-            c1.agregarEdicion(e2);
-            em.persist(e1);
-            em.persist(e2);
-            Map<String,Edicion> edic2 = c2.getEdiciones();
-            edic2 = null;
-            Usuario est1 = new Estudiante("Pablogb83", "pablo", "gaione", "pablo@gaione", new Date());
-            Usuario est2 = new Estudiante("Fedor123", "Fedor", "Caceres", "fed@cac", new Date());
-            Usuario est3 = new Estudiante("elwico07", "quehue", "wisconsin", "qwe@tyu", new Date());
-            Usuario prof1 = new Docente("profe12", "sor", "elprofe", "sad@as", new Date());
-            usuarios.put(est1.getNick(), est1);
-            usuarios.put(est2.getNick(), est2);
-            usuarios.put(est3.getNick(), est3);
-            usuarios.put(prof1.getNick(), prof1);
-            em.persist(est1);
-            em.persist(est2);
-            em.persist(est3);
-            em.persist(prof1);
-        }catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-            emf.close();
-        }*/
+        /*
+        Persistencia p = Persistencia.getInstance();
+        EntityManager em = p.obtenerEntityManager();
         
+        //usuarios = em.createQuery("Select e from Estudiante e").getHints();
+        
+        List usuariosBaseE = em.createQuery("Select e from Estudiante e").getResultList();
+        
+        for(Object usr : usuariosBaseE){
+            Usuario u = (Usuario)usr;
+            usuarios.put(u.getNick(), u);
+        }
+        
+        List usuariosBase = em.createQuery("Select d from Docente d").getResultList();
+        
+        for(Object usr : usuariosBase){
+            Usuario u = (Usuario)usr;
+            usuarios.put(u.getNick(), u);
+        }
+        
+        List institutosBase = em.createQuery("Select i from Instituto i").getResultList();
+        
+        for(Object inst : institutosBase){
+            Instituto i = (Instituto)inst;
+            institutos.put(i.getNombre(), i);
+        }
+        
+        //institutos = (Map<String, Instituto>) em.createQuery("Select i from Instituto i").getResultList();
+        
+        //programas = (Map<String, Programa>) em.createQuery("Select p from Programa p").getResultList();
+        
+        //cursos = (Map<String, Curso>) em.createQuery("Select c from Curso c").getResultList();
+        */
     }
     
     public static Singleton getInstance(){

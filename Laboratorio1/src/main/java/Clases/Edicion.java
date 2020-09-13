@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 /**
@@ -43,11 +46,17 @@ public class Edicion implements Serializable{
     private int cupo_max;
     @Temporal(TemporalType.DATE)
     private Date fecha_pub;
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(name="edicion_usuario", joinColumns = @JoinColumn(name = "edicion_id"),
+    //@ElementCollection
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name="edicionUsuario", joinColumns = @JoinColumn(name = "edicion_id"),
                 inverseJoinColumns = @JoinColumn(name = "docentes_id") )
-    private Map<String, Usuario> docentes;
-    private List inscripciones;
+    @MapKey(name = "nick")  
+    private Map<String, Docente> docentes;
+    /*@JoinTable(name="inscripcione", joinColumns = @JoinColumn(name = "edicion_id"),
+                inverseJoinColumns = @JoinColumn(name = "docentes_id") )*/
+    @OneToMany//(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(name="edicionInscripcionE")
+    private List <InscripcionE>inscripciones;
 
     public Edicion() {
     }
@@ -112,7 +121,7 @@ public class Edicion implements Serializable{
         return docentes.get(nick);
     }
     
-    public void agregarDocente(Usuario u){
+    public void agregarDocente(Docente u){
         if(obtenerDocente(u.getNick())==null){
             docentes.put(u.getNick(), u);
         }

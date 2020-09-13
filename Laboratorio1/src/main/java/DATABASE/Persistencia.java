@@ -24,39 +24,58 @@ public class Persistencia {
     private EntityManager em = emf.createEntityManager();
     
     public void inicializarBaseDeDatos(){
-     /*   Singleton sm = Singleton.getInstance();
-         
+        
+        Singleton sm = Singleton.getInstance();
+        
         try{
            for (Object obj : em.createQuery("Select e from Estudiante e").getResultList()){
-                Estudiante est = (Estudiante) obj;
+                Usuario est = (Usuario) obj;
                 sm.agregarUsuario(est);
             }
+      
            for (Object obj : em.createQuery("Select d from Docente d").getResultList()){
-                Docente doc = (Docente) obj;
+                Usuario doc = (Usuario) obj;
                 sm.agregarUsuario(doc);
             }
-           /*
+           
            for (Object obj : em.createQuery("Select c from Curso c").getResultList()){
                 Curso cur = (Curso) obj;
+                
+                for(Object objE : em.createQuery("Select e from Edicion e").getResultList()){
+                    Edicion ed = (Edicion) objE;
+                    /*
+                    for(Object objI : em.createQuery("select i from Inscripcionestu i").getResultList()){
+                        InscripcionE insc = (InscripcionE) objI;
+                        ed.agregarInscripcion(insc);
+                    } 
+                    */
+                    cur.agregarEdicion(ed);
+                }
+               
                 sm.agregarCurso(cur);
             }
            for (Object obj : em.createQuery("Select i from Instituto i").getResultList()){
                 Instituto inst = (Instituto) obj;
                 sm.agregarInstituto(inst);
-            }/*
+            }
            for (Object obj : em.createQuery("Select p from Programa p").getResultList()){
                 Programa prog = (Programa) obj;
                 sm.agregarPrograma(prog);
-            }*/
-     /*   }catch(Exception e){
+            }
+           
+           //for(Object obj : em.createQuery("Select e from Edicion e").getResultList()){
+               
+           //}
+           
+       }catch(Exception e){
             e.printStackTrace();
             em.getTransaction().rollback();
         } finally {
-            em.close();
-            emf.close();
+            //em.close();
+            //emf.close();
         }
-        */
-        
+       
+       
     }
    
     private Persistencia(){

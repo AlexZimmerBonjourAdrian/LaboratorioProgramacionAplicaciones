@@ -15,6 +15,7 @@ import Datatypes.DTCurso;
 import Datatypes.DTInstituto;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,6 +23,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 /**
  *
@@ -36,13 +38,21 @@ public class Instituto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; 
     private String nombre;
-    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
-    @JoinTable(name="instituto_curso", joinColumns = @JoinColumn(name = "instituto_id"),
+    //@ElementCollection
+    @OneToMany(/*targetEntity = Curso.class,*/cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
+    /*
+    @JoinTable(name="curso", joinColumns = @JoinColumn(name = "instituto_id"),
                 inverseJoinColumns = @JoinColumn(name = "cursos_id") )
+    */
+    @JoinTable(name="institutoCurso", joinColumns = @JoinColumn(name = "instituto_id"),
+                inverseJoinColumns = @JoinColumn(name = "cursos_id") )
+    @MapKey(name = "nombre")           
     private Map<String,Curso> cursos;
-    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
-    @JoinTable(name="instituto_docente", joinColumns = @JoinColumn(name = "instituto_id"),
+    //@ElementCollection
+    @OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
+    @JoinTable(name="institutoDocente", joinColumns = @JoinColumn(name = "instituto_id"),
              inverseJoinColumns = @JoinColumn(name = "docentes_id") )
+    @MapKey(name = "nick")  
     private Map<String,Docente> docentes;
 
     public Instituto() {
