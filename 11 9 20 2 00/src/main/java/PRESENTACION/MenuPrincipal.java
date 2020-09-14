@@ -10,6 +10,8 @@ import Datatypes.*;
 import LOGICA.FabricaLab;
 import LOGICA.ISistema;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -24,7 +26,7 @@ import sun.awt.SunHints;
  *
  * @author Surface
  */
-public class MenuPrincipal extends javax.swing.JFrame {
+public class MenuPrincipal extends javax.swing.JFrame{
     
     private ISistema ICU; 
     /**
@@ -90,14 +92,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextFieldConsUsrEmail = new javax.swing.JTextField();
         jLabelConsUsrEmail = new javax.swing.JLabel();
         jLabelConsUsrFechNac = new javax.swing.JLabel();
-        jComboBoxConsUsrProg = new javax.swing.JComboBox<>();
-        jComboBoxConsUsrCursos = new javax.swing.JComboBox<>();
-        jComboBoxConsUsrEd = new javax.swing.JComboBox<>();
         jLabelConsUsrProg = new javax.swing.JLabel();
         jLabelConsUsrCurso = new javax.swing.JLabel();
         jLabelConsUsrEd = new javax.swing.JLabel();
         jButtonConUsrSalir = new javax.swing.JButton();
         jSpinnerConsUsrFechNac = new javax.swing.JSpinner();
+        jScrollPaneConsUsrProg = new javax.swing.JScrollPane();
+        jListConsUsrProg = new javax.swing.JList<>();
+        jScrollPaneConsUsrEd = new javax.swing.JScrollPane();
+        jListConsUsrEd = new javax.swing.JList<>();
+        jScrollPaneConsUsrCur = new javax.swing.JScrollPane();
+        jListConsUsrCur = new javax.swing.JList<>();
+        jButtonConsUsrProg = new javax.swing.JButton();
+        jButtonConsUsrCur = new javax.swing.JButton();
+        jButtonConsUsrEd = new javax.swing.JButton();
         jInternalFrameConsEdicCurso = new javax.swing.JInternalFrame();
         jComboBoxConsEdCurInst = new javax.swing.JComboBox<>();
         jLabelConsEdCurIns = new javax.swing.JLabel();
@@ -164,8 +172,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextFieldConsCurDur = new javax.swing.JTextField();
         jTextFieldConsCurUrl = new javax.swing.JTextField();
         jTextFieldConsCurHrs = new javax.swing.JTextField();
-        jComboBoxConsCurProg = new javax.swing.JComboBox<>();
-        jComboBoxConsCurEd = new javax.swing.JComboBox<>();
         jButtonConsCurSalir = new javax.swing.JButton();
         jLabelConsCurInst = new javax.swing.JLabel();
         jLabelConsCurCur = new javax.swing.JLabel();
@@ -179,6 +185,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabelConsCurProg = new javax.swing.JLabel();
         jLabelConsCurEd = new javax.swing.JLabel();
         jSpinnerConsCurFechReg = new javax.swing.JSpinner();
+        jScrollPaneConsCurProg = new javax.swing.JScrollPane();
+        jListConsCurProg = new javax.swing.JList<>();
+        jScrollPaneConsCurEdic = new javax.swing.JScrollPane();
+        jListConsCurEdic = new javax.swing.JList<>();
+        jButtonConsCurProg = new javax.swing.JButton();
+        jButtonConsCurEdic = new javax.swing.JButton();
         jInternalFrameAltaEd = new javax.swing.JInternalFrame();
         jComboBoxAltaEdIns = new javax.swing.JComboBox<>();
         jComboBoxAltaEdCur = new javax.swing.JComboBox<>();
@@ -215,7 +227,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextPaneConsProgDesc = new javax.swing.JTextPane();
         jSpinnerConsProgFechIni = new javax.swing.JSpinner();
         jSpinnerConsProgFechFin = new javax.swing.JSpinner();
-        jComboBoxConsProgCursos = new javax.swing.JComboBox<>();
         jButtonConsProgSalir = new javax.swing.JButton();
         jLabelConsProgProg = new javax.swing.JLabel();
         jLabelConsProgNom = new javax.swing.JLabel();
@@ -223,6 +234,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabelConsProgFechIni = new javax.swing.JLabel();
         jLabelConsProgFechFin = new javax.swing.JLabel();
         jLabelConsProgCur = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jListCursosPrograma = new javax.swing.JList<>();
+        jButtonConsProgMostrarCur = new javax.swing.JButton();
         jInternalFrameAltaInst = new javax.swing.JInternalFrame();
         jTextFieldAltaInstNom = new javax.swing.JTextField();
         jLabelAltaInstNom = new javax.swing.JLabel();
@@ -267,7 +281,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setMaximizedBounds(new java.awt.Rectangle(300, 300, 500, 850));
         setName("ventanaPrincipal"); // NOI18N
         setPreferredSize(new java.awt.Dimension(500, 850));
-        setResizable(false);
         setSize(new java.awt.Dimension(500, 850));
         getContentPane().setLayout(null);
 
@@ -457,7 +470,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addGroup(jInternalFrameModUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrameModUsrLayout.createSequentialGroup()
-                        .addGap(0, 131, Short.MAX_VALUE)
+                        .addGap(0, 192, Short.MAX_VALUE)
                         .addComponent(jButtonConfModUsr)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonCancModUsr))
@@ -538,12 +551,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabelConsUsrFechNac.setText("Fecha de Nac.:");
 
-        jComboBoxConsUsrProg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBoxConsUsrCursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBoxConsUsrEd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabelConsUsrProg.setText("Programas:");
 
         jLabelConsUsrCurso.setText("Cursos:");
@@ -560,35 +567,86 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSpinnerConsUsrFechNac.setModel(new javax.swing.SpinnerDateModel());
         jSpinnerConsUsrFechNac.setEnabled(false);
 
+        jListConsUsrProg.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jListConsUsrProg.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPaneConsUsrProg.setViewportView(jListConsUsrProg);
+
+        jListConsUsrEd.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPaneConsUsrEd.setViewportView(jListConsUsrEd);
+
+        jListConsUsrCur.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPaneConsUsrCur.setViewportView(jListConsUsrCur);
+
+        jButtonConsUsrProg.setText("Mostrar");
+        jButtonConsUsrProg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsUsrProgActionPerformed(evt);
+            }
+        });
+
+        jButtonConsUsrCur.setText("Mostrar");
+        jButtonConsUsrCur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsUsrCurActionPerformed(evt);
+            }
+        });
+
+        jButtonConsUsrEd.setText("Mostrar");
+        jButtonConsUsrEd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsUsrEdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrameConsUsrLayout = new javax.swing.GroupLayout(jInternalFrameConsUsr.getContentPane());
         jInternalFrameConsUsr.getContentPane().setLayout(jInternalFrameConsUsrLayout);
         jInternalFrameConsUsrLayout.setHorizontalGroup(
             jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsUsrLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonConUsrSalir)
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelConsUsrNick, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1ConsUsrNom, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelConsUsrFechNac, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelConsUsrAp, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelConsUsrEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelConsUsrCurso, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelConsUsrEd, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelConsUsrProg, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(52, 52, 52)
+                .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
+                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonConUsrSalir)
+                            .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPaneConsUsrProg, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                .addComponent(jScrollPaneConsUsrCur)
+                                .addComponent(jScrollPaneConsUsrEd)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelConsUsrNick, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1ConsUsrNom, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelConsUsrEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelConsUsrFechNac, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelConsUsrAp, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelConsUsrProg, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelConsUsrCurso, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelConsUsrEd, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(52, 52, 52)
-                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldConsUsrNom)
-                            .addComponent(jComboBoxConsUsrList, 0, 193, Short.MAX_VALUE)
-                            .addComponent(jTextFieldConsUsrEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldConsUsrAp, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBoxConsUsrProg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxConsUsrCursos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxConsUsrEd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpinnerConsUsrFechNac, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(44, 44, 44))
+                            .addComponent(jButtonConsUsrCur)
+                            .addComponent(jButtonConsUsrProg)
+                            .addComponent(jButtonConsUsrEd))
+                        .addGap(8, 8, 8))
+                    .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextFieldConsUsrNom)
+                        .addComponent(jComboBoxConsUsrList, 0, 193, Short.MAX_VALUE)
+                        .addComponent(jTextFieldConsUsrEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTextFieldConsUsrAp, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jSpinnerConsUsrFechNac, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(62, 62, 62))
         );
         jInternalFrameConsUsrLayout.setVerticalGroup(
             jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -597,45 +655,59 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
                         .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
-                                .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
-                                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabelConsUsrNick)
-                                            .addComponent(jComboBoxConsUsrList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextFieldConsUsrNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1ConsUsrNom))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextFieldConsUsrAp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelConsUsrAp))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextFieldConsUsrEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelConsUsrEmail))
-                                        .addGap(40, 40, 40))
-                                    .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelConsUsrFechNac)
-                                        .addComponent(jSpinnerConsUsrFechNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(53, 53, 53)
-                                .addComponent(jComboBoxConsUsrProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelConsUsrProg))
+                            .addComponent(jLabelConsUsrNick)
+                            .addComponent(jComboBoxConsUsrList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBoxConsUsrCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelConsUsrCurso))
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBoxConsUsrEd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldConsUsrNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1ConsUsrNom))
+                        .addGap(18, 18, 18)
+                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldConsUsrAp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelConsUsrAp))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldConsUsrEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
+                        .addComponent(jLabelConsUsrEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelConsUsrFechNac)
+                            .addComponent(jSpinnerConsUsrFechNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsUsrLayout.createSequentialGroup()
+                        .addComponent(jLabelConsUsrProg)
+                        .addGap(46, 46, 46))
+                    .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jButtonConsUsrProg)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsUsrLayout.createSequentialGroup()
+                        .addComponent(jScrollPaneConsUsrProg, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelConsUsrCurso)
+                        .addComponent(jScrollPaneConsUsrCur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConsUsrCur)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
+                        .addGroup(jInternalFrameConsUsrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPaneConsUsrEd, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jInternalFrameConsUsrLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jButtonConsUsrEd)))
+                        .addGap(92, 92, 92)
+                        .addComponent(jButtonConUsrSalir))
                     .addComponent(jLabelConsUsrEd))
-                .addGap(49, 49, 49)
-                .addComponent(jButtonConUsrSalir)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(101, 101, 101))
         );
 
         getContentPane().add(jInternalFrameConsUsr);
-        jInternalFrameConsUsr.setBounds(0, 0, 441, 562);
+        jInternalFrameConsUsr.setBounds(0, 0, 496, 715);
 
         jInternalFrameConsEdicCurso.setTitle("Consulta de edición de Curso");
         jInternalFrameConsEdicCurso.setPreferredSize(new java.awt.Dimension(396, 553));
@@ -708,7 +780,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jInternalFrameConsEdicCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jInternalFrameConsEdicCursoLayout.createSequentialGroup()
-                        .addGap(0, 14, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jInternalFrameConsEdicCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelConsEdCurIns, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelConsEdCurEdic, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1028,7 +1100,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jInternalFrameAltaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAltaCursoPrev))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jInternalFrameAltaCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAltaCurFechaReg)
                     .addComponent(jSpinnerAltaCurFechaReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1075,12 +1147,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jTextFieldConsCurHrs.setEnabled(false);
 
-        jComboBoxConsCurProg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxConsCurProg.setEnabled(false);
-
-        jComboBoxConsCurEd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxConsCurEd.setEnabled(false);
-
         jButtonConsCurSalir.setText("Salir");
         jButtonConsCurSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1111,51 +1177,91 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabelConsCurEd.setText("Ediciones:");
 
         jSpinnerConsCurFechReg.setModel(new javax.swing.SpinnerDateModel());
+        jSpinnerConsCurFechReg.setEnabled(false);
+
+        jListConsCurProg.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPaneConsCurProg.setViewportView(jListConsCurProg);
+
+        jListConsCurEdic.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPaneConsCurEdic.setViewportView(jListConsCurEdic);
+
+        jButtonConsCurProg.setText("Mostrar");
+        jButtonConsCurProg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsCurProgActionPerformed(evt);
+            }
+        });
+
+        jButtonConsCurEdic.setText("Mostrar");
+        jButtonConsCurEdic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsCurEdicActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrameConsCurLayout = new javax.swing.GroupLayout(jInternalFrameConsCur.getContentPane());
         jInternalFrameConsCur.getContentPane().setLayout(jInternalFrameConsCurLayout);
         jInternalFrameConsCurLayout.setHorizontalGroup(
             jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsCurLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
-                .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelConsCurNom)
-                    .addComponent(jLabelConsCurCur)
-                    .addComponent(jLabelConsCurInst)
-                    .addComponent(jLabelConsCurDesc)
-                    .addComponent(jLabelConsCurDur)
-                    .addComponent(jLabelConsCurHrs)
-                    .addComponent(jLabelConsCurFechReg)
-                    .addComponent(jLabelConsCurUrl)
-                    .addComponent(jLabelConsCurProg)
-                    .addComponent(jLabelConsCurEd))
+            .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsCurLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
+                    .addComponent(jLabelConsCurEd)
+                    .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabelConsCurNom)
+                        .addComponent(jLabelConsCurCur)
+                        .addComponent(jLabelConsCurInst)
+                        .addComponent(jLabelConsCurDesc)
+                        .addComponent(jLabelConsCurDur)
+                        .addComponent(jLabelConsCurHrs)
+                        .addComponent(jLabelConsCurFechReg)
+                        .addComponent(jLabelConsCurUrl)
+                        .addComponent(jLabelConsCurProg)))
+                .addGap(18, 18, 18)
+                .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextFieldConsCurCrd, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxConsCurCur, javax.swing.GroupLayout.Alignment.LEADING, 0, 155, Short.MAX_VALUE)
-                            .addComponent(jComboBoxConsCurInst, javax.swing.GroupLayout.Alignment.LEADING, 0, 155, Short.MAX_VALUE)
-                            .addComponent(jButtonConsCurSalir)
+                            .addComponent(jComboBoxConsCurCur, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxConsCurInst, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldConsCurNom, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxConsCurEd, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxConsCurProg, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldConsCurUrl, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldConsCurDur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(jSpinnerConsCurFechReg, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(54, 54, 54))
+                            .addComponent(jTextFieldConsCurDur, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSpinnerConsCurFechReg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                        .addGap(54, 63, Short.MAX_VALUE))
                     .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldConsCurHrs, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabelConsCurCrd)
-                        .addContainerGap())))
+                        .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
+                                .addComponent(jTextFieldConsCurHrs, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabelConsCurCrd))
+                            .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
+                                    .addComponent(jScrollPaneConsCurProg, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButtonConsCurProg))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrameConsCurLayout.createSequentialGroup()
+                                    .addComponent(jScrollPaneConsCurEdic, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButtonConsCurSalir)
+                                        .addComponent(jButtonConsCurEdic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jInternalFrameConsCurLayout.setVerticalGroup(
             jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(23, 23, 23)
                 .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
                         .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1166,47 +1272,55 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                             .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
                                                 .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
-                                                        .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                            .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
-                                                                .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                    .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
-                                                                        .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                            .addComponent(jComboBoxConsCurInst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                            .addComponent(jLabelConsCurInst))
-                                                                        .addGap(18, 18, 18)
-                                                                        .addComponent(jComboBoxConsCurCur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                    .addComponent(jLabelConsCurCur))
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jTextFieldConsCurNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addComponent(jLabelConsCurNom))
+                                                        .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                            .addComponent(jLabelConsCurInst)
+                                                            .addComponent(jComboBoxConsCurInst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGap(18, 18, 18)
-                                                        .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(jLabelConsCurDesc))
-                                                        .addGap(15, 15, 15)
-                                                        .addComponent(jTextFieldConsCurDur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jLabelConsCurDur))
+                                                        .addComponent(jComboBoxConsCurCur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(jLabelConsCurCur))
                                                 .addGap(18, 18, 18)
-                                                .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jTextFieldConsCurCrd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextFieldConsCurHrs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabelConsCurHrs)
-                                                    .addComponent(jLabelConsCurCrd))
-                                                .addGap(40, 40, 40))
-                                            .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jLabelConsCurFechReg)
-                                                .addComponent(jSpinnerConsCurFechReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(jTextFieldConsCurUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabelConsCurUrl))
+                                                .addComponent(jTextFieldConsCurNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabelConsCurNom))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabelConsCurDesc))
+                                        .addGap(15, 15, 15)
+                                        .addComponent(jTextFieldConsCurDur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabelConsCurDur))
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBoxConsCurProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelConsCurProg))
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBoxConsCurEd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelConsCurEd))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonConsCurSalir)
-                .addContainerGap(153, Short.MAX_VALUE))
+                                .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextFieldConsCurCrd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldConsCurHrs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelConsCurHrs)
+                                    .addComponent(jLabelConsCurCrd))
+                                .addGap(40, 40, 40))
+                            .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelConsCurFechReg)
+                                .addComponent(jSpinnerConsCurFechReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldConsCurUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelConsCurUrl))
+                .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelConsCurProg)
+                            .addComponent(jScrollPaneConsCurProg, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jInternalFrameConsCurLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jButtonConsCurProg)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsCurLayout.createSequentialGroup()
+                        .addGroup(jInternalFrameConsCurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPaneConsCurEdic, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelConsCurEd))
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsCurLayout.createSequentialGroup()
+                        .addComponent(jButtonConsCurEdic)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButtonConsCurSalir)
+                        .addGap(44, 44, 44))))
         );
 
         getContentPane().add(jInternalFrameConsCur);
@@ -1341,7 +1455,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonAltaEdAcep)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAltaEdCancel)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrameAltaEdLayout.setVerticalGroup(
             jInternalFrameAltaEdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1449,7 +1563,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonAddCurProgCancel))
                     .addComponent(jComboBoxAddCurProgProg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxAddCurProgCur, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrameAddCurProgLayout.setVerticalGroup(
             jInternalFrameAddCurProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1490,16 +1604,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextPaneConsProgDesc.setEnabled(false);
         jScrollPane6.setViewportView(jTextPaneConsProgDesc);
 
+        jSpinnerConsProgFechIni.setModel(new javax.swing.SpinnerDateModel());
         jSpinnerConsProgFechIni.setEnabled(false);
 
+        jSpinnerConsProgFechFin.setModel(new javax.swing.SpinnerDateModel());
         jSpinnerConsProgFechFin.setEnabled(false);
-
-        jComboBoxConsProgCursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxConsProgCursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxConsProgCursosActionPerformed(evt);
-            }
-        });
 
         jButtonConsProgSalir.setText("Salir");
         jButtonConsProgSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -1520,12 +1629,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabelConsProgCur.setText("Cursos:");
 
+        jListCursosPrograma.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane8.setViewportView(jListCursosPrograma);
+
+        jButtonConsProgMostrarCur.setText("Mostrar");
+        jButtonConsProgMostrarCur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsProgMostrarCurActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrameConsProgLayout = new javax.swing.GroupLayout(jInternalFrameConsProg.getContentPane());
         jInternalFrameConsProg.getContentPane().setLayout(jInternalFrameConsProgLayout);
         jInternalFrameConsProgLayout.setHorizontalGroup(
             jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsProgLayout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelConsProgProg, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelConsProgNom, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1533,52 +1656,72 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabelConsProgFechIni, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelConsProgFechFin, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelConsProgCur, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(48, 48, 48)
                 .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonConsProgSalir)
-                    .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane6)
-                        .addComponent(jComboBoxConsProgProg, javax.swing.GroupLayout.Alignment.LEADING, 0, 172, Short.MAX_VALUE)
-                        .addComponent(jTextFieldConsProgNom, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jComboBoxConsProgCursos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinnerConsProgFechFin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                        .addComponent(jSpinnerConsProgFechIni, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(74, 74, 74))
+                    .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jInternalFrameConsProgLayout.createSequentialGroup()
+                            .addGap(157, 157, 157)
+                            .addComponent(jButtonConsProgSalir)
+                            .addGap(109, 109, 109))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsProgLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonConsProgMostrarCur)
+                            .addGap(24, 24, 24)))
+                    .addGroup(jInternalFrameConsProgLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldConsProgNom, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxConsProgProg, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerConsProgFechIni, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerConsProgFechFin, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(100, 100, 100))))
         );
         jInternalFrameConsProgLayout.setVerticalGroup(
             jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameConsProgLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrameConsProgLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
                         .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jInternalFrameConsProgLayout.createSequentialGroup()
                                 .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jInternalFrameConsProgLayout.createSequentialGroup()
-                                        .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jInternalFrameConsProgLayout.createSequentialGroup()
-                                                .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jComboBoxConsProgProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabelConsProgProg))
-                                                .addGap(31, 31, 31)
-                                                .addComponent(jTextFieldConsProgNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabelConsProgNom))
-                                        .addGap(29, 29, 29)
-                                        .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelConsProgDesc))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jSpinnerConsProgFechIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabelConsProgFechIni))
-                                .addGap(27, 27, 27)
-                                .addComponent(jSpinnerConsProgFechFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelConsProgFechFin))
-                        .addGap(29, 29, 29)
-                        .addComponent(jComboBoxConsProgCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelConsProgCur))
-                .addGap(62, 62, 62)
+                                        .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabelConsProgProg)
+                                            .addComponent(jComboBoxConsProgProg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(54, 54, 54))
+                                    .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelConsProgNom)
+                                        .addComponent(jTextFieldConsProgNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(26, 26, 26)
+                                .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelConsProgDesc))
+                                .addGap(44, 44, 44))
+                            .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelConsProgFechIni)
+                                .addComponent(jSpinnerConsProgFechIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(50, 50, 50))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsProgLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelConsProgFechFin)
+                            .addComponent(jSpinnerConsProgFechFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrameConsProgLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jInternalFrameConsProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelConsProgCur)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameConsProgLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonConsProgMostrarCur)
+                        .addGap(38, 38, 38)))
                 .addComponent(jButtonConsProgSalir)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jInternalFrameConsProg);
@@ -1703,7 +1846,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jInternalFrameInscEdCursLayout.setHorizontalGroup(
             jInternalFrameInscEdCursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrameInscEdCursLayout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jInternalFrameInscEdCursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrameInscEdCursLayout.createSequentialGroup()
                         .addComponent(jButtonInscEdCurAcep)
@@ -1950,7 +2093,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jComboBoxConsEdCurInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsEdCurInstActionPerformed
         // TODO add your handling code here:
-         String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
+        String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
         jComboBoxConsEdCurCurso.setModel(new DefaultComboBoxModel<>(ICU.cursosInstituto(instituto).toArray(
                                          new String [ICU.cursosInstituto(instituto).size()])));
         
@@ -1960,7 +2103,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jComboBoxConsEdCurCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsEdCurCursoActionPerformed
         // TODO add your handling code here:
-         String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
+        String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
         String curso = jComboBoxConsEdCurCurso.getSelectedItem().toString();
         jComboBoxConsEdCurEdic.setModel(new DefaultComboBoxModel<>(ICU.EdicionesCurso(instituto, curso).toArray(
                                         new String [ICU.EdicionesCurso(instituto, curso).size()])));
@@ -1970,13 +2113,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jComboBoxConsEdCurEdicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsEdCurEdicActionPerformed
         // TODO add your handling code here:
-       String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
-       String curso = jComboBoxConsEdCurCurso.getSelectedItem().toString(); 
-       String edicion = jComboBoxConsEdCurEdic.getSelectedItem().toString(); 
-       DTEdicion datos = ICU.datosEdicion(instituto,curso,edicion);
-      
-       jTextFieldlConsEdCurNom.setText(datos.getNombre());
        
+       String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString().trim();
+       String curso = jComboBoxConsEdCurCurso.getSelectedItem().toString().trim(); 
+       String edicion = jComboBoxConsEdCurEdic.getSelectedItem().toString().trim(); 
+       DTEdicion datos = ICU.datosEdicion(instituto,curso,edicion);
+       jTextFieldlConsEdCurNom.setText(datos.getNombre());
        jSpinnerConsEdiCurFechaIni.setValue(datos.getFechaIni());
        jSpinnerConsEdiCurFechaFn.setValue(datos.getFechaFin());       
        jTextFieldConsEdCurCupo.setText(""+datos.getCuposMax()); 
@@ -2062,8 +2204,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jInternalFrameConsCur.setVisible(false);
         jComboBoxConsCurCur.setEnabled(false);
-        jComboBoxConsCurProg.setEnabled(false);
-        jComboBoxConsCurEd.setEnabled(false);   
+       // jComboBoxConsCurProg.setEnabled(false);
+        //jComboBoxConsCurEd.setEnabled(false);   
     }//GEN-LAST:event_jButtonConsCurSalirActionPerformed
 
     private void jComboBoxConsCurInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsCurInstActionPerformed
@@ -2076,8 +2218,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jComboBoxConsCurCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsCurCurActionPerformed
         // TODO add your handling code here:
-        jComboBoxConsCurProg.setEnabled(true);
-        jComboBoxConsCurEd.setEnabled(true);
         String nombreInst = jComboBoxConsCurInst.getSelectedItem().toString();
         String nombreCurso = jComboBoxConsCurCur.getSelectedItem().toString();
         DTCurso datos = ICU.obtenerCurso(nombreCurso);
@@ -2088,10 +2228,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextFieldConsCurCrd.setText(Double.toString(datos.getCreditos()));
         jSpinnerConsCurFechReg.setValue(datos.getFechaReg());
         jTextFieldConsCurUrl.setText(datos.getUrl());
-        jComboBoxConsCurEd.setModel(new DefaultComboBoxModel<>(ICU.EdicionesCurso(nombreInst, nombreCurso).toArray(
-                                         new String [ICU.EdicionesCurso(nombreInst, nombreCurso).size()])));
-        jComboBoxConsCurProg.setModel(new DefaultComboBoxModel<>(ICU.ProgramasCursos(nombreCurso).toArray(
-                                         new String [ICU.ProgramasCursos(nombreCurso).size()])));
+        ArrayList<String> ed = ICU.EdicionesCurso(nombreInst, nombreCurso);
+        ArrayList<String> prog = ICU.ProgramasCursos(nombreCurso);
+        jListConsCurEdic.setModel(new DefaultComboBoxModel<>(ed.toArray( new String [ed.size()])));
+        jListConsCurProg.setModel(new DefaultComboBoxModel<>(prog.toArray(new String [prog.size()])));
     }//GEN-LAST:event_jComboBoxConsCurCurActionPerformed
 
     private void jMenuItemAltaEdCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaEdCursoActionPerformed
@@ -2211,37 +2351,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButtonInscEdCurAcepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInscEdCurAcepActionPerformed
         // TODO add your handling code here:
-        
-        String instituto = jComboBoxInscEdCurInst.getSelectedItem().toString();
-        String curso = jComboBoxInscEdCurCur.getSelectedItem().toString();
-        String edicion = jTextFieldInscEdCurEdic.getText().trim();
-        String estudiante = jComboBoxInscEdCurEst.getSelectedItem().toString();
-        Date fecha_insc = (Date)jSpinnerNacAnioUsr.getModel().getValue();
-      //  boolean inscIsNull = ICU.InscripcionEstEdiIsNull(instituto, curso, edicion, estudiante, fecha_insc);
-        //boolean InscCorrEst = ICU.InscripcionCorrectaEstEdi(curso, edicion, fecha_insc); 
-            if( /*!inscIsNull && InscCorrEst && */!ICU.ExisteRegistroInscripcionE(estudiante, curso, edicion)  ){
-                ICU.crearInscripcionEstudiante(curso, edicion, estudiante, fecha_insc);
-                JOptionPane.showMessageDialog(this, "Inscripcion creada con exito.", "Insc estudiante a edicion",
-                                           JOptionPane.INFORMATION_MESSAGE);
-            
-        } else if( /*!inscIsNull && InscCorrEst && */ICU.ExisteRegistroInscripcionE(estudiante, curso, edicion) ){
-                    ICU.modificarInscripcionEstudiante(curso, edicion, estudiante, fecha_insc);
-                    JOptionPane.showMessageDialog(this, "Inscripcion modificada con exito.", "Insc estudiante a edicion",
-                                          JOptionPane.INFORMATION_MESSAGE);
-                   
-        } else{
-                JOptionPane.showMessageDialog(this, "Error:  datos nulos o fecha incorrecta ", "Error al confirmar",
-                                             JOptionPane.ERROR_MESSAGE);
+        Object instituto = jComboBoxInscEdCurInst.getSelectedItem();
+        Object curso = jComboBoxInscEdCurCur.getSelectedItem();
+        Object estudiante = jComboBoxInscEdCurEst.getSelectedItem();
+        if(instituto == null || curso == null || estudiante == null){
+            return;
         }
-         
-        jInternalFrameInscEdCurs.setVisible(false);
-        jComboBoxInscEdCurInst.setModel(new DefaultComboBoxModel<>());
-        jComboBoxInscEdCurCur.setModel(new DefaultComboBoxModel<>());
-        jComboBoxInscEdCurCur.setEnabled(false);
-        jComboBoxInscEdCurEst.setEnabled(false);
-        jComboBoxInscEdCurEst.setModel(new DefaultComboBoxModel<>());
-        jSpinnerInscEdCurFechInsc.setEnabled(false);
-        jTextFieldInscEdCurEdic.setText("");
+        String inst = instituto.toString();
+        String cur = curso.toString();
+        String est = estudiante.toString();
+        if(inst.isEmpty() ||cur.isEmpty() || est.isEmpty() ){
+            return;
+        }
+        
+            String edicion = jTextFieldInscEdCurEdic.getText().trim();
+
+            Date fecha_insc = (Date)jSpinnerNacAnioUsr.getModel().getValue();
+          //  boolean inscIsNull = ICU.InscripcionEstEdiIsNull(instituto, curso, edicion, estudiante, fecha_insc);
+            //boolean InscCorrEst = ICU.InscripcionCorrectaEstEdi(curso, edicion, fecha_insc); 
+                if( /*!inscIsNull && InscCorrEst && */!ICU.ExisteRegistroInscripcionE(est, cur, edicion)  ){
+                    ICU.crearInscripcionEstudiante(cur, edicion, est, fecha_insc);
+                    JOptionPane.showMessageDialog(this, "Inscripcion creada con exito.", "Insc estudiante a edicion",
+                                               JOptionPane.INFORMATION_MESSAGE);
+
+            } else if( /*!inscIsNull && InscCorrEst && */ICU.ExisteRegistroInscripcionE(est, cur, edicion) ){
+                        ICU.modificarInscripcionEstudiante(cur, edicion, est, fecha_insc);
+                        JOptionPane.showMessageDialog(this, "Inscripcion modificada con exito.", "Insc estudiante a edicion",
+                                              JOptionPane.INFORMATION_MESSAGE);
+
+            } else{
+                    JOptionPane.showMessageDialog(this, "Error:  datos nulos o fecha incorrecta ", "Error al confirmar",
+                                                 JOptionPane.ERROR_MESSAGE);
+            }
+
+            
+        
+      jInternalFrameInscEdCurs.setVisible(false);
+      jComboBoxInscEdCurInst.setModel(new DefaultComboBoxModel<>());
+      jComboBoxInscEdCurCur.setModel(new DefaultComboBoxModel<>());
+      jComboBoxInscEdCurCur.setEnabled(false);
+      jComboBoxInscEdCurEst.setEnabled(false);
+      jComboBoxInscEdCurEst.setModel(new DefaultComboBoxModel<>());
+      jSpinnerInscEdCurFechInsc.setEnabled(false);
+      jTextFieldInscEdCurEdic.setText("");
+        
     }//GEN-LAST:event_jButtonInscEdCurAcepActionPerformed
 
     private void jButtonInscEdCurCancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInscEdCurCancActionPerformed
@@ -2308,17 +2461,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextFieldConsUsrAp.setText(usr.getApellido());
         jTextFieldConsUsrEmail.setText(usr.getCorreo());
         jSpinnerConsUsrFechNac.setValue(usr.getFecha());
-        jComboBoxConsUsrProg.setModel(new DefaultComboBoxModel<>(ICU.mostrarProgramasUsuario(nick).toArray(new String [ICU.mostrarProgramasUsuario(nick).size()])));
-        jComboBoxConsUsrCursos.setModel(new DefaultComboBoxModel<>(ICU.mostrarCursosDocente(nick).toArray(new String [ICU.mostrarCursosDocente(nick).size()])));
-        jComboBoxConsUsrEd.setModel(new DefaultComboBoxModel<>(ICU.mostrarEdicion(nick).toArray(new String [ICU.mostrarEdicion(nick).size()])));
+        jListConsUsrProg.setModel(new DefaultComboBoxModel<>(ICU.mostrarProgramasUsuario(nick).toArray(new String [ICU.mostrarProgramasUsuario(nick).size()])));
+        jListConsUsrCur.setModel(new DefaultComboBoxModel<>(ICU.mostrarCursosDocente(nick).toArray(new String [ICU.mostrarCursosDocente(nick).size()])));
+        jListConsUsrEd.setModel(new DefaultComboBoxModel<>(ICU.mostrarEdicion(nick).toArray(new String [ICU.mostrarEdicion(nick).size()])));
     }//GEN-LAST:event_jComboBoxConsUsrListActionPerformed
 
     private void jButtonConfModUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfModUsrActionPerformed
         // TODO add your handling code here:
-        String nick = jComboBoxListaUsr.getSelectedItem().toString();
-        String nuevoNombre = jTextFieldModUsrNom.getText().trim();
+        Object n = jComboBoxListaUsr.getSelectedItem();
+        String nuevoNombre = jTextFieldModUsrNom.getText();
         String nuevoApellido = jTextFieldModUsrAp.getText().trim();
         Date nuevFechaNac = (Date)jSpinnerModUsrDiaNc.getModel().getValue();
+        String nick = n.toString();
+        if(n==null || nuevoNombre.isEmpty() || nuevoApellido.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe completar todos los datos", "Modificar Usuario", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         ICU.modificarDatosUsuario(nick, nuevoNombre, nuevoApellido, nuevFechaNac);
         JOptionPane.showMessageDialog(this, "Usuario modificado con exito", "Modificar Usuario", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonConfModUsrActionPerformed
@@ -2363,6 +2521,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String prog = jComboBoxAddCurProgProg.getSelectedItem().toString();
         String cur = jComboBoxAddCurProgCur.getSelectedItem().toString();
         ICU.agregarCursoPrograma(prog, cur);
+        JOptionPane.showMessageDialog(this, "Curso agregado", "Aregar curso programa",
+                                          JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_jButtonAddCurProgAgregActionPerformed
     private void jComboBoxConsProgProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsProgProgActionPerformed
         // TODO add your handling code here:
@@ -2370,19 +2531,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         DTPrograma p1 = ICU.obtenerPrograma(prog);
         jTextFieldConsProgNom.setText(p1.getNombre());
         jTextPaneConsProgDesc.setText(p1.getDescripcion());
-       // jSpinnerConsProgFechIni.setValue(p1.getFechaInicial());
-       // jSpinnerConsProgFechFin.setValue(p1.getFechaFinal());
+        jSpinnerConsProgFechIni.setValue(p1.getFechaInicial());
+        jSpinnerConsProgFechFin.setValue(p1.getFechaFinal());
         ArrayList<String> cur = ICU.cursosPrograma(prog);
-        jComboBoxConsProgCursos.setModel(new DefaultComboBoxModel<String>(cur.toArray(new String[cur.size()])));
+        jListCursosPrograma.setModel(new DefaultComboBoxModel<>(cur.toArray(new String[cur.size()])));
+       
     }//GEN-LAST:event_jComboBoxConsProgProgActionPerformed
-    private void jComboBoxConsProgCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsProgCursosActionPerformed
-        // TODO add your handling code here:
-        jInternalFrameConsCur.setVisible(true);
-        String cur = jComboBoxConsProgCursos.getSelectedItem().toString();
-        DTCurso c1 = ICU.obtenerCurso(cur);
-        jTextFieldConsCurNom.setText(c1.getNombre());
-        jTextPaneDesc.setText(c1.getDescripcion());
-    }//GEN-LAST:event_jComboBoxConsProgCursosActionPerformed
+    
+    
+    
     private void jComboBoxAddCurProgCurActionPerformed(java.awt.event.ActionEvent evt) {}                                                       
     private void jTextFieldCrearProgForNomMouseClicked(java.awt.event.MouseEvent evt) {
         jLabelCrearProgForNomAdv.setVisible(false);
@@ -2408,7 +2565,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxInscEdCurCurActionPerformed
     private void jComboBoxInscEdCurEstFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxInscEdCurEstFocusLost
         String curso = jComboBoxInscEdCurCur.getSelectedItem().toString();
-        String edicion = jTextFieldInscEdCurEdic.getSelectedText();
+        String edicion = jTextFieldInscEdCurEdic.getText();
         String estudiante = jComboBoxInscEdCurEst.getSelectedItem().toString();
         boolean existe  = ICU.ExisteRegistroInscripcionE(estudiante, curso, edicion);
         if (existe){ 
@@ -2451,7 +2608,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButtonAltaEdAcepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaEdAcepActionPerformed
         // TODO add your handling code here:
-        String nombreCurso = jComboBoxAltaEdCur.getSelectedItem().toString();
+        Object curso = jComboBoxAltaEdCur.getSelectedItem();
+        if(curso==null){
+            return;
+        }
+        String nombreCurso = curso.toString();
         String nombrEd = jTextFieldAltaEdNomEd.getText().trim();
         Date fechaIni = (Date)jSpinnerAltaEdFechIni.getModel().getValue();
         Date fechaFin = (Date)jSpinnerAltaEdFechFin.getModel().getValue();
@@ -2485,6 +2646,98 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }     
         }
     }//GEN-LAST:event_jButtonAltaEdAcepActionPerformed
+
+    private void jButtonConsProgMostrarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsProgMostrarCurActionPerformed
+        // TODO add your handling code here
+
+        jInternalFrameConsCur.setVisible(true);
+        String cur = jListCursosPrograma.getSelectedValue();
+        DTCurso c1 = ICU.obtenerCurso(cur);
+        ArrayList<String> inst = ICU.listarInstitutos();
+        DTInstituto i1 = ICU.obtenerInstitutoCurso(cur);
+        jComboBoxConsCurInst.setModel(new DefaultComboBoxModel<>(inst.toArray( new String [inst.size()])));
+        jComboBoxConsCurInst.getModel().setSelectedItem(i1.getNombre());
+        jComboBoxConsCurCur.getModel().setSelectedItem(c1.getNombre());
+        jButtonConsProgMostrarCur.addActionListener(jComboBoxConsCurCur);
+    }//GEN-LAST:event_jButtonConsProgMostrarCurActionPerformed
+
+    private void jButtonConsUsrProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsUsrProgActionPerformed
+        // TODO add your handling code here:
+        String prog = jListConsUsrProg.getSelectedValue();
+        if(prog!=null){
+            ArrayList<String> lista = ICU.listarNombreProgramas();
+            jComboBoxConsProgProg.setModel(new DefaultComboBoxModel<String>(lista.toArray(new String[lista.size()])));
+            jInternalFrameConsProg.setVisible(true);
+            jComboBoxConsProgProg.setSelectedItem(prog);
+            jButtonConsUsrProg.addActionListener(jComboBoxConsProgProg);
+        }
+    }//GEN-LAST:event_jButtonConsUsrProgActionPerformed
+
+    private void jButtonConsUsrCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsUsrCurActionPerformed
+        // TODO add your handling code here:
+        
+        String cur = jListConsUsrCur.getSelectedValue();
+        if(cur!=null){
+            ArrayList<String> lista = ICU.listarInstitutos();
+            ArrayList<String> lista2 = ICU.listarNombreCursos();
+            jComboBoxConsCurInst.setModel(new DefaultComboBoxModel<String>(lista.toArray(new String[lista.size()])));
+            jComboBoxConsCurCur.setModel(new DefaultComboBoxModel<String>(lista2.toArray(new String[lista2.size()])));
+            jComboBoxConsCurInst.getModel().setSelectedItem(ICU.obtenerInstitutoCurso(cur).getNombre());
+            jInternalFrameConsCur.setVisible(true);
+            jComboBoxConsCurCur.getModel().setSelectedItem(cur); 
+            jButtonConsUsrCur.addActionListener(jComboBoxConsCurCur);
+        }
+    }//GEN-LAST:event_jButtonConsUsrCurActionPerformed
+
+    private void jButtonConsUsrEdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsUsrEdActionPerformed
+        // TODO add your handling code here
+        String ed = jListConsUsrEd.getSelectedValue();
+        if(ed!=null){
+            jComboBoxConsEdCurCurso.setEnabled(true);
+            String nick = jComboBoxConsUsrList.getSelectedItem().toString();
+            ArrayList<String> lista = ICU.listarInstitutos();
+            ArrayList<String> lista3 = ICU.mostrarEdicion(nick);
+            jComboBoxConsEdCurInst.setModel(new DefaultComboBoxModel<>(lista.toArray(new String[lista.size()])));
+            jComboBoxConsEdCurEdic.setModel(new DefaultComboBoxModel<>(lista3.toArray(new String[lista3.size()])));
+            jInternalFrameConsEdicCurso.setVisible(true);        
+            jComboBoxConsEdCurInst.getModel().setSelectedItem(ICU.institutoEdicion(ed).getNombre());
+            jButtonConsUsrEd.addActionListener(jComboBoxConsEdCurInst);
+            jComboBoxConsEdCurCurso.getModel().setSelectedItem(ICU.cursoEdicion(ed).getNombre());
+            jComboBoxConsEdCurEdic.setSelectedItem(ed);
+            jButtonConsUsrEd.addActionListener(jComboBoxConsEdCurEdic);
+            
+        }
+    }//GEN-LAST:event_jButtonConsUsrEdActionPerformed
+
+    private void jButtonConsCurProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsCurProgActionPerformed
+        // TODO add your handling code here:
+        String prog = jListConsCurProg.getSelectedValue();
+        if(prog!=null){
+            ArrayList<String> lista = ICU.listarNombreProgramas();
+            jComboBoxConsProgProg.setModel(new DefaultComboBoxModel<String>(lista.toArray(new String[lista.size()])));
+            jInternalFrameConsProg.setVisible(true);
+            jComboBoxConsProgProg.setSelectedItem(prog);
+            jButtonConsUsrProg.addActionListener(jComboBoxConsProgProg);
+        }
+    }//GEN-LAST:event_jButtonConsCurProgActionPerformed
+
+    private void jButtonConsCurEdicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsCurEdicActionPerformed
+        // TODO add your handling code here:
+        String ed = jListConsCurEdic.getSelectedValue();
+        if(ed!=null){
+            jComboBoxConsEdCurCurso.setEnabled(true);
+            ArrayList<String> lista = ICU.listarInstitutos();
+            ArrayList<String> lista3 = ICU.EdicionesCurso(jComboBoxConsCurInst.getSelectedItem().toString(),jComboBoxConsCurCur.getSelectedItem().toString());
+            jComboBoxConsEdCurInst.setModel(new DefaultComboBoxModel<>(lista.toArray(new String[lista.size()])));
+            jComboBoxConsEdCurEdic.setModel(new DefaultComboBoxModel<>(lista3.toArray(new String[lista3.size()])));
+            jInternalFrameConsEdicCurso.setVisible(true);        
+            jComboBoxConsEdCurInst.getModel().setSelectedItem(ICU.institutoEdicion(ed).getNombre());
+            jButtonConsUsrEd.addActionListener(jComboBoxConsEdCurInst);
+            jComboBoxConsEdCurCurso.getModel().setSelectedItem(ICU.cursoEdicion(ed).getNombre());
+            jComboBoxConsEdCurEdic.setSelectedItem(ed);
+            jButtonConsUsrEd.addActionListener(jComboBoxConsEdCurEdic);
+        }
+    }//GEN-LAST:event_jButtonConsCurEdicActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -2538,9 +2791,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConUsrSalir;
     private javax.swing.JButton jButtonConfAlta;
     private javax.swing.JButton jButtonConfModUsr;
+    private javax.swing.JButton jButtonConsCurEdic;
+    private javax.swing.JButton jButtonConsCurProg;
     private javax.swing.JButton jButtonConsCurSalir;
     private javax.swing.JButton jButtonConsEdCurSalir;
+    private javax.swing.JButton jButtonConsProgMostrarCur;
     private javax.swing.JButton jButtonConsProgSalir;
+    private javax.swing.JButton jButtonConsUsrCur;
+    private javax.swing.JButton jButtonConsUsrEd;
+    private javax.swing.JButton jButtonConsUsrProg;
     private javax.swing.JButton jButtonCrearProgForAcept;
     private javax.swing.JButton jButtonCrearProgForCancel;
     private javax.swing.JButton jButtonInscEdCurAcep;
@@ -2551,18 +2810,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxAltaEdCur;
     private javax.swing.JComboBox<String> jComboBoxAltaEdIns;
     private javax.swing.JComboBox<String> jComboBoxConsCurCur;
-    private javax.swing.JComboBox<String> jComboBoxConsCurEd;
     private javax.swing.JComboBox<String> jComboBoxConsCurInst;
-    private javax.swing.JComboBox<String> jComboBoxConsCurProg;
     private javax.swing.JComboBox<String> jComboBoxConsEdCurCurso;
     private javax.swing.JComboBox<String> jComboBoxConsEdCurEdic;
     private javax.swing.JComboBox<String> jComboBoxConsEdCurInst;
-    private javax.swing.JComboBox<String> jComboBoxConsProgCursos;
     private javax.swing.JComboBox<String> jComboBoxConsProgProg;
-    private javax.swing.JComboBox<String> jComboBoxConsUsrCursos;
-    private javax.swing.JComboBox<String> jComboBoxConsUsrEd;
     private javax.swing.JComboBox<String> jComboBoxConsUsrList;
-    private javax.swing.JComboBox<String> jComboBoxConsUsrProg;
     private javax.swing.JComboBox<String> jComboBoxInscEdCurCur;
     private javax.swing.JComboBox<String> jComboBoxInscEdCurEst;
     private javax.swing.JComboBox<String> jComboBoxInscEdCurInst;
@@ -2659,6 +2912,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1AltaEdDoc;
     private javax.swing.JList<String> jListAltaCursoPrev;
     private javax.swing.JList<String> jListAltaUsrInstDoc;
+    private javax.swing.JList<String> jListConsCurEdic;
+    private javax.swing.JList<String> jListConsCurProg;
+    private javax.swing.JList<String> jListConsUsrCur;
+    private javax.swing.JList<String> jListConsUsrEd;
+    private javax.swing.JList<String> jListConsUsrProg;
+    private javax.swing.JList<String> jListCursosPrograma;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuCursos;
     private javax.swing.JMenu jMenuInstitutos;
@@ -2687,6 +2946,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPaneConsCurEdic;
+    private javax.swing.JScrollPane jScrollPaneConsCurProg;
+    private javax.swing.JScrollPane jScrollPaneConsUsrCur;
+    private javax.swing.JScrollPane jScrollPaneConsUsrEd;
+    private javax.swing.JScrollPane jScrollPaneConsUsrProg;
     private javax.swing.JSpinner jSpinnerAltaCurFechaReg;
     private javax.swing.JSpinner jSpinnerAltaCursoHrs;
     private javax.swing.JSpinner jSpinnerAltaCursoICrd;

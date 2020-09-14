@@ -54,6 +54,12 @@ public interface ISistema {
     
     public ArrayList<String> mostrarCursosDocente(String nick); // da error porque no esta implementado Curso
     
+    public DTInstituto institutoEdicion(String nombreE);
+    
+    public DTInstituto obtenerInstitutoCurso(String nombreC);
+    
+    public DTCurso cursoEdicion(String nombreE);
+     
     public Set<DTPrograma> mostrarProgramaDoc(String nick); //no es necesaria
     
     public Set<DTUsuario> consultaUsuarios();

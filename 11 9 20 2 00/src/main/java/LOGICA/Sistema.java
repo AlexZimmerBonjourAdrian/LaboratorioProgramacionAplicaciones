@@ -86,6 +86,28 @@ public class Sistema implements ISistema{
         return existeMail;
     };
     
+    public DTInstituto obtenerInstitutoCurso(String nombreC){
+        
+        Singleton sm = Singleton.getInstance();
+        Map i1 = sm.getInstitutos();
+        DTInstituto res = null;
+        Iterator<Map.Entry<String, Instituto>> it = i1.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<String, Instituto> i2 = it.next();
+            Instituto i3 = i2.getValue();
+            Map c1 = i3.getCursos();
+            Iterator<Map.Entry<String, Curso>> itc = c1.entrySet().iterator();
+            while(itc.hasNext()){
+                Map.Entry<String, Curso> c2 = itc.next();
+                Curso c3 = c2.getValue();
+                if(nombreC.equals(c3.getNombre())){
+                    res = i3.getDatos();
+                }
+            }
+        }
+        return res;
+    }
+    
     public boolean sintaxisEmailCorrecta(String email){
         boolean resultado = true;
         int cantarrobas = 0;
@@ -262,6 +284,57 @@ public class Sistema implements ISistema{
             }
         //}else System.out.println("no hay programas en el sistema");
         return programas;
+    }
+    
+    public DTInstituto institutoEdicion(String nombreE){
+        Singleton sm = Singleton.getInstance();
+        DTInstituto res = null;
+        Map inst = sm.getInstitutos();
+        Iterator<Map.Entry<String, Instituto>> it = inst.entrySet().iterator();
+        while(it.hasNext()){
+           Map.Entry<String, Instituto> i1 = it.next();
+           Instituto i3 = (Instituto)i1.getValue();
+           Map c1 = i3.getCursos();
+           Iterator<Map.Entry<String, Curso>> itc = c1.entrySet().iterator();
+           while(itc.hasNext()){
+               Map.Entry<String, Curso> c2 = itc.next();
+               Curso c3 = (Curso) c2.getValue();
+               Map e1 = c3.getEdiciones();
+               Iterator<Map.Entry<String, Edicion>> ite= e1.entrySet().iterator();
+               while(ite.hasNext()){
+                   Map.Entry<String,Edicion> e2 = ite.next();
+                   Edicion e3 =  e2.getValue();
+                   if(e3.getNombreEdicion()==nombreE){
+                       res=i3.getDatos();
+                       break;
+                   }
+               }
+           }
+        }
+        return res;
+    }
+    
+    public DTCurso cursoEdicion(String nombreE){
+           Singleton sm = Singleton.getInstance();
+           DTCurso res = null;
+           Map c1 = sm.getCursos();
+           Iterator<Map.Entry<String, Curso>> itc = c1.entrySet().iterator();
+           while(itc.hasNext()){
+               Map.Entry<String, Curso> c2 = itc.next();
+               Curso c3 = (Curso) c2.getValue();
+               Map e1 = c3.getEdiciones();
+               Iterator<Map.Entry<String, Edicion>> ite= e1.entrySet().iterator();
+               while(ite.hasNext()){
+                   Map.Entry<String,Edicion> e2 = ite.next();
+                   Edicion e3 =  e2.getValue();
+                   if(e3.getNombreEdicion()==nombreE){
+                       res=c3.getDatos();
+                       break;
+                   }
+               }
+           }
+        
+        return res;
     }
     
     public ArrayList<String> mostrarCursosDocente(String nick){
