@@ -17,8 +17,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Curso</title>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+              $('#inst').on("click", function(){
+                  var inst = $('#inst').val();
+                  console.log("El instituto seleccionado es: " + inst);
+                  $.ajax({
+                      type:'POST',
+                      data:{inst: inst},
+                      url:'Edicion',
+                      success:function(result){
+                          console.log(result);
+                          $('#previas').html(result.result1);
+                         
+                      }
+                  });
+                  
+              });  
+            });
+            
+        </script>
+        
+        
     </head>
     <body>
         
@@ -28,7 +52,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-sm">  
-                    <form action="Curso" method="post">          
+                    <form action="Curso" method="get">          
                         <div class="form-group">
                             <label >Escriba el nombre del curso:</label>
                             <input type="text" class="form-control" name="nomCur" placeholder="Nombre">
@@ -68,6 +92,23 @@
                          </c:forEach>
                         </select>
                         </div>
+                        <div class="form-group">
+
+                        <select id="previas" multiple name="previas">
+                        
+                        </select>
+                        
+                        </div>
+                        <div class="form-group">
+                        <select id="cat" multiple name="cat">
+                        
+                        <c:forEach items="${categorias}" var="cat" varStatus="loop">
+                           <option>
+                               ${cat}
+                           </option>
+                         </c:forEach>
+                        </select>
+                        </div>
                         <input type="submit" class="btn btn-primary"></input>
                         
                         
@@ -78,39 +119,7 @@
         </div>
             <br>
             <br>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="alert alert-primary" role="alert">
-                        <%
-                            
-                            FabricaLab fabrica = FabricaLab.getInstance();
-                            ISistema ICU = fabrica.getISistema();
-                            String nomCur=request.getParameter("nomCur");
-                            String desCur=request.getParameter("desCur");
-                            String durCur=request.getParameter("durCur");
-                            String horasCur=request.getParameter("horasCur");
-                            String credCur=request.getParameter("credCur");
-                            String urlCur=request.getParameter("url");
-                            String fecha = request.getParameter("fecha");
-                            String inst = request.getParameter("inst");
-                            out.print(inst);
-                            Date fechaDate=null;
-                            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                            if(fecha!=null){
-                                fechaDate = formato.parse(fecha);
-                            }
-                            if(nomCur!=null){
-                                DTCurso datoscurso = new DTCurso(nomCur,desCur,durCur,Double.parseDouble(horasCur),Double.parseDouble(credCur),fechaDate,urlCur);
-                                ICU.registrarCurso(inst, datoscurso, null, null);
-                            }
-                            
-                            
-
-                           
-                        %>
-                    </div>
-                </div>
-            </div>
+           
        
         
         

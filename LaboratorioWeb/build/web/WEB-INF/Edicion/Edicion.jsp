@@ -124,100 +124,11 @@
             <span id="result1"> </span>
             <br>
             <br>
-        <div class="row">
-            <div class="col-sm">
-                <div class="alert alert-primary" role="alert">
-                    <%
-                        Persistencia p = Persistencia.getInstance();
-                        p.inicializarBaseDeDatos();
-                        FabricaLab fabrica = FabricaLab.getInstance();
-                        ISistema ICU = fabrica.getISistema();  
-                        String nombreEd = request.getParameter("nombreEd");
-                        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                        Date fechaIniDate = null;
-                        Date fechaFinDate = null;
-                        Date fechaPubDate = null;
-                        String fechaIni = request.getParameter("fechaIni");
-                        String fechaFin = request.getParameter("fechaFin");
-                        String fechaPub = request.getParameter("fechaPub");
-                        String llevaCupos = request.getParameter("Radio");
-                        String nombreCurso = request.getParameter("cur");
-                        int cupos = 0;
-                        if(llevaCupos!=null && llevaCupos.equals("Si")){
-                            cupos = Integer.parseInt(request.getParameter("cuposEd"));
-                        }
-                        else{ 
-                            cupos = 10000;
-                        }
-                        if(fechaIni!=null){
-                            fechaIniDate = formato.parse(fechaIni);
-                        }
-                        if(fechaFin!=null){
-                            fechaFinDate = formato.parse(fechaFin);
-                        }
-                        if(fechaPub!=null){
-                            fechaPubDate = formato.parse(fechaPub);
-                        }
-                        String[] doc = request.getParameterValues("docentes");
-                        DTEdicion ed = new DTEdicion(nombreEd, fechaIniDate, fechaFinDate, cupos,fechaPubDate);
-                        List lista = new ArrayList();
-                        if(doc!=null){
-                            lista = Arrays.asList(doc);
-                        }
-                        if(nombreEd!=null){
-                            ICU.altaEdicionCurso(nombreCurso, ed, lista);
-                        }
-                        
-                    %>
-                </div>
-            </div>
-        </div>
+        
        
         
         
     </body>
 </html>
 
-   <%--
-                        Persistencia p = Persistencia.getInstance();
-                        p.inicializarBaseDeDatos();
-                        FabricaLab fabrica = FabricaLab.getInstance();
-                        ISistema ICU = fabrica.getISistema();  
-                        String inst = request.getParameter("inst");
-                        if(inst!=null){
-                         ArrayList<String> cursos = ICU.cursosInstituto(inst);
-                         for(Object curso : cursos){
-                            %>
-                                <option ><%=curso%></option>
-                            <%
-                          }
-                              
-                        }
-                        --%>
-
-   <%--c:forEach items="${cursos}" var="cur" varStatus="loop">
-                           <option>
-                               ${cursos}
-                           </option>
-              </c:forEach --%>
    
-   
-                <%-- 
-                        <script>
-                            $(document).ready(function() {
-                                $("#inst").on("change", function() {
-                                    var inst = $("#inst").val();
-                                    $.ajax({
-                                       
-                                        data: {inst: inst},
-                                        method: "POST",
-                                        success: function(data)
-                                        {
-                                            $("#cur").html(data);  
-                                        }
-                                    });
-                                });
-                            });
-                            
-                        </script>
-       --%>

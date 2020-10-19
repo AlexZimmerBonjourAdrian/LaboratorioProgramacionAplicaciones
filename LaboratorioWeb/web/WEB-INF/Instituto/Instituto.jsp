@@ -27,31 +27,15 @@
                        
                             <label >Escriba el nombre del instituto:</label>
                             <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                            <br>
+                            <input type="submit" class="btn btn-primary"></input>
                         </div>
                         
                 </div>
             </div>
             <br>
             <br>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="alert alert-primary" role="alert">
-                        <%
-                            
-                            FabricaLab fabrica = FabricaLab.getInstance();
-                            ISistema ICU = fabrica.getISistema();
-                            String nombre=request.getParameter("nombre");
-                            if(nombre!=null){
-                                ICU.altaInstituto(nombre);
-                                out.print("Se creo el instituto " + nombre);
-                            }
-                            
-
-                           
-                        %>
-                    </div>
-                </div>
-            </div>
+           
        
         
       

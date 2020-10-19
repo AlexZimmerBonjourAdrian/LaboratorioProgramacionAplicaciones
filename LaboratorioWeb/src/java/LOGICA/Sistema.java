@@ -209,12 +209,14 @@ public class Sistema implements ISistema{
         boolean existeMail = true;
         Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
         while(it.hasNext() && existeMail){
-           Map.Entry<String, Usuario> usr = it.next();
+          Map.Entry<String, Usuario> usr = it.next();
+           
            if(usr.getValue().getCorreo().equals(mail)){
                existeMail = false;
                return usr.getValue().getDatos();
                
            }
+           
         }
         return null;
     }

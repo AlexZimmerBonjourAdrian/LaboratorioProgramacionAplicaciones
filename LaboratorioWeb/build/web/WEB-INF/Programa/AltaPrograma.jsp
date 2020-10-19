@@ -49,49 +49,7 @@
                 </div>
             </div>
             
-             <div class="row">
-                <div class="col-sm">
-                    <div class="alert alert-primary" role="alert">
-                        <%
-                            Persistencia p = Persistencia.getInstance();
-                            p.inicializarBaseDeDatos();
-                            FabricaLab fabrica = FabricaLab.getInstance();
-                            ISistema ICU = fabrica.getISistema();
-                            String nombrep = request.getParameter("nombrep");
-                            String desc = request.getParameter("descripcion"); 
-                            String fechaDate = request.getParameter("fechaini");
-                            String fechaDate2 = request.getParameter("fechafin");
-                            
-                            Date fechaini = null;
-                                Date fechafin = null;
-                                if(fechaDate!=null){
-                                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                                    fechaini = formato.parse(fechaDate);
-                                }
-                                if(fechaDate2!=null){
-                                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                                    fechafin = formato.parse(fechaDate2);
-                                }
-                            DTPrograma datos = new DTPrograma(nombrep,desc,fechaini,fechafin,new Date());
-                            
-                            if (ICU.obtenerPrograma(nombrep) == null){
-                               
-                                ICU.crearPrograma(datos);
-                                
-                            
-    //                            String frase="Se creo el programa: " + nombrep;
-     //                           out.print(frase);
-                            }else{
-                                ICU.modificarDatosPrograma(datos);
-              //                   String frase="Se modificó el programa: " + nombrep;
-               //                 out.print(frase);
-                            } 
-                         
-                           
-                        %>
-                    </div>
-                </div>
-            </div>
+             
             
     </body>
 </html>

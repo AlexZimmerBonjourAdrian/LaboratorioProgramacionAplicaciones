@@ -63,7 +63,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario <span class="fa fa-angle-down"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Consulta de usuario</a></li>
+                                    <li><a href="consultausuario">Consulta de usuario</a></li>
                                     <li><a href="#">Modificar datos de usuario</a></li>
                                   
                                 </ul>
@@ -131,7 +131,7 @@
                         <li class="child-menu"><a href="#">Usuario <i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="#">Consulta de usuario</a></li>
+                                    <li><a href="consultausuario">Consulta de usuario</a></li>
                                     
                                 </ul>
                             </div>

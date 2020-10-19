@@ -48,6 +48,10 @@
         <servlet-name>cursodatos</servlet-name>
         <servlet-class>controller.cursodatos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>consultausuario</servlet-name>
+        <servlet-class>controller.consultausuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>cursodatos</servlet-name>
         <url-pattern>/cursodatos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>consultausuario</servlet-name>
+        <url-pattern>/consultausuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
