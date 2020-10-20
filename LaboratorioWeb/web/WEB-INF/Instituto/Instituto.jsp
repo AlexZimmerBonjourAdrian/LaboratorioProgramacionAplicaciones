@@ -7,6 +7,8 @@
 
 <%@page import="LOGICA.ISistema"%>
 <%@page import="LOGICA.FabricaLab"%>
+<%@page import="DATABASE.Persistencia"%>
+<%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,18 +26,22 @@
             <div class="row">
                 <div class="col-sm">  
                     <form action="Instituto" method="post">
-                       
                             <label >Escriba el nombre del instituto:</label>
                             <input type="text" class="form-control" name="nombre" placeholder="Nombre">
-                            <br>
-                            <input type="submit" class="btn btn-primary"></input>
-                        </div>
+                           
+                           <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>        
+                </div>
+                
                         
                 </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="alert alert-primary" role="alert">
+                      
+                    </div>
             </div>
-            <br>
-            <br>
-           
+          
        
         
       

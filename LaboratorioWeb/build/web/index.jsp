@@ -157,11 +157,30 @@
                             </div>
                         </li>
                         <li class="child-menu"><a href="#">Edición <i class="fa fa-angle-right"></i></a>
-                            <div class="sub-menu-wrapper">
+                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                
+
+                                    <li><a href="#">Listar Edicion de Curso</a></li>
+                                    
                                 </ul>
                             </div>
+                        </li>
+                                       <li class="child-menu"><a href="#">Instituto <i class="fa fa-angle-right"></i></a>
+                           <div class="sub-menu-wrapper">
+                                <ul class="sub-menu center-content">
+                               
+
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/Instituto">Agregar Instituto</a></li>
+                                    
+                         
+                        </div>
+                    </div
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                        
+                        
                     </ul>
                     
                     <div class="margin-block"></div>

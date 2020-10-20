@@ -3,8 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/nbproject/build-impl.xml</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/index_docente.jsp</file>
             <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Usuario/Usuario.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/js/jquery.min.js</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/js/custom.js</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/js/jquery-3.5.1.js</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Edicion/List.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Edicion/Edicion.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/Clases/Edicion.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/js/masonry-4-col.js</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Edicion/ListarEdicionCurso.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/js/bootstrap.min.js</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Usuario/perfil.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/Error.html</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Programa/AltaPrograma.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/js/masonry.js</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/templates/panel.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/index.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/index_estudiante.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/LOGICA/Sistema.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/Clases/Estudiante.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Usuario/listar.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Usuario/consultausuario.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Usuario/InicioSesion.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Instituto/Instituto.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/Clases/Instituto.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/js/carousel.js</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/bd.html</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/Clases/Curso.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Usuario/modificardatos.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Home/home.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/LOGICA/Singleton.java</file>
         </group>
     </open-files>
 </project-private>
