@@ -74,6 +74,9 @@ public class Sistema implements ISistema{
         }
     }
     
+    
+ 
+    
     public boolean chekuUsuarioEmail(String email){
         Singleton sm = Singleton.getInstance();
         boolean existeMail = true;
@@ -209,14 +212,12 @@ public class Sistema implements ISistema{
         boolean existeMail = true;
         Iterator<Map.Entry<String, Usuario>> it = sm.getUsuarios().entrySet().iterator();
         while(it.hasNext() && existeMail){
-          Map.Entry<String, Usuario> usr = it.next();
-           
+           Map.Entry<String, Usuario> usr = it.next();
            if(usr.getValue().getCorreo().equals(mail)){
                existeMail = false;
                return usr.getValue().getDatos();
                
            }
-           
         }
         return null;
     }
@@ -415,7 +416,19 @@ public class Sistema implements ISistema{
     
     public Set<DTPrograma> mostrarProgramaDoc(String nick){return null;};
     
-    public Set<DTUsuario> consultaUsuarios(){return null;};
+    public Set<DTUsuario> consultaUsuarios(){
+        Singleton sm = Singleton.getInstance();
+        Map<String,Usuario> usrs = sm.getUsuarios();
+        Set<DTUsuario> usuarios = new HashSet();
+        Iterator<Map.Entry<String,Usuario>> it = usrs.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<String, Usuario> u = it.next();
+            DTUsuario u1 = u.getValue().getDatos();
+            usuarios.add(u1);
+        }
+        return usuarios;
+    
+    };
     
     public DTUsuario seleccionarUsuario(String nick){return null;};
     
@@ -474,7 +487,10 @@ public class Sistema implements ISistema{
         
         Singleton sm = Singleton.getInstance();
         Programa p1 = sm.obtenerPrograma(nombreP);
-        DTPrograma dtp = p1.getDatos();
+        DTPrograma dtp=null;
+        if(p1!=null){
+           dtp = p1.getDatos();
+        }
         return dtp;
     }
     
@@ -574,26 +590,59 @@ public class Sistema implements ISistema{
         return cur;
         }
     
-     public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso){
-        Curso cur = obtenerCursoDelInstituto( nombreI,  nombreCurso);
-        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
+     public ArrayList<String> EdicionesCurso(String nombreCurso){
+        Singleton sm = Singleton.getInstance();
+        Curso cur = sm.obtenerCurso(nombreCurso);
         ArrayList<String> edicionesCurso = new ArrayList<String>();
+        Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
         while(it.hasNext()){
             Map.Entry<String,Edicion> edic = it.next();
             edicionesCurso.add(edic.getValue().getNombreEdicion());
         }
         return edicionesCurso;
+     
      };
     
      
      
-     public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion){
-        Curso cur = obtenerCursoDelInstituto( nombreI, nombreCurso);
-        Edicion edi;
-        edi = cur.obtenerEdicion(nombreEdicion);
+     public DTEdicion datosEdicion(String nombreCurso, String nombreEdicion){
+         Curso cur = Singleton.getInstance().obtenerCurso(nombreCurso);
+        Edicion edi = cur.obtenerEdicion(nombreEdicion);
         return new DTEdicion(edi.getNombreEdicion(),edi.getFechaIni(),edi.getFechaFin(),edi.getCuposMax(),edi.getFechaPub());
      
+     
      }
+     
+    public void modificarEstadoInscripcion(String cur, String ed, String est, EstadoInscripcion estado){
+        Singleton sm = Singleton.getInstance();
+        Curso c1 = sm.obtenerCurso(cur);
+        Persistencia p1 = Persistencia.getInstance();
+        EntityManager em = p1.obtenerEntityManager();
+        System.out.println("El curso es: " + cur);
+        Iterator<Map.Entry<String,Edicion>> it = c1.getEdiciones().entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry e1 = it.next();
+            Edicion e2 = (Edicion)e1.getValue();
+            System.out.println("La edicion es: " + e2.getNombreEdicion());
+            if(e2.getNombreEdicion().equals(ed)){
+                List i1 = e2.getInscripciones();
+                for(Object insc   : i1){
+                    InscripcionE i2 = (InscripcionE)insc;
+                    System.out.println("El estudiante es: " + i2.getEst().getNick());
+                    if(i2.getEst().getNick().equals(est)){
+                        System.out.println("El estado es: " + estado.toString());
+                        i2.setEstado(estado);
+                        em.getTransaction().begin();
+                        em.persist(i2);
+                        em.getTransaction().commit();
+                        
+                        return;
+                    }
+                } 
+            }
+          
+        }
+    }
      
     public boolean checkCurso(String nomCurso){
         Singleton sm = Singleton.getInstance();
@@ -840,6 +889,7 @@ public class Sistema implements ISistema{
         if(previas!=null){
             for(Object previa : previas){
                 previaCurso = previa.toString();
+                System.out.println("LA MATERIA ES" + previa);
                 c.agregarPrevias(sm.obtenerCurso(previaCurso));
             }
         }
@@ -852,7 +902,7 @@ public class Sistema implements ISistema{
         //inst1.addCurso(c);
        
         sm.agregarCurso(c);
-         agregarCategoriaCurso(c.getNombre(), categorias);
+        agregarCategoriaCurso(c.getNombre(), categorias);
         em.getTransaction().begin();
         em.persist(c);
         //em.persist(inst1);
@@ -951,4 +1001,21 @@ public class Sistema implements ISistema{
         
         
     }
+
+    public ArrayList<String> listarCursosCategoria (String nomCat){
+        Singleton sm = Singleton.getInstance();
+        ArrayList<String> cursos = new ArrayList<>();
+        Iterator<Map.Entry<String, Curso>> it = sm.getCursos().entrySet().iterator();
+        Categoria cate = null;
+        while(it.hasNext()){
+           Map.Entry<String, Curso> cur = it.next();
+           cate = cur.getValue().getCategorias().get(nomCat);
+           if(cate!=null){
+               cursos.add(cur.getValue().getNombre());
+           }
+        }
+        return cursos;
+    }
+    
+    
 }

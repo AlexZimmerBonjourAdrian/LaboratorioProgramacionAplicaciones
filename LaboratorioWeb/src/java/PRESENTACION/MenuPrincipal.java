@@ -2398,10 +2398,10 @@ public class MenuPrincipal extends javax.swing.JFrame{
 
     private void jComboBoxConsEdCurCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConsEdCurCursoActionPerformed
         // TODO add your handling code here:
-        String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
+    //    String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString();
         String curso = jComboBoxConsEdCurCurso.getSelectedItem().toString();
-        jComboBoxConsEdCurEdic.setModel(new DefaultComboBoxModel<>(ICU.EdicionesCurso(instituto, curso).toArray(
-                                        new String [ICU.EdicionesCurso(instituto, curso).size()])));
+        jComboBoxConsEdCurEdic.setModel(new DefaultComboBoxModel<>(ICU.EdicionesCurso(curso).toArray(
+                                        new String [ICU.EdicionesCurso(curso).size()])));
 
         jComboBoxConsEdCurEdic.setEnabled(true);
     }//GEN-LAST:event_jComboBoxConsEdCurCursoActionPerformed
@@ -2412,7 +2412,7 @@ public class MenuPrincipal extends javax.swing.JFrame{
        String instituto = jComboBoxConsEdCurInst.getSelectedItem().toString().trim();
        String curso = jComboBoxConsEdCurCurso.getSelectedItem().toString().trim(); 
        String edicion = jComboBoxConsEdCurEdic.getSelectedItem().toString().trim(); 
-       DTEdicion datos = ICU.datosEdicion(instituto,curso,edicion);
+       DTEdicion datos = ICU.datosEdicion(curso,edicion);
        jTextFieldlConsEdCurNom.setText(datos.getNombre());
        jSpinnerConsEdiCurFechaIni.setValue(datos.getFechaIni());
        jSpinnerConsEdiCurFechaFn.setValue(datos.getFechaFin());       
@@ -2525,7 +2525,7 @@ public class MenuPrincipal extends javax.swing.JFrame{
         jTextFieldConsCurCrd.setText(Double.toString(datos.getCreditos()));
         jSpinnerConsCurFechReg.setValue(datos.getFechaReg());
         jTextFieldConsCurUrl.setText(datos.getUrl());
-        ArrayList<String> ed = ICU.EdicionesCurso(nombreInst, nombreCurso);
+        ArrayList<String> ed = ICU.EdicionesCurso(nombreCurso);
         ArrayList<String> prog = ICU.ProgramasCursos(nombreCurso);
         ArrayList<String> cat = ICU.CategoriasCurso(nombreCurso);
         jListConsCurCat.setModel(new DefaultComboBoxModel<>(cat.toArray(new String[cat.size()])));
@@ -3070,7 +3070,7 @@ public class MenuPrincipal extends javax.swing.JFrame{
         if(ed!=null){
             jComboBoxConsEdCurCurso.setEnabled(true);
             ArrayList<String> lista = ICU.listarInstitutos();
-            ArrayList<String> lista3 = ICU.EdicionesCurso(jComboBoxConsCurInst.getSelectedItem().toString(),jComboBoxConsCurCur.getSelectedItem().toString());
+            ArrayList<String> lista3 = ICU.EdicionesCurso(jComboBoxConsCurCur.getSelectedItem().toString());
             jComboBoxConsEdCurInst.setModel(new DefaultComboBoxModel<>(lista.toArray(new String[lista.size()])));
             jComboBoxConsEdCurEdic.setModel(new DefaultComboBoxModel<>(lista3.toArray(new String[lista3.size()])));
     //        jInternalFrameConsEdicCurso.setVisible(true);        

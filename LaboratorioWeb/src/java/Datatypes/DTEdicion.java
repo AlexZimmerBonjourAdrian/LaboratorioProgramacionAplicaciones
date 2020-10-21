@@ -8,11 +8,11 @@ public class DTEdicion {
 
 	//Atributos
 	
-	private String nombre;
-	private Date fecha_ini;
-	private Date fecha_fin;
-	private int cupo_max;
-	private Date fecha_pub;
+    private String nombre;
+    private Date fecha_ini;
+    private Date fecha_fin;
+    private int cupo_max;
+    private Date fecha_pub;
     private Map docentes;
     private List inscripciones;
 
@@ -33,8 +33,10 @@ public class DTEdicion {
         this.fecha_fin=fecha_fin;
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
+
     }    
-    
+        
+     
 	public String getNombre() {
 		return this.nombre;
 	}

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import Datatypes.DTEdicion;
 import Datatypes.DTUsuario;
 import LOGICA.FabricaLab;
 import LOGICA.ISistema;
@@ -12,7 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,26 +44,41 @@ public class Usuario extends HttpServlet {
             
             FabricaLab fabrica = FabricaLab.getInstance();
             ISistema ICU = fabrica.getISistema();
+            ArrayList<String> institutos = ICU.listarInstitutos();
+            request.setAttribute("institutos", institutos); 
             String nick = request.getParameter("nick");
             String nombre=request.getParameter("nombre");
             String apellido=request.getParameter("apellido");
             String fecha = request.getParameter("fecha");
             String correo = request.getParameter("correo");
+            String tipo = request.getParameter("Radio");
+            String pass = request.getParameter("password");
+            String pass2 = request.getParameter("password2");
+            String[] inst = request.getParameterValues("inst");
+            List lista = new ArrayList();
+            if(inst!=null){
+                lista = Arrays.asList(inst);
+            }
+
             Date fechaDate = null;
             if(fecha!=null){
                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
                fechaDate = formato.parse(fecha);
             }
-
-            if(nombre!=null){
-                DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fechaDate,"1234");
-                ICU.altaUsuario(datos, false, new ArrayList());
+            Boolean ckpass = false;
+            if(pass != null && pass2 != null && pass.equals(pass2)){
+                ckpass=true;
             }
-
-            if(fecha != null && nombre!=null && apellido!=null){
-                String frase="El usuario es "+nombre+" " +apellido + " y nacio en " + fecha;
-                out.print(frase);
+            if(nombre!=null && inst!=null && ckpass){
+                DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fechaDate,pass);
+                if(tipo.equals("Estudiante")){ 
+                    ICU.altaUsuario(datos, false, null);
+                }
+                else{ 
+                    ICU.altaUsuario(datos, true, lista);
+                }
             }
+           
 
             request.getRequestDispatcher("/WEB-INF/Usuario/Usuario.jsp").
 						forward(request, response);

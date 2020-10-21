@@ -6,15 +6,24 @@
 package controller;
 
 import DATABASE.Persistencia;
+import Datatypes.DTCurso;
 import LOGICA.FabricaLab;
 import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -34,15 +43,41 @@ public class Curso extends HttpServlet {
    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            
-            request.getRequestDispatcher("/WEB-INF/Curso/Curso.jsp").forward(request, response);
-        }catch(Exception e){
-            System.out.print("No funciono");
+        FabricaLab fabrica = FabricaLab.getInstance();
+        ISistema ICU = fabrica.getISistema();
+        String nomCur=request.getParameter("nomCur");
+        String desCur=request.getParameter("desCur");
+        String durCur=request.getParameter("durCur");
+        String horasCur=request.getParameter("horasCur");
+        String credCur=request.getParameter("credCur");
+        String urlCur=request.getParameter("url");
+        String fecha = request.getParameter("fecha");
+        String inst = request.getParameter("inst");
+        Date fechaDate=null;
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        if(fecha!=null){
+            fechaDate = formato.parse(fecha);
         }
+        String[] previas = request.getParameterValues("previas");
+        String[] cat = request.getParameterValues("cat");
+        List lista = new ArrayList();
+        if(previas!=null){
+            lista = Arrays.asList(previas);
+        }
+        List lista2 = new ArrayList();
+        if(cat!=null){
+            lista2 = Arrays.asList(cat);
+        }
+        if(nomCur!=null){
+            DTCurso datoscurso = new DTCurso(nomCur,desCur,durCur,Double.parseDouble(horasCur),Double.parseDouble(credCur),fechaDate,urlCur);
+            ICU.registrarCurso(inst, datoscurso, lista, lista2);
+        }
+        request.getRequestDispatcher("/WEB-INF/Curso/Curso.jsp").
+						forward(request, response);
+
+                            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -57,14 +92,18 @@ public class Curso extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*Persistencia p = Persistencia.getInstance();
-        p.inicializarBaseDeDatos();*/
+     
         FabricaLab fabrica = FabricaLab.getInstance();
         ISistema ICU = fabrica.getISistema();
         ArrayList<String> institutos = ICU.listarInstitutos();
-     //   System.out.print( "Los institutos son: " + institutos.get(0) + " y " + institutos.get(1) );
         request.setAttribute("institutos", institutos); 
-        processRequest(request, response);
+        ArrayList<String> cat = ICU.listarCategorias();
+        request.setAttribute("categorias", cat); 
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -78,7 +117,26 @@ public class Curso extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("utf-8");
+            FabricaLab fabrica = FabricaLab.getInstance();
+            ISistema ICU = fabrica.getISistema();
+            String inst = request.getParameter("inst");
+            ArrayList<String> cur = ICU.cursosInstituto(inst);
+            JSONObject j = new JSONObject(); 
+            
+            String result1 = "";
+           
+            for(Object curso : cur){
+                result1 = result1 + "<option>" + curso + "</option> ";
+
+            }
+            
+            j.put("result1",result1);
+       
+            response.getWriter().write(j.toString());
+        
+    
     }
 
     /**

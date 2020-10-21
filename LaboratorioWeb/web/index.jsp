@@ -131,7 +131,7 @@
                         <li class="child-menu"><a href="#">Usuario <i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="consultausuario">Consulta de usuario</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultausuario">Consulta de usuario</a></li>
                                     
                                 </ul>
                             </div>
@@ -140,9 +140,9 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
  
-                                    <li><a href="#">Consulta de curso</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/concultacurso">Consulta de curso</a></li>
                                     
-                                    <li><a href="#">Consulta de edición de curso</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaediciondecurso">Consulta de edición de curso</a></li>
                                    
                                 </ul>
                             </div>
@@ -156,32 +156,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="child-menu"><a href="#">Edición<i class="fa fa-angle-right"></i></a>
-                             <div class="sub-menu-wrapper">
-                                <ul class="sub-menu center-content">
-
-                                    <li><a href="#">Listar Edicion de Curso</a></li>
-                                    
-                                </ul>
-                            </div>
-                        </li>
-                                       <li class="child-menu"><a href="#">Instituto <i class="fa fa-angle-right"></i></a>
-                           <div class="sub-menu-wrapper">
-                                <ul class="sub-menu center-content">
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/Instituto">Agregar Instituto</a></li>
-                                               
-                        </div>
-                                                <li class="child-menu"><a href="#">Edición<i class="fa fa-angle-right"></i></a>
-                           <div class="sub-menu-wrapper">
-                                <ul class="sub-menu center-content">
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/ListarAceptadosAunaEdicionCurso">ListarAceptadosAunaEdicionCurso</a></li>   
-                    </div
-                                    
-                                </ul>
-                            </div>
-                        </li>
-                        
-                        
+                      
                     </ul>
                     
                     <div class="margin-block"></div>

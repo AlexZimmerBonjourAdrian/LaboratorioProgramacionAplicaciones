@@ -5,11 +5,14 @@
  */
 package Clases;
 
+import Datatypes.EstadoInscripcion;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import java.io.Serializable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +38,8 @@ public class InscripcionE implements Serializable{
     Date fecha_insc;
     @OneToOne
     Estudiante est;
-
+    @Enumerated(EnumType.STRING)
+    private EstadoInscripcion estado;
     public InscripcionE() {
     }
     
@@ -44,6 +48,15 @@ public class InscripcionE implements Serializable{
     public InscripcionE(Date fecha_insc, Estudiante est){
         this.fecha_insc=fecha_insc;
         this.est=est;
+        this.estado=EstadoInscripcion.SIN_ESTADO;
+    }
+    
+    public EstadoInscripcion getEstado(){
+        return this.estado;
+    }
+    
+    public void setEstado(EstadoInscripcion estado){
+        this.estado=estado;
     }
     
     public void modificarDatos(Date fecha_nueva){

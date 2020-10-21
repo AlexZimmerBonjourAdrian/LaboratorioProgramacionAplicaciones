@@ -133,7 +133,7 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
                                     <li><a href="consultausuario?nick=<%= user %>">Consulta de usuario</a></li>
-                                    <li><a href="#">Modificar datos de usuario</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
                                     
                                 </ul>
                             </div>
@@ -142,9 +142,9 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
                                     <li><a href="http://localhost:8080/LaboratorioWeb/Curso">Alta de curso</a></li>
-                                    <li><a href="#">Consulta de curso</a></li>
-                                     <li><a href="#">Alta edición de curso</a></li>
-                                    <li><a href="#">Consulta de edición de curso</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/concultacurso">Consulta de curso</a></li>
+                                     <li><a href="http://localhost:8080/LaboratorioWeb/Edicion">Alta edición de curso</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaediciondecurso">Consulta de edición de curso</a></li>
                                    
                                 </ul>
                             </div>
@@ -153,7 +153,7 @@
                              <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
                                     <li><a href="http://localhost:8080/LaboratorioWeb/Programa">Crear programa de formación</a></li>
-                                    <li><a href="#">Agregar curso a programa de formación</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/AgregarCursoProg">Agregar curso a programa de formación</a></li>
                                     <li><a href="#">Consulta programa de formación</a></li>
                                     
                                 </ul>

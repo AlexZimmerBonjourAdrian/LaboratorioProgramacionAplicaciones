@@ -7,6 +7,7 @@ package Clases;
 
 import Datatypes.DTEdicion;
 import Clases.InscripcionE;
+import Datatypes.EstadoInscripcion;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -79,6 +80,10 @@ public class Edicion implements Serializable{
       
     }
     
+    public DTEdicion getDatos(){
+        return new DTEdicion(this.nombre,this.fecha_ini,this.fecha_fin,this.cupo_max,this.fecha_pub);
+    }
+    
     public String getNombreEdicion(){
         return this.nombre;
     }
@@ -101,6 +106,7 @@ public class Edicion implements Serializable{
         return this.inscripciones;
     }
     
+  
     public void agregarInscripcionE(InscripcionE ie){
         if(obtenerInscripcionE(ie.est.getNick()) == null){
             inscripciones.add(ie);

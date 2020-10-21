@@ -135,7 +135,7 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
                                     <li><a href="consultausuario?nick=<%= user %>">Consulta de usuario</a></li>
-                                     <li><a href="#">Modificar datos de usuario</a></li>
+                                     <li><a href="http://localhost:8080/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
                                     
                                 </ul>
                             </div>
@@ -144,10 +144,10 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
  
-                                    <li><a href="#">Consulta de curso</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/concultacurso">Consulta de curso</a></li>
                                     
-                                    <li><a href="#">Consulta de edición de curso</a></li>
-                                    <li><a href="#">Inscripción a edición de curso</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaediciondecurso">Consulta de edición de curso</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/InscripcionEdicion">Inscripción a edición de curso</a></li>
                                    
                                 </ul>
                             </div>
@@ -157,7 +157,7 @@
                                 <ul class="sub-menu center-content">
 
                                     <li><a href="#">Consulta programa de formación</a></li>
-                                    <li><a href="#">Inscripción a programa de formación</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/InscripcionProg">Inscripción a programa de formación</a></li>
                                     
                                 </ul>
                             </div>
@@ -198,8 +198,8 @@
                     <img src="images/biglogo.png" alt="">
                     <p>edEXT</p>
                     
-                     
-                        <p>Bienvenido <%= user %></p>
+                        <% String user2 = (String) request.getSession().getAttribute("usuario_logueado"); %>
+                        <p>Bienvenido <%= user2 %></p>
                     </p>
                     
                     <div class="btn-wrapper">

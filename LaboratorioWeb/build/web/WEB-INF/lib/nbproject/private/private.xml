@@ -3,8 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/arena/OneDrive/Escritorio/LW/LW/src/java/controller/consultacurso.java</file>
-            <file>file:/C:/Users/arena/OneDrive/Escritorio/LW/LW/web/WEB-INF/Curso/consultacurso.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/META-INF/context.xml</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/nbproject/build-impl.xml</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/index_docente.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/index.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Usuario/Usuario.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/LOGICA/Sistema.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/Clases/Estudiante.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/controller/iniciosesion.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Edicion/List.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Edicion/Edicion.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/Clases/Edicion.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/controller/ListarEdicionCurso.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Instituto/Instituto.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/Clases/Instituto.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Edicion/SeleccionarEstudianteParaUnaEdicion.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/Clases/Curso.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Home/home.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/src/java/LOGICA/Singleton.java</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Edicion/ListarResultadodeEdicion.jsp</file>
+            <file>file:/F:/GitHub/LaboratorioProgramacionAplicaciones/LaboratorioWeb/web/WEB-INF/Edicion/ListarAceptadosAunaEdicionCurso.jsp</file>
         </group>
     </open-files>
 </project-private>

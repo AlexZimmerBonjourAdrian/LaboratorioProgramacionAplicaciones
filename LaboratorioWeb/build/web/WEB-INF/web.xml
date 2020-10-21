@@ -25,10 +25,6 @@
         <servlet-class>controller.iniciosesion</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListarEdicionCurso</servlet-name>
-        <servlet-class>controller.ListarEdicionCurso</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Home</servlet-name>
         <servlet-class>controller.Home</servlet-class>
     </servlet>
@@ -56,6 +52,46 @@
         <servlet-name>consultausuario</servlet-name>
         <servlet-class>controller.consultausuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>consultaediciondecurso</servlet-name>
+        <servlet-class>controller.consultaediciondecurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>edicionCurso</servlet-name>
+        <servlet-class>controller.edicionCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ediciondatos</servlet-name>
+        <servlet-class>controller.ediciondatos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarCursoProg</servlet-name>
+        <servlet-class>controller.AgregarCursoProg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InscripcionEdicion</servlet-name>
+        <servlet-class>controller.InscripcionEdicion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InscripcionProg</servlet-name>
+        <servlet-class>controller.InscripcionProg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cursosCategoria</servlet-name>
+        <servlet-class>controller.cursosCategoria</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkinscrip</servlet-name>
+        <servlet-class>controller.checkinscrip</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkInscProg</servlet-name>
+        <servlet-class>controller.checkInscProg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkusuario</servlet-name>
+        <servlet-class>controller.checkusuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
@@ -80,7 +116,6 @@
         <servlet-name>iniciosesion</servlet-name>
         <url-pattern>/iniciosesion</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/Home</url-pattern>
@@ -109,9 +144,45 @@
         <servlet-name>consultausuario</servlet-name>
         <url-pattern>/consultausuario</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
-        <servlet-name>ListarEdicionCurso</servlet-name>
-       <url-pattern>/ListarEdicionCurso</url-pattern>
+    <servlet-mapping>
+        <servlet-name>consultaediciondecurso</servlet-name>
+        <url-pattern>/consultaediciondecurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>edicionCurso</servlet-name>
+        <url-pattern>/edicionCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ediciondatos</servlet-name>
+        <url-pattern>/ediciondatos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarCursoProg</servlet-name>
+        <url-pattern>/AgregarCursoProg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InscripcionEdicion</servlet-name>
+        <url-pattern>/InscripcionEdicion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InscripcionProg</servlet-name>
+        <url-pattern>/InscripcionProg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cursosCategoria</servlet-name>
+        <url-pattern>/cursosCategoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkinscrip</servlet-name>
+        <url-pattern>/checkinscrip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkInscProg</servlet-name>
+        <url-pattern>/checkInscProg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkusuario</servlet-name>
+        <url-pattern>/checkusuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

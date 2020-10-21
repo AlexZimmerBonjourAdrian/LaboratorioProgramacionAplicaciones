@@ -80,6 +80,18 @@
         <servlet-name>cursosCategoria</servlet-name>
         <servlet-class>controller.cursosCategoria</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkinscrip</servlet-name>
+        <servlet-class>controller.checkinscrip</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkInscProg</servlet-name>
+        <servlet-class>controller.checkInscProg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkusuario</servlet-name>
+        <servlet-class>controller.checkusuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
@@ -159,6 +171,18 @@
     <servlet-mapping>
         <servlet-name>cursosCategoria</servlet-name>
         <url-pattern>/cursosCategoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkinscrip</servlet-name>
+        <url-pattern>/checkinscrip</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkInscProg</servlet-name>
+        <url-pattern>/checkInscProg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkusuario</servlet-name>
+        <url-pattern>/checkusuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

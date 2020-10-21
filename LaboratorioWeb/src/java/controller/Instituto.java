@@ -5,6 +5,8 @@
  */
 package controller;
 
+import LOGICA.FabricaLab;
+import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -31,7 +33,14 @@ public class Instituto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-          
+            FabricaLab fabrica = FabricaLab.getInstance();
+            ISistema ICU = fabrica.getISistema();
+            String nombre=request.getParameter("nombre");
+            if(nombre!=null){
+                ICU.altaInstituto(nombre);
+                
+            }
+                            
             /* TODO output your page here. You may use following sample code. */
             request.getRequestDispatcher("/WEB-INF/Instituto/Instituto.jsp").
 						forward(request, response);

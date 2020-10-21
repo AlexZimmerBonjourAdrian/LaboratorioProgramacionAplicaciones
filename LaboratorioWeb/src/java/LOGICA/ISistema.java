@@ -11,6 +11,7 @@ import Datatypes.DTEdicion;
 import Datatypes.DTInstituto;
 import Datatypes.DTPrograma;
 import Datatypes.DTUsuario;
+import Datatypes.EstadoInscripcion;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,7 +46,9 @@ public interface ISistema {
     public DTUsuario obtenerUsuarioMail(String mail);
     
     public boolean esDocente(String login);
-          
+       
+    public void modificarEstadoInscripcion(String cur, String ed,String est, EstadoInscripcion estado);
+    
     public void altaInstituto(String nom);
     
     public ArrayList<String> listarInstitutos();
@@ -94,9 +97,9 @@ public interface ISistema {
     
     public Curso obtenerCursoDelInstituto(String nombreI, String nombreC);
  
-    public ArrayList<String> EdicionesCurso(String nombreI, String nombreCurso);
+    public ArrayList<String> EdicionesCurso(String nombreCurso);
      
-    public DTEdicion datosEdicion(String nombreI, String nombreCurso, String nombreEdicion);
+    public DTEdicion datosEdicion(String nombreCurso, String nombreEdicion);
     
     public boolean checkCurso(String nomCurso);
     
@@ -174,4 +177,6 @@ public interface ISistema {
     public void modificarInscPrograma (String nomP, String nickE, Date nuevaFecha);
     
     public void InscripcionPrograma (String nomP, String nickE, Date fecha);
+    
+    public ArrayList<String> listarCursosCategoria (String nomCat);
 }

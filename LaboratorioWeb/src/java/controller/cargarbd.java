@@ -6,7 +6,9 @@
 package controller;
 
 import DATABASE.Persistencia;
+import Datatypes.EstadoInscripcion;
 import LOGICA.FabricaLab;
+import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,8 +35,9 @@ public class cargarbd extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
             Persistencia p = Persistencia.getInstance();
-            p.inicializarBaseDeDatos();
+            p.inicializarBaseDeDatos();   
             response.sendRedirect("Home");
+            
             //request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

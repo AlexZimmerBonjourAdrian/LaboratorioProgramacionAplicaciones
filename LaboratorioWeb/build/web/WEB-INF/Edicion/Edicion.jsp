@@ -13,7 +13,6 @@
 <%@page import="LOGICA.FabricaLab"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
-<%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -35,7 +34,6 @@
                           console.log(result);
                           $('#cur').html(result.result1);
                           $('#docentes').html(result.result2);
-                          
                       }
                   });
                   
@@ -118,10 +116,6 @@
                         </div>
                         <input type="submit" class="btn btn-primary"></input>
                         
-                      
-                            
-                            
-                            
                     </form>
                 </div>
                         
