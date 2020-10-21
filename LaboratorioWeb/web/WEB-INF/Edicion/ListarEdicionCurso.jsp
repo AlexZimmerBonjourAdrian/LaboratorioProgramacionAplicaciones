@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="java.util.Set"%>
+<%@page import="Datatypes.DTEdicion"%>
 <%@page import="LOGICA.Singleton"%>
 <%@page import="LOGICA.ISistema"%>
 <%@page import="LOGICA.FabricaLab"%>
@@ -111,34 +113,65 @@
   
       <h1>Inicio de Sesión</h1>
       <form>
-        <!-- USERNAME INPUT -->
-        <label for="Inst">Instituto</label>
-        <input type="text" placeholder="Instituto" name="ogin" id="Inst">
-        <!-- PASSWORD INPUT -->
-        <label for="Edit">Edicion</label>
-        <input type="text" placeholder="Enter" name="Edit" id="Edit
-               ">
-        <input type="search" value="Serch" href="http://localhost:8080/LaboratorioWeb/Home">
-        <a href="http://localhost:8080/LaboratorioWeb/AgregarEdicion">¿Agregar una edicion?</a>
-      </form>
-    </div>
-     <div class="row">
-                <div class="col-sm">
-                    <div class="alert alert-primary" role="alert">
+         <body>
+        <% DTEdicion Edit = (DTEdicion) request.getAttribute("usuario"); %>
+         <div class="container mt-5">
+            <div class="row">
+                <div class="col-sm">  
+                             
+                    <div class="form-group">
+                        <label >Nombre: </label> 
+                        <h1 name="Nombre"><%= Edit.getNombre() %></h1>
+                    </div>
+                     <div class="form-group">
+                        <label >Apellido: </label>
+                        <h1 name="Inscript"><%= Edit.getInscripciones() %></h1>
+                    </div>
+                    <div class="form-group">
+                        <label >Correo:</label>                 
+                          <h1 name="FechaPub"><%= Edit.getFechaPub() %></h1>
+                    </div>
+                    <div class="form-group">    
+                        <label >Fecha de nacimiento: </label>   
+                         <h1 name="fechaInicio"><%= Edit.getFechaIni() %></h1>
+                    </div>
+                     <div class="form-group">    
+                        <label >Fecha de nacimiento: </label>   
+                         <h1 name="fechaFin"><%= Edit.getFechaFin() %></h1>
+                    </div>
+                     <div class="form-group">    
+                        <label >Fecha de nacimiento: </label>   
+                         <h1 name="Cupos"><%= Edit.getCuposMax() %></h1>
+                        
+                    </div>
+                          <div class="form-group">    
+                        <label >Fecha de nacimiento: </label>   
+                         <h1 name="Docente"><%= Edit.getDocentes() %></h1>
+                    </div>
+                </div>
+                        
+            </div>
+        </div>
+    </body>
                         <% 
                             
-                            /*
+                            
                             Persistencia p = Persistencia.getInstance();
                             p.inicializarBaseDeDatos();
                             FabricaLab fabrica = FabricaLab.getInstance();
                             ISistema ICE = fabrica.getISistema();
                             String Inst = request.getParameter("Inst");
-                            String Edit=request.getParameter("Edit");
+                            //String Edit=request.getParameter("Edit");
                             
                             
                             Singleton sm = Singleton.getInstance();
                             Instituto Ins = sm.obtenerInstituto(Inst);
-                            */
+                            Set<DTEdicion> Editcion = (Set)request.getAttribute("Cursos");
+                            
+                            for(DTEdicion edicion: Editcion){
+                                
+                            
+                            
                             /*
                             if (Ins == null){
      //                           String frase="El usuario no existe";
@@ -159,6 +192,19 @@
 */
                             
                         %>
+                        <div class="form-group">
+		
+                            <a class="nombre" href="?nick=<%= edicion.getNombre()  %>">
+                                Nombre:&nbsp; <%= edicion.getNombre() %>
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <span class="Insciptos">
+                                 Inscripciones:&nbsp;  <%= edicion.getInscripciones() %>
+                            </span>
+				
+			</div>		
+			<% } %>
                     </div>
                 </div>
             </div>

@@ -18,29 +18,27 @@
     </head>
     <body>
       <div class="container mt-5">
+                    <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm">  
 			<% 
-				Set<DTEdicion> Edicion = (Set)request.getAttribute("Edicion");
-						
-
-				//for(DTEdicion Edicion: edicion){
-                                for(DTEdicion edicion :Edicion){
-			%>
+				 Set<DTEdicion> Editcion = (Set)request.getAttribute("Cursos");
+                            
+                            for(DTEdicion edicion: Editcion){
+                               
+                                %>
 			<div class="form-group">
 		
-                            <a class="nombre" href="Nombre=<%= edicion.getNombre()  %>">
-                                Insituto:&nbsp; <%= edicion.getInscripciones() %>
+                            <a class="nombre" href="?nick=<%= edicion.getNombre()  %>">
+                                Nombre:&nbsp; <%= edicion.getNombre() %>
                             </a>
                         </div>
-                            
                         <div class="form-group">
-                            <span class="Curso">
-                                 Correo:&nbsp;  <%= edicion%>
+                            <span class="Insciptos">
+                                 Inscripciones:&nbsp;  <%= edicion.getInscripciones()%>
                             </span>
 				
-			</div>	
-                            
+			</div>		
 			<% } %>
                     </div>
                  </div>
