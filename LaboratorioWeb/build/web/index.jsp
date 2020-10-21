@@ -156,7 +156,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="child-menu"><a href="#">Edición <i class="fa fa-angle-right"></i></a>
+                        <li class="child-menu"><a href="#">Edición<i class="fa fa-angle-right"></i></a>
                              <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
 
@@ -168,12 +168,13 @@
                                        <li class="child-menu"><a href="#">Instituto <i class="fa fa-angle-right"></i></a>
                            <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                               
-
                                     <li><a href="http://localhost:8080/LaboratorioWeb/Instituto">Agregar Instituto</a></li>
-                                    
-                         
+                                               
                         </div>
+                                                <li class="child-menu"><a href="#">Edición<i class="fa fa-angle-right"></i></a>
+                           <div class="sub-menu-wrapper">
+                                <ul class="sub-menu center-content">
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/ListarAceptadosAunaEdicionCurso">ListarAceptadosAunaEdicionCurso</a></li>   
                     </div
                                     
                                 </ul>

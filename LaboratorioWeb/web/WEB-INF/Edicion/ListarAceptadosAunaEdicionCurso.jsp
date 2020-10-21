@@ -4,15 +4,72 @@
     Author     : Alex2
 --%>
 
-<%@page import="Datatypes.DTEdicion"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
+ <%@page import="Datatypes.DTEdicion"%>
+<head>
+       <meta charset="utf-8">
+       <title>Listar Edicion De Curso </title>
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/carousel.css">
+    <link rel="stylesheet" href="../style.css">
+    
+                       
+     
+        <script type="text/javascript">
+         /* 
+    (document).ready(function(){
+              $('#inst').on("click", function(){
+                  var inst = $('#inst').val();
+                  console.log("Seleccionaste Instituto" + inst);
+                 // var Est = $('$Est').val();
+                 // console.log("Ingrese el Instituto")
+                  $.ajax({
+                      type:'POST',
+                      data:{inst: inst},
+                     // url:'Edicion',
+                      
+                      success:function(result){
+                          
+                          
+                          
+                      }
+                      
+                  });
+                  
+              });  
+            });
+     
+      */
+            
+        </script>
+        <script type='text/javascript'>
+            /*
+            $(document).ready(function(){
+                
+                $('#No').on("click",function(){
+                   
+                    $('#cuposEd').css("display", "none");
+                });
+                $('#Si').on("click",function(){
+                   
+                    $('#cuposEd').css("display", "block");
+                });
+                
+               
+            });
+     * 
+     */
+             
+        </script>
+        <title>Edicion</title>
+       
     </head>
-   <body>
+     <body>
+
+   
         <% DTEdicion Edit = (DTEdicion) request.getAttribute("usuario"); %>
          <div class="col-sm">  
                              

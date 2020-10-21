@@ -25,6 +25,10 @@
         <servlet-class>controller.iniciosesion</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ListarEdicionCurso</servlet-name>
+        <servlet-class>controller.ListarEdicionCurso</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Home</servlet-name>
         <servlet-class>controller.Home</servlet-class>
     </servlet>
@@ -76,6 +80,7 @@
         <servlet-name>iniciosesion</servlet-name>
         <url-pattern>/iniciosesion</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/Home</url-pattern>
@@ -103,6 +108,10 @@
     <servlet-mapping>
         <servlet-name>consultausuario</servlet-name>
         <url-pattern>/consultausuario</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ListarEdicionCurso</servlet-name>
+       <url-pattern>/ListarEdicionCurso</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

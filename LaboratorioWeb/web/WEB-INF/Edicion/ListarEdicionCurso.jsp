@@ -17,49 +17,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+       <meta charset="utf-8">
+       <title>Listar Edicion De Curso </title>
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
-  <div class="container mt-5">
-            <div class="row">
-                <div class="col-sm">  
-                    <form action="Edicion" method="get">          
-                        <div class="form-group">  
-                        <p>Instituto<p>
-                        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                        <select id="inst" name="inst" >
-                         <c:forEach items="${institutos}" var="inst" varStatus="loop">
-                           <option>
-                               ${inst}
-                           </option>
-                         </c:forEach>
-                        </select>
-                        </div>
-          
-                        <div class="form-group">  
-                        <p>Curso</p>
-                        <select id="cur" name="cur">
-                          
-                        </select>
-                        </div>
-                        <div class="form-group">
-                            <label >Nombre de la edicion:</label>
-                            <input type="text" class="form-control" name="nombreEd" placeholder="Nombre">
-                        </div>
-                        
-                        
-                      
-                      
-                        <input type="submit" class="btn btn-primary"></input>
-                        
-                    </form>
-                </div>
-                        
-            </div>
-        </div>
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/carousel.css">
+    <link rel="stylesheet" href="../style.css">
+    
+                       
+     
         <script type="text/javascript">
-          
+         /* 
     (document).ready(function(){
               $('#inst').on("click", function(){
                   var inst = $('#inst').val();
@@ -82,7 +53,7 @@
               });  
             });
      
-      
+      */
             
         </script>
         <script type='text/javascript'>
@@ -112,14 +83,14 @@
     <div class="login-box">
   
       <h1>Inicio de Sesión</h1>
-      <form>
+      
          <body>
-        <% DTEdicion Edit = (DTEdicion) request.getAttribute("usuario"); %>
+        <% DTEdicion Edit = (DTEdicion) request.getAttribute("Edicion"); %>
          <div class="container mt-5">
             <div class="row">
                 <div class="col-sm">  
-                             
-                    <div class="form-group">
+                          <form action="Usuario" method="post">    
+                    
                         <label >Nombre: </label> 
                         <h1 name="Nombre"><%= Edit.getNombre() %></h1>
                     </div>
