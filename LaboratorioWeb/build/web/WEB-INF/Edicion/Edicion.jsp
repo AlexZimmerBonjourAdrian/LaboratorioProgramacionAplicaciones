@@ -35,6 +35,7 @@
                           console.log(result);
                           $('#cur').html(result.result1);
                           $('#docentes').html(result.result2);
+                          
                       }
                   });
                   
@@ -117,6 +118,10 @@
                         </div>
                         <input type="submit" class="btn btn-primary"></input>
                         
+                      
+                            
+                            
+                            
                     </form>
                 </div>
                         

@@ -36,7 +36,9 @@
                         <label >Fecha de nacimiento: </label>   
                          <h1 name="fechaUsr"><%= usr.getFecha() %></h1>
                     </div>
-
+                            
+                    
+                    
 
                   
                 </div>
