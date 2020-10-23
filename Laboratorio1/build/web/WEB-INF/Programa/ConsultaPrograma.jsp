@@ -36,6 +36,9 @@
                         $('#fechafin').html(result.fechafin);
                         $('#fechaalta').html(result.fechaalta);
                         $('#cat').html(result.result1);
+                        $('#cur').html(result.result2);
+
+                        
                     }
                 });
 
@@ -88,7 +91,11 @@
                         
                         
                     </form>
-                     
+                         Cursos:
+                         <div id="cur" name="cur" >  
+                         
+                         
+                         </div>
                         
                     
 			

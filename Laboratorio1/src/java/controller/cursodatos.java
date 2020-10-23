@@ -34,7 +34,12 @@ public class cursodatos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        FabricaLab fabrica = FabricaLab.getInstance();
+        ISistema ICU = fabrica.getISistema();
+        String curso = request.getParameter("cur");
+        DTCurso dtcur = ICU.obtenerCurso(curso);
+        request.setAttribute("curso", dtcur);
+        request.getRequestDispatcher("/WEB-INF/Curso/CursoDatos.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

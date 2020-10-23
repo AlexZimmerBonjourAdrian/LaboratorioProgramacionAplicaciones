@@ -37,8 +37,8 @@ public class programadatos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
+  //      FabricaLab fabrica = FabricaLab.getInstance();
+  //      ISistema ICU = fabrica.getISistema();
         
         response.setContentType("text/html;charset=UTF-8");
  //       String prog = request.getParameter("prog");
@@ -82,7 +82,7 @@ public class programadatos extends HttpServlet {
         
         DTPrograma dtprograma = ICU.obtenerPrograma(prog);
         Set<String> catprog = ICU.CategoriasProgramas(prog);
-   //     Set<DTCurso> cursos = ICU.DTcursosPrograma(prog);
+        Set<DTCurso> cursos = ICU.DTcursosPrograma(prog);
       
    //     request.setAttribute("cursos", cursos);
         
@@ -94,10 +94,17 @@ public class programadatos extends HttpServlet {
         
         JSONObject j = new JSONObject(); 
         String result1 = ""; 
+        String result2 = "";
         for(Object cp : catprog){
             result1 = result1 + "<option>"+ cp + "</option>";
          
         }
+        
+        for(DTCurso cur : cursos){
+            result2 = result2 + "<a href=\"cursodatos?cur="+ cur.getNombre() + "\">"+cur.getNombre()+"</a><br>";
+         
+        }
+        j.put("result2",result2);
         j.put("result1",result1);
         j.put("nombre", dtprograma.getNombre());
         j.put("descripcion", dtprograma.getDescripcion());
