@@ -85,7 +85,7 @@ public class InscripcionProg extends HttpServlet {
         String prog = request.getParameter("prog");
         String respuesta = "";
         boolean check = ICU.checkincripcionPrograma(prog, nick);
-        if(check){
+        if(!check){
             respuesta = "Puede inscribirse";
         }else{
             respuesta = "Ya esta inscripto";

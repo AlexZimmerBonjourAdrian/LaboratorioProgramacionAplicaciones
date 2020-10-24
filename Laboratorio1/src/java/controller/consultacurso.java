@@ -37,6 +37,9 @@ public class consultacurso extends HttpServlet {
         ISistema ICU = fabrica.getISistema();
         ArrayList<String> institutos = ICU.listarInstitutos();
         request.setAttribute("institutos", institutos); 
+        
+        ArrayList<String> categorias = ICU.listarCategorias();
+        request.setAttribute("categorias", categorias);
         response.setContentType("text/html;charset=UTF-8");
         request.getRequestDispatcher("/WEB-INF/Curso/consultacurso.jsp").forward(request, response);
     }

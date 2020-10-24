@@ -69,7 +69,7 @@ public class Usuario extends HttpServlet {
             if(pass != null && pass2 != null && pass.equals(pass2)){
                 ckpass=true;
             }
-            if(nombre!=null && ckpass){
+            if(nombre!=null && inst!=null && ckpass){
                 DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fechaDate,pass);
                 if(tipo.equals("Estudiante")){ 
                     ICU.altaUsuario(datos, false, null);

@@ -16,9 +16,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/WEB-INF/templates/panel.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Curso</title>
         
         <script type="text/javascript">
@@ -41,12 +41,14 @@
             });
             
         </script>
-        
+        <style type="text/css">
+            label { color: dimgray }
+         </style>
         
     </head>
     <body>
         
-         <h1>Ingrese los datos:</h1>
+         <h1 style="text-align: center">Ingrese los datos:</h1>
         
         
         <div class="container mt-5">
@@ -54,7 +56,7 @@
                 <div class="col-sm">  
                     <form action="Curso" method="get">          
                         <div class="form-group">
-                            <label >Escriba el nombre del curso:</label>
+                            <label>Escriba el nombre del curso:</label>
                             <input type="text" class="form-control" name="nomCur" placeholder="Nombre">
                         </div>
                          <div class="form-group">

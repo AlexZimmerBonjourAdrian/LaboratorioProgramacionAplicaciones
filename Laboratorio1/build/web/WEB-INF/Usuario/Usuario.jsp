@@ -18,8 +18,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page="/WEB-INF/templates/panel.jsp"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script>
+            $(document).ready(function(){
+                 $('#res').css("display", "none");
+                 $('#res2').css("display", "none");
+            })
+        </script>
+        
+        <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        --%>
         <title>Regístrate</title>
         <script type="text/javascript">
             $(document).ready(function(){ 
@@ -33,6 +42,7 @@
                           console.log(result);
                           var res = result.result1;
                           if(res=="true"){
+                              $('#res').css("display", "block");
                               $('#res').html("Ya existe el usuario");
                               $('#boton').css("display", "none");
                               
@@ -58,11 +68,11 @@
                     var pass = $("#password").val();
                     var pass2 = $("#password2").val();
                     if(pass!=pass2){
-                        $('#res').html("Las contrasenias no coinciden");
+                        $('#res2').html("Las contrasenias no coinciden");
                         $('#boton').css("display", "none");
                     }
                     else{
-                        $('#res').html("");
+                        $('#res2').html("");
                         $('#boton').css("display", "block");
                     }
                 });
@@ -95,11 +105,11 @@
                 var pass = $("#password").val();
                 var pass2 = $("#password2").val();
                 if(pass!=pass2){
-                    $('#res').html("Las contrasenias no coinciden");
+                    $('#res2').html("Las contrasenias no coinciden");
                     $('#boton').css("display", "none");
                 }
                 else{
-                    $('#res').html("");
+                    $('#res2').html("");
                     $('#boton').css("display", "block");
                 }
             });
@@ -113,7 +123,7 @@
         
     </head>
     <body>
-        <h1>Ingrese los datos:</h1>
+        <h1 style="text-align:center">Ingrese los datos:</h1>
         
         
         <div class="container mt-5">
@@ -124,6 +134,11 @@
                             <label >Escriba su nick:</label>
                             <input type="text" class="form-control" name="nick" placeholder="Nick" id="nick">
                         </div>
+                        <div class="form-group">
+                            <span style="color:red" id="res"></span>
+                           
+                        </div>
+                 
                         <div class="form-group">
                             <label >Escriba su nombre:</label>
                             <input type="text" class="form-control" name="nombre" placeholder="Nombre">
@@ -145,7 +160,10 @@
                             <label >Ingrese su contrasenia:</label>
                             <input type="password" class="form-control" name="password" id="password">
                         </div>
-                        
+                        <div class="form-group">
+                            <span style="color:red" id="res2"></span>
+                           
+                        </div>
                         <div class="form-group">
                             <label >Repita su contrasenia:</label>
                             <input type="password" class="form-control" name="password2" id="password2">
@@ -174,13 +192,8 @@
                     </form>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="alert alert-primary" role="alert" id="res">
-                      
-                    </div>
-                </div>
-            </div>
+        </div>
+            
        
     </body>
 </html>

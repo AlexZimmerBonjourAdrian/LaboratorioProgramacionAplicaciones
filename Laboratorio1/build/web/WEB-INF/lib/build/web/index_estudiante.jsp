@@ -135,7 +135,7 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
                                     <li><a href="consultausuario?nick=<%= user %>">Consulta de usuario</a></li>
-                                     <li><a href="http://localhost:8080/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
+                                     <li><a href="http://localhost:8084/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
                                     
                                 </ul>
                             </div>
@@ -144,10 +144,10 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
  
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/concultacurso">Consulta de curso</a></li>
+                                    <li><a href="http://localhost:8084/LaboratorioWeb/concultacurso">Consulta de curso</a></li>
                                     
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaediciondecurso">Consulta de edición de curso</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/InscripcionEdicion">Inscripción a edición de curso</a></li>
+                                    <li><a href="http://localhost:8084/LaboratorioWeb/consultaediciondecurso">Consulta de edición de curso</a></li>
+                                    <li><a href="http://localhost:8084/LaboratorioWeb/InscripcionEdicion">Inscripción a edición de curso</a></li>
                                    
                                 </ul>
                             </div>
@@ -156,8 +156,8 @@
                              <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
 
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaPrograma">Consulta programa de formación</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/InscripcionProg">Inscripción a programa de formación</a></li>
+                                    <li><a href="http://localhost:8084/LaboratorioWeb/consultaPrograma">Consulta programa de formación</a></li>
+                                    <li><a href="http://localhost:8084/LaboratorioWeb/InscripcionProg">Inscripción a programa de formación</a></li>
                                     
                                 </ul>
                             </div>
@@ -165,7 +165,7 @@
                         <li class="child-menu"><a href="#">Edición <i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/listarInscripEdic">Listar resultados de inscripciones a ediciones de cursos</a></li>
+                                    <li><a href="http://localhost:8084/LaboratorioWeb/listarInscripEdic">Listar resultados de inscripciones a ediciones de cursos</a></li>
                                 </ul>
                             </div>
                     </ul>
@@ -204,7 +204,7 @@
                     
                     <div class="btn-wrapper">
                         <div class="text-center">
-                             <a href="http://localhost:8080/LaboratorioWeb/logout" class="btn btn-primary">LOGOUT</a> 
+                             <a href="http://localhost:8084/LaboratorioWeb/logout" class="btn btn-primary">LOGOUT</a> 
                         </div>
                     </div><!-- end row -->
                 </div>

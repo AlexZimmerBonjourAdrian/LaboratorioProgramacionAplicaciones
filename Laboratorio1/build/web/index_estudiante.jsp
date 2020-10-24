@@ -165,7 +165,7 @@
                         <li class="child-menu"><a href="#">Edición <i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/listarInscripEdic">Listar resultados de inscripciones a ediciones de cursos</a></li>
+                                    <li><a href="#">Listar resultados de inscripciones a ediciones de cursos</a></li>
                                 </ul>
                             </div>
                     </ul>

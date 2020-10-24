@@ -109,6 +109,10 @@
         <servlet-class>controller.aceptadosedicion</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Busqueda</servlet-name>
+        <servlet-class>controller.Busqueda</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>listarInscripEdic</servlet-name>
         <servlet-class>controller.listarInscripEdic</servlet-class>
     </servlet>
@@ -219,6 +223,10 @@
     <servlet-mapping>
         <servlet-name>aceptadosedicion</servlet-name>
         <url-pattern>/aceptadosedicion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Busqueda</servlet-name>
+        <url-pattern>/Busqueda</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>listarInscripEdic</servlet-name>
