@@ -116,6 +116,18 @@
         <servlet-name>listarInscripEdic</servlet-name>
         <servlet-class>controller.listarInscripEdic</servlet-class>
     </servlet>
+    <servlet>
+        <description></description>
+        <display-name>Uploader</display-name>
+        <servlet-name>Uploader</display-name>
+        <servlet-class>Iamges.Uploader</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Uploader</servlet-name>
+        <url-parretn>/Uploader</url-parretn>
+    </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
@@ -192,6 +204,7 @@
         <servlet-name>InscripcionProg</servlet-name>
         <url-pattern>/InscripcionProg</url-pattern>
     </servlet-mapping>
+ 
     <servlet-mapping>
         <servlet-name>cursosCategoria</servlet-name>
         <url-pattern>/cursosCategoria</url-pattern>
