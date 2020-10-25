@@ -179,4 +179,8 @@ public interface ISistema {
     public void InscripcionPrograma (String nomP, String nickE, Date fecha);
     
     public ArrayList<String> listarCursosCategoria (String nomCat);
+
+    public Set<DTCurso> datosCursos();
+
+    public Set<DTPrograma> datosProgramas();
 }

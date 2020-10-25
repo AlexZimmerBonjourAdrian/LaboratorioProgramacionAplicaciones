@@ -49,6 +49,9 @@
                         $('#creditos').html(result.creditos);
                         $('#fechaReg').html(result.fechaReg);
                         $('#url').html(result.url);
+                        $('#edi').html(result.result1);
+                        $('#prog').html(result.result2);
+                       
                         
                         
                     }
@@ -58,7 +61,27 @@
           });
 
       </script>
-        
+      
+        <script type="text/javascript">
+            $(document).ready(function(){
+              $('#cat').on("click", function(){
+                  var cat = $('#cat').val();
+                  console.log("la categoria seleccionada es: " + cat);
+                  $.ajax({
+                      type:'POST',
+                      data:{cat: cat},
+                      url:'cursosCategoria',
+                      success:function(result){
+                          console.log(result);
+                          $('#cur').html(result.result1);
+                          //$('#ed').html(result.result2);
+                      }
+                  });
+                  
+              });  
+            });
+            
+        </script>
         
     </head>
     <body>
@@ -69,7 +92,7 @@
                 <div class="col-sm">  
                     <form action="Edicion" method="get">          
                         <div class="form-group">  
-                        <p>Instituto<p>
+                        <p>Buscar por Instituto:<p>
                         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <select id="inst" name="inst" >
                          <c:forEach items="${institutos}" var="inst" varStatus="loop">
@@ -79,6 +102,19 @@
                          </c:forEach>
                         </select>
                         </div>
+                        
+                         <div class="form-group">  
+                        <p>Buscar por Categoria:<p>
+                        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                        <select id="cat" name="cat" >
+                         <c:forEach items="${categorias}" var="cat" varStatus="loop">
+                           <option>
+                               ${cat}
+                           </option>
+                         </c:forEach>
+                        </select>
+                        </div> 
+                        
                         <div class="form-group">  
                         <p>Curso</p>
                         <select id="cur" name="cur">
@@ -86,28 +122,37 @@
                         </select>
                         </div>
                         <div class="form-group">
-                            <h3 name="nombre" id="nombre"></h3>
+                           Nombre: <h7 name="nombre" id="nombre"></h7>
                         </div>
                         <div class="form-group">
-                            <h3 name="descripcion" id="descripcion"></h3>
+                          Descripción:  <h7 name="descripcion" id="descripcion"></h7>
                         </div>
                         <div class="form-group">
-                            <h3 name="duracion" id="duracion"></h3>
+                           Duración: <h7 name="duracion" id="duracion"></h7>
                         </div>
                         <div class="form-group">
-                            <h3 name="horas" id="horas"></h3>
+                          Horas:  <h7 name="horas" id="horas"></h7>
                         </div>
                         <div class="form-group">
-                            <h3 name="creditos" id="creditos"></h3>
+                          Créditos:  <h7 name="creditos" id="creditos"></h7>
                         </div>
                         <div class="form-group">
-                            <h3 name="fechaReg" id="fechaReg"></h3>
+                          Fecha Registro:  <h7 name="fechaReg" id="fechaReg"></h7>
                         </div>
                         <div class="form-group" name="result" id="result">
-                            <h3 name="url" id="url"></h3>
+                          URL:  <a name="url" id="url"></a>
                         </div>
-          
-                      
+                        
+                        Ediciones: 
+                          <div id="edi" name="edi" >
+                           
+                          </div>
+                        
+                        Programas: 
+                          <div id="prog" name="prog" >
+                           
+                          </div>
+                        
                     </form>
                 </div>
                         

@@ -10,6 +10,7 @@ import LOGICA.FabricaLab;
 import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -71,25 +72,37 @@ public class ediciondatos extends HttpServlet {
         String respuesta = "";
         boolean check = ICU.ExisteRegistroInscripcionE(nick, cur, edi);
         
-        if(check){
+        if(!check){
             respuesta = "Puede inscribirse";
         }else{
             respuesta = "Ya esta inscripto";
         }
         
+        
         DTEdicion dtedi = ICU.datosEdicion(cur, edi);
+        ArrayList<String> docentesE = ICU.listarDocentesEdicion(cur, edi);
+        
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
+        
         JSONObject j = new JSONObject(); 
+        String result1 = "";
+        
+         for(Object doc : docentesE){
+            result1 = result1 + "<option>"+ doc + "</option>";
+         
+        }
+        
         j.put("nombre", dtedi.getNombre());
         j.put("fechaini", dtedi.getFechaIni().toString());
         j.put("fechafin", dtedi.getFechaFin().toString());
         j.put("cuposmax", dtedi.getCuposMax());
         j.put("fechapub", dtedi.getFechaPub().toString());
-        j.put("docentes", dtedi.getDocentes());
-        j.put("inscripciones", dtedi.getInscripciones());
+        j.put("result1",result1);
+        j.put("mensaje", respuesta);
+     //   j.put("inscripciones", dtedi.getInscripciones());
       
-        j.put("mensaje", respuesta);                
+                        
         
         response.getWriter().write(j.toString());
     }

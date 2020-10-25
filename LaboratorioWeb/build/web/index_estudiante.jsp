@@ -121,72 +121,7 @@
             </nav>
         </div><!-- end mobile-menu -->
 
-        <header class="vertical-header">
-            <div class="vertical-header-wrapper">
-                <nav class="nav-menu">
-                    <div class="logo">
-                        <a href="index.jsp"><img src="images/logo.png" alt=""></a>
-                    </div><!-- end logo -->
-
-                    <div class="margin-block"></div>
-
-                    <ul class="primary-menu">
-                        <li class="child-menu"><a href="#">Usuario <i class="fa fa-angle-right"></i></a>
-                            <div class="sub-menu-wrapper">
-                                <ul class="sub-menu center-content">
-                                    <li><a href="consultausuario?nick=<%= user %>">Consulta de usuario</a></li>
-                                     <li><a href="http://localhost:8080/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
-                                    
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="child-menu"><a href="#">Cursos <i class="fa fa-angle-right"></i></a>
-                            <div class="sub-menu-wrapper">
-                                <ul class="sub-menu center-content">
- 
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/concultacurso">Consulta de curso</a></li>
-                                    
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaediciondecurso">Consulta de edición de curso</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/InscripcionEdicion">Inscripción a edición de curso</a></li>
-                                   
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="child-menu"><a href="#">Programas <i class="fa fa-angle-right"></i></a>
-                             <div class="sub-menu-wrapper">
-                                <ul class="sub-menu center-content">
-
-                                    <li><a href="#">Consulta programa de formación</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/InscripcionProg">Inscripción a programa de formación</a></li>
-                                    
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="child-menu"><a href="#">Edición <i class="fa fa-angle-right"></i></a>
-                            <div class="sub-menu-wrapper">
-                                <ul class="sub-menu center-content">
-                                    <li><a href="#">Listar resultados de inscripciones a ediciones de cursos</a></li>
-                                </ul>
-                            </div>
-                    </ul>
-                    
-                    <div class="margin-block"></div>
-
-                    <div class="menu-search">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="¿Qué estás buscando?">
-                                <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div><!-- end menu-search -->
-
-                    <div class="margin-block"></div>
-
-                   
-                </nav><!-- end nav-menu -->
-            </div><!-- end vertical-header-wrapper -->
-        </header><!-- end header -->
+        <jsp:include page="/WEB-INF/templates/panel_estudiante.jsp"/>
     </div><!-- end menu-wrapper -->
 
     <div id="wrapper">

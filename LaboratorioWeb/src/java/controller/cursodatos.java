@@ -10,6 +10,7 @@ import LOGICA.FabricaLab;
 import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +35,12 @@ public class cursodatos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        FabricaLab fabrica = FabricaLab.getInstance();
+        ISistema ICU = fabrica.getISistema();
+        String curso = request.getParameter("cur");
+        DTCurso dtcur = ICU.obtenerCurso(curso);
+        request.setAttribute("curso", dtcur);
+        request.getRequestDispatcher("/WEB-INF/Curso/CursoDatos.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,9 +72,28 @@ public class cursodatos extends HttpServlet {
         FabricaLab fabrica = FabricaLab.getInstance();
         ISistema ICU = fabrica.getISistema();
         String curso = request.getParameter("cur");
+        
         DTCurso dtcur = ICU.obtenerCurso(curso);
+        ArrayList<String> ediciones = ICU.EdicionesCurso(curso);
+        ArrayList<String> programas = ICU.ProgramasCursos(curso);
+        
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
+        
+        String result1 = "";
+       String result2 = "";
+        
+         for(Object edi : ediciones){
+            result1 = result1 + "<option>"+ edi + "</option>";
+         
+        }
+         
+          for(Object prog : programas){
+            result2 = result2 + "<option>"+ prog + "</option>";
+         
+        }
+     
+        
         JSONObject j = new JSONObject(); 
         j.put("nombre", dtcur.getNombre());
         j.put("descripcion", dtcur.getDescripcion());
@@ -77,7 +102,9 @@ public class cursodatos extends HttpServlet {
         j.put("creditos", dtcur.getCreditos());
         j.put("fechaReg", dtcur.getFechaReg().toString());
         j.put("url", dtcur.getUrl());
-      
+        j.put("result1",result1);
+        j.put("result2",result2);
+        
                         
         
         response.getWriter().write(j.toString());

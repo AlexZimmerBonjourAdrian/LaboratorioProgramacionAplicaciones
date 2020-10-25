@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/WEB-INF/templates/panel.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Inscripción a edición</title>
         <script type="text/javascript">
             $(document).ready(function(){
@@ -143,22 +143,22 @@
                             </select>
                         </div>
                           <div class="form-group">
-                            Nombre: <h7 name="nombre" id="nombre"></h7>
+                              <p>Nombre</p>: <h7 name="nombre" id="nombre"></h7>
                         </div>
                         <div class="form-group">
-                            Fecha inicio: <h7 name="fechaini" id="fechaini"></h7>
+                            <p>Fecha inicio:</p> <h7 name="fechaini" id="fechaini"></h7>
                         </div>
                         <div class="form-group">
-                            Fecha fin: <h7 name="fechafin" id="fechafin"></h7>
+                            <p>Fecha fin:</p> <h7 name="fechafin" id="fechafin"></h7>
                         </div>
                         <div class="form-group">
-                            Cupos maximos: <h7 name="cuposmax" id="cuposmax"></h7>
+                            <p>Cupos maximos:</p> <h7 name="cuposmax" id="cuposmax"></h7>
                         </div>
                         <div class="form-group">
-                            Fecha de publicación: <h7 name="fechapub" id="fechapub"></h7>
+                            <p>Fecha de publicación:</p> <h7 name="fechapub" id="fechapub"></h7>
                         </div>
                         <div class="form-group">
-                            Mensaje:
+                            <p>Mensaje:</p>
                             <font color = "red">
                              <h2 name="mensaje" id="mensaje"></h2>
                             </font>

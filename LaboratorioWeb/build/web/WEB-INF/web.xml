@@ -92,6 +92,30 @@
         <servlet-name>checkusuario</servlet-name>
         <servlet-class>controller.checkusuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>consultaPrograma</servlet-name>
+        <servlet-class>controller.consultaPrograma</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>programadatos</servlet-name>
+        <servlet-class>controller.programadatos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelecEstuEdic</servlet-name>
+        <servlet-class>controller.SelecEstuEdic</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>aceptadosedicion</servlet-name>
+        <servlet-class>controller.aceptadosedicion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Busqueda</servlet-name>
+        <servlet-class>controller.Busqueda</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listarInscripEdic</servlet-name>
+        <servlet-class>controller.listarInscripEdic</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
@@ -183,6 +207,30 @@
     <servlet-mapping>
         <servlet-name>checkusuario</servlet-name>
         <url-pattern>/checkusuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>consultaPrograma</servlet-name>
+        <url-pattern>/consultaPrograma</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>programadatos</servlet-name>
+        <url-pattern>/programadatos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelecEstuEdic</servlet-name>
+        <url-pattern>/SelecEstuEdic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>aceptadosedicion</servlet-name>
+        <url-pattern>/aceptadosedicion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Busqueda</servlet-name>
+        <url-pattern>/Busqueda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listarInscripEdic</servlet-name>
+        <url-pattern>/listarInscripEdic</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

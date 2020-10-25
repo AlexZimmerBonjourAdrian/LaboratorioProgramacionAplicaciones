@@ -1,7 +1,7 @@
 <%-- 
     Document   : ConsultaEdiCurso
     Created on : 17/10/2020, 03:16:10 PM
-    Author     : arena
+    Author     : german
 --%>
 
 <%@page import="java.util.Arrays"%>
@@ -19,9 +19,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/WEB-INF/templates/panel.jsp"/>
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
         <script type="text/javascript">
             $(document).ready(function(){
@@ -120,7 +120,7 @@
                         $('#fechafin').html(result.fechafin);
                         $('#cuposmax').html(result.cuposmax);
                         $('#fechapub').html(result.fechapub);
-                        $('#docentes').html(result.docentes);
+                        $('#doc').html(result.result1);
                         $('#inscripciones').html(result.inscripciones);
                         
                         
@@ -187,30 +187,25 @@
                         </div>
                         
                           <div class="form-group">
-                            <h7 name="nombre" id="nombre"></h7>
+                           Nombre: <h7 name="nombre" id="nombre"></h7>
                         </div>
                         <div class="form-group">
-                            <h7 name="fechaini" id="fechaini"></h7>
+                           Fecha inicio: <h7 name="fechaini" id="fechaini"></h7>
                         </div>
                         <div class="form-group">
-                            <h7 name="fechafin" id="fechafin"></h7>
+                           Fecha fin: <h7 name="fechafin" id="fechafin"></h7>
                         </div>
                         <div class="form-group">
-                            <h7 name="cuposmax" id="cuposmax"></h7>
+                          Cupos máximos:  <h7 name="cuposmax" id="cuposmax"></h7>
                         </div>
                         <div class="form-group">
-                            <h7 name="fechapub" id="fechapub"></h7>
+                           Fecha publicación: <h7 name="fechapub" id="fechapub"></h7>
                         </div>
                         <div class="form-group">  
-                        <p>Docentes:<p>
-                        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                        <select id="doc" name="doc" >
-                         <c:forEach items="${docentes}" var="doc" varStatus="loop">
-                           <option>
-                               ${doc}
-                           </option>
-                         </c:forEach>
-                        </select>
+                            <p>Docentes:</p>
+                            <select id="doc" name="doc">
+
+                            </select>
                         </div>
                         <div class="form-group" name="result" id="result">
                             <h7 name="inscripciones" id="inscripciones"></h7>

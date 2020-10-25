@@ -7,6 +7,7 @@ package controller;
 
 import DATABASE.Persistencia;
 import Datatypes.EstadoInscripcion;
+import Datatypes.EstadoSesion;
 import LOGICA.FabricaLab;
 import LOGICA.ISistema;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,10 +35,12 @@ public class cargarbd extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
-            Persistencia p = Persistencia.getInstance();
-            p.inicializarBaseDeDatos();   
-            response.sendRedirect("Home");
+        Persistencia p = Persistencia.getInstance();
+        p.inicializarBaseDeDatos();   
+        session.setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
+        response.sendRedirect("Home");
             
             //request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
