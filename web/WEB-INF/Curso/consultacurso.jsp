@@ -30,6 +30,7 @@
           });
 
       </script>
+     
       <script type="text/javascript">
           $(document).ready(function(){
             $('#cur').on("click", function(){
@@ -50,6 +51,7 @@
                         $('#url').html(result.url);
                         $('#edi').html(result.result1);
                         $('#prog').html(result.result2);
+                        $('#result').html(result.result3);
                        
                         
                         
@@ -79,92 +81,52 @@
                   
               });  
             });
-            
         </script>
-        
+      
+    
     </head>
     <body class="left-menu">
-        
         <div class="menu-wrapper">
             <jsp:include page="/WEB-INF/templates/panel.jsp"/>
         </div>
-        
         <h1 class="titulo">Consulta de curso</h1>
-        
         <div id="wrapper">
             <div id="home" class="video-section js-height-full"> 
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm">  
-                            <form action="Edicion" method="get">          
-                                <div class="form-group">  
-                                    <label>Buscar por Instituto:</label><br>
-                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                    <select id="inst" name="inst" >
-                                        <c:forEach items="${institutos}" var="inst" varStatus="loop">
-                                            <option>
-                                                ${inst}
-                                            </option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">  
-                                    <label>Buscar por Categoria:</label><br>
-                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                    <select id="cat" name="cat" >
-                                        <c:forEach items="${categorias}" var="cat" varStatus="loop">
-                                           <option>
-                                               ${cat}
-                                           </option>
-                                        </c:forEach>
-                                    </select>
-                                </div> 
-
-                                <div class="form-group">  
-                                    <label>Curso</label><br>
-                                    <select id="cur" name="cur">
-
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Nombre:</label> <h7 name="nombre" id="nombre"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Descripción:</label>   <h7 name="descripcion" id="descripcion"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Duración:</label> <h7 name="duracion" id="duracion"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Horas:</label>  <h7 name="horas" id="horas"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Créditos:</label>  <h7 name="creditos" id="creditos"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Fecha Registro:</label>  <h7 name="fechaReg" id="fechaReg"></h7>
-                                </div>
-                                <div class="form-group" name="result" id="result">
-                                    <label>URL:</label> <a name="url" id="url"></a>
-                                </div>
-
-                                <label>Ediciones:</label>
-                                <div id="edi" name="edi" class="form-group">
-                                    
-                                </div>
-
-                                <label>Programas:</label>
-                                <div id="prog" name="prog" >
-                                     
-                                </div>
-                            </form>
+                            <div class="form-group">  
+                                <label>Buscar por Instituto:</label><br>
+                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                <select id="inst" name="inst" >
+                                    <c:forEach items="${institutos}" var="inst" varStatus="loop">
+                                        <option>
+                                            ${inst}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="form-group">  
+                                <label>Buscar por Categoria:</label><br>
+                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                <select id="cat" name="cat" >
+                                    <c:forEach items="${categorias}" var="cat" varStatus="loop">
+                                       <option>
+                                           ${cat}
+                                       </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="form-group">  
+                                  <label>Curso</label><br>
+                                  <select id="cur" name="cur">
+                                  </select>
+                            </div>
+                            <jsp:include page="/WEB-INF/Curso/CursoDatos.jsp"/>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        
+        </div> 
     </body>
 </html>

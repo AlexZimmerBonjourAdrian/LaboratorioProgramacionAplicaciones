@@ -45,7 +45,13 @@ public class iniciosesion extends HttpServlet {
             EstadoSesion nuevoEstado;
             String login = request.getParameter("login");
             String password = request.getParameter("password");
-            
+            System.out.println("ACA LLEGO");
+            if(login==null || password==null || login.equals("")|| password.equals("") ){
+                objSesion.setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
+                request.getRequestDispatcher("/WEB-INF/Usuario/InicioSesion.jsp").forward(request, response); 
+                return;
+            }
+            System.out.println("ACA TAMBIEN");
             DTUsuario u1 = ICU.obtenerUsuario(login);
             if(u1!=null && u1.getContrasena().equals(password)){
                 if(ICU.esDocente(u1.getNick())){

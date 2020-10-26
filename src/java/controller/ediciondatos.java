@@ -34,7 +34,18 @@ public class ediciondatos extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        FabricaLab fabrica = FabricaLab.getInstance();
+        ISistema ICU = fabrica.getISistema();
+        String cur = request.getParameter("cur");
+        String ed = request.getParameter("ed");
+        DTEdicion edicion = null;
+        if(cur != null && ed != null){
+            edicion = ICU.datosEdicion(cur, ed);  
+        }
+        request.setAttribute("ed", edicion);
+        request.getRequestDispatcher("/WEB-INF/Edicion/ediciondatos.jsp").forward(request, response);
         response.setContentType("text/html;charset=UTF-8");  
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,6 +60,7 @@ public class ediciondatos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+     
         processRequest(request, response);
     }
 
@@ -87,6 +99,9 @@ public class ediciondatos extends HttpServlet {
         
         JSONObject j = new JSONObject(); 
         String result1 = "";
+        String result2 = "<img src=\"" + dtedi.getImagenDir() + "\" >";
+        
+        System.out.println(result2);
         
          for(Object doc : docentesE){
             result1 = result1 + "<option>"+ doc + "</option>";
@@ -100,6 +115,8 @@ public class ediciondatos extends HttpServlet {
         j.put("fechapub", dtedi.getFechaPub().toString());
         j.put("result1",result1);
         j.put("mensaje", respuesta);
+        j.put("result2",result2);
+        
      //   j.put("inscripciones", dtedi.getInscripciones());
       
                         

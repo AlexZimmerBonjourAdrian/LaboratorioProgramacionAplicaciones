@@ -33,18 +33,7 @@ public class checkusuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet checkusuario</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet checkusuario at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+     
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,8 +47,23 @@ public class checkusuario extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException {        
+        String email = request.getParameter("email");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+        FabricaLab fabrica = FabricaLab.getInstance();
+        ISistema ICU = fabrica.getISistema();
+        Boolean check = ICU.chekuUsuarioEmail(email);
+        String result = "";
+        if(check == true){
+            result="false";
+        }
+        else{
+            result="true";
+        }
+        JSONObject j = new JSONObject(); 
+        j.put("result1",result);
+        response.getWriter().write(j.toString());
     }
 
     /**

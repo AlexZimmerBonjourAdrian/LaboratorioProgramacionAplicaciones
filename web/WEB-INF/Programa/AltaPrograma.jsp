@@ -44,8 +44,12 @@
                                     <label >Fin del programa:</label>
                                     <input type="date" class="form-control" name="fechafin">
                                 </div>
+                                <div class="form-group">
+                                    <label >Seleccione su imagen:</label>
+                                    <input type="file" name="txtDireccion" value="" size="50"/>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Enviar</button>
-                                <a href="http://localhost:8080/LaboratorioWeb" id="cancel" name="cancel" class="btn btn-default">Cancel</a> 
+                                <a href="Home" id="cancel" name="cancel" class="btn btn-default">Cancel</a> 
                             </form>
                         </div>
                     </div>

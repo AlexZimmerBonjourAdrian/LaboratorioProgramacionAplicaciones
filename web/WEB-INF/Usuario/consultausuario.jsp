@@ -16,7 +16,6 @@
         <div class="menu-wrapper">     
             <jsp:include page="/WEB-INF/templates/panel.jsp"/>
         </div>
-        
         <% DTUsuario usr = (DTUsuario) request.getAttribute("usuario"); %>
         <div id="wrapper">
             <div id="home" class="video-section js-height-full">         
@@ -39,7 +38,10 @@
                                 <label >Fecha de nacimiento: </label>   
                                 <h1 name="fechaUsr"><%= usr.getFecha() %></h1>
                             </div>
-                        </div>
+                            <div class="form-group">    
+                                <label >Imagen: </label>   
+                                <img src="<%= usr.getImagenDir() %>" >
+                            </div>
                     </div>
                 </div>
             </div>

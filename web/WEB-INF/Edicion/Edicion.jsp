@@ -116,6 +116,10 @@
 
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label >Seleccione su imagen:</label>
+                                    <input type="file" name="txtDireccion" value="" size="50"/>
+                                </div>
                                 <input type="submit" class="btn btn-primary"></input>
 
                             </form>

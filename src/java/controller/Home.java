@@ -73,7 +73,7 @@ public class Home extends HttpServlet {
                     req.getRequestDispatcher("/index_docente.jsp").
                                     forward(req, resp);
                     break;
-    }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

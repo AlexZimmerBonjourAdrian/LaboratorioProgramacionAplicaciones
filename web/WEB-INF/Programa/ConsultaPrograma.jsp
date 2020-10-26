@@ -37,6 +37,7 @@
                         $('#fechaalta').html(result.fechaalta);
                         $('#cat').html(result.result1);
                         $('#cur').html(result.result2);    
+                        $('#img').html(result.result3);
                    
                     }
                 });
@@ -91,7 +92,10 @@
                             </form>
                             <label>Cursos:</label>
                             <div id="cur" name="cur" >                                                    
-                            </div>                                           			                   
+                            </div>                                       			                   
+                            Imagen:
+                            <div id="img" name="img" class="form-group">    
+                           
                         </div>                       
                     </div>
                 </div>  

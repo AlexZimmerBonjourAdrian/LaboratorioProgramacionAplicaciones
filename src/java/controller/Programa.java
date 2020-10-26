@@ -48,7 +48,15 @@ public class Programa extends HttpServlet {
         String desc = request.getParameter("descripcion"); 
         String fechaDate = request.getParameter("fechaini");
         String fechaDate2 = request.getParameter("fechafin");
-
+        
+        String imagenNom = request.getParameter("txtDireccion");
+        String imagenDir = "images/logo.png";
+        
+        if(imagenNom!=null){
+                imagenDir = "images/"+imagenNom;
+        }
+        
+        
         Date fechaini = null;
         Date fechafin = null;
         if(fechaDate!=null){
@@ -59,7 +67,7 @@ public class Programa extends HttpServlet {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             fechafin = formato.parse(fechaDate2);
         }
-        DTPrograma datos = new DTPrograma(nombrep,desc,fechaini,fechafin,new Date());
+        DTPrograma datos = new DTPrograma(nombrep,desc,fechaini,fechafin,new Date(), imagenDir);
 
         if (nombrep != null && ICU.obtenerPrograma(nombrep) == null){
 

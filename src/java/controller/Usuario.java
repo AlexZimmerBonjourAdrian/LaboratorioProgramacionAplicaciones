@@ -55,6 +55,13 @@ public class Usuario extends HttpServlet {
             String pass = request.getParameter("password");
             String pass2 = request.getParameter("password2");
             String[] inst = request.getParameterValues("inst");
+            String imagenNom = request.getParameter("txtDireccion");
+            String imagenDir = "images/logo.png";
+            
+            if(imagenNom!=null){
+                imagenDir = "images/"+imagenNom;
+            }
+            
             List lista = new ArrayList();
             if(inst!=null){
                 lista = Arrays.asList(inst);
@@ -69,8 +76,8 @@ public class Usuario extends HttpServlet {
             if(pass != null && pass2 != null && pass.equals(pass2)){
                 ckpass=true;
             }
-            if(nombre!=null && inst!=null && ckpass){
-                DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fechaDate,pass);
+            if(nombre!=null && ckpass){
+                DTUsuario datos = new DTUsuario(nick, nombre, apellido, correo, fechaDate,pass, imagenDir);
                 if(tipo.equals("Estudiante")){ 
                     ICU.altaUsuario(datos, false, null);
                 }

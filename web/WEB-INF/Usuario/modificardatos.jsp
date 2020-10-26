@@ -8,6 +8,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+            function validacion(){
+                var nick = document.getElementById('nick').value;
+                var nombre = document.getElementById('nombre').value;
+                var apellido = document.getElementById('apellido').value;
+                var email = document.getElementById('correo').value;
+                var password = document.getElementById('password2').value;
+                var password2 = document.getElementById('password2').value;
+                if(!nick || !nombre || !apellido || !email || !password || !password2){
+                    alert("INGRESE TODOS LOS DATOS");
+                    return false;
+                } 
+                else{
+                    return true;
+                }
+            }
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modificar datos de usuario</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -24,7 +41,7 @@
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm">  
-                            <form action="modificardatos" method="post">          
+                            <form action="modificardatos" method="post" onsubmit="return validacion()">          
                                 <div class="form-group">
                                     <label >Escriba el nombre:</label>
                                     <input type="text" class="form-control" name="nomUsr" placeholder="Nombre" id="nomUsr">

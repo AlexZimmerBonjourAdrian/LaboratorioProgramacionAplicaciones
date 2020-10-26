@@ -98,6 +98,7 @@ public class programadatos extends HttpServlet {
         JSONObject j = new JSONObject(); 
         String result1 = ""; 
         String result2 = "";
+        String result3 = "<img src=\"" + dtprograma.getImagenDir() + "\" >";
         for(Object cp : catprog){
             result1 = result1 + "<option>"+ cp + "</option>";
          
@@ -113,10 +114,10 @@ public class programadatos extends HttpServlet {
         j.put("result1",result1);
         j.put("nombre", dtprograma.getNombre());
         j.put("descripcion", dtprograma.getDescripcion());
-        j.put("fechaini", formatter.format(dtprograma.getFechaInicial()));
-        j.put("fechafin", formatter.format(dtprograma.getFechaFinal()));
-        j.put("fechaalta",formatter.format(dtprograma.getFechaAlta()));
-
+        j.put("fechaini", dtprograma.getFechaInicial().toString());
+        j.put("fechafin", dtprograma.getFechaFinal().toString());
+        j.put("fechaalta", dtprograma.getFechaAlta().toString());
+        j.put("result3",result3);
         response.getWriter().write(j.toString());
     }
 

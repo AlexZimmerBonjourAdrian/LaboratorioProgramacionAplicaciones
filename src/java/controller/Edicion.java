@@ -77,6 +77,14 @@ public class Edicion extends HttpServlet {
         String llevaCupos = request.getParameter("Radio");
         String nombreCurso = request.getParameter("cur");
         int cupos = 0;
+        
+        String imagenNom = request.getParameter("txtDireccion");
+        String imagenDir = "images/logo.png";
+        
+        if(imagenNom!=null){
+                imagenDir = "images/"+imagenNom;
+        }
+        
         if(llevaCupos!=null && llevaCupos.equals("Si")){
             cupos = Integer.parseInt(request.getParameter("cuposEd"));
         }
@@ -105,7 +113,7 @@ public class Edicion extends HttpServlet {
             }
         }
         String[] doc = request.getParameterValues("docentes");
-        DTEdicion ed = new DTEdicion(nombreEd, fechaIniDate, fechaFinDate, cupos,fechaPubDate);
+        DTEdicion ed = new DTEdicion(nombreEd, fechaIniDate, fechaFinDate, cupos,fechaPubDate, imagenDir);
         List lista = new ArrayList();
         if(doc!=null){
             lista = Arrays.asList(doc);

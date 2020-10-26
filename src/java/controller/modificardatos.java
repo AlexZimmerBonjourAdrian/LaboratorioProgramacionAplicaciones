@@ -47,16 +47,14 @@ public class modificardatos extends HttpServlet {
         String fechaNac = (String)request.getParameter("fechaNac");
         Date fechaDate=null;
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        if(fechaNac!=null){
+        if(fechaNac!=null && !fechaNac.equals("")){
             fechaDate = formato.parse(fechaNac);
         }
         System.out.println("El nombre usuario a modificar es: " + nick);
-        if(nick != null && nombre != null && apellido != null && fechaDate != null){ 
-            
-            ICU.modificarDatosUsuario(nick, nombre, apellido, fechaDate); 
+        ICU.modificarDatosUsuario(nick, nombre, apellido, fechaDate); 
         
-        }
-       
+        
+      
         request.getRequestDispatcher("/WEB-INF/Usuario/modificardatos.jsp").forward(request, response);
     }
 

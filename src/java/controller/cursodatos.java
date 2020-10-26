@@ -38,9 +38,17 @@ public class cursodatos extends HttpServlet {
         FabricaLab fabrica = FabricaLab.getInstance();
         ISistema ICU = fabrica.getISistema();
         String curso = request.getParameter("cur");
-        DTCurso dtcur = ICU.obtenerCurso(curso);
-        request.setAttribute("curso", dtcur);
-        request.getRequestDispatcher("/WEB-INF/Curso/CursoDatos.jsp").forward(request, response);
+        try{
+            DTCurso dtcur = ICU.obtenerCurso(curso);
+            ArrayList<String> ed = ICU.EdicionesCurso(curso);
+            ArrayList<String> prog = ICU.ProgramasCursos(curso);
+            request.setAttribute("curso", dtcur);
+            request.setAttribute("ediciones", ed);
+            request.setAttribute("programas", prog);
+            request.getRequestDispatcher("/WEB-INF/Curso/CursoDatos.jsp").forward(request, response);
+        }catch(Exception e){
+            request.getRequestDispatcher("/Error.html").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -81,15 +89,16 @@ public class cursodatos extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         
         String result1 = "";
-       String result2 = "";
+        String result2 = "";
+        String result3 = "<img src=\"" + dtcur.getImagenDir() + "\" >";
         
          for(Object edi : ediciones){
-            result1 = result1 + "<option>"+ edi + "</option>";
+            result1 = result1 + "<label><a href=\"ediciondatos?cur="+ curso + "&ed=" + edi + "\">" + edi +"</a></label><br>";
          
         }
          
-          for(Object prog : programas){
-            result2 = result2 + "<option>"+ prog + "</option>";
+        for(Object prog : programas){
+            result2 = result2 + "<label><a href=\"programadatos?prog="+ prog + "\">"+ prog +"</a></label>";
          
         }
      
@@ -104,6 +113,7 @@ public class cursodatos extends HttpServlet {
         j.put("url", dtcur.getUrl());
         j.put("result1",result1);
         j.put("result2",result2);
+        j.put("result3",result3);
         
                         
         

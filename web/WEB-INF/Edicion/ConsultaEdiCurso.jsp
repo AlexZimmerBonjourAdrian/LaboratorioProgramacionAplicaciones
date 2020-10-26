@@ -122,6 +122,7 @@
                         $('#fechapub').html(result.fechapub);
                         $('#doc').html(result.result1);
                         $('#inscripciones').html(result.inscripciones);
+                        $('#img').html(result.result2);
                         
                         
                     }
@@ -145,75 +146,55 @@
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm">   
-                            <form action="ConsultaEdicionCurso" method="get">              
-                                <div class="form-group">  
-                                    <label>Buscar por Instituto:</label><br>
-                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                    <select id="inst" name="inst" >
-                                        <c:forEach items="${institutos}" var="inst" varStatus="loop">
-                                            <option>
-                                                ${inst}
-                                            </option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
+                            <div class="form-group">  
+                                <label>Buscar por Instituto:</label><br>
+                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                <select id="inst" name="inst" >
+                                    <c:forEach items="${institutos}" var="inst" varStatus="loop">
+                                        <option>
+                                            ${inst}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
 
-                                <div class="form-group">  
-                                    <label>Buscar por Categoria:</label><br>
-                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                    <select id="cat" name="cat" >
-                                        <c:forEach items="${categorias}" var="cat" varStatus="loop">
-                                            <option>
-                                                ${cat}
-                                            </option>
-                                        </c:forEach>
-                                    </select>
-                                </div> 
+                            <div class="form-group">  
+                                <label>Buscar por Categoria:</label><br>
+                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                <select id="cat" name="cat" >
+                                    <c:forEach items="${categorias}" var="cat" varStatus="loop">
+                                        <option>
+                                            ${cat}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div> 
 
-                                <div class="form-group">  
-                                    <label>Curso</label><br>
-                                    <select id="cur" name="cur">
+                            <div class="form-group">  
+                                <label>Curso</label><br>
+                                <select id="cur" name="cur">
 
-                                    </select>
-                                </div>
+                                </select>
+                            </div>
 
-                                <div class="form-group">  
-                                    <label>Edición:</label><br>
-                                    <select id="edi" name="edi">
-
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Nombre</label>: <h7 name="nombre" id="nombre"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Fecha inicio:</label> <h7 name="fechaini" id="fechaini"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Fecha fin:</label> <h7 name="fechafin" id="fechafin"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Cupos máximos:</label>  <h7 name="cuposmax" id="cuposmax"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Fecha publicación:</label> <h7 name="fechapub" id="fechapub"></h7>
-                                </div>
-                                <div class="form-group">  
-                                    <label>Docentes:</label><br>
-                                    <select id="doc" name="doc">
-
-                                    </select>
-                                </div>
-                                <div class="form-group" name="result" id="result">
-                                    <h7 name="inscripciones" id="inscripciones"></h7>
-                                </div>
-                            </form>
+                            <div class="form-group">  
+                                <label>Edición:</label><br>
+                                <select id="edi" name="edi">
+                                </select>
+                            </div>
+                            <jsp:include page="/WEB-INF/Edicion/ediciondatos.jsp"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+       
+                            
+        
+        <div class="form-group" name="result" id="result">
+            <h7 name="inscripciones" id="inscripciones"></h7>
+        </div>
+                        
         <span id="result1"> </span>
         <br>
         <br>

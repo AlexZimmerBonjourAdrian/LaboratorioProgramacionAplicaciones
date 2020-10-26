@@ -89,32 +89,34 @@
                                     <input type="text" class="form-control" name="url">
                                 </div>
                                 <div class="form-group">
-
-                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                <select id="inst" name="inst">
-                                 <c:forEach items="${institutos}" var="inst" varStatus="loop">
-                                   <option>
-                                       ${inst}
-                                   </option>
-                                 </c:forEach>
-                                </select>
+                                    <label>Institutos</label><br>
+                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                    <select id="inst" name="inst">
+                                     <c:forEach items="${institutos}" var="inst" varStatus="loop">
+                                       <option>
+                                           ${inst}
+                                       </option>
+                                     </c:forEach>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-
-                                <select id="previas" multiple name="previas">
-
-                                </select>
-
+                                    <label>Previas</label><br>
+                                    <select id="previas" multiple name="previas">
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                <select id="cat" multiple name="cat">
-
-                                <c:forEach items="${categorias}" var="cat" varStatus="loop">
-                                   <option>
-                                       ${cat}
-                                   </option>
-                                 </c:forEach>
-                                </select>
+                                    <label>Categorias</label><br>
+                                    <select id="cat" multiple name="cat">
+                                        <c:forEach items="${categorias}" var="cat" varStatus="loop">
+                                           <option>
+                                               ${cat}
+                                           </option>
+                                         </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label >Seleccione su imagen:</label>
+                                    <input type="file" name="txtDireccion" value="" size="50"/>
                                 </div>
                                 <input type="submit" class="btn btn-primary"></input>
                             </form>

@@ -46,7 +46,15 @@ public class consultausuario extends HttpServlet {
         }
         else{
             DTUsuario u1 = ICU.obtenerUsuario(usuario);
+            ArrayList<String> e1 = null;
+            if(usuario.equals(request.getSession().getAttribute("usuario_logueado"))){
+                e1 = ICU.mostrarEdicionFULL(usuario);
+            }
+            else{
+                e1 = ICU.mostrarEdicion(usuario);
+            }
             request.setAttribute("usuario", u1);
+            request.setAttribute("ediciones", e1);
             request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);
         }
         

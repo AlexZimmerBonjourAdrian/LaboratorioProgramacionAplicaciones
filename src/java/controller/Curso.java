@@ -55,6 +55,14 @@ public class Curso extends HttpServlet {
         String urlCur=request.getParameter("url");
         String fecha = request.getParameter("fecha");
         String inst = request.getParameter("inst");
+        String imagenNom = request.getParameter("txtDireccion");
+        String imagenDir = "images/logo.png";
+        
+        if(imagenNom!=null){
+                imagenDir = "images/"+imagenNom;
+        }
+        
+        
         Date fechaDate=null;
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         if(fecha!=null){
@@ -71,7 +79,7 @@ public class Curso extends HttpServlet {
             lista2 = Arrays.asList(cat);
         }
         if(nomCur!=null){
-            DTCurso datoscurso = new DTCurso(nomCur,desCur,durCur,Double.parseDouble(horasCur),Double.parseDouble(credCur),fechaDate,urlCur);
+            DTCurso datoscurso = new DTCurso(nomCur,desCur,durCur,Double.parseDouble(horasCur),Double.parseDouble(credCur),fechaDate,urlCur, imagenDir);
             ICU.registrarCurso(inst, datoscurso, lista, lista2);
         }
         request.getRequestDispatcher("/WEB-INF/Curso/Curso.jsp").
