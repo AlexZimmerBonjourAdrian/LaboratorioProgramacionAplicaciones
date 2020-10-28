@@ -161,65 +161,14 @@
                                 <div class="form-group">
                                     <p>Fecha de publicación:</p> <h7 name="fechapub" id="fechapub"></h7>
                                 </div>
-                         <%--       <div class="form-group">
-                                    <ol id="est" id="est">
-
-                                    </ol>
-                                    <ol id="fech" id="fech">
-
-                                    </ol>
-                                     <ol id="estado" id="estado">
-
-                                    </ol>
-
-                                </div> --%>
-
-
                                 <div>
-
                                 <table name="filas" id ="filas" class="table table-bordered">
-
-                                    <%--    <tr>
-
-                                          <th>Nombre</th>
-
-                                          <th>Fecha insc</th>
-
-                                          <th>Estado</th>
-
-                                        </tr>
-
-                                         <tr >
-
-                                         <td name="est" id="est"></td> 
-
-                                          <td name="fech" id="fech"></td>
-
-                                          <td name="estado" id="estado"></td> 
-
-                                        </tr>--%>
-
                                 </table>    
-
-
                                 </div>    
-
-
-                                <div class="panel panel-default">
-
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Panel de prueba </h3> 
-                                    </div>
-                                    <div class="panel-body">
-                                       Contenido del panel
-                                    </div>
-
-                                </div>
-
                                 <br>
                                 <br>
                                 <input type="submit" class="btn btn-primary" value="Aceptar"></input>
-                                <a href="index_docente.jsp"><input type="button" class="btn btn-primary" value="Cancelar"></a>
+                                <a href="Home"><input type="button" class="btn btn-primary" value="Cancelar"></a>
                             </form>
                         </div>
                     </div>

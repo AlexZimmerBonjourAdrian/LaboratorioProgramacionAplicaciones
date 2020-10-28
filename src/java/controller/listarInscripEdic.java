@@ -46,8 +46,14 @@ public class listarInscripEdic extends HttpServlet {
                 System.out.println("El nick es null");
             }
             request.setAttribute("inscripciones", datosInsc);
-            
-            request.getRequestDispatcher("/WEB-INF/Edicion/listarInscripEdic.jsp").forward(request, response);
+            String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+            if(nick2!=null && !ICU.chekusuario(nick2)&& !ICU.esDocente(nick2)){
+                request.getRequestDispatcher("/WEB-INF/Edicion/listarInscripEdic.jsp").forward(request, response);
+            }
+            else{
+                response.sendRedirect("Error.jsp");
+            }
+           
         }catch(Exception e){
             System.out.println("No funciono");
         }

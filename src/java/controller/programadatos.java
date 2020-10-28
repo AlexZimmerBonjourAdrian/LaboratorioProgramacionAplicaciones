@@ -45,6 +45,8 @@ public class programadatos extends HttpServlet {
         String prog = request.getParameter("prog");
         if(prog!=null) {
              DTPrograma programa = ICU.obtenerPrograma(prog);
+             ArrayList<String> cursos = ICU.cursosPrograma(prog);
+             request.setAttribute("cursos", cursos);
              request.setAttribute("programa", programa);
          }
          request.getRequestDispatcher("/WEB-INF/Programa/datosprograma.jsp").forward(request, response);

@@ -37,20 +37,19 @@ public class InscripcionEdicion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            
             FabricaLab fabrica = FabricaLab.getInstance();
             ISistema ICU = fabrica.getISistema();
             String curso = request.getParameter("cur");
             String edicion = request.getParameter("edi");
             String nick = (String) request.getSession().getAttribute("usuario_logueado");
-            ICU.crearInscripcionEstudiante(curso, edicion, nick, new Date());
-            request.getRequestDispatcher("/WEB-INF/Edicion/InscripcionEdicion.jsp").forward(request, response);
-        }catch(Exception e){
-            System.out.print("No funciono");
-        }
-        
+            System.out.println("El usuario logueado es: " + nick);
+            if(nick!=null && !ICU.chekusuario(nick)&&!ICU.esDocente(nick)){
+                ICU.crearInscripcionEstudiante(curso, edicion, nick, new Date());
+                request.getRequestDispatcher("/WEB-INF/Edicion/InscripcionEdicion.jsp").forward(request, response); 
+            }
+            else{
+                response.sendRedirect("Error.jsp");
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

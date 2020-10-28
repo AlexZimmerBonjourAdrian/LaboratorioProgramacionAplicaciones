@@ -21,6 +21,33 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <title>Curso</title>
         
+           <script type="text/javascript">
+            $(document).ready(function(){ 
+                $("#nomCur").on("keyup", function(){ 
+                    var nomCur = $("#nomCur").val();
+                    $.ajax({
+                        type:'POST',
+                        data:{nomCur: nomCur},
+                        url:'checkCurso',
+                        success:function(result){
+                            console.log(result);
+                            var res = result.result1;
+                            if(res=="true"){
+                                $('#res').css("display", "inline");
+                                $('#res').html("Ya existe el curso");
+                                $('#boton').css("display", "none");
+                            }
+                            else{
+                                $('#res').html("");
+                                $('#boton').css("display", "inline");
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+        
+        
         <script type="text/javascript">
             $(document).ready(function(){
               $('#inst').on("click", function(){
@@ -41,6 +68,27 @@
             });
             
         </script>
+        
+          <script>
+            function validacion(){
+                var nomCur = document.getElementById('nomCur').value;
+                var desCur = document.getElementById('desCur').value;
+                var durCur = document.getElementById('durCur').value;
+                var horasCur = document.getElementById('horasCur').value;
+                var credCur = document.getElementById('credCur').value;
+                var fecha = document.getElementById('fecha').value;
+                var url = document.getElementById('url').value;
+                var e = document.getElementById("inst");
+                if(!nomCur || !desCur || !durCur || horasCur<=0 || credCur<=0 || !fecha  || !url ){
+                    alert("INGRESE TODOS LOS DATOS");
+                    return false;
+                } 
+                else{
+                    return true;
+                }
+            }
+        </script>
+        
         <style type="text/css">
             label { color: dimgray }
          </style>
@@ -59,34 +107,37 @@
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm">  
-                            <form action="Curso" method="get">          
+                            <form action="Curso" method="get" onsubmit="return validacion()">          
                                 <div class="form-group">
                                     <label>Escriba el nombre del curso:</label>
-                                    <input type="text" class="form-control" name="nomCur" placeholder="Nombre">
+                                    <input type="text" class="form-control" name="nomCur" placeholder="Nombre" id="nomCur">
+                                </div>
+                                 <div class="form-group">
+                                    <span style="color:red" id="res"></span>
                                 </div>
                                  <div class="form-group">
                                     <label >Escriba la descripcion del curso:</label>
-                                    <input type="text" class="form-control" name="desCur" placeholder="Descripcion">
+                                    <input type="text" class="form-control" name="desCur" placeholder="Descripcion" id="desCur">
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese la duracion del curso:</label>
-                                    <input type="text" class="form-control" name="durCur" placeholder="Duracion">
+                                    <input type="text" class="form-control" name="durCur" placeholder="Duracion" id="durCur">
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese la cantidad de horas del curso:</label>
-                                    <input type="text" class="form-control" name="horasCur" placeholder="Horas">
+                                    <input type="number" class="form-control" name="horasCur" placeholder="Horas" id="horasCur">
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese la cantidad de creditos del curso:</label>
-                                    <input type="text" class="form-control" name="credCur" placeholder="Creditos">
+                                    <input type="number" class="form-control" name="credCur" placeholder="Creditos" id="credCur">
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese la fecha de registro:</label>
-                                    <input type="date" class="form-control" name="fecha">
+                                    <input type="date" class="form-control" name="fecha" id="fecha">
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese la URL del curso:</label>
-                                    <input type="text" class="form-control" name="url">
+                                    <input type="text" class="form-control" name="url" id="url">
                                 </div>
                                 <div class="form-group">
                                     <label>Institutos</label><br>
@@ -118,7 +169,8 @@
                                     <label >Seleccione su imagen:</label>
                                     <input type="file" name="txtDireccion" value="" size="50"/>
                                 </div>
-                                <input type="submit" class="btn btn-primary"></input>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <a href="Home" id="cancel" name="cancel" class="btn btn-default">Cancel</a> 
                             </form>
                         </div>
                     </div>

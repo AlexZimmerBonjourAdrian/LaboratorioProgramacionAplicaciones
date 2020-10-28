@@ -52,7 +52,7 @@ public class Programa extends HttpServlet {
         String imagenNom = request.getParameter("txtDireccion");
         String imagenDir = "images/logo.png";
         
-        if(imagenNom!=null){
+         if(imagenNom!=null && !imagenNom.equals("") ){
                 imagenDir = "images/"+imagenNom;
         }
         
@@ -79,9 +79,13 @@ public class Programa extends HttpServlet {
             }
 
         } 
-
-         request.getRequestDispatcher("/WEB-INF/Programa/AltaPrograma.jsp").
-                                            forward(request, response);
+        String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+        if(nick2!=null && ICU.esDocente(nick2)){
+            request.getRequestDispatcher("/WEB-INF/Programa/AltaPrograma.jsp").forward(request, response);
+        }
+        else{
+            response.sendRedirect("Error.jsp");
+        }
         
     }
 

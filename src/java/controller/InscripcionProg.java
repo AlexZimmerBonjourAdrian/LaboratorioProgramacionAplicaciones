@@ -43,7 +43,13 @@ public class InscripcionProg extends HttpServlet {
             if(programa!=null && nick!=null && !ICU.checkincripcionPrograma(programa, nick)){
                 ICU.InscripcionPrograma(programa, nick, new Date());
             }
-            request.getRequestDispatcher("/WEB-INF/Programa/InscripcionProg.jsp").forward(request, response);
+            String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+            if(nick2!=null && !ICU.chekusuario(nick2) && !ICU.esDocente(nick2)){
+                request.getRequestDispatcher("/WEB-INF/Programa/InscripcionProg.jsp").forward(request, response);
+            }
+            else{
+                response.sendRedirect("Error.jsp");
+            }
         }catch(Exception e){
             System.err.println("no funciono");
         }

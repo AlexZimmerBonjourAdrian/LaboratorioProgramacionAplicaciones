@@ -47,12 +47,12 @@ public class consultausuario extends HttpServlet {
         else{
             DTUsuario u1 = ICU.obtenerUsuario(usuario);
             ArrayList<String> e1 = null;
-            if(usuario.equals(request.getSession().getAttribute("usuario_logueado"))){
+            ArrayList<String> p1 = null;
+            if(usuario!=null){
                 e1 = ICU.mostrarEdicionFULL(usuario);
+                p1 = ICU.mostrarProgramasUsuario(usuario);
             }
-            else{
-                e1 = ICU.mostrarEdicion(usuario);
-            }
+            request.setAttribute("programas", p1);
             request.setAttribute("usuario", u1);
             request.setAttribute("ediciones", e1);
             request.getRequestDispatcher("/WEB-INF/Usuario/perfil.jsp").forward(request, response);

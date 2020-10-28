@@ -41,7 +41,6 @@ public class Usuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
             FabricaLab fabrica = FabricaLab.getInstance();
             ISistema ICU = fabrica.getISistema();
             ArrayList<String> institutos = ICU.listarInstitutos();
@@ -57,16 +56,13 @@ public class Usuario extends HttpServlet {
             String[] inst = request.getParameterValues("inst");
             String imagenNom = request.getParameter("txtDireccion");
             String imagenDir = "images/logo.png";
-            
             if(imagenNom!=null){
                 imagenDir = "images/"+imagenNom;
             }
-            
             List lista = new ArrayList();
             if(inst!=null){
                 lista = Arrays.asList(inst);
             }
-
             Date fechaDate = null;
             if(fecha!=null){
                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -85,10 +81,13 @@ public class Usuario extends HttpServlet {
                     ICU.altaUsuario(datos, true, lista);
                 }
             }
-           
-
-            request.getRequestDispatcher("/WEB-INF/Usuario/Usuario.jsp").
-						forward(request, response);
+            String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+            if(nick2==null){
+                request.getRequestDispatcher("/WEB-INF/Usuario/Usuario.jsp").forward(request, response); 
+            }
+            else{
+                response.sendRedirect("Error.jsp");
+            }
         }catch(Exception e){
             System.out.print("No funciono");
         }

@@ -91,6 +91,17 @@
                         $('#fechafin').html(result.fechafin);
                         $('#cuposmax').html(result.cuposmax);
                         $('#fechapub').html(result.fechapub);
+                        $('#doc').html(result.result1);
+                        var msg = result.mensaje;
+                        if(msg=="Ya esta inscripto"){
+                            $('#res').css("display", "inline");
+                            $('#res').html("Ya esta inscripto");
+                            $('#boton').css("display", "none");
+                        }
+                        else{
+                            $('#res').html("");
+                            $('#boton').css("display", "inline");
+                        }
                         $('#mensaje').html(result.mensaje);
                       }
                   });
@@ -107,11 +118,11 @@
         
         <div id="wrapper">
             <div id="home" class="video-section js-height-full">
-                <h1>Inscripción a edición de curso</h1>
+                <h1 class="titulo">Inscripción a edición de curso</h1>
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm">
-                            <form action="InscripcionEdicion" method="get">
+                            <form action="InscripcionEdicion" method="get" id="insc">
                                 <div class="form-group">
                                 <p>Institutos:</p>               
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -123,54 +134,35 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-
                                 <div class="form-group">  
                                 <p>Categoria:<p>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 <select id="cat" name="cat" >
-                                 <c:forEach items="${categorias}" var="cat" varStatus="loop">
-                                   <option>
-                                       ${cat}
-                                   </option>
-                                 </c:forEach>
+                                    <c:forEach items="${categorias}" var="cat" varStatus="loop">
+                                        <option>
+                                            ${cat}
+                                        </option>
+                                    </c:forEach>
                                 </select>
                                 </div>     
-
                                 <div class="form-group">  
                                     <p>Curso:</p>
                                     <select id="cur" name="cur">
-
                                     </select>
                                 </div>
                                 <div class="form-group">  
                                     <p>Edicion:</p>
                                     <select id="edi" name="edi">
-
                                     </select>
                                 </div>
-                                  <div class="form-group">
-                                      <p>Nombre</p>: <h7 name="nombre" id="nombre"></h7>
+                                <jsp:include page="/WEB-INF/Edicion/ediciondatos.jsp"/>
+                                <div class="form-group">
+                                    <span style="color:red" id="res"></span>
                                 </div>
                                 <div class="form-group">
-                                    <p>Fecha inicio:</p> <h7 name="fechaini" id="fechaini"></h7>
+                                    <input type="submit" class="btn btn-primary" value="Inscribirse" form="insc" id="boton"></input>
+                                    <a href="Home"><input type="button" class="btn btn-default" value="Cancelar"></a>
                                 </div>
-                                <div class="form-group">
-                                    <p>Fecha fin:</p> <h7 name="fechafin" id="fechafin"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <p>Cupos maximos:</p> <h7 name="cuposmax" id="cuposmax"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <p>Fecha de publicación:</p> <h7 name="fechapub" id="fechapub"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <p>Mensaje:</p>
-                                    <font color = "red">
-                                     <h2 name="mensaje" id="mensaje"></h2>
-                                    </font>
-                                </div>
-                                <input type="submit" class="btn btn-primary" value="Inscribirse"></input>
-                                <a href="index_estudiante.jsp"><input type="button" class="btn btn-primary" value="Cancelar"></a>
                             </form>
                         </div>
                     </div>

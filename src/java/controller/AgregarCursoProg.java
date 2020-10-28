@@ -35,7 +35,6 @@ public class AgregarCursoProg extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //try (PrintWriter out = response.getWriter()) {
             FabricaLab fabrica = FabricaLab.getInstance();
             ISistema ICU = fabrica.getISistema();
             String curso = request.getParameter("cur");
@@ -44,11 +43,13 @@ public class AgregarCursoProg extends HttpServlet {
             if(curso!=null && programa != null){
                 ICU.agregarCursoPrograma(programa, curso);
             }
-            request.getRequestDispatcher("/WEB-INF/Programa/AgregarCursoProg.jsp").forward(request, response);
-       // }catch(Exception e){
-       //     System.out.print("No funciono");
-       // }
-        
+            String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+            if(nick2!=null && ICU.esDocente(nick2)){
+                request.getRequestDispatcher("/WEB-INF/Programa/AgregarCursoProg.jsp").forward(request, response);
+            }
+            else{
+                response.sendRedirect("Error.jsp");
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

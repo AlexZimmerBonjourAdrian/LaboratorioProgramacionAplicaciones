@@ -77,7 +77,7 @@ public class iniciosesion extends HttpServlet {
                     request.getSession().setAttribute("usuario_logueado", u1.getNick());
                 }
                 else{
-                    nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
+                    nuevoEstado = EstadoSesion.NO_LOGIN;
                 }
 
             }

@@ -60,7 +60,7 @@ public class Home extends HttpServlet {
                     break;
             case LOGIN_INCORRECTO:
                     // hace que se ejecute el jsp sin cambiar la url
-                    req.getRequestDispatcher("/Error.html").
+                    req.getRequestDispatcher("/Error.jsp").
                                     forward(req, resp);
                     break;
             case LOGIN_ESTUDIANTE:

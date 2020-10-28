@@ -58,7 +58,7 @@ public class Curso extends HttpServlet {
         String imagenNom = request.getParameter("txtDireccion");
         String imagenDir = "images/logo.png";
         
-        if(imagenNom!=null){
+        if(imagenNom!=null && !imagenNom.equals("") ){
                 imagenDir = "images/"+imagenNom;
         }
         
@@ -78,12 +78,22 @@ public class Curso extends HttpServlet {
         if(cat!=null){
             lista2 = Arrays.asList(cat);
         }
-        if(nomCur!=null){
+        if(nomCur!=null && ICU.obtenerCurso(nomCur) == null){
             DTCurso datoscurso = new DTCurso(nomCur,desCur,durCur,Double.parseDouble(horasCur),Double.parseDouble(credCur),fechaDate,urlCur, imagenDir);
             ICU.registrarCurso(inst, datoscurso, lista, lista2);
+        }else{
+                if(nomCur != null){
+           //         ICU.modi(datos);
+            }
+        } 
+        String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+        if(nick2!=null && ICU.esDocente(nick2)){
+           request.getRequestDispatcher("/WEB-INF/Curso/Curso.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/WEB-INF/Curso/Curso.jsp").
-						forward(request, response);
+        else{
+            response.sendRedirect("Error.jsp");
+        }
+        
 
                             
     }

@@ -60,7 +60,7 @@
                                         <label>Mensaje:</label> <h2 name="mensaje" id="mensaje"></h2>
                                     </div>            
                                     <input type="submit" class="btn btn-primary" value="Inscribirse"></input>
-                                    <a href="index_estudiante.jsp"><input type="button" class="btn btn-primary" value="Cancelar"></a>
+                                    <a href="Home"><input type="button" class="btn btn-primary" value="Cancelar"></a>
                             </form>
                          </div>
                     </div>

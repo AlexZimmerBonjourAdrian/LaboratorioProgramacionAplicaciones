@@ -39,6 +39,7 @@
                                 <ul class="sub-menu center-content">
                                     <% String user = (String)request.getSession().getAttribute("usuario_logueado");%>
                                     <li><a href="consultausuario?nick=<%= user %>">Consulta de usuario</a></li>
+                                    <li><a href="consultausuario">Usuarios</a></li>
                                     <li><a href="http://localhost:8080/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
                                     
                                 </ul>

@@ -116,6 +116,18 @@
         <servlet-name>listarInscripEdic</servlet-name>
         <servlet-class>controller.listarInscripEdic</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Error</servlet-name>
+        <servlet-class>controller.Error</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkCurso</servlet-name>
+        <servlet-class>controller.checkCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkPrograma</servlet-name>
+        <servlet-class>controller.checkPrograma</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
@@ -231,6 +243,18 @@
     <servlet-mapping>
         <servlet-name>listarInscripEdic</servlet-name>
         <url-pattern>/listarInscripEdic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Error</servlet-name>
+        <url-pattern>/Error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkCurso</servlet-name>
+        <url-pattern>/checkCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkPrograma</servlet-name>
+        <url-pattern>/checkPrograma</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

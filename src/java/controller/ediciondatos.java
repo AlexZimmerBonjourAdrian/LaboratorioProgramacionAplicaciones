@@ -43,6 +43,8 @@ public class ediciondatos extends HttpServlet {
             edicion = ICU.datosEdicion(cur, ed);  
         }
         request.setAttribute("ed", edicion);
+        ArrayList<String> docentes = ICU.listarDocentesEdicion(cur, ed);
+        request.setAttribute("doc", docentes);
         request.getRequestDispatcher("/WEB-INF/Edicion/ediciondatos.jsp").forward(request, response);
         response.setContentType("text/html;charset=UTF-8");  
         
@@ -104,7 +106,7 @@ public class ediciondatos extends HttpServlet {
         System.out.println(result2);
         
          for(Object doc : docentesE){
-            result1 = result1 + "<option>"+ doc + "</option>";
+            result1 = result1 + "<a href=\"consultausuario?nick="+doc+"\">"+ doc + "</a>";
          
         }
         

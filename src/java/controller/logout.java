@@ -35,6 +35,7 @@ public class logout extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         EstadoSesion nuevoEstado = EstadoSesion.NO_LOGIN;
         objSesion.setAttribute("estado_sesion", nuevoEstado);
+        request.getSession().setAttribute("usuario_logueado", null);
         response.sendRedirect("http://localhost:8080/LaboratorioWeb/Home");
     }
 

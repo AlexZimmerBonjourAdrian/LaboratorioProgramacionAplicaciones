@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/admin/Desktop/LabWeb/web/WEB-INF/Usuario/Usuario.jsp</file>
-            <file>file:/C:/Users/admin/Desktop/LabWeb/web/WEB-INF/Curso/CursoDatos.jsp</file>
-            <file>file:/C:/Users/admin/Desktop/LabWeb/src/java/controller/consultausuario.java</file>
-            <file>file:/C:/Users/admin/Desktop/LabWeb/web/WEB-INF/Usuario/perfil.jsp</file>
-            <file>file:/C:/Users/admin/Desktop/LabWeb/web/WEB-INF/Usuario/InicioSesion.jsp</file>
+            <file>file:/F:/LaboratorioProgramacionAplicaciones/src/conf/persistence.xml</file>
+            <file>file:/F:/LaboratorioProgramacionAplicaciones/src/java/controller/cargarbd.java</file>
+            <file>file:/F:/LaboratorioProgramacionAplicaciones/nbproject/build-impl.xml</file>
         </group>
     </open-files>
 </project-private>

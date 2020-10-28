@@ -69,33 +69,8 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Programa</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h3 class="titulo">Nombre:</h3><h3 id="nombre">&nbsp;&nbsp;</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h3 class="titulo">Descripcion:</h3><h3 id="descripcion"> &nbsp;&nbsp;</h3>
-                                    </div>
-                                     <div class="panel-body">
-                                        <h3 class="titulo">Fecha inicial:</h3><h3 id="fechaini">&nbsp;&nbsp; </h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h3 class="titulo">Fecha final:</h3><h3 id="fechafin">&nbsp;&nbsp;</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h3 class="titulo">Fecha de alta:</h3><h3 id="fechaalta">&nbsp;&nbsp; </h3>
-                                    </div>
-                                </div>
+                                <jsp:include page="/WEB-INF/Programa/datosprograma.jsp"/>
                             </form>
-                            <label>Cursos:</label>
-                            <div id="cur" name="cur" >                                                    
-                            </div>                                       			                   
-                            Imagen:
-                            <div id="img" name="img" class="form-group">    
-                           
                         </div>                       
                     </div>
                 </div>  

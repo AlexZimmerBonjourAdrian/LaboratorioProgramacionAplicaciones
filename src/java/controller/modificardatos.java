@@ -51,11 +51,17 @@ public class modificardatos extends HttpServlet {
             fechaDate = formato.parse(fechaNac);
         }
         System.out.println("El nombre usuario a modificar es: " + nick);
-        ICU.modificarDatosUsuario(nick, nombre, apellido, fechaDate); 
+        if(nick!=null){
+            ICU.modificarDatosUsuario(nick, nombre, apellido, fechaDate); 
+        }
+        String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+        if(nick2!=null && !ICU.chekusuario(nick2)){
+            request.getRequestDispatcher("/WEB-INF/Usuario/modificardatos.jsp").forward(request, response);
+        }
+        else{
+            response.sendRedirect("Error.jsp");
+        }
         
-        
-      
-        request.getRequestDispatcher("/WEB-INF/Usuario/modificardatos.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -36,7 +36,15 @@ public class aceptadosedicion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-              request.getRequestDispatcher("/WEB-INF/Edicion/AceptadosEdicion.jsp").forward(request, response);
+            FabricaLab fabrica = FabricaLab.getInstance();
+            ISistema ICU = fabrica.getISistema();
+            String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+            if(nick2!=null && ICU.esDocente(nick2)){
+                request.getRequestDispatcher("/WEB-INF/Edicion/AceptadosEdicion.jsp").forward(request, response);
+            }
+            else{
+                response.sendRedirect("Error.jsp");
+            }   
         }catch(Exception e){
             System.out.println("No Funcionó");
         }
@@ -89,7 +97,6 @@ public class aceptadosedicion extends HttpServlet {
             datosins = (DTInscripcionE) insc;
             nombre = datosins.getEstudiante().getNick();
             if(datosins.getEstado().toString().equals("ACEPTADA")){
-            
              result1 = result1 + "<tr><td name=\"est\" id=\"est\">" + nombre + "</td>" 
              + "<td name=\"fech\" id=\"fech\">" + datosins.getFecha().toString() + "</td>" +
              "<td name=\"estado\" id=\"estado\">" + datosins.getEstado().toString() + "</td> </tr>";

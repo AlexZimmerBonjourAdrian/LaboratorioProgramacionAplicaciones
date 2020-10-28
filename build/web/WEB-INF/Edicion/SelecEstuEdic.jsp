@@ -98,7 +98,7 @@
                       success:function(result){
                         console.log(result);
                         $('#filas').html(result.result1);
-                        //$('#fech').html(result.result2);
+                        $('#chanchada').html(result.chanchada);
                         //$('#estado').html(result.result3);
                       }
                   });
@@ -107,11 +107,13 @@
             });
             
         </script>
+      
     </head>
     <body class="left-menu">
         <div class="menu-wrapper">
             <jsp:include page="/WEB-INF/templates/panel.jsp"/>
         </div>
+        <div id="chanchada"></div>
         <h1 class="titulo">Seleccionar Estudiantes para una Edicion de Curso</h1>
         <div id="wrapper">
             <div id="home" class="video-section js-height-full">      
@@ -159,13 +161,13 @@
                                     <label>Fecha de publicación:</label> <h7 name="fechapub" id="fechapub"></h7>
                                 </div>
                                 <div>
-                                    <table name="filas" id ="filas" class="egt">
+                                    <table name="filas" id ="filas" class="table table-bordered">
                                     </table>    
                                 </div>    
 
 
                                 <input type="submit" class="btn btn-primary" value="Aceptar"></input>
-                                <a href="index_docente.jsp"><input type="button" class="btn btn-primary" value="Cancelar"></a>
+                                <a href="Home"><input type="button" class="btn btn-primary" value="Cancelar"></a>
                             </form>
                         </div>
                     </div>

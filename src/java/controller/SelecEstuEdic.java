@@ -40,6 +40,7 @@ public class SelecEstuEdic extends HttpServlet {
              FabricaLab fabrica = FabricaLab.getInstance();
              ISistema ICU = fabrica.getISistema();
              String[] elegidos = request.getParameterValues("elegidos");
+             String[] rechazados = request.getParameterValues("rechazados");
              String cur = request.getParameter("cur");
              String edi = request.getParameter("edi");
              if(elegidos!=null){
@@ -47,7 +48,18 @@ public class SelecEstuEdic extends HttpServlet {
                     ICU.modificarEstadoInscripcion(cur, edi, nombre, EstadoInscripcion.ACEPTADA);
                 }
              }
-             request.getRequestDispatcher("/WEB-INF/Edicion/SelecEstuEdic.jsp").forward(request, response);
+             if(rechazados!=null){
+                for(String nombrer : rechazados){
+                    ICU.modificarEstadoInscripcion(cur, edi, nombrer, EstadoInscripcion.RECHAZADA);
+                }
+            }
+            String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+            if(nick2!=null && ICU.esDocente(nick2)){
+                request.getRequestDispatcher("/WEB-INF/Edicion/SelecEstuEdic.jsp").forward(request, response);
+            }
+            else{
+                response.sendRedirect("Error.jsp");
+            }
          }catch(Exception e){
              System.out.println("No funciono");
          }
@@ -91,7 +103,26 @@ public class SelecEstuEdic extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         JSONObject j = new JSONObject();
-        String result1 = "<tr> <th>Nombre</th><th>Fecha insc</th><th>Estado</th></tr>";
+        String chanchada = "<script>\n" +
+"            $(document).ready(function(){\n" +
+"                $('input[type=\"checkbox\"]').on('click', function() {\n" +
+"                    console.log(\"ENTREE\");\n" +
+"                    var $box = $(this);\n" +
+"                       if ($box.is(\":checked\")) {\n" +
+"                      // the name of the box is retrieved using the .attr() method\n" +
+"                      // as it is assumed and expected to be immutable\n" +
+"                      var group = \"input:checkbox[value='\" + $box.attr(\"value\") + \"']\";\n" +
+"                      // the checked state of the group/box on the other hand will change\n" +
+"                      // and the current value is retrieved using .prop() method\n" +
+"                      $(group).prop(\"checked\", false);\n" +
+"                      $box.prop(\"checked\", true);\n" +
+"                    } else {\n" +
+"                      $box.prop(\"checked\", false);\n" +
+"                    }\n" +
+"                });\n" +
+"            });\n" +
+"        </script>";
+        String result1 ="<tr> <th>Nombre</th><th>Fecha insc</th><th>Estado</th></tr>";
         //String result2 = "";
         //String result3 = "";
         String nombre;
@@ -99,14 +130,14 @@ public class SelecEstuEdic extends HttpServlet {
         for(Object insc : inscriptos){
             datosins = (DTInscripcionE) insc;
             nombre = datosins.getEstudiante().getNick();
-            result1 = result1 + "<tr><td name=\"est\" id=\"est\"> <input value=\"" + nombre + "\"name=\"elegidos\" type=\"checkbox\" >" + nombre + "</input></td>" 
+            result1 = result1 + "<tr><td name=\"est\" id=\"est\"><input type=\"checkbox\" value=\"" + nombre + "\"name=\"rechazados\"  >&#10060</input> <input type=\"checkbox\" value=\"" + nombre + "\"name=\"elegidos\" >&#9989</input>&nbsp&nbsp" + nombre + "</td>" 
              + "<td name=\"fech\" id=\"fech\">" + datosins.getFecha().toString() + "</td>" +
              "<td name=\"estado\" id=\"estado\">" + datosins.getEstado().toString() + "</td> </tr>";
             
         }
         
         j.put("result1",result1);
-       // j.put("result2",result2);
+        j.put("chanchada",chanchada);
        // j.put("result3",result3);
         response.getWriter().write(j.toString());
        

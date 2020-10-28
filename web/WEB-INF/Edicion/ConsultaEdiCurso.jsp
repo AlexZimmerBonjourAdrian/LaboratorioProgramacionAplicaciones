@@ -169,14 +169,11 @@
                                     </c:forEach>
                                 </select>
                             </div> 
-
                             <div class="form-group">  
                                 <label>Curso</label><br>
                                 <select id="cur" name="cur">
-
                                 </select>
                             </div>
-
                             <div class="form-group">  
                                 <label>Edición:</label><br>
                                 <select id="edi" name="edi">

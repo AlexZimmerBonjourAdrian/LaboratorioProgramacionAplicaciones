@@ -38,7 +38,8 @@
                                 <ul class="sub-menu center-content">
                                     <% String user = (String)request.getSession().getAttribute("usuario_logueado");%>
                                     <li><a href="consultausuario?nick=<%= user %>">Consulta de usuario</a></li>
-                                     <li><a href="http://localhost:8080/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
+                                    <li><a href="consultausuario">Usuarios</a></li>
+                                    <li><a href="http://localhost:8080/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
                                     
                                 </ul>
                             </div>
@@ -68,7 +69,7 @@
                         <li class="child-menu"><a href="#">Edición <i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="#">Listar resultados de inscripciones a ediciones de cursos</a></li>
+                                    <li><a href="listarInscripEdic">Listar resultados de inscripciones a ediciones de cursos</a></li>
                                 </ul>
                             </div>
                     </ul>

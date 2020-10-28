@@ -52,7 +52,7 @@
 
                             <div>  
                                 <br><br>
-                                <a href="index_estudiante.jsp"><input type="button" class="btn btn-primary" value="Volver"></a>
+                                <a href="Home"><input type="button" class="btn btn-primary" value="Volver"></a>
                             </div>
                         </div>
                     </div>

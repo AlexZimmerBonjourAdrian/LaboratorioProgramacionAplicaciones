@@ -42,9 +42,15 @@ public class Edicion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+        /* TODO output your page here. You may use following sample code. */
+        FabricaLab fabrica = FabricaLab.getInstance();
+        ISistema ICU = fabrica.getISistema();
+        String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+        if(nick2!=null && ICU.esDocente(nick2)){
             request.getRequestDispatcher("/WEB-INF/Edicion/Edicion.jsp").forward(request, response);
+        }
+        else{
+            response.sendRedirect("Error.jsp");
         }
     }
 
@@ -81,7 +87,7 @@ public class Edicion extends HttpServlet {
         String imagenNom = request.getParameter("txtDireccion");
         String imagenDir = "images/logo.png";
         
-        if(imagenNom!=null){
+        if(imagenNom!=null && !imagenNom.equals("") ){
                 imagenDir = "images/"+imagenNom;
         }
         
