@@ -5,8 +5,6 @@
  */
 package controller;
 
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -69,12 +67,8 @@ public class InscripcionProg extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            FabricaLab fabrica = FabricaLab.getInstance();
-            ISistema ICU = fabrica.getISistema();
-            
             servidor.PublicadorService service = new servidor.PublicadorService();
             servidor.Publicador port = service.getPublicadorPort();
-            
             List<String> programas = port.listarNombreProgramas();
             request.setAttribute("programas", programas);
             processRequest(request, response);
@@ -91,12 +85,8 @@ public class InscripcionProg extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-        
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         String nick = (String) request.getSession().getAttribute("usuario_logueado");
         String prog = request.getParameter("prog");
         String respuesta = "";

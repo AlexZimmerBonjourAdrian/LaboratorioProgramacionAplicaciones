@@ -131,7 +131,7 @@
                     <p>edEXT</p>
                     <div class="btn-wrapper">
                         <div class="text-center">
-                             <a href="http://localhost:8080/LaboratorioWeb/iniciosesion" class="btn btn-primary">Iniciar Sesión</a> &nbsp;<a href="http://localhost:8080/LaboratorioWeb/Usuario" class="btn btn-default">Regístrate</a>
+                             <a href="iniciosesion" class="btn btn-primary">Iniciar Sesión</a> &nbsp;<a href="Usuario" class="btn btn-default">Regístrate</a>
                         </div>
                     </div><!-- end row -->
                 </div>

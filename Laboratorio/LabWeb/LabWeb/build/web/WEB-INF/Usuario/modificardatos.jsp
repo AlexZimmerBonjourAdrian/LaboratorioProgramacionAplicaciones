@@ -3,10 +3,24 @@
     Created on : oct 16, 2020, 3:26:04 p.m.
     Author     : admin
 --%>
+<%@page import="servidor.DtUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+         <!-- Basic -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Mobile Meta -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <!-- Site Meta -->
+        <title>edEXT</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
         <script>
             function validacion(){
                 var nick = document.getElementById('nick').value;
@@ -40,17 +54,18 @@
                     <div class="row">
                         <div class="col-sm">  
                             <form action="modificardatos" method="post" onsubmit="return validacion()">          
+                                <%DtUsuario u1 = (DtUsuario) request.getAttribute("datos");%>
                                 <div class="form-group">
                                     <label >Escriba el nombre:</label>
-                                    <input type="text" class="form-control" name="nomUsr" placeholder="Nombre" id="nomUsr">
+                                    <input type="text" class="form-control" name="nomUsr" placeholder="Nombre" id="nomUsr" value="<%=u1.getNombre()%>">
                                 </div>
                                 <div class="form-group">
                                     <label >Escriba el apellido:</label>
-                                    <input type="text" class="form-control" name="apUsr" placeholder="Apellido" id="apUsr">
+                                    <input type="text" class="form-control" name="apUsr" placeholder="Apellido" id="apUsr" value="<%=u1.getApellido()%>">
                                 </div>
                                 <div class="form-group">
                                     <label>Ingrese la fecha de nacimiento:</label>
-                                    <input type="date" class="form-control" name="fechaNac" placeholder="Fecha" id="fechaNac">
+                                    <input type="date" class="form-control" name="fechaNac" placeholder="Fecha" id="fechaNac" value="<%=u1.getFechaDeNac()%>">
                                 </div>
                                 <input type="submit" class="btn btn-primary"></input> 
                             </form>

@@ -5,10 +5,6 @@
  */
 package controller;
 
-import Datatypes.DTCurso;
-import Datatypes.DTPrograma;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;

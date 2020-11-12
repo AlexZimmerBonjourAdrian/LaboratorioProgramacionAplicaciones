@@ -5,7 +5,7 @@
  */
 package controller;
 
-import Datatypes.EstadoSesion;
+import controller.EstadoSesion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -36,7 +36,7 @@ public class logout extends HttpServlet {
         EstadoSesion nuevoEstado = EstadoSesion.NO_LOGIN;
         objSesion.setAttribute("estado_sesion", nuevoEstado);
         request.getSession().setAttribute("usuario_logueado", null);
-        response.sendRedirect("http://localhost:8080/LaboratorioWeb/Home");
+        response.sendRedirect("Home");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -5,8 +5,6 @@
 --%>
 
 
-<%@page import="LOGICA.ISistema"%>
-<%@page import="LOGICA.FabricaLab"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

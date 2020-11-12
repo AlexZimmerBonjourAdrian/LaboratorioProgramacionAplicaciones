@@ -5,7 +5,6 @@
 <%@page import="servidor.DtUsuario"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Set"%>
-<%@page import="Datatypes.DTUsuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>

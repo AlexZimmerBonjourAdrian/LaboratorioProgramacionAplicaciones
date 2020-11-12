@@ -4,7 +4,7 @@
     Author     : admin
 --%>
 
-<%@page import="Datatypes.EstadoSesion"%>
+<%@page import="controller.EstadoSesion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>

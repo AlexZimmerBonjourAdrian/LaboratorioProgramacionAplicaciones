@@ -5,10 +5,7 @@
  */
 package controller;
 
-import DATABASE.Persistencia;
-import Datatypes.DTEdicion;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -44,10 +41,8 @@ public class Edicion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         /* TODO output your page here. You may use following sample code. */
-    
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
         if(nick2!=null && port.esDocente(nick2)){
             request.getRequestDispatcher("/WEB-INF/Edicion/Edicion.jsp").forward(request, response);
@@ -69,15 +64,8 @@ public class Edicion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Persistencia p = Persistencia.getInstance();
-        p.inicializarBaseDeDatos();
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-        
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
-        
         List<String> institutos = port.listarInstitutos();
         //ArrayList<String> institutos = ICU.listarInstitutos();
         request.setAttribute("institutos", institutos); 
@@ -158,13 +146,8 @@ public class Edicion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-        
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         String inst = request.getParameter("inst");
         List<String> cursos = port.cursosInstituto(inst);
         //ArrayList<String> cursos = ICU.cursosInstituto(inst);
@@ -173,27 +156,19 @@ public class Edicion extends HttpServlet {
         //request.setAttribute("cursos", cursos);  
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
-       
-       
         JSONObject j = new JSONObject(); 
         String result1 = "";
         String result2 = ""; 
         for(Object curso : cursos){
             result1 = result1 + "<option>" + curso + "</option> ";
-            
         }
         for(Object docente : docentes){
             result2 = result2 + "<option>" + docente + "</option>";
-            
         }
         j.put("result1",result1);
         j.put("result2",result2);
-        
         response.getWriter().write(j.toString());
         //out.print(j.toJSONString());
-        
-       
-        
     }
 
     /**

@@ -5,9 +5,7 @@
  */
 package controller;
 
-import Datatypes.DTInscripcionE;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -64,9 +62,6 @@ public class aceptadosedicion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-        
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
         
@@ -86,12 +81,8 @@ public class aceptadosedicion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-        
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         String cur = request.getParameter("cur");
         String edi = request.getParameter("edi");
         List<DtInscripcionE> inscriptos = port.listarDatosInscEdicion(cur, edi);

@@ -42,7 +42,7 @@
                         <li class="child-menu"><a href="#">Usuario <i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultausuario">Consulta de usuario</a></li>
+                                    <li><a href="consultausuario">Consulta de usuario</a></li>
                                     
                                 </ul>
                             </div>
@@ -51,9 +51,9 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
  
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/concultacurso">Consulta de curso</a></li>
+                                    <li><a href="concultacurso">Consulta de curso</a></li>
                                     
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaediciondecurso">Consulta de edición de curso</a></li>
+                                    <li><a href="consultaediciondecurso">Consulta de edición de curso</a></li>
                                    
                                 </ul>
                             </div>
@@ -61,9 +61,7 @@
                         <li class="child-menu"><a href="#">Programas <i class="fa fa-angle-right"></i></a>
                              <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaPrograma">Consulta programa de formación</a></li>
-                                    
+                                    <li><a href="consultaPrograma">Consulta programa de formación</a></li>
                                 </ul>
                             </div>
                         </li>

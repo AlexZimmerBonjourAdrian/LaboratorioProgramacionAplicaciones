@@ -6,11 +6,7 @@
 
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
-<%@page import="Datatypes.DTEdicion"%>
-<%@page import="DATABASE.Persistencia"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="LOGICA.ISistema"%>
-<%@page import="LOGICA.FabricaLab"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

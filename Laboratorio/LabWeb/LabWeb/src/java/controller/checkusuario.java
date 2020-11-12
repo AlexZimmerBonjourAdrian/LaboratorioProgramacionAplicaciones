@@ -5,8 +5,6 @@
  */
 package controller;
 
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -82,9 +80,6 @@ public class checkusuario extends HttpServlet {
         String nick = request.getParameter("nick");
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-        
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
         

@@ -5,10 +5,7 @@
  */
 package controller;
 
-import Datatypes.DTEdicion;
-import Datatypes.DTUsuario;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
+
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -68,15 +65,7 @@ public class Usuario extends HttpServlet {
             if(inst!=null){
                 lista = Arrays.asList(inst);
             }
-            /*
-            String[] newStringArray = new String[lista.size()];
-            lista.toArray(newStringArray );*/
-            /*
-            Date fechaDate = null;
-            if(fecha!=null){
-               SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-               fechaDate = formato.parse(fecha);
-            }*/
+        
             Boolean ckpass = false;
             if(pass != null && pass2 != null && pass.equals(pass2)){
                 ckpass=true;

@@ -133,7 +133,7 @@
                     <p>Bienvenido <%= user %></p>
                     <div class="btn-wrapper">
                         <div class="text-center">
-                            <a href="http://localhost:8080/LaboratorioWeb/logout" class="btn btn-primary">LOGOUT</a> 
+                            <a href="logout" class="btn btn-primary">LOGOUT</a> 
                         </div>
                     </div><!-- end row -->
                 </div>

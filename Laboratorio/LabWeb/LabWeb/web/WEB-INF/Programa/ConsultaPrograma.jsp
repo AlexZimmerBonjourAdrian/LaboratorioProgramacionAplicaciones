@@ -6,7 +6,6 @@
 
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Set"%>
-<%@page import="Datatypes.DTCurso"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -5,9 +5,7 @@
  */
 package controller;
 
-import Datatypes.DTCurso;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -65,9 +63,7 @@ public class AgregarCursoProg extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            FabricaLab fabrica = FabricaLab.getInstance();
-            ISistema ICU = fabrica.getISistema();
-            
+
             servidor.PublicadorService service = new servidor.PublicadorService();
             servidor.Publicador port = service.getPublicadorPort();
             

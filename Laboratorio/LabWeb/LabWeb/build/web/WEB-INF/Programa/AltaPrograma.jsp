@@ -3,12 +3,8 @@
     Created on : 09/10/2020, 04:50:00 PM
     Author     : arena
 --%>
-<%@page import="Datatypes.DTPrograma"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
-<%@page import="LOGICA.ISistema"%>
-<%@page import="LOGICA.FabricaLab"%>
-<%@page import="DATABASE.Persistencia"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

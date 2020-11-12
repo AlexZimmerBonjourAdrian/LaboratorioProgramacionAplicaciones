@@ -74,7 +74,6 @@ public class Publicador {
   public ArrayList<String> EdicionesCurso(String curso){
       return ICU.EdicionesCurso(curso);
   }
-  
   @WebMethod
   public ArrayList<String> ProgramasCurso(String curso){
       return ICU.ProgramasCursos(curso);
@@ -87,9 +86,9 @@ public class Publicador {
   public void altausuario(String nick, String nombre, String ape, String correo, String fecha, String contr, boolean docente, String imagendir, List inst) throws ParseException{
       Date fechaDate = null;
       if(fecha!=null){
-               SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-               fechaDate = formato.parse(fecha);
-            }
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        fechaDate = formato.parse(fecha);
+       }
       DTUsuario datos = new DTUsuario(nick, nombre, ape, correo, fechaDate, contr, imagendir);
       ICU.altaUsuario (datos, docente, inst);
   }

@@ -5,7 +5,7 @@
  */
 package controller;
 
-import Datatypes.EstadoSesion;
+import controller.EstadoSesion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -42,7 +42,7 @@ public class Home extends HttpServlet {
     }
     
     public static EstadoSesion getEstado(HttpServletRequest request){
-		return (EstadoSesion) request.getSession().getAttribute("estado_sesion");
+		return (EstadoSesion)request.getSession().getAttribute("estado_sesion");
     }
     
     

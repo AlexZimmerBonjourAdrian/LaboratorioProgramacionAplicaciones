@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package controller;
-
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;

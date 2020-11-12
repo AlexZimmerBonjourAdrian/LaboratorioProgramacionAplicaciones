@@ -6,7 +6,6 @@
 
 <%@page import="servidor.DtCurso"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Datatypes.DTCurso"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

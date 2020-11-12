@@ -5,11 +5,6 @@
  */
 package controller;
 
-import DATABASE.Persistencia;
-import Datatypes.DTUsuario;
-import Datatypes.EstadoSesion;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -88,7 +83,7 @@ public class iniciosesion extends HttpServlet {
             
             if(login != null &&(nuevoEstado == EstadoSesion.LOGIN_DOCENTE || nuevoEstado == EstadoSesion.LOGIN_ESTUDIANTE )){
                
-                response.sendRedirect("http://localhost:8080/LaboratorioWeb/Home");
+                response.sendRedirect("Home");
             }
             else{
                 

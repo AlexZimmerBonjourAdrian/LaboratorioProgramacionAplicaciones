@@ -5,10 +5,7 @@
  */
 package controller;
 
-import DATABASE.Persistencia;
-import Datatypes.DTCurso;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -105,11 +102,12 @@ public class Curso extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
      
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-        ArrayList<String> institutos = ICU.listarInstitutos();
+  
+        servidor.PublicadorService service = new servidor.PublicadorService();
+        servidor.Publicador port = service.getPublicadorPort();
+        List<String> institutos = port.listarInstitutos();
         request.setAttribute("institutos", institutos); 
-        ArrayList<String> cat = ICU.listarCategorias();
+        List<String> cat = port.listarCategorias();
         request.setAttribute("categorias", cat); 
         try {
             processRequest(request, response);
@@ -133,24 +131,18 @@ public class Curso extends HttpServlet {
             throws ServletException, IOException {
             response.setContentType("application/json");
             response.setCharacterEncoding("utf-8");
-            FabricaLab fabrica = FabricaLab.getInstance();
-            ISistema ICU = fabrica.getISistema();
             String inst = request.getParameter("inst");
-            ArrayList<String> cur = ICU.cursosInstituto(inst);
+            servidor.PublicadorService service = new servidor.PublicadorService();
+            servidor.Publicador port = service.getPublicadorPort();
+            List<String> cur = port.cursosInstituto(inst);
             JSONObject j = new JSONObject(); 
-            
             String result1 = "";
-           
             for(Object curso : cur){
                 result1 = result1 + "<option>" + curso + "</option> ";
 
             }
-            
             j.put("result1",result1);
-       
             response.getWriter().write(j.toString());
-        
-    
     }
 
     /**

@@ -40,7 +40,7 @@
                                     <% String user = (String)request.getSession().getAttribute("usuario_logueado");%>
                                     <li><a href="consultausuario?nick=<%= user %>">Consulta de usuario</a></li>
                                     <li><a href="consultausuario">Usuarios</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/modificardatos">Modificar datos de usuario</a></li>
+                                    <li><a href="modificardatos">Modificar datos de usuario</a></li>
                                     
                                 </ul>
                             </div>
@@ -48,10 +48,10 @@
                         <li class="child-menu"><a href="#">Cursos <i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/Curso">Alta de curso</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/concultacurso">Consulta de curso</a></li>
-                                     <li><a href="http://localhost:8080/LaboratorioWeb/Edicion">Alta edición de curso</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaediciondecurso">Consulta de edición de curso</a></li>
+                                    <li><a href="Curso">Alta de curso</a></li>
+                                    <li><a href="concultacurso">Consulta de curso</a></li>
+                                     <li><a href="Edicion">Alta edición de curso</a></li>
+                                    <li><a href="consultaediciondecurso">Consulta de edición de curso</a></li>
                                    
                                 </ul>
                             </div>
@@ -59,9 +59,9 @@
                         <li class="child-menu"><a href="#">Programas <i class="fa fa-angle-right"></i></a>
                              <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/Programa">Crear programa de formación</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/AgregarCursoProg">Agregar curso a programa de formación</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/consultaPrograma">Consulta programa de formación</a></li>
+                                    <li><a href="Programa">Crear programa de formación</a></li>
+                                    <li><a href="AgregarCursoProg">Agregar curso a programa de formación</a></li>
+                                    <li><a href="consultaPrograma">Consulta programa de formación</a></li>
                                     
                                 </ul>
                             </div>
@@ -69,8 +69,8 @@
                         <li class="child-menu"><a href="#">Edición <i class="fa fa-angle-right"></i></a>
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/SelecEstuEdic">Seleccion estudiante para edición de curso</a></li>
-                                    <li><a href="http://localhost:8080/LaboratorioWeb/aceptadosedicion">Listar aceptados a edición de curso</a></li>
+                                    <li><a href="SelecEstuEdic">Seleccion estudiante para edición de curso</a></li>
+                                    <li><a href="aceptadosedicion">Listar aceptados a edición de curso</a></li>
                                
                                 </ul>
                             </div>

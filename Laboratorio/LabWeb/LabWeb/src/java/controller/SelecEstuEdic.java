@@ -5,10 +5,6 @@
  */
 package controller;
 
-import Datatypes.DTInscripcionE;
-import Datatypes.EstadoInscripcion;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -39,12 +35,8 @@ public class SelecEstuEdic extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
          try{
-             FabricaLab fabrica = FabricaLab.getInstance();
-             ISistema ICU = fabrica.getISistema();
-             
             servidor.PublicadorService service = new servidor.PublicadorService();
             servidor.Publicador port = service.getPublicadorPort();
-             
              String[] elegidos = request.getParameterValues("elegidos");
              String[] rechazados = request.getParameterValues("rechazados");
              String cur = request.getParameter("cur");

@@ -8,9 +8,6 @@
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
-<%@page import="Datatypes.DTCurso"%>
-<%@page import="LOGICA.ISistema"%>
-<%@page import="LOGICA.FabricaLab"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

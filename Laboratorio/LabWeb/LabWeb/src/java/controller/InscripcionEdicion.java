@@ -6,8 +6,7 @@
 package controller;
 
 
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -38,9 +37,7 @@ public class InscripcionEdicion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            FabricaLab fabrica = FabricaLab.getInstance();
-            ISistema ICU = fabrica.getISistema();
-            
+        
             servidor.PublicadorService service = new servidor.PublicadorService();
             servidor.Publicador port = service.getPublicadorPort();
             
@@ -70,12 +67,8 @@ public class InscripcionEdicion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-        
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         List<String> institutos = port.listarInstitutos();
         //ArrayList<String> institutos = ICU.listarInstitutos();
         request.setAttribute("institutos", institutos);
@@ -96,15 +89,10 @@ public class InscripcionEdicion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FabricaLab fabrica = FabricaLab.getInstance();
-        ISistema ICU = fabrica.getISistema();
-               
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         String inst = request.getParameter("inst");
         //String curso = request.getParameter("cur");
-        
         List<String> cursos = port.cursosInstituto(inst);
         //ArrayList<String> cursos = ICU.cursosInstituto(inst);
         //ArrayList<String> ediciones = ICU.EdicionesCurso(inst, curso);

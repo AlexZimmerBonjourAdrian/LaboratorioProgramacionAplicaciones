@@ -128,6 +128,10 @@
         <servlet-name>checkPrograma</servlet-name>
         <servlet-class>controller.checkPrograma</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>iniciar</servlet-name>
+        <servlet-class>controller.iniciar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
@@ -256,12 +260,16 @@
         <servlet-name>checkPrograma</servlet-name>
         <url-pattern>/checkPrograma</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>iniciar</servlet-name>
+        <url-pattern>/iniciar</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>bd.html</welcome-file>
+        <welcome-file>iniciar.html</welcome-file>
     </welcome-file-list>
 </web-app>

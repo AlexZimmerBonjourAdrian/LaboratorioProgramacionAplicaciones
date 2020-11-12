@@ -5,8 +5,6 @@
  */
 package controller;
 
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -42,6 +40,8 @@ public class modificardatos extends HttpServlet {
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
         String nick = (String) request.getSession().getAttribute("usuario_logueado");
+        servidor.DtUsuario u1 = port.obtenerUsuario(nick);
+        request.setAttribute("datos", u1);
         request.setAttribute("user", nick);
         String nombre = (String)request.getParameter("nomUsr");
         String apellido = (String)request.getParameter("apUsr");

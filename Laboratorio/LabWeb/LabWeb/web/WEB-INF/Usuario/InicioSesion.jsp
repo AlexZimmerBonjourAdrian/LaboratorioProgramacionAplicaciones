@@ -4,11 +4,7 @@
     Author     : arena
 --%>
 
-<%@page import="LOGICA.ISistema"%>
-<%@page import="LOGICA.FabricaLab"%>
-<%@page import="Clases.Usuario"%>
-<%@page import="LOGICA.Singleton"%>
-<%@page import="DATABASE.Persistencia"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

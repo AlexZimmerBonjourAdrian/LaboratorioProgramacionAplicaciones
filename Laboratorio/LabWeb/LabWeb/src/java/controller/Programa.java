@@ -5,10 +5,7 @@
  */
 package controller;
 
-import DATABASE.Persistencia;
-import Datatypes.DTPrograma;
-import LOGICA.FabricaLab;
-import LOGICA.ISistema;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -40,9 +37,6 @@ public class Programa extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException, ParseException_Exception {
         response.setContentType("text/html;charset=UTF-8");
-       
-        Persistencia p = Persistencia.getInstance();
-        p.inicializarBaseDeDatos();
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
         String nombrep = request.getParameter("nombrep");

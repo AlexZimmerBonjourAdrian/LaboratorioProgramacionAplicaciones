@@ -5,15 +5,10 @@
 --%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Datatypes.DTEdicion"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="LOGICA.ISistema"%>
-<%@page import="LOGICA.FabricaLab"%>
-<%@page import="DATABASE.Persistencia"%>
-<%@page import="Clases.Edicion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -62,7 +57,7 @@
                         $('#fechafin').html(result.fechafin);
                         $('#cuposmax').html(result.cuposmax);
                         $('#fechapub').html(result.fechapub);
-                        $('#doc').html(result.result1);
+                        $('#docentes').html(result.result1);
                         $('#inscripciones').html(result.inscripciones);
                         $('#img').html(result.result2);
                     }
