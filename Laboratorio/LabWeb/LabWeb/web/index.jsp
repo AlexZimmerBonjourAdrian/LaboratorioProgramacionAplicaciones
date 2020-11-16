@@ -46,83 +46,9 @@
 <body class="left-menu">  
     
     <div class="menu-wrapper">
-        <div class="mobile-menu">
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="index.jsp"><img src="images/logo-normal.png" alt=""></a>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario <span class="fa fa-angle-down"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="consultausuario">Consulta de usuario</a></li>
-                                    <li><a href="#">Modificar datos de usuario</a></li>
-                                  
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="fa fa-angle-down"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Menu Example 01</a></li>
-                                    <li><a href="#">Menu Example 02</a></li>
-                                    <li><a href="#">Menu Example 03</a></li>
-                                    <li><a href="#">Menu Example 04</a></li>
-                                    <li><a href="#">Menu Example 05</a></li>
-                                    <li><a href="#">Menu Example 06</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolio <span class="fa fa-angle-down"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Menu Example 01</a></li>
-                                    <li><a href="#">Menu Example 02</a></li>
-                                    <li><a href="#">Menu Example 03</a></li>
-                                    <li><a href="#">Menu Example 04</a></li>
-                                    <li><a href="#">Menu Example 05</a></li>
-                                    <li><a href="#">Menu Example 06</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop <span class="fa fa-angle-down"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Menu Example 01</a></li>
-                                    <li><a href="#">Menu Example 02</a></li>
-                                    <li><a href="#">Menu Example 03</a></li>
-                                    <li><a href="#">Menu Example 04</a></li>
-                                    <li><a href="#">Menu Example 05</a></li>
-                                    <li><a href="#">Menu Example 06</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="fa fa-angle-down"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Menu Example 01</a></li>
-                                    <li><a href="#">Menu Example 02</a></li>
-                                    <li><a href="#">Menu Example 03</a></li>
-                                    <li><a href="#">Menu Example 04</a></li>
-                                    <li><a href="#">Menu Example 05</a></li>
-                                    <li><a href="#">Menu Example 06</a></li>
-                                </ul>
-                            </li> 
-                        </ul> 
-                    </div><!--/.nav-collapse -->
-                </div><!--/.container-fluid -->
-            </nav>
-        </div><!-- end mobile-menu -->
-
         <jsp:include page="/WEB-INF/templates/panel_visitante.jsp"/>
     </div><!-- end menu-wrapper -->
-
     <div id="wrapper">
-
         <div id="home" class="video-section js-height-full">
             <div class="overlay"></div>
             <div class="home-text-wrapper relative container">
@@ -137,11 +63,8 @@
                 </div>
             </div>
         </div>
-
         <footer class="section footer">
-         
         </footer><!-- end footer -->
-
         <div class="section copyrights">
             <div class="container">
                 <div class="row">
@@ -150,25 +73,11 @@
                             <img src="images/logo-normal.png" alt="">
                         </div>
                     </div>
-                 
                 </div>
             </div>
         </div>
     </div><!-- end wrapper -->
-
     <!-- jQuery Files -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/carousel.js"></script>
-    <script src="js/parallax.js"></script>
-    <script src="js/rotate.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/masonry.js"></script>
-    <script src="js/masonry-4-col.js"></script>
-    <!-- VIDEO BG PLUGINS -->
-    <script src="videos/libs/swfobject.js"></script> 
-    <script src="videos/libs/modernizr.video.js"></script> 
-    <script src="videos/libs/video_background.js"></script> 
     <script>
         jQuery(document).ready(function($) {
             var Video_back = new video_background($("#home"), { 

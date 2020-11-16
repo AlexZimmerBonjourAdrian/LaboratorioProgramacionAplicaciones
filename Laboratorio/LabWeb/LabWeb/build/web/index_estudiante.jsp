@@ -23,17 +23,14 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    
     <!-- Site Icons -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
 	<!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet"> 
-
 	<!-- Custom & Default Styles -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/carousel.css">
     <link rel="stylesheet" href="style.css">
@@ -45,24 +42,19 @@
 
 </head>
 <body class="left-menu">  
-    
     <div class="menu-wrapper">
         <jsp:include page="/WEB-INF/templates/panel_estudiante.jsp"/>
     </div><!-- end menu-wrapper -->
-
     <div id="wrapper">
-
         <div id="home" class="video-section js-height-full">
             <div class="overlay"></div>
             <div class="home-text-wrapper relative container">
                 <div class="home-message">
                     <img src="images/biglogo.png" alt="">
                     <p>edEXT</p>
-                    
                         <% String user2 = (String) request.getSession().getAttribute("usuario_logueado"); %>
                         <p>Bienvenido <%= user2 %></p>
                     </p>
-                    
                     <div class="btn-wrapper">
                         <div class="text-center">
                              <a href="logout" class="btn btn-primary">LOGOUT</a> 
@@ -71,11 +63,8 @@
                 </div>
             </div>
         </div>
-
         <footer class="section footer">
-         
         </footer><!-- end footer -->
-
         <div class="section copyrights">
             <div class="container">
                 <div class="row">
@@ -89,20 +78,8 @@
             </div>
         </div>
     </div><!-- end wrapper -->
-
     <!-- jQuery Files -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/carousel.js"></script>
-    <script src="js/parallax.js"></script>
-    <script src="js/rotate.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/masonry.js"></script>
-    <script src="js/masonry-4-col.js"></script>
-    <!-- VIDEO BG PLUGINS -->
-    <script src="videos/libs/swfobject.js"></script> 
-    <script src="videos/libs/modernizr.video.js"></script> 
-    <script src="videos/libs/video_background.js"></script> 
+
     <script>
         jQuery(document).ready(function($) {
             var Video_back = new video_background($("#home"), { 
@@ -118,6 +95,5 @@
             });
         });
     </script>
-
 </body>
 </html>

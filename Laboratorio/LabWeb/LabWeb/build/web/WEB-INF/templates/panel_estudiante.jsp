@@ -53,7 +53,6 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario <span class="fa fa-angle-down"></span></a>
                                 <ul class="dropdown-menu">
                                     <% String user = (String) request.getSession().getAttribute("usuario_logueado"); %>
-                                    <%= user %>
                                     <li><a href="consultausuario?<%= user %>">Consulta de usuario</a></li>
                                     <li><a href="modificardatos">Modificar datos de usuario</a></li>
                                   
@@ -138,8 +137,6 @@
                     </ul>
                     <div class="margin-block"></div>
                     <jsp:include page="/WEB-INF/Busqueda/search.jsp"/>
-
-                   
                 </nav><!-- end nav-menu -->
             </div><!-- end vertical-header-wrapper -->
         </header><!-- end header -->

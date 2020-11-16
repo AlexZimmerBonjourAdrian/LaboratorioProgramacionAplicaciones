@@ -13,7 +13,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="/WEB-INF/templates/panel.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <jsp:include page="/WEB-INF/Scripts/cargarCursos.jsp"/>
