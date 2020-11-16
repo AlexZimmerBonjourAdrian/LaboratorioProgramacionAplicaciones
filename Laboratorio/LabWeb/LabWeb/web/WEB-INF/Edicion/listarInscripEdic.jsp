@@ -32,6 +32,7 @@
                                         <th>Edicion</th>
                                         <th>Fecha insc</th>
                                         <th>Estado</th>
+                                        <th>Video motivacional</th>
                                     </tr>
                                     <%
                                         List<DtInscripcionE> datos = (List)request.getAttribute("inscripciones");
@@ -43,6 +44,7 @@
                                         <td name="edi" id="edi"><%= insc.getNombreEdicion() %></td>
                                         <td name="fech" id="fech"><%= insc.getFechaInsc()%></td>
                                         <td name="estado" id="estado"><%= insc.getEstado() %></td> 
+                                        <td><iframe width="200" height="150" src="<%=insc.getVideo()%> " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
                                     </tr>
                                         <% 
                                             }

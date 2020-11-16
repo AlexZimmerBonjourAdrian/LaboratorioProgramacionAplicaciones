@@ -89,24 +89,33 @@ public class aceptadosedicion extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         JSONObject j = new JSONObject();
-        String result1 = "<thead class=\"thead-dark\"><tr> <th>Nombre</th><th>Fecha insc</th><th>Estado</th></tr> </thead>";
+        String opcion = request.getParameter("custId");
+        String th = "";
+        if(opcion!=null && !opcion.equals("")){
+            th="<th>Nota</th>";
+        }
+        String result1 = "<thead class=\"thead-dark\"><tr> <th>Nombre</th><th>Fecha insc</th><th>Estado</th>"+th+"</tr></thead>";
         //String result2 = "";
         //String result3 = "";
         String nombre;
         DtInscripcionE datosins;
+        
+        System.out.println("La opcion es: " + opcion);
         for(Object insc : inscriptos){
             datosins = (DtInscripcionE) insc;
             nombre = datosins.getEst().getNick();
             if(datosins.getEstado().toString().equals("ACEPTADA")){
-             result1 = result1 + "<tr><td name=\"est\" id=\"est\">" + nombre + "</td>" 
-             + "<td name=\"fech\" id=\"fech\">" + datosins.getFechaInsc().toString() + "</td>" +
-             "<td name=\"estado\" id=\"estado\">" + datosins.getEstado().toString() + "</td> </tr>";
+                String nota = "";
+                if(opcion!=null && !opcion.equals("")){
+                    nota = "<td name=\"nota\" id=\"nota\">" + Integer.toString(datosins.getNota()) + "</td>";
+                }
+                result1 = result1 + "<tr><td name=\"est\" id=\"est\">" + nombre + "</td>" 
+                + "<td name=\"fech\" id=\"fech\">" + datosins.getFechaInsc().toString() + "</td>" +
+                "<td name=\"estado\" id=\"estado\">" + datosins.getEstado().toString() + "</td>"+ nota + "</tr>";
             }
         }
         
         j.put("result1",result1);
-       // j.put("result2",result2);
-       // j.put("result3",result3);
         response.getWriter().write(j.toString());
     }
 

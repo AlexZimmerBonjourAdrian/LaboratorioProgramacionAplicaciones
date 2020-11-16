@@ -24,6 +24,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="estado" type="{http://PRESENTACION/}estadoInscripcion" minOccurs="0"/>
  *         &lt;element name="nombreEdicion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="nombreCurso" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="nota" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="video" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,7 +40,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "est",
     "estado",
     "nombreEdicion",
-    "nombreCurso"
+    "nombreCurso",
+    "nota",
+    "video"
 })
 public class DtInscripcionE {
 
@@ -49,6 +53,8 @@ public class DtInscripcionE {
     protected EstadoInscripcion estado;
     protected String nombreEdicion;
     protected String nombreCurso;
+    protected int nota;
+    protected String video;
 
     /**
      * Obtiene el valor de la propiedad fechaInsc.
@@ -168,6 +174,46 @@ public class DtInscripcionE {
      */
     public void setNombreCurso(String value) {
         this.nombreCurso = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad nota.
+     * 
+     */
+    public int getNota() {
+        return nota;
+    }
+
+    /**
+     * Define el valor de la propiedad nota.
+     * 
+     */
+    public void setNota(int value) {
+        this.nota = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad video.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getVideo() {
+        return video;
+    }
+
+    /**
+     * Define el valor de la propiedad video.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setVideo(String value) {
+        this.video = value;
     }
 
 }

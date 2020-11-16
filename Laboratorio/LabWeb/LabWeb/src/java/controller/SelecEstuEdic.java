@@ -78,7 +78,6 @@ public class SelecEstuEdic extends HttpServlet {
    
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         List<String> institutos = port.listarInstitutos();
         request.setAttribute("institutos", institutos);
         processRequest(request, response);
@@ -98,7 +97,6 @@ public class SelecEstuEdic extends HttpServlet {
     
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         String cur = request.getParameter("cur");
         String edi = request.getParameter("edi");
         List<DtInscripcionE> inscriptos = port.listarDatosInscEdicion(cur, edi);
@@ -124,7 +122,7 @@ public class SelecEstuEdic extends HttpServlet {
 "                });\n" +
 "            });\n" +
 "        </script>";
-        String result1 ="<tr> <th>Nombre</th><th>Fecha insc</th><th>Estado</th></tr>";
+        String result1 ="<tr> <th>Nombre</th><th>Fecha insc</th><th>Estado</th><th>Video</th></tr>";
         //String result2 = "";
         //String result3 = "";
         String nombre;
@@ -133,8 +131,9 @@ public class SelecEstuEdic extends HttpServlet {
             datosins = (DtInscripcionE) insc;
             nombre = datosins.getEst().getNick();
             result1 = result1 + "<tr><td name=\"est\" id=\"est\"><input type=\"checkbox\" value=\"" + nombre + "\"name=\"rechazados\"  >&#10060</input> <input type=\"checkbox\" value=\"" + nombre + "\"name=\"elegidos\" >&#9989</input>&nbsp&nbsp" + nombre + "</td>" 
-             + "<td name=\"fech\" id=\"fech\">" + datosins.getFechaInsc().toString() + "</td>" +
-             "<td name=\"estado\" id=\"estado\">" + datosins.getEstado().toString() + "</td> </tr>";
+            + "<td name=\"fech\" id=\"fech\">" + datosins.getFechaInsc().toString() + "</td>" +
+            "<td name=\"estado\" id=\"estado\">" + datosins.getEstado().toString() + "</td>" +
+            "<td><iframe width=\"200\" height=\"150\" src=\"" +datosins.getVideo() + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></td>\n</tr>";
             
         }
         

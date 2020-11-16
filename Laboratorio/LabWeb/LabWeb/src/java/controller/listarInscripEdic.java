@@ -34,16 +34,10 @@ public class listarInscripEdic extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try{
-            //FabricaLab fabrica = FabricaLab.getInstance();
-            //ISistema ICU = fabrica.getISistema();
-            
             servidor.PublicadorService service = new servidor.PublicadorService();
             servidor.Publicador port = service.getPublicadorPort();
-            
             String nick = (String) request.getSession().getAttribute("usuario_logueado");
-            
             List<DtInscripcionE> datosInsc = null;
-            //ArrayList<DTInscripcionE> datosInsc = null;
             if(nick!=null){
                 datosInsc = port.datosInscripEstudiante(nick);  
             }
@@ -58,7 +52,6 @@ public class listarInscripEdic extends HttpServlet {
             else{
                 response.sendRedirect("Error.jsp");
             }
-           
         }catch(Exception e){
             System.out.println("No funciono");
         }

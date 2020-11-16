@@ -36,18 +36,19 @@ public class InscripcionEdicion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+            response.setContentType("text/html;charset=UTF-8");
             servidor.PublicadorService service = new servidor.PublicadorService();
             servidor.Publicador port = service.getPublicadorPort();
-            
             String curso = request.getParameter("cur");
-            String edicion = request.getParameter("edi");
+            String edicion = request.getParameter("edih");
+            String video = request.getParameter("video");
             String nick = (String) request.getSession().getAttribute("usuario_logueado");
-            System.out.println("El usuario logueado es: " + nick);
-            if(nick!=null && !port.chekusuario(nick)&&!port.esDocente(nick)){
-                port.crearInscripcionEstudiante(curso, edicion, nick);
-                //ICU.crearInscripcionEstudiante(curso, edicion, nick, new Date());
+            if(nick!=null && !port.chekusuario(nick) && !port.esDocente(nick)){
+                if(video==null){
+                    video="NO VIDEO";
+                }
+                System.out.println("LLEGUE HASTA ACA LOCO  " + edicion);
+                port.crearInscripcionEstudiante(curso, edicion, nick, video);
                 request.getRequestDispatcher("/WEB-INF/Edicion/InscripcionEdicion.jsp").forward(request, response); 
             }
             else{

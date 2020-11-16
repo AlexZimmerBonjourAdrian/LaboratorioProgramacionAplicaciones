@@ -93,19 +93,7 @@
                             </div>
                             <div id="docentes" class="tabcontent">
                                 <div id="doc" name="doc">
-                                    <%
-                                        ArrayList<String> docentes=(ArrayList)request.getAttribute("doc");
-                                        if(docentes!=null){
-                                            for(String doc : docentes){
-                                                System.out.println(doc);
-                                    %>
-                                                <a href="consultausuario?nick=<%=doc%>"><%=doc%></a>
-                                    <%
-                                            }
-                                        }
-
-                                    %>
-                    
+                                  
                                 </div>
                             </div>
                         <% if(ed1!=null){ %>

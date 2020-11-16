@@ -78,6 +78,8 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Edicion <span class="fa fa-angle-down"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="listarInscripEdic">Listar Resultados De Inscripciones A Ediciones De Cursos</a></li>
+                                    <li><a href="CancelarInscripcion">Cancelar inscripcion a una edicion</a></li>
+                                </ul>
                                 </ul>
                             </li>
                         </ul> 
@@ -132,8 +134,10 @@
                             <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
                                     <li><a href="listarInscripEdic">Listar resultados de inscripciones a ediciones de cursos</a></li>
+                                    <li><a href="CancelarInscripcion">Cancelar inscripcion a una edicion</a></li>
                                 </ul>
                             </div>
+                        </li>
                     </ul>
                     <div class="margin-block"></div>
                     <jsp:include page="/WEB-INF/Busqueda/search.jsp"/>

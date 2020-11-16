@@ -47,7 +47,22 @@ public class edicionCurso extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        servidor.PublicadorService service = new servidor.PublicadorService();
+        servidor.Publicador port = service.getPublicadorPort();
+        String curso = request.getParameter("cur");
+        String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+        if(curso!=null && nick2!=null && port.esDocente(nick2)){
+            List<String> ediciones = port.edicionesDocente(curso, nick2);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("utf-8");
+            JSONObject j = new JSONObject(); 
+            String result1 = "";
+            for(Object ed : ediciones){
+                result1 = result1 + "<option>" + ed + "</option> ";
+            }
+            j.put("result1",result1);
+            response.getWriter().write(j.toString());
+        }
     }
 
     /**
@@ -61,37 +76,19 @@ public class edicionCurso extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
         String curso = request.getParameter("cur");
-        String inst = request.getParameter("inst");
         List<String> ediciones = port.edicionesCurso(curso);
-        //System.out.println("la edicion es: " + ediciones.get(0));
-        //request.setAttribute("ed", ediciones);  
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
-        PrintWriter out = response.getWriter();
         JSONObject j = new JSONObject(); 
         String result1 = "";
-        //String result2 = ""; 
         for(Object ed : ediciones){
             result1 = result1 + "<option>" + ed + "</option> ";
-            
         }
-        //for(Object ed : ediciones){
-        //    result2 = result2 + "<option>" + ed + "</option>";
-            
-        //}
         j.put("result1",result1);
-        //j.put("result2",result2);
-        
         response.getWriter().write(j.toString());
-        //out.print(j.toJSONString());
-        
-        //processRequest(request, response);
-    
-
     }
 
     /**

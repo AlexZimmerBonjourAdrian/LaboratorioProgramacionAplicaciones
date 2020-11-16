@@ -68,6 +68,8 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="aceptadosedicion">Listar aceptados a Ediciones De Cursos</a></li>
                                     <li><a href="SelecEstuEdic">Seleccionar estudiante para edicion de curso</a></li>
+                                    <li><a href="IngresarResultado">Ingresar resultados de una edicion</a></li>
+                                    <li><a href="mostrarResultados">Mostrar resultados de una edicion</a></li>
                                 </ul>
                             </li>
                         </ul> 
@@ -112,7 +114,6 @@
                                     <li><a href="Programa">Crear programa de formación</a></li>
                                     <li><a href="AgregarCursoProg">Agregar curso a programa de formación</a></li>
                                     <li><a href="consultaPrograma">Consulta programa de formación</a></li>
-                                    
                                 </ul>
                             </div>
                         </li>
@@ -121,16 +122,15 @@
                                 <ul class="sub-menu center-content">
                                     <li><a href="SelecEstuEdic">Seleccion estudiante para edición de curso</a></li>
                                     <li><a href="aceptadosedicion">Listar aceptados a edición de curso</a></li>
-                               
+                                    <li><a href="IngresarResultado">Ingresar resultados de una edicion</a></li>
+                                    <li><a href="mostrarResultados">Mostrar resultados de una edicion</a></li>
                                 </ul>
                             </div>
+                        </li>
                     </ul>
                     
                     <div class="margin-block"></div>
                     <jsp:include page="/WEB-INF/Busqueda/search.jsp"/>
-                    
-
-                   
                 </nav><!-- end nav-menu -->
             </div><!-- end vertical-header-wrapper -->
         </header><!-- end header -->

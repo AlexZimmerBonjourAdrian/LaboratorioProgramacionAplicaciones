@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ACEPTADA"/>
  *     &lt;enumeration value="RECHAZADA"/>
  *     &lt;enumeration value="PENDIENTE"/>
+ *     &lt;enumeration value="CANCELADA"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -27,7 +28,8 @@ public enum EstadoInscripcion {
 
     ACEPTADA,
     RECHAZADA,
-    PENDIENTE;
+    PENDIENTE,
+    CANCELADA;
 
     public String value() {
         return name();

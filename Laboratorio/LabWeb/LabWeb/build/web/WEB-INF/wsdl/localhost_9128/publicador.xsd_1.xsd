@@ -42,6 +42,10 @@
 
 <xs:element name="altausuarioResponse" type="tns:altausuarioResponse"></xs:element>
 
+<xs:element name="cambiarNota" type="tns:cambiarNota"></xs:element>
+
+<xs:element name="cambiarNotaResponse" type="tns:cambiarNotaResponse"></xs:element>
+
 <xs:element name="categoriasProgramas" type="tns:categoriasProgramas"></xs:element>
 
 <xs:element name="categoriasProgramasResponse" type="tns:categoriasProgramasResponse"></xs:element>
@@ -49,6 +53,10 @@
 <xs:element name="checkCurso" type="tns:checkCurso"></xs:element>
 
 <xs:element name="checkCursoResponse" type="tns:checkCursoResponse"></xs:element>
+
+<xs:element name="checkEdicionCurso" type="tns:checkEdicionCurso"></xs:element>
+
+<xs:element name="checkEdicionCursoResponse" type="tns:checkEdicionCursoResponse"></xs:element>
 
 <xs:element name="checkPrograma" type="tns:checkPrograma"></xs:element>
 
@@ -101,6 +109,10 @@
 <xs:element name="datosProgramas" type="tns:datosProgramas"></xs:element>
 
 <xs:element name="datosProgramasResponse" type="tns:datosProgramasResponse"></xs:element>
+
+<xs:element name="edicionesDocente" type="tns:edicionesDocente"></xs:element>
+
+<xs:element name="edicionesDocenteResponse" type="tns:edicionesDocenteResponse"></xs:element>
 
 <xs:element name="esDocente" type="tns:esDocente"></xs:element>
 
@@ -478,6 +490,8 @@
 <xs:element name="estado" type="tns:estadoInscripcion" minOccurs="0"></xs:element>
 <xs:element name="nombreEdicion" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="nombreCurso" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nota" type="xs:int"></xs:element>
+<xs:element name="video" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 
@@ -592,6 +606,19 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="cambiarNota">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg2" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg3" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cambiarNotaResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="listarNombreProgramas">
 <xs:sequence></xs:sequence>
 </xs:complexType>
@@ -701,11 +728,25 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="edicionesDocente">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="edicionesDocenteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="crearInscripcionEstudiante">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="arg2" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg3" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 
@@ -804,6 +845,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="checkEdicionCurso">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="checkEdicionCursoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="mostrarProgramasUsuario">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
@@ -833,6 +886,7 @@
 <xs:enumeration value="ACEPTADA"></xs:enumeration>
 <xs:enumeration value="RECHAZADA"></xs:enumeration>
 <xs:enumeration value="PENDIENTE"></xs:enumeration>
+<xs:enumeration value="CANCELADA"></xs:enumeration>
 </xs:restriction>
 </xs:simpleType>
 </xs:schema>

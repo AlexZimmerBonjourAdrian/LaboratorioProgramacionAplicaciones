@@ -26,43 +26,85 @@
                 $('#cat').on("click", cargarCursosCat);  
             });
         </script>
+        <script>
+            function cargarDatosEdicion(){
+                var edi = $('#edi').html();
+                console.log("La edicion vigente es: " + edi);
+                var cur = $('#cur').val();
+                $.ajax({
+                    async: false,
+                    type:'POST',
+                    data:{edi: edi, cur: cur},
+                    url:'ediciondatos',
+                    success:function(result){
+                        console.log(result);
+                        $('#nombre').html(result.nombre);
+                        $('#fechaini').html(result.fechaini);
+                        $('#fechafin').html(result.fechafin);
+                        $('#cuposmax').html(result.cuposmax);
+                        $('#fechapub').html(result.fechapub);
+                        $('#docentes').html(result.result1);
+                        var msg = result.mensaje;
+                        if(msg=="Ya esta inscripto"){
+                            $('#res').css("display", "inline");
+                            $('#res').html("Ya esta inscripto");
+                            $('#boton').css("display", "none");
+                        }
+                        else{
+                            $('#res').html("");
+                            $('#boton').css("display", "inline");
+                        }
+                        $('#mensaje').html(result.mensaje);
+                    }
+                });
+            }
+        </script>
+        <script>
+            function cargarEdicionVigente(){
+                var curso = $('#cur').val();
+                console.log("El curso seleccionado es: " + cur);
+                $.ajax({
+                    async: false,
+                    type:'POST',
+                    data:{curso: curso},
+                    url:'EdicionVigente',
+                    success:function(result){
+                        if(result.edvig){
+                            $('#edi').html(result.edvig);
+                            var edi = $('#edi').html();
+                            var valor = document.getElementById("edih");
+                            valor.value=edi;
+                            console.log("Se logro poner el valor" + valor.value);
+                            $('#boton').css("display", "inline");
+                            cargarDatosEdicion();
+                        }
+                        else{
+                            $('#edi').html("NO HAY EDICIONES VIGENTES");
+                            $('#boton').css("display", "none");
+                        }
+                    }
+                });
+            }  
+        </script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#cur').on("click", cargarEdiciones);  
+                $('#cur').on("click", cargarEdicionVigente);  
             });
         </script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#edi').on("click", function(){
-                    var edi = $('#edi').val();
-                    var cur = $('#cur').val();
-                    $.ajax({
-                        type:'POST',
-                        data:{edi: edi, cur: cur},
-                        url:'ediciondatos',
-                        success:function(result){
-                            console.log(result);
-                            $('#nombre').html(result.nombre);
-                            $('#fechaini').html(result.fechaini);
-                            $('#fechafin').html(result.fechafin);
-                            $('#cuposmax').html(result.cuposmax);
-                            $('#fechapub').html(result.fechapub);
-                            $('#docentes').html(result.result1);
-                            var msg = result.mensaje;
-                            if(msg=="Ya esta inscripto"){
-                                $('#res').css("display", "inline");
-                                $('#res').html("Ya esta inscripto");
-                                $('#boton').css("display", "none");
-                            }
-                            else{
-                                $('#res').html("");
-                                $('#boton').css("display", "inline");
-                            }
-                            $('#mensaje').html(result.mensaje);
-                        }
-                    });
-                });  
+                $('#edi').on("click", );  
             });
+        </script>
+        <script>
+            function myFunction() {
+                var str = $('#video').val();
+                var res = str.split("=");
+                var embeddedUrl = "https://www.youtube.com/embed/"+res[1];
+                var video = document.getElementById("video");
+                video.value=embeddedUrl;
+                return true;
+            }
         </script>
     </head>
     <body class="left-menu">
@@ -75,7 +117,7 @@
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm">
-                            <form action="InscripcionEdicion" method="get" id="insc">
+                            <form action="InscripcionEdicion" method="get" id="insc" onsubmit="return myFunction()">
                                 <div class="form-group">
                                     <p>Institutos:</p>               
                                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -102,10 +144,13 @@
                                     <select id="cur" name="cur">
                                     </select>
                                 </div>
+                                <input type="hidden" id="edih" name="edih" value="3487">
                                 <div class="form-group">  
-                                    <p>Edicion:</p>
-                                    <select id="edi" name="edi">
-                                    </select>
+                                    <p>Edicion vigente:&nbsp;&nbsp;<span id="edi" name="edi"></span></p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ingrese el link de su video motivacional:</label>
+                                    <input type="text" class="form-control" name="video" placeholder="URL" id="video">
                                 </div>
                             </form>
                             <div class="tab">

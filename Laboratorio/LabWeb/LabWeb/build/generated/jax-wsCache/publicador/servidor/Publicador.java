@@ -28,86 +28,18 @@ public interface Publicador {
 
     /**
      * 
-     * @param arg3
-     * @param arg2
-     * @param arg4
-     * @param arg1
-     * @param arg0
-     * @throws ParseException_Exception
-     */
-    @WebMethod
-    @RequestWrapper(localName = "modificarDatosPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.ModificarDatosPrograma")
-    @ResponseWrapper(localName = "modificarDatosProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ModificarDatosProgramaResponse")
-    @Action(input = "http://PRESENTACION/Publicador/modificarDatosProgramaRequest", output = "http://PRESENTACION/Publicador/modificarDatosProgramaResponse", fault = {
-        @FaultAction(className = ParseException_Exception.class, value = "http://PRESENTACION/Publicador/modificarDatosPrograma/Fault/ParseException")
-    })
-    public void modificarDatosPrograma(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        String arg2,
-        @WebParam(name = "arg3", targetNamespace = "")
-        String arg3,
-        @WebParam(name = "arg4", targetNamespace = "")
-        String arg4)
-        throws ParseException_Exception
-    ;
-
-    /**
-     * 
      * @param arg0
      * @return
-     *     returns java.util.List<java.lang.String>
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "cursosInstituto", targetNamespace = "http://PRESENTACION/", className = "servidor.CursosInstituto")
-    @ResponseWrapper(localName = "cursosInstitutoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CursosInstitutoResponse")
-    @Action(input = "http://PRESENTACION/Publicador/cursosInstitutoRequest", output = "http://PRESENTACION/Publicador/cursosInstitutoResponse")
-    public List<String> cursosInstituto(
+    @RequestWrapper(localName = "checkPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckPrograma")
+    @ResponseWrapper(localName = "checkProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckProgramaResponse")
+    @Action(input = "http://PRESENTACION/Publicador/checkProgramaRequest", output = "http://PRESENTACION/Publicador/checkProgramaResponse")
+    public boolean checkPrograma(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<java.lang.String>
-     */
-    @WebMethod(operationName = "EdicionesCurso")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "EdicionesCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.EdicionesCurso")
-    @ResponseWrapper(localName = "EdicionesCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.EdicionesCursoResponse")
-    @Action(input = "http://PRESENTACION/Publicador/EdicionesCursoRequest", output = "http://PRESENTACION/Publicador/EdicionesCursoResponse")
-    public List<String> edicionesCurso(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<java.lang.String>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarInstitutos", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarInstitutos")
-    @ResponseWrapper(localName = "listarInstitutosResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarInstitutosResponse")
-    @Action(input = "http://PRESENTACION/Publicador/listarInstitutosRequest", output = "http://PRESENTACION/Publicador/listarInstitutosResponse")
-    public List<String> listarInstitutos();
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<java.lang.String>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarCategorias", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarCategorias")
-    @ResponseWrapper(localName = "listarCategoriasResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarCategoriasResponse")
-    @Action(input = "http://PRESENTACION/Publicador/listarCategoriasRequest", output = "http://PRESENTACION/Publicador/listarCategoriasResponse")
-    public List<String> listarCategorias();
 
     /**
      * 
@@ -140,6 +72,33 @@ public interface Publicador {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarCategorias", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarCategorias")
+    @ResponseWrapper(localName = "listarCategoriasResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarCategoriasResponse")
+    @Action(input = "http://PRESENTACION/Publicador/listarCategoriasRequest", output = "http://PRESENTACION/Publicador/listarCategoriasResponse")
+    public List<String> listarCategorias();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod(operationName = "EdicionesCurso")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "EdicionesCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.EdicionesCurso")
+    @ResponseWrapper(localName = "EdicionesCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.EdicionesCursoResponse")
+    @Action(input = "http://PRESENTACION/Publicador/EdicionesCursoRequest", output = "http://PRESENTACION/Publicador/EdicionesCursoResponse")
+    public List<String> edicionesCurso(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns servidor.DtCurso
@@ -156,89 +115,67 @@ public interface Publicador {
     /**
      * 
      * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "altaInstituto", targetNamespace = "http://PRESENTACION/", className = "servidor.AltaInstituto")
-    @ResponseWrapper(localName = "altaInstitutoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.AltaInstitutoResponse")
-    @Action(input = "http://PRESENTACION/Publicador/altaInstitutoRequest", output = "http://PRESENTACION/Publicador/altaInstitutoResponse")
-    public void altaInstituto(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns servidor.DtPrograma
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerPrograma")
-    @ResponseWrapper(localName = "obtenerProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerProgramaResponse")
-    @Action(input = "http://PRESENTACION/Publicador/obtenerProgramaRequest", output = "http://PRESENTACION/Publicador/obtenerProgramaResponse")
-    public DtPrograma obtenerPrograma(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "checkCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckCurso")
-    @ResponseWrapper(localName = "checkCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckCursoResponse")
-    @Action(input = "http://PRESENTACION/Publicador/checkCursoRequest", output = "http://PRESENTACION/Publicador/checkCursoResponse")
-    public boolean checkCurso(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns servidor.DtUsuario
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerUsuario", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerUsuario")
-    @ResponseWrapper(localName = "obtenerUsuarioResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerUsuarioResponse")
-    @Action(input = "http://PRESENTACION/Publicador/obtenerUsuarioRequest", output = "http://PRESENTACION/Publicador/obtenerUsuarioResponse")
-    public DtUsuario obtenerUsuario(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "chekusuario", targetNamespace = "http://PRESENTACION/", className = "servidor.Chekusuario")
-    @ResponseWrapper(localName = "chekusuarioResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ChekusuarioResponse")
-    @Action(input = "http://PRESENTACION/Publicador/chekusuarioRequest", output = "http://PRESENTACION/Publicador/chekusuarioResponse")
-    public boolean chekusuario(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
      * @return
      *     returns java.util.List<java.lang.String>
      */
-    @WebMethod(operationName = "ProgramasCursos")
+    @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "ProgramasCursos", targetNamespace = "http://PRESENTACION/", className = "servidor.ProgramasCursos")
-    @ResponseWrapper(localName = "ProgramasCursosResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ProgramasCursosResponse")
-    @Action(input = "http://PRESENTACION/Publicador/ProgramasCursosRequest", output = "http://PRESENTACION/Publicador/ProgramasCursosResponse")
-    public List<String> programasCursos(
+    @RequestWrapper(localName = "cursosInstituto", targetNamespace = "http://PRESENTACION/", className = "servidor.CursosInstituto")
+    @ResponseWrapper(localName = "cursosInstitutoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CursosInstitutoResponse")
+    @Action(input = "http://PRESENTACION/Publicador/cursosInstitutoRequest", output = "http://PRESENTACION/Publicador/cursosInstitutoResponse")
+    public List<String> cursosInstituto(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarInstitutos", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarInstitutos")
+    @ResponseWrapper(localName = "listarInstitutosResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarInstitutosResponse")
+    @Action(input = "http://PRESENTACION/Publicador/listarInstitutosRequest", output = "http://PRESENTACION/Publicador/listarInstitutosResponse")
+    public List<String> listarInstitutos();
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg5
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     * @param arg7
+     * @param arg6
+     * @throws ParseException_Exception
+     */
+    @WebMethod
+    @RequestWrapper(localName = "altaEdicionCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.AltaEdicionCurso")
+    @ResponseWrapper(localName = "altaEdicionCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.AltaEdicionCursoResponse")
+    @Action(input = "http://PRESENTACION/Publicador/altaEdicionCursoRequest", output = "http://PRESENTACION/Publicador/altaEdicionCursoResponse", fault = {
+        @FaultAction(className = ParseException_Exception.class, value = "http://PRESENTACION/Publicador/altaEdicionCurso/Fault/ParseException")
+    })
+    public void altaEdicionCurso(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3,
+        @WebParam(name = "arg4", targetNamespace = "")
+        int arg4,
+        @WebParam(name = "arg5", targetNamespace = "")
+        String arg5,
+        @WebParam(name = "arg6", targetNamespace = "")
+        String arg6,
+        @WebParam(name = "arg7", targetNamespace = "")
+        List<Object> arg7)
+        throws ParseException_Exception
+    ;
 
     /**
      * 
@@ -295,10 +232,52 @@ public interface Publicador {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "checkPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckPrograma")
-    @ResponseWrapper(localName = "checkProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckProgramaResponse")
-    @Action(input = "http://PRESENTACION/Publicador/checkProgramaRequest", output = "http://PRESENTACION/Publicador/checkProgramaResponse")
-    public boolean checkPrograma(
+    @RequestWrapper(localName = "chekusuario", targetNamespace = "http://PRESENTACION/", className = "servidor.Chekusuario")
+    @ResponseWrapper(localName = "chekusuarioResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ChekusuarioResponse")
+    @Action(input = "http://PRESENTACION/Publicador/chekusuarioRequest", output = "http://PRESENTACION/Publicador/chekusuarioResponse")
+    public boolean chekusuario(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtUsuario
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerUsuario", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerUsuario")
+    @ResponseWrapper(localName = "obtenerUsuarioResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerUsuarioResponse")
+    @Action(input = "http://PRESENTACION/Publicador/obtenerUsuarioRequest", output = "http://PRESENTACION/Publicador/obtenerUsuarioResponse")
+    public DtUsuario obtenerUsuario(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "altaInstituto", targetNamespace = "http://PRESENTACION/", className = "servidor.AltaInstituto")
+    @ResponseWrapper(localName = "altaInstitutoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.AltaInstitutoResponse")
+    @Action(input = "http://PRESENTACION/Publicador/altaInstitutoRequest", output = "http://PRESENTACION/Publicador/altaInstitutoResponse")
+    public void altaInstituto(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtPrograma
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerPrograma")
+    @ResponseWrapper(localName = "obtenerProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerProgramaResponse")
+    @Action(input = "http://PRESENTACION/Publicador/obtenerProgramaRequest", output = "http://PRESENTACION/Publicador/obtenerProgramaResponse")
+    public DtPrograma obtenerPrograma(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 
@@ -319,23 +298,50 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "checkCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckCurso")
+    @ResponseWrapper(localName = "checkCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckCursoResponse")
+    @Action(input = "http://PRESENTACION/Publicador/checkCursoRequest", output = "http://PRESENTACION/Publicador/checkCursoResponse")
+    public boolean checkCurso(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod(operationName = "ProgramasCursos")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "ProgramasCursos", targetNamespace = "http://PRESENTACION/", className = "servidor.ProgramasCursos")
+    @ResponseWrapper(localName = "ProgramasCursosResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ProgramasCursosResponse")
+    @Action(input = "http://PRESENTACION/Publicador/ProgramasCursosRequest", output = "http://PRESENTACION/Publicador/ProgramasCursosResponse")
+    public List<String> programasCursos(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
      * @param arg3
      * @param arg2
-     * @param arg5
      * @param arg4
      * @param arg1
      * @param arg0
-     * @param arg7
-     * @param arg6
      * @throws ParseException_Exception
      */
     @WebMethod
-    @RequestWrapper(localName = "altaEdicionCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.AltaEdicionCurso")
-    @ResponseWrapper(localName = "altaEdicionCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.AltaEdicionCursoResponse")
-    @Action(input = "http://PRESENTACION/Publicador/altaEdicionCursoRequest", output = "http://PRESENTACION/Publicador/altaEdicionCursoResponse", fault = {
-        @FaultAction(className = ParseException_Exception.class, value = "http://PRESENTACION/Publicador/altaEdicionCurso/Fault/ParseException")
+    @RequestWrapper(localName = "modificarDatosPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.ModificarDatosPrograma")
+    @ResponseWrapper(localName = "modificarDatosProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ModificarDatosProgramaResponse")
+    @Action(input = "http://PRESENTACION/Publicador/modificarDatosProgramaRequest", output = "http://PRESENTACION/Publicador/modificarDatosProgramaResponse", fault = {
+        @FaultAction(className = ParseException_Exception.class, value = "http://PRESENTACION/Publicador/modificarDatosPrograma/Fault/ParseException")
     })
-    public void altaEdicionCurso(
+    public void modificarDatosPrograma(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
@@ -345,81 +351,9 @@ public interface Publicador {
         @WebParam(name = "arg3", targetNamespace = "")
         String arg3,
         @WebParam(name = "arg4", targetNamespace = "")
-        int arg4,
-        @WebParam(name = "arg5", targetNamespace = "")
-        String arg5,
-        @WebParam(name = "arg6", targetNamespace = "")
-        String arg6,
-        @WebParam(name = "arg7", targetNamespace = "")
-        List<Object> arg7)
+        String arg4)
         throws ParseException_Exception
     ;
-
-    /**
-     * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "ExisteRegistroInscripcionE")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "ExisteRegistroInscripcionE", targetNamespace = "http://PRESENTACION/", className = "servidor.ExisteRegistroInscripcionE")
-    @ResponseWrapper(localName = "ExisteRegistroInscripcionEResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ExisteRegistroInscripcionEResponse")
-    @Action(input = "http://PRESENTACION/Publicador/ExisteRegistroInscripcionERequest", output = "http://PRESENTACION/Publicador/ExisteRegistroInscripcionEResponse")
-    public boolean existeRegistroInscripcionE(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        String arg2);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<java.lang.String>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarNombreProgramas", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarNombreProgramas")
-    @ResponseWrapper(localName = "listarNombreProgramasResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarNombreProgramasResponse")
-    @Action(input = "http://PRESENTACION/Publicador/listarNombreProgramasRequest", output = "http://PRESENTACION/Publicador/listarNombreProgramasResponse")
-    public List<String> listarNombreProgramas();
-
-    /**
-     * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "crearInscripcionEstudiante", targetNamespace = "http://PRESENTACION/", className = "servidor.CrearInscripcionEstudiante")
-    @ResponseWrapper(localName = "crearInscripcionEstudianteResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CrearInscripcionEstudianteResponse")
-    @Action(input = "http://PRESENTACION/Publicador/crearInscripcionEstudianteRequest", output = "http://PRESENTACION/Publicador/crearInscripcionEstudianteResponse")
-    public void crearInscripcionEstudiante(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        String arg2);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<java.lang.String>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "mostrarProgramasUsuario", targetNamespace = "http://PRESENTACION/", className = "servidor.MostrarProgramasUsuario")
-    @ResponseWrapper(localName = "mostrarProgramasUsuarioResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.MostrarProgramasUsuarioResponse")
-    @Action(input = "http://PRESENTACION/Publicador/mostrarProgramasUsuarioRequest", output = "http://PRESENTACION/Publicador/mostrarProgramasUsuarioResponse")
-    public List<String> mostrarProgramasUsuario(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
 
     /**
      * 
@@ -438,6 +372,63 @@ public interface Publicador {
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod(operationName = "InscripcionPrograma")
+    @RequestWrapper(localName = "InscripcionPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.InscripcionPrograma")
+    @ResponseWrapper(localName = "InscripcionProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.InscripcionProgramaResponse")
+    @Action(input = "http://PRESENTACION/Publicador/InscripcionProgramaRequest", output = "http://PRESENTACION/Publicador/InscripcionProgramaResponse")
+    public void inscripcionPrograma(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "chekuUsuarioEmail", targetNamespace = "http://PRESENTACION/", className = "servidor.ChekuUsuarioEmail")
+    @ResponseWrapper(localName = "chekuUsuarioEmailResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ChekuUsuarioEmailResponse")
+    @Action(input = "http://PRESENTACION/Publicador/chekuUsuarioEmailRequest", output = "http://PRESENTACION/Publicador/chekuUsuarioEmailResponse")
+    public boolean chekuUsuarioEmail(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "checkEdicionCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckEdicionCurso")
+    @ResponseWrapper(localName = "checkEdicionCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CheckEdicionCursoResponse")
+    @Action(input = "http://PRESENTACION/Publicador/checkEdicionCursoRequest", output = "http://PRESENTACION/Publicador/checkEdicionCursoResponse")
+    public String checkEdicionCurso(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarNombreProgramas", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarNombreProgramas")
+    @ResponseWrapper(localName = "listarNombreProgramasResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarNombreProgramasResponse")
+    @Action(input = "http://PRESENTACION/Publicador/listarNombreProgramasRequest", output = "http://PRESENTACION/Publicador/listarNombreProgramasResponse")
+    public List<String> listarNombreProgramas();
 
     /**
      * 
@@ -467,33 +458,60 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "ExisteRegistroInscripcionE")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "ExisteRegistroInscripcionE", targetNamespace = "http://PRESENTACION/", className = "servidor.ExisteRegistroInscripcionE")
+    @ResponseWrapper(localName = "ExisteRegistroInscripcionEResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ExisteRegistroInscripcionEResponse")
+    @Action(input = "http://PRESENTACION/Publicador/ExisteRegistroInscripcionERequest", output = "http://PRESENTACION/Publicador/ExisteRegistroInscripcionEResponse")
+    public boolean existeRegistroInscripcionE(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "mostrarProgramasUsuario", targetNamespace = "http://PRESENTACION/", className = "servidor.MostrarProgramasUsuario")
+    @ResponseWrapper(localName = "mostrarProgramasUsuarioResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.MostrarProgramasUsuarioResponse")
+    @Action(input = "http://PRESENTACION/Publicador/mostrarProgramasUsuarioRequest", output = "http://PRESENTACION/Publicador/mostrarProgramasUsuarioResponse")
+    public List<String> mostrarProgramasUsuario(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
      * @param arg1
      * @param arg0
      */
     @WebMethod
-    @RequestWrapper(localName = "agregarCursoPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.AgregarCursoPrograma")
-    @ResponseWrapper(localName = "agregarCursoProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.AgregarCursoProgramaResponse")
-    @Action(input = "http://PRESENTACION/Publicador/agregarCursoProgramaRequest", output = "http://PRESENTACION/Publicador/agregarCursoProgramaResponse")
-    public void agregarCursoPrograma(
+    @RequestWrapper(localName = "crearInscripcionEstudiante", targetNamespace = "http://PRESENTACION/", className = "servidor.CrearInscripcionEstudiante")
+    @ResponseWrapper(localName = "crearInscripcionEstudianteResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CrearInscripcionEstudianteResponse")
+    @Action(input = "http://PRESENTACION/Publicador/crearInscripcionEstudianteRequest", output = "http://PRESENTACION/Publicador/crearInscripcionEstudianteResponse")
+    public void crearInscripcionEstudiante(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod(operationName = "InscripcionPrograma")
-    @RequestWrapper(localName = "InscripcionPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.InscripcionPrograma")
-    @ResponseWrapper(localName = "InscripcionProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.InscripcionProgramaResponse")
-    @Action(input = "http://PRESENTACION/Publicador/InscripcionProgramaRequest", output = "http://PRESENTACION/Publicador/InscripcionProgramaResponse")
-    public void inscripcionPrograma(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3);
 
     /**
      * 
@@ -512,84 +530,18 @@ public interface Publicador {
 
     /**
      * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "chekuUsuarioEmail", targetNamespace = "http://PRESENTACION/", className = "servidor.ChekuUsuarioEmail")
-    @ResponseWrapper(localName = "chekuUsuarioEmailResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ChekuUsuarioEmailResponse")
-    @Action(input = "http://PRESENTACION/Publicador/chekuUsuarioEmailRequest", output = "http://PRESENTACION/Publicador/chekuUsuarioEmailResponse")
-    public boolean chekuUsuarioEmail(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
      * @param arg1
      * @param arg0
-     * @return
-     *     returns java.util.List<java.lang.String>
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarDocentesEdicion", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDocentesEdicion")
-    @ResponseWrapper(localName = "listarDocentesEdicionResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDocentesEdicionResponse")
-    @Action(input = "http://PRESENTACION/Publicador/listarDocentesEdicionRequest", output = "http://PRESENTACION/Publicador/listarDocentesEdicionResponse")
-    public List<String> listarDocentesEdicion(
+    @RequestWrapper(localName = "agregarCursoPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.AgregarCursoPrograma")
+    @ResponseWrapper(localName = "agregarCursoProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.AgregarCursoProgramaResponse")
+    @Action(input = "http://PRESENTACION/Publicador/agregarCursoProgramaRequest", output = "http://PRESENTACION/Publicador/agregarCursoProgramaResponse")
+    public void agregarCursoPrograma(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns servidor.DtUsuario
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerUsuarioMail", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerUsuarioMail")
-    @ResponseWrapper(localName = "obtenerUsuarioMailResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerUsuarioMailResponse")
-    @Action(input = "http://PRESENTACION/Publicador/obtenerUsuarioMailRequest", output = "http://PRESENTACION/Publicador/obtenerUsuarioMailResponse")
-    public DtUsuario obtenerUsuarioMail(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns java.util.List<servidor.DtInscripcionE>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarDatosInscEdicion", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDatosInscEdicion")
-    @ResponseWrapper(localName = "listarDatosInscEdicionResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDatosInscEdicionResponse")
-    @Action(input = "http://PRESENTACION/Publicador/listarDatosInscEdicionRequest", output = "http://PRESENTACION/Publicador/listarDatosInscEdicionResponse")
-    public List<DtInscripcionE> listarDatosInscEdicion(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<servidor.DtInscripcionE>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "datosInscripEstudiante", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosInscripEstudiante")
-    @ResponseWrapper(localName = "datosInscripEstudianteResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosInscripEstudianteResponse")
-    @Action(input = "http://PRESENTACION/Publicador/datosInscripEstudianteRequest", output = "http://PRESENTACION/Publicador/datosInscripEstudianteResponse")
-    public List<DtInscripcionE> datosInscripEstudiante(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
 
     /**
      * 
@@ -610,14 +562,14 @@ public interface Publicador {
      * 
      * @param arg0
      * @return
-     *     returns java.util.List<java.lang.String>
+     *     returns servidor.DtUsuario
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarDocentesInstituto", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDocentesInstituto")
-    @ResponseWrapper(localName = "listarDocentesInstitutoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDocentesInstitutoResponse")
-    @Action(input = "http://PRESENTACION/Publicador/listarDocentesInstitutoRequest", output = "http://PRESENTACION/Publicador/listarDocentesInstitutoResponse")
-    public List<String> listarDocentesInstituto(
+    @RequestWrapper(localName = "obtenerUsuarioMail", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerUsuarioMail")
+    @ResponseWrapper(localName = "obtenerUsuarioMailResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ObtenerUsuarioMailResponse")
+    @Action(input = "http://PRESENTACION/Publicador/obtenerUsuarioMailRequest", output = "http://PRESENTACION/Publicador/obtenerUsuarioMailResponse")
+    public DtUsuario obtenerUsuarioMail(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 
@@ -625,14 +577,14 @@ public interface Publicador {
      * 
      * @param arg0
      * @return
-     *     returns java.util.List<java.lang.String>
+     *     returns java.util.List<servidor.DtInscripcionE>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "categoriasProgramas", targetNamespace = "http://PRESENTACION/", className = "servidor.CategoriasProgramas")
-    @ResponseWrapper(localName = "categoriasProgramasResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CategoriasProgramasResponse")
-    @Action(input = "http://PRESENTACION/Publicador/categoriasProgramasRequest", output = "http://PRESENTACION/Publicador/categoriasProgramasResponse")
-    public List<String> categoriasProgramas(
+    @RequestWrapper(localName = "datosInscripEstudiante", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosInscripEstudiante")
+    @ResponseWrapper(localName = "datosInscripEstudianteResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosInscripEstudianteResponse")
+    @Action(input = "http://PRESENTACION/Publicador/datosInscripEstudianteRequest", output = "http://PRESENTACION/Publicador/datosInscripEstudianteResponse")
+    public List<DtInscripcionE> datosInscripEstudiante(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 
@@ -659,6 +611,72 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.util.List<servidor.DtInscripcionE>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarDatosInscEdicion", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDatosInscEdicion")
+    @ResponseWrapper(localName = "listarDatosInscEdicionResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDatosInscEdicionResponse")
+    @Action(input = "http://PRESENTACION/Publicador/listarDatosInscEdicionRequest", output = "http://PRESENTACION/Publicador/listarDatosInscEdicionResponse")
+    public List<DtInscripcionE> listarDatosInscEdicion(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "categoriasProgramas", targetNamespace = "http://PRESENTACION/", className = "servidor.CategoriasProgramas")
+    @ResponseWrapper(localName = "categoriasProgramasResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CategoriasProgramasResponse")
+    @Action(input = "http://PRESENTACION/Publicador/categoriasProgramasRequest", output = "http://PRESENTACION/Publicador/categoriasProgramasResponse")
+    public List<String> categoriasProgramas(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarDocentesEdicion", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDocentesEdicion")
+    @ResponseWrapper(localName = "listarDocentesEdicionResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDocentesEdicionResponse")
+    @Action(input = "http://PRESENTACION/Publicador/listarDocentesEdicionRequest", output = "http://PRESENTACION/Publicador/listarDocentesEdicionResponse")
+    public List<String> listarDocentesEdicion(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarDocentesInstituto", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDocentesInstituto")
+    @ResponseWrapper(localName = "listarDocentesInstitutoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ListarDocentesInstitutoResponse")
+    @Action(input = "http://PRESENTACION/Publicador/listarDocentesInstitutoRequest", output = "http://PRESENTACION/Publicador/listarDocentesInstitutoResponse")
+    public List<String> listarDocentesInstituto(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns java.util.List<java.lang.String>
@@ -671,6 +689,69 @@ public interface Publicador {
     public List<String> listarCursosCategoria(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "cambiarNota", targetNamespace = "http://PRESENTACION/", className = "servidor.CambiarNota")
+    @ResponseWrapper(localName = "cambiarNotaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.CambiarNotaResponse")
+    @Action(input = "http://PRESENTACION/Publicador/cambiarNotaRequest", output = "http://PRESENTACION/Publicador/cambiarNotaResponse")
+    public void cambiarNota(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        int arg3);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "edicionesDocente", targetNamespace = "http://PRESENTACION/", className = "servidor.EdicionesDocente")
+    @ResponseWrapper(localName = "edicionesDocenteResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.EdicionesDocenteResponse")
+    @Action(input = "http://PRESENTACION/Publicador/edicionesDocenteRequest", output = "http://PRESENTACION/Publicador/edicionesDocenteResponse")
+    public List<String> edicionesDocente(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<servidor.DtPrograma>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "datosProgramas", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosProgramas")
+    @ResponseWrapper(localName = "datosProgramasResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosProgramasResponse")
+    @Action(input = "http://PRESENTACION/Publicador/datosProgramasRequest", output = "http://PRESENTACION/Publicador/datosProgramasResponse")
+    public List<DtPrograma> datosProgramas();
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<servidor.DtUsuario>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "consultaUsuarios", targetNamespace = "http://PRESENTACION/", className = "servidor.ConsultaUsuarios")
+    @ResponseWrapper(localName = "consultaUsuariosResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ConsultaUsuariosResponse")
+    @Action(input = "http://PRESENTACION/Publicador/consultaUsuariosRequest", output = "http://PRESENTACION/Publicador/consultaUsuariosResponse")
+    public List<DtUsuario> consultaUsuarios();
 
     /**
      * 
@@ -688,14 +769,41 @@ public interface Publicador {
      * 
      * @param arg0
      * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "esDocente", targetNamespace = "http://PRESENTACION/", className = "servidor.EsDocente")
+    @ResponseWrapper(localName = "esDocenteResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.EsDocenteResponse")
+    @Action(input = "http://PRESENTACION/Publicador/esDocenteRequest", output = "http://PRESENTACION/Publicador/esDocenteResponse")
+    public boolean esDocente(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @return
      *     returns java.util.List<servidor.DtCurso>
      */
-    @WebMethod(operationName = "DTCursosPrograma")
+    @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "DTCursosPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.DTCursosPrograma")
-    @ResponseWrapper(localName = "DTCursosProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.DTCursosProgramaResponse")
-    @Action(input = "http://PRESENTACION/Publicador/DTCursosProgramaRequest", output = "http://PRESENTACION/Publicador/DTCursosProgramaResponse")
-    public List<DtCurso> dtCursosPrograma(
+    @RequestWrapper(localName = "datosCursos", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosCursos")
+    @ResponseWrapper(localName = "datosCursosResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosCursosResponse")
+    @Action(input = "http://PRESENTACION/Publicador/datosCursosRequest", output = "http://PRESENTACION/Publicador/datosCursosResponse")
+    public List<DtCurso> datosCursos();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<java.lang.String>
+     */
+    @WebMethod(operationName = "ProgramasCurso")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "ProgramasCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.ProgramasCurso")
+    @ResponseWrapper(localName = "ProgramasCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ProgramasCursoResponse")
+    @Action(input = "http://PRESENTACION/Publicador/ProgramasCursoRequest", output = "http://PRESENTACION/Publicador/ProgramasCursoResponse")
+    public List<String> programasCurso(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 
@@ -742,67 +850,16 @@ public interface Publicador {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<servidor.DtUsuario>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "consultaUsuarios", targetNamespace = "http://PRESENTACION/", className = "servidor.ConsultaUsuarios")
-    @ResponseWrapper(localName = "consultaUsuariosResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ConsultaUsuariosResponse")
-    @Action(input = "http://PRESENTACION/Publicador/consultaUsuariosRequest", output = "http://PRESENTACION/Publicador/consultaUsuariosResponse")
-    public List<DtUsuario> consultaUsuarios();
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<servidor.DtPrograma>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "datosProgramas", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosProgramas")
-    @ResponseWrapper(localName = "datosProgramasResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosProgramasResponse")
-    @Action(input = "http://PRESENTACION/Publicador/datosProgramasRequest", output = "http://PRESENTACION/Publicador/datosProgramasResponse")
-    public List<DtPrograma> datosProgramas();
-
-    /**
-     * 
+     * @param arg0
      * @return
      *     returns java.util.List<servidor.DtCurso>
      */
-    @WebMethod
+    @WebMethod(operationName = "DTCursosPrograma")
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "datosCursos", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosCursos")
-    @ResponseWrapper(localName = "datosCursosResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.DatosCursosResponse")
-    @Action(input = "http://PRESENTACION/Publicador/datosCursosRequest", output = "http://PRESENTACION/Publicador/datosCursosResponse")
-    public List<DtCurso> datosCursos();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<java.lang.String>
-     */
-    @WebMethod(operationName = "ProgramasCurso")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "ProgramasCurso", targetNamespace = "http://PRESENTACION/", className = "servidor.ProgramasCurso")
-    @ResponseWrapper(localName = "ProgramasCursoResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.ProgramasCursoResponse")
-    @Action(input = "http://PRESENTACION/Publicador/ProgramasCursoRequest", output = "http://PRESENTACION/Publicador/ProgramasCursoResponse")
-    public List<String> programasCurso(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "esDocente", targetNamespace = "http://PRESENTACION/", className = "servidor.EsDocente")
-    @ResponseWrapper(localName = "esDocenteResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.EsDocenteResponse")
-    @Action(input = "http://PRESENTACION/Publicador/esDocenteRequest", output = "http://PRESENTACION/Publicador/esDocenteResponse")
-    public boolean esDocente(
+    @RequestWrapper(localName = "DTCursosPrograma", targetNamespace = "http://PRESENTACION/", className = "servidor.DTCursosPrograma")
+    @ResponseWrapper(localName = "DTCursosProgramaResponse", targetNamespace = "http://PRESENTACION/", className = "servidor.DTCursosProgramaResponse")
+    @Action(input = "http://PRESENTACION/Publicador/DTCursosProgramaRequest", output = "http://PRESENTACION/Publicador/DTCursosProgramaResponse")
+    public List<DtCurso> dtCursosPrograma(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 
