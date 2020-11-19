@@ -5,7 +5,6 @@
  */
 package PRESENTACION;
 
-import Clases.Categoria;
 import Clases.Curso;
 import Clases.Docente;
 import Clases.Estudiante;
@@ -71,6 +70,20 @@ public class Publicador {
       return ICU.consultaUsuarios();
   }
    
+  @WebMethod
+  public String checkEdicionCurso(String curso){
+      return ICU.checkEdicionCurso(curso);
+  }
+  @WebMethod
+  public void cambiarNota(String cur, String edi, String nick, int nota){
+      ICU.cambiarNota(cur, edi, nick, nota);
+  }
+  
+  @WebMethod
+  public List<String> edicionesDocente(String curso, String nick){
+      return ICU.edicionesDocente(curso, nick);
+  }
+  
   @WebMethod
   public ArrayList<String> EdicionesCurso(String curso){
       return ICU.EdicionesCurso(curso);
@@ -268,8 +281,8 @@ public class Publicador {
  
    
    @WebMethod
-   public void crearInscripcionEstudiante(String nombreC, String nombreEdi,Date  fecha_insc,String nombreEst){
-      ICU.crearInscripcionEstudiante(nombreC, nombreEdi, nombreEst, fecha_insc, nombreC); 
+   public void crearInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, String video){
+       ICU.crearInscripcionEstudiante(nombreC, nombreEdi, nombreEst, new Date(), video);
    }
    
    @WebMethod
@@ -341,170 +354,4 @@ public class Publicador {
    
       return  ICU.listarDocentesEdicion(nombreC, nombreE);
    }
- @WebMethod  
-public ArrayList<String> mostrarEdicion(String nick)
-{
-    return ICU.mostrarEdicion(nick);
-}
-@WebMethod
- public DTCurso cursoEdicion(String nombreE)
- {
-     return ICU.cursoEdicion(nombreE);
- }
- @WebMethod
-  public ArrayList<String> mostrarCursosDocente(String nick)
-  {
-      return ICU.mostrarCursosDocente(nick);
-  }
-@WebMethod
-public Set<String> CategoriasProgramas(String nombreP)
-{
-    return ICU.CategoriasProgramas(nombreP);
-}
-@WebMethod
-public ArrayList<String> CategoriasCurso(String nombreC)
-{
-    return ICU.CategoriasCurso(nombreC);
-}
-@WebMethod
-public boolean chequearInstituto(String nombreI)
-{
-    return ICU.chequearInstituto(nombreI);
-}
-@WebMethod
-public boolean sintaxisEmailCorrecta(String email)
-{
-    return ICU.sintaxisEmailCorrecta(email);
-}
-@WebMethod
-public ArrayList<String> listarNickUsuarios()
-{
-    return ICU.listarNickUsuarios();
-}
-@WebMethod
- public ArrayList<String> listarNombreCursos()
- {
-     return ICU.listarNombreCursos();
- }
- @WebMethod
-public void modificarDatosUsuario(String nick, String nuevoNom, String nuevoApe, Date nuevaFechaNac)
-{
-    ICU.modificarDatosUsuario(nick, nuevoNom, nuevoApe, nuevaFechaNac);
-}
-@WebMethod
-public DTInstituto institutoEdicion(String nombreE)
-{
-    return ICU.institutoEdicion(nombreE);
-}
-@WebMethod
-public List mostrarProgramas()
-{
-    return ICU.mostrarProgramas();
-}
- @WebMethod
-public DTEdicion datosEdicion(String nombreCurso, String nombreEdicion)
-{
-    return ICU.datosEdicion(nombreCurso, nombreEdicion);
-}
-@WebMethod
-public void modificarDatosPrograma(DTPrograma datos)
-{
-    ICU.modificarDatosPrograma(datos);
-}
-@WebMethod
- public void crearPrograma(DTPrograma datos)
- {
-     ICU.crearPrograma(datos);
- }
- @WebMethod
- public String checkEdicionCurso(String nombreC)
- {
-     return ICU.checkEdicionCurso(nombreC);
- }
- @WebMethod
- public boolean InscripcionCorrectaEstEdi(String nombreC, String nombreE, Date fecha)
- {
-     return ICU.InscripcionCorrectaEstEdi(nombreC, nombreE, fecha);
- }
- @WebMethod
-public boolean InscripcionEstEdiIsNull(String nombreI, String nombreC, String nombreEdi, String nombreEst, Date fecha )
-{
-    return ICU.InscripcionEstEdiIsNull(nombreI, nombreC, nombreEdi, nombreEst, fecha);
-}
-@WebMethod
- public ArrayList<String> listarEstudiantes()
- {
-     return ICU.listarEstudiantes();
- }
- @WebMethod
-  public ArrayList<String> listarDocentesInstituo(String nomInst)
-  {
-      return ICU.listarDocentesInstituo(nomInst);
-  }
-  @WebMethod
-  public void modificarInscPrograma (String nomP, String nickE, Date nuevaFecha)
-  {
-       ICU.modificarInscPrograma(nomP, nickE, nuevaFecha);
-  }
-  @WebMethod
-    public void InscripcionPrograma (String nomP, String nickE, Date fecha)
-    {
-        ICU.InscripcionPrograma(nomP, nickE, fecha);
-    }
-    
-    @WebMethod
-     public void crearInscripcionEstudiante(String nombreC, String nombreEdi,String nombreEst, Date fecha_insc)
-     {
-       
-         ICU.crearInscripcionEstudiante(nombreC, nombreEdi, nombreEst, fecha_insc, nombreC);
-     }
-
-     @WebMethod
-      public void modificarInscripcionEstudiante(String nombreC, String nombreEdi, String nombreEst, Date nueva_fecha)
-      {
-          ICU.modificarInscripcionEstudiante(nombreC, nombreEdi, nombreEst, nueva_fecha);
-      }
-      @WebMethod
-     public void registrarCurso(String nomInst, DTCurso datoscurso, List previas, List categorias)
-     {
-         ICU.registrarCurso(nomInst, datoscurso, previas, categorias);
-     }
-     @WebMethod
-     public void altaEdicionCurso(String nombCurso, DTEdicion datos, List docentes)
-     {
-         ICU.altaEdicionCurso(nombCurso, datos, docentes);
-     }
-     @WebMethod
-     
-     public boolean checkExisteEdicionCurso(String nomCurso, String nomEdic)
-     {
-         return ICU.checkExisteEdicionCurso(nomCurso, nomEdic);
-     }
-     @WebMethod
-     public Categoria obtenerCategoria(String nombreCat)
-     {
-         return ICU.obtenerCategoria(nombreCat);
-     }
-     @WebMethod
-      public void altaCategoria(String nombreCat)
-      {
-          ICU.altaCategoria(nombreCat);
-      }
-      @WebMethod
-      public void modificarCategoria(String viejo,String nuevo)
-      {
-          ICU.modificarCategoria(viejo, nuevo);
-      }
-      @WebMethod
-      public void agregarCategoriaCurso(String nombreCurso, List nombreCat)
-      {
-          ICU.agregarCategoriaCurso(nombreCurso, nombreCat);
-      }
-      @WebMethod
-      
-       public Set<DTCurso> DTcursosPrograma(String nombreP)
-       {
-           return ICU.DTcursosPrograma(nombreP);
-       }
-      
 }
