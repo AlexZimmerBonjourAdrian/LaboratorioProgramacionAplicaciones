@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -118,11 +119,23 @@ public class iniciosesion extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    //@Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
+        
+        HttpServletRequest reqhttp = (HttpServletRequest)request;
+        HttpSession  sesion=reqhttp.getSession();
+       // sesion.setAttribute("usuario", "error");
+        /*
+        if(sesion.getAttribute("Usuario") != null)
+        {
+          chain.doFilter(request, response);
+        }else{
+           request.getRequestDispatcher("/Error.jsp");
+        }
+       */
+        }
 
     /**
      * Returns a short description of the servlet.
