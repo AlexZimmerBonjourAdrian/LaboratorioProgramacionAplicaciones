@@ -21,6 +21,52 @@
                 $('#inst').on("click", cargarCursos);  
             });
         </script>
+        <script>
+            function getDate(){
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+                 if(dd<10){
+                        dd='0'+dd
+                    } 
+                    if(mm<10){
+                        mm='0'+mm
+                    } 
+
+                today = yyyy+'-'+mm+'-'+dd;
+                return today;
+            }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function(){ 
+                $("#nombreEd").on("keyup", function(){ 
+                    var nombreEd = $("#nombreEd").val();
+                    var nomCur = $("#cur").val();
+                    if(!nomCur){
+                        return;
+                    }
+                    $.ajax({
+                        type:'POST',
+                        data:{nomCur: nomCur, nomEd: nombreEd},
+                        url:'checkEdicion',
+                        success:function(result){
+                            console.log(result);
+                            var res = result.result1;
+                            if(res=="true"){
+                                $('#res').css("display", "inline");
+                                $('#res').html("Ya existe la edicion");
+                                $('#boton').css("display", "none");
+                            }
+                            else{
+                                $('#res').html("");
+                                $('#boton').css("display", "inline");
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
         <script type='text/javascript'>
             $(document).ready(function(){
                 $('#No').on("click",function(){
@@ -28,6 +74,24 @@
                 });
                 $('#Si').on("click",function(){
                     $('#cuposEd').css("display", "block");
+                });
+            });
+        </script>
+        <script type='text/javascript'>
+            $(document).ready(function(){
+                $('#fechaFin').on("click",function(){
+                    document.getElementById("fechaPub").setAttribute("max", $('#fechaIni').val());
+                    if(this.getAttribute("min")!=$('#fechaIni').val()){
+                        document.getElementById("fechaFin").setAttribute("min", $('#fechaIni').val());
+                    }
+                });
+            });
+        </script>
+        <script type='text/javascript'>
+            $(document).ready(function(){
+                $('#fechaIni').on("click",function(){
+                    document.getElementById("fechaPub").setAttribute("max", $('#fechaIni').val());
+                    document.getElementById("fechaFin").setAttribute("min", $('#fechaIni').val());
                 });
             });
         </script>
@@ -81,12 +145,15 @@
                                     <input type="text" class="form-control" name="nombreEd" placeholder="Nombre" id="nombreEd">
                                 </div>
                                 <div class="form-group">
+                                    <span style="color:red" id="res"></span>
+                                </div>
+                                <div class="form-group">
                                     <label >Ingrese la fecha de inicio:</label>
                                     <input type="date" class="form-control" name="fechaIni" id="fechaIni">
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese la fecha de fin:</label>
-                                    <input type="date" class="form-control" name="fechaFin" id="fechaFin">
+                                    <input type="date" class="form-control" name="fechaFin" id="fechaFin" min>
                                 </div>
                                 <div class="form-group">
                                     <label >Cupos:</label><br>
@@ -96,7 +163,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese la fecha de publicacion:</label>
-                                    <input type="date" class="form-control" name="fechaPub" id="fechaPub" max="1979-12-31">
+                                    <input type="date" class="form-control" name="fechaPub" id="fechaPub" max>
                                 </div>
                                 <div class="form-group">
                                     <select name="docentes" multiple id="docentes" >
@@ -106,7 +173,7 @@
                                     <label >Seleccione su imagen:</label>
                                     <input type="file" name="txtDireccion" value="" size="50"/>
                                 </div>
-                                <input type="submit" class="btn btn-primary"></input>
+                                <input type="submit" class="btn btn-primary" id="boton"></input>
                                 <a href="Home" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
                             </form>
                         </div>

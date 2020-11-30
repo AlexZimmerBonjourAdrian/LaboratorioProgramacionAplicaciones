@@ -233,4 +233,5 @@ public interface ISistema {
     
     public ArrayList<DTInscripcionE> datosInscripEstProg (String nombreP, String nick);
      
+    public boolean checkEdicion(String curso, String edicion);
 }

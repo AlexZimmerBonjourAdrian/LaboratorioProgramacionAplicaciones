@@ -38,6 +38,10 @@
                             $('#fechafin').html(result.fechafin);
                             $('#cuposmax').html(result.cuposmax);
                             $('#fechapub').html(result.fechapub);
+                            $('#docentes').html(result.result1);
+                            $('#inscripciones').html(result.inscripciones);
+                            $('#img').html(result.result2);
+                            $('#estado').html(result.estado);
                         }
                     });
                 });  
@@ -96,21 +100,7 @@
                                 <select id="edi" name="edi">
                                 </select>
                             </div>
-                                <div class="form-group">
-                                    <p>Nombre:</p> <h7 name="nombre" id="nombre"></h7>
-                                </div>
-                            <div class="form-group">
-                                <p>Fecha inicio:</p> <h7 name="fechaini" id="fechaini"></h7>
-                            </div>
-                            <div class="form-group">
-                                <p>Fecha fin:</p> <h7 name="fechafin" id="fechafin"></h7>
-                            </div>
-                            <div class="form-group">
-                                <p>Cupos maximos:</p> <h7 name="cuposmax" id="cuposmax"></h7>
-                            </div>
-                            <div class="form-group">
-                                <p>Fecha de publicación:</p> <h7 name="fechapub" id="fechapub"></h7>
-                            </div>
+                            <jsp:include page="/WEB-INF/Edicion/ediciondatos.jsp"/> <br><br>
                             <div>
                                 <table name="filas" id ="filas" class="table table-bordered">
                                 </table>    

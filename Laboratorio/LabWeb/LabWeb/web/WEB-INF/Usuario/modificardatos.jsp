@@ -65,7 +65,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ingrese la fecha de nacimiento:</label>
-                                    <input type="date" class="form-control" name="fechaNac" placeholder="Fecha" id="fechaNac" value="<%=u1.getFechaDeNac()%>">
+                                    <%
+                                        String[] fechad = {"default"};
+                                        String fecha = u1.getFechaDeNac().toString();
+                                        fechad = fecha.split("T");
+                                    %>
+                                    <input type="date" class="form-control" name="fechaNac" placeholder="Fecha" id="fechaNac" value="<%= fechad[0] %>">
                                 </div>
                                 <input type="submit" class="btn btn-primary"></input> 
                             </form>

@@ -66,7 +66,7 @@
                             <form action="Programa" method="post" onsubmit="return validacion()">
                                 <div class="form-group">
                                     <label >Escriba el nombre del Programa:</label>
-                                    <input type="text" class="form-control" name="nombrep" placeholder="Nombrep" id="nombrep">
+                                    <input type="text" class="form-control" name="nombrep" placeholder="Nombre" id="nombrep">
                                 </div>
                                 <div class="form-group">
                                     <span style="color:red" id="res"></span>
@@ -87,6 +87,19 @@
                                     <label >Seleccione su imagen:</label>
                                     <input type="file" name="txtDireccion" value="" size="50"/>
                                 </div>
+                                
+                                <div class="form-group">
+                                    <label>Cursos:</label><br>               
+                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                    <select id="cur" name="cur" multiple>
+                                        <c:forEach items="${cursos}" var="cur" varStatus="loop">
+                                            <option>
+                                                ${cur}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                
                                 <button type="submit" class="btn btn-primary">Enviar</button>
                                 <a href="Home" id="cancel" name="cancel" class="btn btn-default">Cancel</a> 
                             </form>

@@ -79,13 +79,9 @@ public class programadatos extends HttpServlet {
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
         String prog = request.getParameter("prog");
-        //DTPrograma dtprograma = ICU.obtenerPrograma(prog);
         servidor.DtPrograma dtprograma = port.obtenerPrograma(prog);
-        //Set<String> catprog = ICU.CategoriasProgramas(prog);
         List<String> catprog = port.categoriasProgramas(prog);
-        //Set<DTCurso> cursos = ICU.DTcursosPrograma(prog);
         List<DtCurso> cursos = port.dtCursosPrograma(prog);
-   //     request.setAttribute("cursos", cursos);
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         JSONObject j = new JSONObject(); 
@@ -96,14 +92,10 @@ public class programadatos extends HttpServlet {
             result1 = result1 + "<option>"+ cp + "</option>";
          
         }
-        
         for(DtCurso cur : cursos){
             String inst = port.obtenerInstitutoCurso(cur.getNombre()).getNombre();
-            //String inst = ICU.obtenerInstitutoCurso(cur.getNombre()).getNombre();
             result2 = result2 + "<a href=\"concultacurso?inst="+ inst +"&cur="+ cur.getNombre() + "\">"+cur.getNombre()+"</a><br>";
         }
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        
         j.put("result2",result2);
         j.put("result1",result1);
         j.put("nombre", dtprograma.getNombre());
@@ -111,6 +103,7 @@ public class programadatos extends HttpServlet {
         j.put("fechaini", dtprograma.getFechaIni().toString());
         j.put("fechafin", dtprograma.getFechaFin().toString());
         j.put("fechaalta", dtprograma.getFechaAlta().toString());
+        j.put("foto", dtprograma.getImagenDir());
         j.put("result3",result3);
         response.getWriter().write(j.toString());
     }

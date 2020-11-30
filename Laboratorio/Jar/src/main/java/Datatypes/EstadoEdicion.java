@@ -10,6 +10,7 @@ package Datatypes;
  * @author admin
  */
 public enum EstadoEdicion {
+    INSCRIBIENDO,
     ABIERTA,           
     CERRADA
 }

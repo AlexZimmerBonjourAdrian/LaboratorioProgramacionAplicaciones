@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -39,41 +41,37 @@ public class Programa extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
+        List cursos = port.mostrarCursos();
+        ArrayList<String> cur = new ArrayList<String>();
+        servidor.DtCurso dato; 
+        for(Object c : cursos){
+            dato = (servidor.DtCurso)c;
+            cur.add(dato.getNombre());
+        }
+        request.setAttribute("cursos", cur); 
         String nombrep = request.getParameter("nombrep");
         String desc = request.getParameter("descripcion"); 
         String fechaDate = request.getParameter("fechaini");
         String fechaDate2 = request.getParameter("fechafin");
         String imagenNom = request.getParameter("txtDireccion");
         String imagenDir = "images/logo.png";
-        
-         if(imagenNom!=null && !imagenNom.equals("") ){
+        String[] cursosProg = request.getParameterValues("cur");
+        if(imagenNom!=null && !imagenNom.equals("") ){
                 imagenDir = "images/"+imagenNom;
         }
-        
-        /*
-        Date fechaini = null;
-        Date fechafin = null;
-        if(fechaDate!=null){
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            fechaini = formato.parse(fechaDate);
-        }
-        if(fechaDate2!=null){
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            fechafin = formato.parse(fechaDate2);
-        }*/
-        //DTPrograma datos = new DTPrograma(nombrep,desc,fechaini,fechafin,new Date(), imagenDir);
-        
         if (nombrep != null && port.obtenerPrograma(nombrep) == null){
-              
               port.crearPrograma(nombrep,desc,fechaDate,fechaDate2,imagenDir);
-            //ICU.crearPrograma(datos);
-
-        }else{
+        }
+        else{
             if(nombrep != null){
                 port.modificarDatosPrograma(nombrep,desc,fechaDate,fechaDate2,imagenDir);
             }
-
         } 
+        if(nombrep!=null && cursosProg!=null){
+            for(String curso : cursosProg){
+                port.agregarCursoPrograma(nombrep, curso);
+            }
+        }
         String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
         if(nick2!=null && port.esDocente(nick2)){
             request.getRequestDispatcher("/WEB-INF/Programa/AltaPrograma.jsp").forward(request, response);

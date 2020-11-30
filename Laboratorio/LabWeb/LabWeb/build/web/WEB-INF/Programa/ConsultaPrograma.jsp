@@ -85,11 +85,13 @@
                                 <button class="tablinks" onclick="pestana(event, 'cursos')">Cursos</button>
                             </div>
                             <div id="general" class="tabcontent">
-                                <h3 class="titulo">Nombre:</h3><h3 id="nombre">&nbsp;&nbsp; </h3>
-                                <h3 class="titulo">Descripcion:</h3><h3 id="descripcion"> &nbsp;&nbsp;</h3>
-                                <h3 class="titulo">Fecha inicial:</h3><h3 id="fechaini">&nbsp;&nbsp; </h3>
-                                <h3 class="titulo">Fecha final:</h3><h3 id="fechafin">&nbsp;&nbsp; </h3>
-                                <h3 class="titulo">Fecha de alta:</h3><h3 id="fechaalta">&nbsp;&nbsp; </h3>
+                                <h3 class="titulo" ><b>Nombre:</b></h3><h3 id="nombre">&nbsp;&nbsp;</h3>
+                                <h3 class="titulo"><b>Descripcion:</b></h3><h3 id="descripcion"> &nbsp;&nbsp;</h3>
+                                <h3 class="titulo"><b>Fecha inicial:</b></h3><h3 id="fechaini">&nbsp;&nbsp; </h3>
+                                <h3 class="titulo"><b>Fecha final:</b></h3><h3 id="fechafin">&nbsp;&nbsp; </h3>
+                                <h3 class="titulo"><b>Fecha de alta:</b></h3><h3 id="fechaalta">&nbsp;&nbsp; </h3>
+                                <h3 class="titulo"><b>Imagen:</b></h3><h3>&nbsp;&nbsp;</h3>
+                                <div id="img"></div>
                             </div>
                             <div id="cursos" class="tabcontent">
                                 <div id="cur" name="cur">

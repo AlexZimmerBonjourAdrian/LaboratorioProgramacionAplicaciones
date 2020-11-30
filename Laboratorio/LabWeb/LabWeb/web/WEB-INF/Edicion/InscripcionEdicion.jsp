@@ -62,6 +62,9 @@
         <script>
             function cargarEdicionVigente(){
                 var curso = $('#cur').val();
+                if(curso=="Seleccione un curso"){
+                    return;
+                }
                 console.log("El curso seleccionado es: " + cur);
                 $.ajax({
                     async: false,

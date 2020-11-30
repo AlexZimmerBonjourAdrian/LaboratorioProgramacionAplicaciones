@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese su fecha de nacimiento:</label>
-                                    <input type="date" class="form-control" name="fecha">
+                                    <input type="date" class="form-control" name="fecha" max="2002-12-21">
                                 </div>
                                 <div class="form-group">
                                     <label >Ingrese su contrasenia:</label>

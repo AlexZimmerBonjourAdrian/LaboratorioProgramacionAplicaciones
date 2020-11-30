@@ -87,7 +87,7 @@ public class edicionesAbiertas extends HttpServlet {
             String result1 = "";
             for(DatosEdicion ed : ediciones){
                 System.out.println("El estado de edicion es: " + ed.getEstado().toString());
-                if(ed.getEstado()==EstadoEdicion.ABIERTA && ed.getCurso().equals(curso)){
+                if(ed.getEstado()==EstadoEdicion.INSCRIBIENDO && ed.getCurso().equals(curso)){
                     result1 = result1 + "<option>" + ed.getEdicion() + "</option>";
                 }
             }

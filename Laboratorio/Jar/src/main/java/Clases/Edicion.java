@@ -43,6 +43,13 @@ public class Edicion implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date fecha_fin;
     private int cupo_max;
+    private int cupo_fijo;
+    public void setCupo_fijo(int cupo_fijo) {
+        this.cupo_fijo = cupo_fijo;
+    }
+    public int getCupo_fijo() {
+        return cupo_fijo;
+    }
     @Temporal(TemporalType.DATE)
     private Date fecha_pub;
     @Enumerated(EnumType.STRING)
@@ -98,6 +105,7 @@ public class Edicion implements Serializable{
         this.fecha_fin=fecha_fin;
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
+        this.cupo_fijo=cupo_max;
         docentes = new HashMap();
         inscripciones = new LinkedList();
         Date today = new Date();
@@ -115,12 +123,13 @@ public class Edicion implements Serializable{
         this.fecha_fin=fecha_fin;
         this.cupo_max=cupo_max;
         this.fecha_pub=fecha_pub;
+        this.cupo_fijo=cupo_max;
         docentes = new HashMap();
         inscripciones = new LinkedList();
         this.imagenDir = imagenDir;
         Date today = new Date();
         if (today.getYear() == fecha_ini.getYear() ){
-            this.estado=EstadoEdicion.ABIERTA;
+            this.estado=EstadoEdicion.INSCRIBIENDO;
         }
         else{
             this.estado=EstadoEdicion.CERRADA;
@@ -142,9 +151,8 @@ public class Edicion implements Serializable{
     }
     
     public DTEdicion getDatos(){
-        return new DTEdicion(this.nombre,this.fecha_ini,this.fecha_fin,this.cupo_max,this.fecha_pub, this.estado);
+        return new DTEdicion(this.nombre,this.fecha_ini,this.fecha_fin,this.cupo_max,this.fecha_pub,this.imagenDir, this.estado, this.cupo_fijo);
     }
-    
     public String getNombreEdicion(){
         return this.nombre;
     }

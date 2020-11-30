@@ -64,10 +64,9 @@
                 var durCur = document.getElementById('durCur').value;
                 var horasCur = document.getElementById('horasCur').value;
                 var credCur = document.getElementById('credCur').value;
-                var fecha = document.getElementById('fecha').value;
                 var url = document.getElementById('url').value;
                 var e = document.getElementById("inst");
-                if(!nomCur || !desCur || !durCur || horasCur<=0 || credCur<=0 || !fecha  || !url ){
+                if(!nomCur || !desCur || !durCur || horasCur<=0 || credCur<=0 || !url ){
                     alert("INGRESE TODOS LOS DATOS");
                     return false;
                 } 
@@ -114,15 +113,7 @@
                                     <label >Ingrese la cantidad de creditos del curso:</label>
                                     <input type="number" class="form-control" name="credCur" placeholder="Creditos" id="credCur">
                                 </div>
-                                <div class="form-group">
-                                    <label >Ingrese la fecha de registro:</label>
-                                    <input type="date" class="form-control" name="fecha" id="fecha" min="2012-03-31" max>
-                                    <script>
-                                        var date = new Date();
-                                        document.querySelector("#fecha").setAttribute("max", date.toString());
-                                        console.log("LA FECHA ES" + date.toString());
-                                    </script>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label >Ingrese la URL del curso:</label>
                                     <input type="text" class="form-control" name="url" id="url">
@@ -157,7 +148,7 @@
                                     <label >Seleccione su imagen:</label>
                                     <input type="file" name="txtDireccion" value="" size="50"/>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="submit" class="btn btn-primary" id="boton">Enviar</button>
                                 <a href="Home" id="cancel" name="cancel" class="btn btn-default">Cancel</a> 
                             </form>
                         </div>

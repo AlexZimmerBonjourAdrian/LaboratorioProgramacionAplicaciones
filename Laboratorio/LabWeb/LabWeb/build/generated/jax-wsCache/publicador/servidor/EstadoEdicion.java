@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;simpleType name="estadoEdicion">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="INSCRIBIENDO"/>
  *     &lt;enumeration value="ABIERTA"/>
  *     &lt;enumeration value="CERRADA"/>
  *   &lt;/restriction>
@@ -24,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum EstadoEdicion {
 
+    INSCRIBIENDO,
     ABIERTA,
     CERRADA;
 

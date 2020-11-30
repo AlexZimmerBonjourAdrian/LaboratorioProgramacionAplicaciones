@@ -51,6 +51,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="inscripciones" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="imagenDir" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="estado" type="{http://PRESENTACION/}estadoEdicion" minOccurs="0"/>
+ *         &lt;element name="cupo_fijo" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -69,7 +70,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "docentes",
     "inscripciones",
     "imagenDir",
-    "estado"
+    "estado",
+    "cupoFijo"
 })
 public class DtEdicion {
 
@@ -91,6 +93,8 @@ public class DtEdicion {
     protected List<Object> inscripciones;
     protected String imagenDir;
     protected EstadoEdicion estado;
+    @XmlElement(name = "cupo_fijo")
+    protected int cupoFijo;
 
     /**
      * Obtiene el valor de la propiedad nombre.
@@ -303,6 +307,22 @@ public class DtEdicion {
      */
     public void setEstado(EstadoEdicion value) {
         this.estado = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad cupoFijo.
+     * 
+     */
+    public int getCupoFijo() {
+        return cupoFijo;
+    }
+
+    /**
+     * Define el valor de la propiedad cupoFijo.
+     * 
+     */
+    public void setCupoFijo(int value) {
+        this.cupoFijo = value;
     }
 
 

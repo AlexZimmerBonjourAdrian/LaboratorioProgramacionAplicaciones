@@ -90,42 +90,19 @@ public class consultaediciondecurso extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
-        
         String inst = request.getParameter("inst");
-//        String cat = request.getParameter("cat");
-        String cur = request.getParameter("cur");
-        
         List<String> cursos = port.cursosInstituto(inst);
-        //ArrayList<String> cursos = ICU.cursosInstituto(inst);
-    //    System.out.println(inst + curs);
-  //      ArrayList<String> ediciones = ICU.EdicionesCurso(cur);
-        //request.setAttribute("cursos", cursos);  
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
-       
-       
         JSONObject j = new JSONObject(); 
         String result1 = "";
-    //    String result2 = ""; 
         for(Object curso : cursos){
             result1 = result1 + "<option>" + curso + "</option> ";
-            
         }
-  //      for(Object edicion : ediciones){
-  //          result2 = result2 + "<option>" + edicion + "</option>";
-            
-  //      }
         j.put("result1",result1);
-  //      j.put("result2",result2);
-        
         response.getWriter().write(j.toString());
-        //out.print(j.toJSONString());
-        
-       
-       
     }
 
     /**

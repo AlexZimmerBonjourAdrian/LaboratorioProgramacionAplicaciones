@@ -5,31 +5,19 @@
  */
 package controller;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.font.PdfFont;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.simple.JSONObject;
 
 /**
  *
  * @author admin
  */
-public class pdf extends HttpServlet {
+public class checkEdicion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,18 +29,20 @@ public class pdf extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, DocumentException {
-        OutputStream out = response.getOutputStream();
-        Document document = new Document();
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        document.setPageSize(new Rectangle(792, 612));
-        PdfWriter.getInstance(document, out);
-        document.open();
-        Paragraph p = new Paragraph("edEXT");
-        p.setAlignment(1);
-        document.add(p);
-        document.close();
-        
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet checkEdicion</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet checkEdicion at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,11 +57,7 @@ public class pdf extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (DocumentException ex) {
-            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -85,7 +71,23 @@ public class pdf extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        String nomCur = request.getParameter("nomCur");
+        String nomEd = request.getParameter("nomEd");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+        servidor.PublicadorService service = new servidor.PublicadorService();
+        servidor.Publicador port = service.getPublicadorPort();
+        Boolean check = port.checkEdicion(nomCur, nomEd);
+        String result = "";
+        if(check != true){
+            result="false";
+        }
+        else{
+            result="true";
+        }
+        JSONObject j = new JSONObject(); 
+        j.put("result1",result);
+        response.getWriter().write(j.toString());
     }
 
     /**

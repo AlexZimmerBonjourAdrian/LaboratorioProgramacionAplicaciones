@@ -78,6 +78,7 @@ public class ObjectFactory {
     private final static QName _DatosProgramas_QNAME = new QName("http://PRESENTACION/", "datosProgramas");
     private final static QName _CalificarCursoResponse_QNAME = new QName("http://PRESENTACION/", "calificarCursoResponse");
     private final static QName _EdicionesCurso_QNAME = new QName("http://PRESENTACION/", "EdicionesCurso");
+    private final static QName _CheckEdicion_QNAME = new QName("http://PRESENTACION/", "checkEdicion");
     private final static QName _CheckincripcionPrograma_QNAME = new QName("http://PRESENTACION/", "checkincripcionPrograma");
     private final static QName _CursosPrograma_QNAME = new QName("http://PRESENTACION/", "cursosPrograma");
     private final static QName _ObtenerCursoDeEdicionResponse_QNAME = new QName("http://PRESENTACION/", "obtenerCursoDeEdicionResponse");
@@ -100,6 +101,7 @@ public class ObjectFactory {
     private final static QName _ObtenerCursoDeEdicion_QNAME = new QName("http://PRESENTACION/", "obtenerCursoDeEdicion");
     private final static QName _ResponderComentario_QNAME = new QName("http://PRESENTACION/", "responderComentario");
     private final static QName _CrearProgramaResponse_QNAME = new QName("http://PRESENTACION/", "crearProgramaResponse");
+    private final static QName _CheckEdicionResponse_QNAME = new QName("http://PRESENTACION/", "checkEdicionResponse");
     private final static QName _ObtenerCalifCursoResponse_QNAME = new QName("http://PRESENTACION/", "obtenerCalifCursoResponse");
     private final static QName _ObtenerPrograma_QNAME = new QName("http://PRESENTACION/", "obtenerPrograma");
     private final static QName _CambiarNota_QNAME = new QName("http://PRESENTACION/", "cambiarNota");
@@ -586,6 +588,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CheckEdicionResponse }
+     * 
+     */
+    public CheckEdicionResponse createCheckEdicionResponse() {
+        return new CheckEdicionResponse();
+    }
+
+    /**
      * Create an instance of {@link ObtenerCalifCursoResponse }
      * 
      */
@@ -759,6 +769,14 @@ public class ObjectFactory {
      */
     public EdicionesCurso createEdicionesCurso() {
         return new EdicionesCurso();
+    }
+
+    /**
+     * Create an instance of {@link CheckEdicion }
+     * 
+     */
+    public CheckEdicion createCheckEdicion() {
+        return new CheckEdicion();
     }
 
     /**
@@ -1768,6 +1786,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckEdicion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://PRESENTACION/", name = "checkEdicion")
+    public JAXBElement<CheckEdicion> createCheckEdicion(CheckEdicion value) {
+        return new JAXBElement<CheckEdicion>(_CheckEdicion_QNAME, CheckEdicion.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CheckincripcionPrograma }{@code >}}
      * 
      */
@@ -1963,6 +1990,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://PRESENTACION/", name = "crearProgramaResponse")
     public JAXBElement<CrearProgramaResponse> createCrearProgramaResponse(CrearProgramaResponse value) {
         return new JAXBElement<CrearProgramaResponse>(_CrearProgramaResponse_QNAME, CrearProgramaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckEdicionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://PRESENTACION/", name = "checkEdicionResponse")
+    public JAXBElement<CheckEdicionResponse> createCheckEdicionResponse(CheckEdicionResponse value) {
+        return new JAXBElement<CheckEdicionResponse>(_CheckEdicionResponse_QNAME, CheckEdicionResponse.class, null, value);
     }
 
     /**

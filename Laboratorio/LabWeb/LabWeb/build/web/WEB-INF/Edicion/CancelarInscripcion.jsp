@@ -4,6 +4,7 @@
     Author     : Surface
 --%>
 
+<%@page import="servidor.EstadoEdicion"%>
 <%@page import="servidor.EstadoInscripcion"%>
 <%@page import="servidor.DtInscripcionE"%>
 <%@page import="java.util.List"%>
@@ -41,7 +42,7 @@
                                             List<DtInscripcionE> datos = (List)request.getAttribute("inscripciones");
                                             if(datos!=null){
                                                 for(DtInscripcionE insc : datos){
-                                                    if(insc.getEstado()==EstadoInscripcion.ACEPTADA){
+                                                    if(insc.getEstado()==EstadoInscripcion.ACEPTADA && insc.getEstadoEdicion()==EstadoEdicion.ABIERTA){
                                         %>
 
                                         <tr>

@@ -98,26 +98,19 @@ public class ediciondatos extends HttpServlet {
         JSONObject j = new JSONObject(); 
         String result1 = "";
         String result2 = "<img src=\"" + dtedi.getImagenDir() + "\" >";
-        System.out.println(result2);
-        
-         for(Object doc : docentesE){
+        for(Object doc : docentesE){
             result1 = result1 + "<a href=\"consultausuario?nick="+doc+"\">"+ doc + "</a>";
-         
         }
-        
         j.put("nombre", dtedi.getNombre());
         j.put("fechaini", dtedi.getFechaIni().toString());
         j.put("fechafin", dtedi.getFechaFin().toString());
         j.put("cuposmax", dtedi.getCupoMax());
         j.put("fechapub", dtedi.getFechaPub().toString());
         j.put("result1",result1);
+        j.put("cuposfijos",dtedi.getCupoFijo());
         j.put("mensaje", respuesta);
+        j.put("estado", dtedi.getEstado().toString());
         j.put("result2",result2);
-        
-     //   j.put("inscripciones", dtedi.getInscripciones());
-      
-                        
-        
         response.getWriter().write(j.toString());
     }
 

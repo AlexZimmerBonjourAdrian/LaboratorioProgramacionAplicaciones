@@ -67,71 +67,38 @@ public class Edicion extends HttpServlet {
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
         List<String> institutos = port.listarInstitutos();
-        //ArrayList<String> institutos = ICU.listarInstitutos();
         request.setAttribute("institutos", institutos); 
         String nombreEd = request.getParameter("nombreEd");
-        /*
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        Date fechaIniDate = null;
-        Date fechaFinDate = null;
-        Date fechaPubDate = null;*/
         String fechaIni = request.getParameter("fechaIni");
         String fechaFin = request.getParameter("fechaFin");
         String fechaPub = request.getParameter("fechaPub");
         String llevaCupos = request.getParameter("Radio");
         String nombreCurso = request.getParameter("cur");
         int cupos = 0;
-        
         String imagenNom = request.getParameter("txtDireccion");
         String imagenDir = "images/logo.png";
         
         if(imagenNom!=null && !imagenNom.equals("") ){
                 imagenDir = "images/"+imagenNom;
         }
-        
         if(llevaCupos!=null && llevaCupos.equals("Si")){
             cupos = Integer.parseInt(request.getParameter("cuposEd"));
         }
         else{ 
             cupos = 10000;
         }
-        /*
-        if(fechaIni!=null){
-            try {
-                fechaIniDate = formato.parse(fechaIni);
-            } catch (ParseException ex) {
-                Logger.getLogger(Edicion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if(fechaFin!=null){
-            try {
-                fechaFinDate = formato.parse(fechaFin);
-            } catch (ParseException ex) {
-                Logger.getLogger(Edicion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if(fechaPub!=null){
-            try {
-                fechaPubDate = formato.parse(fechaPub);
-            } catch (ParseException ex) {
-                Logger.getLogger(Edicion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }*/
         String[] doc = request.getParameterValues("docentes");
-        //DTEdicion ed = new DTEdicion(nombreEd, fechaIniDate, fechaFinDate, cupos,fechaPubDate, imagenDir);
         List lista = new ArrayList();
         if(doc!=null){
             lista = Arrays.asList(doc);
         }
-        if(nombreEd!=null){
+        if(nombreEd!=null && !port.checkEdicion(nombreCurso, nombreEd)){
             try {
                 port.altaEdicionCurso(nombreCurso, nombreEd, fechaIni, fechaFin, cupos, fechaPub, imagenDir, lista);
-                //ICU.altaEdicionCurso(nombreCurso, ed, lista);
             } catch (ParseException_Exception ex) {
                 Logger.getLogger(Edicion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
         processRequest(request, response);
     }
 

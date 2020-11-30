@@ -373,7 +373,7 @@ public class Sistema implements ISistema{
                 if(u instanceof Estudiante){
                     for(Iterator itinsc = edic.getValue().getInscripciones().iterator(); itinsc.hasNext();){
                         InscripcionE ie = (InscripcionE) itinsc.next();
-                        if(ie.getEst().getNick().equals(nick) && (ie.getEstado()==EstadoInscripcion.ACEPTADA || ie.getEstado()==EstadoInscripcion.PENDIENTE)){
+                        if(ie.getEst().getNick().equals(nick) && (ie.getEstado()==EstadoInscripcion.ACEPTADA)){
                             DatosEdicion de = new DatosEdicion(inst.getNombre(), c2, edic.getValue().getNombreEdicion(),edic.getValue().getEstado());
                             ediciones.add(de);
                         }
@@ -622,12 +622,14 @@ public class Sistema implements ISistema{
         Singleton sm = Singleton.getInstance();
         Programa p = sm.obtenerPrograma(nombreP);
         Set<String> nombresCat = new HashSet<String>();
-        Iterator<Map.Entry<String, Curso>> it = p.getCursos().entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry<String, Curso> curso = it.next();
-            for(String Nomcat : CategoriasCurso(curso.getValue().getNombre())){
-                nombresCat.add(Nomcat);
-            }
+        if(p!=null){
+            Iterator<Map.Entry<String, Curso>> it = p.getCursos().entrySet().iterator();
+            while(it.hasNext()){
+                Map.Entry<String, Curso> curso = it.next();
+                for(String Nomcat : CategoriasCurso(curso.getValue().getNombre())){
+                    nombresCat.add(Nomcat);
+                }
+            } 
         }
         return nombresCat;
     }
@@ -706,7 +708,7 @@ public class Sistema implements ISistema{
         Curso cur = Singleton.getInstance().obtenerCurso(nombreCurso);
         Edicion edi = cur.obtenerEdicion(nombreEdicion);
         if(edi != null){
-            return new DTEdicion(edi.getNombreEdicion(),edi.getFechaIni(),edi.getFechaFin(),edi.getCuposMax(),edi.getFechaPub(),edi.getimagenDir());
+            return edi.getDatos();
         }
         return null;
      }
@@ -721,14 +723,11 @@ public class Sistema implements ISistema{
         while(it.hasNext()){
             Map.Entry e1 = it.next();
             Edicion e2 = (Edicion)e1.getValue();
-            System.out.println("La edicion es: " + e2.getNombreEdicion());
             if(e2.getNombreEdicion().equals(ed)){
                 List i1 = e2.getInscripciones();
                 for(Object insc   : i1){
                     InscripcionE i2 = (InscripcionE)insc;
-                    System.out.println("El estudiante es: " + i2.getEst().getNick());
                     if(i2.getEst().getNick().equals(est)){
-                        System.out.println("El estado es: " + estado.toString());
                         i2.setEstado(estado);
                         if(estado==EstadoInscripcion.ACEPTADA && e2.getCuposMax()>0){
                             i2.setEstado(estado);
@@ -743,7 +742,6 @@ public class Sistema implements ISistema{
                         em.getTransaction().begin();
                         em.persist(i2);
                         em.getTransaction().commit();
-                        
                         return;
                     }
                 } 
@@ -796,9 +794,7 @@ public class Sistema implements ISistema{
         em.getTransaction().begin();
         em.persist(pr);
         em.getTransaction().commit();
-    }; 
-    
-  
+    };
     
     public String checkEdicionCurso(String nombreC){
         Singleton sm = Singleton.getInstance();
@@ -807,8 +803,7 @@ public class Sistema implements ISistema{
         Iterator<Map.Entry<String,Edicion>> it = cur.getEdiciones().entrySet().iterator();
         while(it.hasNext()){
            Map.Entry<String, Edicion> edic = it.next();
-           System.out.print("ACA: " + today.getYear());
-           if (today.getYear() == edic.getValue().getFechaIni().getYear() && edic.getValue().getEstado()==EstadoEdicion.ABIERTA ){
+           if (today.getYear() == edic.getValue().getFechaIni().getYear() && edic.getValue().getEstado()==EstadoEdicion.INSCRIBIENDO ){
                return edic.getValue().getNombreEdicion();   
            }
         }
@@ -1018,18 +1013,21 @@ public class Sistema implements ISistema{
     public void altaEdicionCurso(String nombCurso, DTEdicion datos, List docentes){
         Persistencia p = Persistencia.getInstance();
         EntityManager em = p.obtenerEntityManager();
-        
         Singleton sm = Singleton.getInstance();
-        Edicion e = new Edicion(datos.getNombre(), datos.getFechaIni(), datos.getFechaFin(), datos.getCuposMax(), datos.getFechaPub(), datos.getImagenDir());
-        String doc;
-        for(Object docente : docentes){
-            doc = docente.toString();
-            e.agregarDocente((Docente)sm.obtenerUsuario(doc));//****************************************************
+        Curso c1 = sm.obtenerCurso(nombCurso);
+        if(c1.obtenerEdicion(datos.getNombre())==null){
+            Edicion e = new Edicion(datos.getNombre(), datos.getFechaIni(), datos.getFechaFin(), datos.getCuposMax(), datos.getFechaPub(), datos.getImagenDir());
+            String doc;
+            for(Object docente : docentes){
+                doc = docente.toString();
+                e.agregarDocente((Docente)sm.obtenerUsuario(doc));//****************************************************
+            }
+            c1.agregarEdicion(e);
+            em.getTransaction().begin();
+            em.persist(e);
+            em.getTransaction().commit();
         }
-        sm.obtenerCurso(nombCurso).agregarEdicion(e);
-        em.getTransaction().begin();
-        em.persist(e);
-        em.getTransaction().commit();
+       
     }
     
     public boolean checkExisteEdicionCurso(String nomCurso, String nomEdic){
@@ -1457,6 +1455,16 @@ public class Sistema implements ISistema{
             }
         }
         return null;
+    }
+    
+    public boolean checkEdicion(String curso, String edicion){
+        Singleton sm = Singleton.getInstance();
+        Curso c1 = sm.obtenerCurso(curso);
+        Edicion e1 = null;
+        if(curso!=null){
+            e1 = c1.obtenerEdicion(edicion);
+        }
+        return e1!=null;
     }
              
 }

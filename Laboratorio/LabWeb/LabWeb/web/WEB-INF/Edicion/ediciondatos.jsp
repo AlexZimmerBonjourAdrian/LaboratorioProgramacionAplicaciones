@@ -85,11 +85,15 @@
                                 <button class="tablinks" onclick="pestana(event, 'docentes')">Docentes</button>
                             </div>
                             <div id="general" class="tabcontent">
-                                <h3 class="titulo">Nombre:</h3><h3 id="nombre">&nbsp;&nbsp; <%=nombre %></h3>
-                                <h3 class="titulo">Cupos:</h3><h3 id="cuposmax"> &nbsp;&nbsp;<%=cupos%></h3>
-                                <h3 class="titulo">Fecha inicio:</h3><h3 id="fechaini">&nbsp;&nbsp; <%=fechaini%></h3>
-                                <h3 class="titulo">Fecha fin:</h3><h3 id="fechafin">&nbsp;&nbsp; <%=fechafin%></h3>
-                                <h3 class="titulo">Fecha de publicacion:</h3><h3 id="fechapub">&nbsp;&nbsp; <%=fechapub%></h3>
+                                <h3 class="titulo">Nombre:</h3><h3 id="nombre">&nbsp;&nbsp;</h3>
+                                <h3 class="titulo">Cupos disponibles:</h3><h3 id="cuposmax"> &nbsp;&nbsp;</h3>
+                                <h3 class="titulo">Cupos maximos:</h3><h3 id="cuposfijo"> &nbsp;&nbsp;</h3>
+                                <h3 class="titulo">Fecha inicio:</h3><h3 id="fechaini">&nbsp;&nbsp; </h3>
+                                <h3 class="titulo">Fecha fin:</h3><h3 id="fechafin">&nbsp;&nbsp; </h3>
+                                <h3 class="titulo">Fecha de publicacion:</h3><h3 id="fechapub">&nbsp;&nbsp; </h3>
+                                <h3 class="titulo">Estado:</h3><h3 id="estado">&nbsp;&nbsp; </h3>
+                                <h3 class="titulo">Imagen:</h3><h3 id="estado">&nbsp;&nbsp; </h3>
+                                <div id="img"></div>
                             </div>
                             <div id="docentes" class="tabcontent">
                                 <div id="doc" name="doc">

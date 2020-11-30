@@ -178,12 +178,8 @@ public class Publicador {
    }
    @WebMethod
    public void registrarCurso(String inst,String nombre,String desc,String duracion, double cant_horas,double cant_cred, String fecha, String url, String imagenDir, List previas, List categorias) throws ParseException{
-       Date fechaDate = null; 
-       if(fecha!=null){
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            fechaDate = formato.parse(fecha);
-       }
-       DTCurso dtc = new DTCurso(nombre, desc, duracion ,cant_horas, cant_cred, fechaDate, url, imagenDir,0);
+     
+       DTCurso dtc = new DTCurso(nombre, desc, duracion ,cant_horas, cant_cred, new Date(), url, imagenDir,0);
        ICU.registrarCurso(inst, dtc, previas, categorias);
    }
    @WebMethod
@@ -426,4 +422,9 @@ public class Publicador {
     public DTCurso obtenerCursoDeEdicion(String nomEdi){
         return ICU.obtenerCursoDeEdicion(nomEdi);
     }
+    @WebMethod
+    public boolean checkEdicion(String curso, String edicion){
+        return ICU.checkEdicion(curso, edicion);
+    }
 }
+

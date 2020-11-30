@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import servidor.DtInscripcionE;
+import servidor.EstadoEdicion;
 
 /**
  *
@@ -43,13 +44,18 @@ public class SelecEstuEdic extends HttpServlet {
              String edi = request.getParameter("edi");
              if(elegidos!=null){
                 for(String nombre : elegidos){
-                    port.modificarEstadoInscripcion(cur, edi, nombre, servidor.EstadoInscripcion.ACEPTADA);
+                    if(elegidos.length>=1){
+                        port.modificarEstadoInscripcion(cur, edi, nombre, servidor.EstadoInscripcion.ACEPTADA);
+                    }
                 }
              }
              if(rechazados!=null){
                 for(String nombrer : rechazados){
                     port.modificarEstadoInscripcion(cur, edi, nombrer,servidor.EstadoInscripcion.RECHAZADA);
                 }
+            }
+            if(elegidos!=null && elegidos.length>=1){
+                port.cambiarEstadoEdicion(cur, edi, EstadoEdicion.ABIERTA);
             }
             String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
             if(nick2!=null && port.esDocente(nick2)){
@@ -106,7 +112,6 @@ public class SelecEstuEdic extends HttpServlet {
         String chanchada = "<script>\n" +
 "            $(document).ready(function(){\n" +
 "                $('input[type=\"checkbox\"]').on('click', function() {\n" +
-"                    console.log(\"ENTREE\");\n" +
 "                    var $box = $(this);\n" +
 "                       if ($box.is(\":checked\")) {\n" +
 "                      // the name of the box is retrieved using the .attr() method\n" +
@@ -130,7 +135,7 @@ public class SelecEstuEdic extends HttpServlet {
         for(Object insc : inscriptos){
             datosins = (DtInscripcionE) insc;
             nombre = datosins.getEst().getNick();
-            result1 = result1 + "<tr><td name=\"est\" id=\"est\"><input type=\"checkbox\" value=\"" + nombre + "\"name=\"rechazados\"  >&#10060</input> <input type=\"checkbox\" value=\"" + nombre + "\"name=\"elegidos\" >&#9989</input>&nbsp&nbsp" + nombre + "</td>" 
+            result1 = result1 + "<tr><td name=\"est\" id=\"est\"><input type=\"checkbox\" value=\"" + nombre + "\"name=\"rechazados\" onclick=\"checkAcept(\'rec\')\" >&#10060</input> <input type=\"checkbox\" value=\"" + nombre + "\"name=\"elegidos\" onclick=\"checkAcept(\'ace\')\">&#9989</input>&nbsp&nbsp" + nombre + "</td>" 
             + "<td name=\"fech\" id=\"fech\">" + datosins.getFechaInsc().toString() + "</td>" +
             "<td name=\"estado\" id=\"estado\">" + datosins.getEstado().toString() + "</td>" +
             "<td><iframe width=\"200\" height=\"150\" src=\"" +datosins.getVideo() + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></td>\n</tr>";

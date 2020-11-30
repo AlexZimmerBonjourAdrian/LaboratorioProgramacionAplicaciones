@@ -55,7 +55,6 @@
                              <div class="sub-menu-wrapper">
                                 <ul class="sub-menu center-content">
                                     <li><a href="Programa">Crear programa de formación</a></li>
-                                    <li><a href="AgregarCursoProg">Agregar curso a programa de formación</a></li>
                                     <li><a href="consultaPrograma">Consulta programa de formación</a></li>
                                 </ul>
                             </div>

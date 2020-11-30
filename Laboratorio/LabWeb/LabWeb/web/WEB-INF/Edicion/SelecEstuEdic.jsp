@@ -47,26 +47,31 @@
                 $('#edi').on("click", function(){
                     var edi = $('#edi').val();
                     var cur = $('#cur').val();
-                    $.ajax({
-                        type:'POST',
-                        data:{edi: edi, cur: cur},
-                        url:'ediciondatos',
-                        success:function(result){
-                            console.log(result);
-                            $('#nombre').html(result.nombre);
-                            $('#fechaini').html(result.fechaini);
-                            $('#fechafin').html(result.fechafin);
-                            $('#cuposmax').html(result.cuposmax);
-                            $('#fechapub').html(result.fechapub);
-                        }
-                    });
+                    if(edi){
+                        $.ajax({
+                            type:'POST',
+                            data:{edi: edi, cur: cur},
+                            url:'ediciondatos',
+                            success:function(result){
+                                $('#nombre').html(result.nombre);
+                                $('#fechaini').html(result.fechaini);
+                                $('#fechafin').html(result.fechafin);
+                                $('#cuposmax').html(result.cuposmax);
+                                $('#fechapub').html(result.fechapub);
+                            }
+                        });
+                    }
                 });  
             });
         </script>
+       
         <script type="text/javascript">
             $(document).ready(function(){
                 $('#edi').on("click", function(){
                     var edi = $('#edi').val();
+                    if(!edi){
+                        return;
+                    }
                     var cur = $('#cur').val();
                     $.ajax({
                         type:'POST',
@@ -134,13 +139,37 @@
                                     <table name="filas" id ="filas" class="table table-bordered">
                                     </table>    
                                 </div>    
-                                <input type="submit" class="btn btn-primary" value="Aceptar"></input>
-                                <a href="Home"><input type="button" class="btn btn-primary" value="Cancelar"></a>
+                                <input type="submit" class="btn btn-primary" value="Aceptar" id="boton"></input>
+                                <a href="Home"><input type="button" class="btn btn-default" value="Cancelar"></a>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            function checkAcept(val){
+                var elegidos = $("input[name='elegidos']:checked").length;
+                var max =  $("#cuposmax").html();
+                console.log(val);
+                if(val=="ace"){
+                    if(elegidos>max){
+                        $("#boton").css("display", "none");
+                        alert("SE ESTA EXCEDIENDO EN EL NUMERO DE ALUMNOS");
+                    }
+                    else{
+                        $("#boton").css("display", "inline");
+                    }
+                }
+                else{
+                    if(elegidos-1>max){
+                        $("#boton").css("display", "none");
+                    }
+                    else{
+                        $("#boton").css("display", "inline");
+                    }
+                }
+            }
+        </script>
     </body>
 </html>

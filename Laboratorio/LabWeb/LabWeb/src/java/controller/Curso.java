@@ -52,17 +52,11 @@ public class Curso extends HttpServlet {
         String horasCur=request.getParameter("horasCur");
         String credCur=request.getParameter("credCur");
         String urlCur=request.getParameter("url");
-        String fecha = request.getParameter("fecha");
         String inst = request.getParameter("inst");
         String imagenNom = request.getParameter("txtDireccion");
         String imagenDir = "images/logo.png";
         if(imagenNom!=null && !imagenNom.equals("") ){
                 imagenDir = "images/"+imagenNom;
-        }
-        Date fechaDate=null;
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        if(fecha!=null){
-            fechaDate = formato.parse(fecha);
         }
         String[] previas = request.getParameterValues("previas");
         String[] cat = request.getParameterValues("cat");
@@ -75,7 +69,7 @@ public class Curso extends HttpServlet {
             lista2 = Arrays.asList(cat);
         }
         if(nomCur!=null && port.obtenerCurso(nomCur) == null){
-            port.registrarCurso(inst, nomCur, desCur, durCur, Double.parseDouble(horasCur), Double.parseDouble(credCur), fecha, urlCur, imagenDir, lista, lista2);
+            port.registrarCurso(inst, nomCur, desCur, durCur, Double.parseDouble(horasCur), Double.parseDouble(credCur), "", urlCur, imagenDir, lista, lista2);
         }else{
             if(nomCur != null){
             }
