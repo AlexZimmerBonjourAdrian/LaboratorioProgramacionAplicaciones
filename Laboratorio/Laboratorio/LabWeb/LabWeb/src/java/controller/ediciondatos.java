@@ -99,7 +99,7 @@ public class ediciondatos extends HttpServlet {
         String result1 = "";
         String result2 = "<img src=\"" + dtedi.getImagenDir() + "\" >";
         for(Object doc : docentesE){
-            result1 = result1 + "<a href=\"consultausuario?nick="+doc+"\">"+ doc + "</a>";
+            result1 = result1 + "<a href=\"consultausuario?nick="+doc+"\">"+ doc + "</a><br>";
         }
         j.put("nombre", dtedi.getNombre());
         j.put("fechaini", dtedi.getFechaIni().toString());

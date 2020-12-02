@@ -43,7 +43,7 @@
                 $("#nombreEd").on("keyup", function(){ 
                     var nombreEd = $("#nombreEd").val();
                     var nomCur = $("#cur").val();
-                    if(!nomCur){
+                    if(!nomCur || nomCur=="Seleccione un curso"){
                         return;
                     }
                     $.ajax({

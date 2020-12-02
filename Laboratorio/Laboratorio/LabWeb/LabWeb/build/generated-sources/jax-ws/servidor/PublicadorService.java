@@ -37,8 +37,10 @@ public class PublicadorService
         URL url = null;
         WebServiceException e = null;
         InputStream input = null;
+        String home = System.getProperty("user.home");
+        System.out.println(home);
         try {
-            input = new FileInputStream("C:\\config.properties");
+            input = new FileInputStream(home + "\\config\\config.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PublicadorService.class.getName()).log(Level.SEVERE, null, ex);
         }

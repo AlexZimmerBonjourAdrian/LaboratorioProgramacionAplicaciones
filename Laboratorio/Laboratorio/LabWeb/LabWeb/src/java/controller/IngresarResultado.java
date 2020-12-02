@@ -37,27 +37,33 @@ public class IngresarResultado extends HttpServlet {
         servidor.PublicadorService service = new servidor.PublicadorService();
         servidor.Publicador port = service.getPublicadorPort();
         String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
+        int aceptados = 0;
         if(nick2!=null && port.esDocente(nick2)){
             List<String> institutos = port.listarInstitutos();
             String cur = request.getParameter("cur");
             String esfin = request.getParameter("final");
             String edi = request.getParameter("edi");
             boolean notas=true;
+            List<DtInscripcionE> inscriptos = null;
             if(cur!=null && edi!=null){
-                List<DtInscripcionE> inscriptos = port.listarDatosInscEdicion(cur, edi);
+                inscriptos = port.listarDatosInscEdicion(cur, edi);
                 for(DtInscripcionE insc : inscriptos){
                     String nick = insc.getEst().getNick();
                     String nota = request.getParameter(nick);
+                    if(insc.getEstado()==EstadoInscripcion.ACEPTADA){
+                        aceptados++;
+                    }
                     if(nota != null && !nota.equals("")){
                         port.cambiarNota(cur, edi, nick, Integer.parseInt(nota));
                     }
                     else{
-                        if(insc.getNota()==0){
+                        if(insc.getNota()==0 && insc.getEstado()==EstadoInscripcion.ACEPTADA){
                             notas=false;
                         }
                     }
                 }
-                if(esfin!=null && esfin.equals("final") && notas){
+                System.out.println("LA CANTIDAD DE INSCRIPTOS ES: " + inscriptos.size() + " LA CANTIDAD DE ACEPTADOS ES: " + aceptados);
+                if((esfin!=null && esfin.equals("final") && notas)||(esfin!=null && esfin.equals("final") && aceptados==0)){
                     port.cambiarEstadoEdicion(cur, edi, EstadoEdicion.CERRADA);
                 }
             }

@@ -56,7 +56,7 @@
                     <p>edEXT</p>
                     <div class="btn-wrapper">
                         <div class="text-center">
-                             <a href="iniciosesion" class="btn btn-primary">Iniciar Sesión</a> &nbsp;<a href="Usuario" class="btn btn-default">Regístrate</a>
+                             <a href="iniciosesion" class="btn btn-primary">Iniciar Sesión</a>
                         </div>
                     </div><!-- end row -->
                 </div>

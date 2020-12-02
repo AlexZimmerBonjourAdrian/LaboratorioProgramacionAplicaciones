@@ -32,7 +32,8 @@
                                         <th>Curso</th>
                                         <th>Edicion</th>
                                         <th>Fecha insc</th>
-                                        <th>Estado</th>
+                                        <th>Estado edicion</th>
+                                        <th>Estado curso</th>
                                         <th>Nota</th>
                                     </tr>
                                     <%
@@ -46,6 +47,7 @@
                                         <td name="edi" id="edi"><%= insc.getNombreEdicion() %></td>
                                         <td name="fech" id="fech"><%= insc.getFechaInsc()%></td>
                                         <td name="estado" id="estado"><%= insc.getEstadoEdicion()%></td>
+                                        <td name="estado" id="estado"><%= insc.getEstadoCurso() %></td>
                                         <% 
                                         String nota="";
                                         if(insc.getNota()==0){

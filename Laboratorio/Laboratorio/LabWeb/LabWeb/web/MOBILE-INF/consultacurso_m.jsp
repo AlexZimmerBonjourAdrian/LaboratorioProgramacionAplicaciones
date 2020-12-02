@@ -94,6 +94,9 @@
                                     <label>Nombre:</label> <h7 name="nombre" id="nombre"></h7>
                                 </div>
                                 <div class="form-group">
+                                    <label>Calificacion:</label> <h7 name="calif" id="calif"></h7>
+                                </div>
+                                <div class="form-group">
                                     <label>Descripción:</label><h7 name="descripcion" id="descripcion"></h7>
                                 </div>
                                 <div class="form-group">

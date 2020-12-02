@@ -34,8 +34,7 @@ public class iniciosesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            URL newWsdlLocation = new URL("http://localhost:9129/publicador");
-            servidor.PublicadorService service = new servidor.PublicadorService(newWsdlLocation);
+            servidor.PublicadorService service = new servidor.PublicadorService();
             servidor.Publicador port = service.getPublicadorPort();
             HttpSession objSesion = request.getSession();
             EstadoSesion nuevoEstado;

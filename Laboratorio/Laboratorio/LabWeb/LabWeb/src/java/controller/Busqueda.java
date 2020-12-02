@@ -63,7 +63,7 @@ public class Busqueda extends HttpServlet {
                 if(mat1.matches()||mat2.matches()){
                     resultado = resultado + "<div class=\"panel panel-default\">" +
                    "<div class=\"panel-heading\">" +
-                   "<h3 class=\"panel-title\"><a href=\"programadatos?prog=" + p.getNombre()+"\"> Programa: " + p.getNombre() + "</a></h3></div>" +
+                   "<h3 class=\"panel-title\"><a href=\"consultaPrograma?prog=" + p.getNombre()+"\"> Programa: " + p.getNombre() + "</a></h3></div>" +
                    "<div class=\"panel-body\">" + p.getDescripcion() +"</div></div><br>";
                 }
             }

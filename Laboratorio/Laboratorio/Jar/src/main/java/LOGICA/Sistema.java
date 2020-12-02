@@ -1190,7 +1190,6 @@ public class Sistema implements ISistema{
      }
      
      public ArrayList<DTCurso> cursosEstudiante(String nick){
-        
         Singleton sm = Singleton.getInstance();
         Usuario u = sm.obtenerUsuario(nick);
         ArrayList<DTCurso> resultado = new ArrayList<>();
@@ -1205,7 +1204,7 @@ public class Sistema implements ISistema{
                 if(u instanceof Estudiante){
                     for(Iterator itinsc = edic.getValue().getInscripciones().iterator(); itinsc.hasNext();){
                         InscripcionE ie = (InscripcionE) itinsc.next();
-                        if(ie.getEst().getNick().equals(nick) && (ie.getEstado()==EstadoInscripcion.ACEPTADA || ie.getEstado()==EstadoInscripcion.PENDIENTE)){
+                        if(ie.getEst().getNick().equals(nick) && (ie.getEstado()==EstadoInscripcion.ACEPTADA)){
                             //DatosEdicion de = new DatosEdicion(inst.getNombre(), c2, edic.getValue().getNombreEdicion())
                             resultado.add(curso.getValue().getDatos());
                         }
@@ -1467,5 +1466,38 @@ public class Sistema implements ISistema{
         }
         return e1!=null;
     }
+    
+    public boolean checkPrevias(String nick, String curso){
+        Singleton sm = Singleton.getInstance();
+        Curso c1 = sm.obtenerCurso(curso);
+        int contador=0;
+        int cantCursos= 0;
+        boolean cursoAprobado = false;
+        if(c1!=null){
+            Map<String, Curso> previas = c1.getPrevias();
+            cantCursos = previas.size();
+            Iterator<Map.Entry<String, Curso>> itprev = previas.entrySet().iterator();
+            while(itprev.hasNext()){
+                Curso c2 = itprev.next().getValue();
+                Iterator<Map.Entry<String, Edicion>> ite = c2.getEdiciones().entrySet().iterator();
+                cursoAprobado = false;
+                while(ite.hasNext() && !cursoAprobado){
+                    Edicion edi = ite.next().getValue();
+                    for(Object obj : edi.getInscripciones()){
+                        InscripcionE insc = (InscripcionE)obj;
+                        if(insc.getEst().getNick().equals(nick)){
+                            if(insc.getEstadoCurso()==EstadoCurso.APROBADO && edi.getEstado()==EstadoEdicion.CERRADA){
+                                cursoAprobado = true;
+                                contador++;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return contador==cantCursos;
+    }
+            
              
 }

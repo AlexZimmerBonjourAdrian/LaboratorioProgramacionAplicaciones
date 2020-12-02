@@ -37,6 +37,9 @@
                                     <div class="panel-body">
                                         <h3 id="nombre">Visitas: <%=curso.getVisitas() %></h3>
                                     </div>
+                                    <div class="panel-body">
+                                        <img src="<%=curso.getImagenDir() %>">
+                                    </div>
                                 </div>
                                 <%      } %>
                             </div>

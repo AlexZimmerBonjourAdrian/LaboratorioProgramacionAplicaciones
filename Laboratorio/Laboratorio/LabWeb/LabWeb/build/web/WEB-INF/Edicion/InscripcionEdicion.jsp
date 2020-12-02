@@ -65,33 +65,54 @@
                 if(curso=="Seleccione un curso"){
                     return;
                 }
-                console.log("El curso seleccionado es: " + cur);
+                var nick="<%=(String)request.getSession().getAttribute("usuario_logueado") %>";
+                var check=true;
                 $.ajax({
                     async: false,
                     type:'POST',
-                    data:{curso: curso},
-                    url:'EdicionVigente',
+                    data:{curso: curso, nick: nick},
+                    url:'checkPrevias',
                     success:function(result){
-                        if(result.edvig){
-                            $('#edi').html(result.edvig);
-                            var edi = $('#edi').html();
-                            var valor = document.getElementById("edih");
-                            valor.value=edi;
-                            console.log("Se logro poner el valor" + valor.value);
-                            $('#boton').css("display", "inline");
-                            cargarDatosEdicion();
+                        if(!result.check){
+                            alert("EL USUARIO NO HA COMPLETADO LAS MATERIAS PREVIAS");
+                            $('#boton').css("display", "none");
+                            check=result.check;
+                            return;
                         }
                         else{
-                            $('#edi').html("NO HAY EDICIONES VIGENTES");
-                            $('#boton').css("display", "none");
+                            $('#boton').css("display", "inline");
                         }
                     }
                 });
+                if(check){
+                    console.log("El curso seleccionado es: " + cur);
+                    $.ajax({
+                        async: false,
+                        type:'POST',
+                        data:{curso: curso},
+                        url:'EdicionVigente',
+                        success:function(result){
+                            if(result.edvig){
+                                $('#edi').html(result.edvig);
+                                var edi = $('#edi').html();
+                                var valor = document.getElementById("edih");
+                                valor.value=edi;
+                                console.log("Se logro poner el valor" + valor.value);
+                                $('#boton').css("display", "inline");
+                                cargarDatosEdicion();
+                            }
+                            else{
+                                $('#edi').html("NO HAY EDICIONES VIGENTES PARA LA INSCRIPCION");
+                                $('#boton').css("display", "none");
+                            }
+                        }
+                    });
+                }
             }  
         </script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#cur').on("click", cargarEdicionVigente);  
+                $('#cur').on("change", cargarEdicionVigente);  
             });
         </script>
         <script type="text/javascript">

@@ -118,6 +118,10 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>mobile</filter-name>
+        <servlet-name>ObtenerCertificado</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>mobile</filter-name>
         <servlet-name>Instituto</servlet-name>
     </filter-mapping>
     <servlet>
@@ -296,6 +300,14 @@
         <servlet-name>checkEdicion</servlet-name>
         <servlet-class>controller.checkEdicion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkPrevias</servlet-name>
+        <servlet-class>controller.checkPrevias</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listarAceptados</servlet-name>
+        <servlet-class>controller.listarAceptados</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Usuario</servlet-name>
         <url-pattern>/Usuario</url-pattern>
@@ -471,6 +483,14 @@
     <servlet-mapping>
         <servlet-name>checkEdicion</servlet-name>
         <url-pattern>/checkEdicion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkPrevias</servlet-name>
+        <url-pattern>/checkPrevias</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listarAceptados</servlet-name>
+        <url-pattern>/listarAceptados</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

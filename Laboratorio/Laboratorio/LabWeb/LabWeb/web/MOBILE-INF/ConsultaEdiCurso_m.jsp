@@ -55,10 +55,12 @@
                         $('#fechaini').html(result.fechaini);
                         $('#fechafin').html(result.fechafin);
                         $('#cuposmax').html(result.cuposmax);
+                        $('#cuposfijo').html(result.cuposfijos);
                         $('#fechapub').html(result.fechapub);
                         $('#docentes').html(result.result1);
                         $('#inscripciones').html(result.inscripciones);
                         $('#img').html(result.result2);
+                        $('#estado').html(result.estado);
                     }
                 });
             }

@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
+import servidor.DtCurso;
+import servidor.DtEdicion;
 import servidor.DtInscripcionE;
 import servidor.EstadoEdicion;
 
@@ -38,24 +40,31 @@ public class SelecEstuEdic extends HttpServlet {
          try{
             servidor.PublicadorService service = new servidor.PublicadorService();
             servidor.Publicador port = service.getPublicadorPort();
-             String[] elegidos = request.getParameterValues("elegidos");
-             String[] rechazados = request.getParameterValues("rechazados");
-             String cur = request.getParameter("cur");
-             String edi = request.getParameter("edi");
-             if(elegidos!=null){
-                for(String nombre : elegidos){
-                    if(elegidos.length>=1){
-                        port.modificarEstadoInscripcion(cur, edi, nombre, servidor.EstadoInscripcion.ACEPTADA);
-                    }
-                }
-             }
-             if(rechazados!=null){
-                for(String nombrer : rechazados){
-                    port.modificarEstadoInscripcion(cur, edi, nombrer,servidor.EstadoInscripcion.RECHAZADA);
-                }
+            String[] elegidos = request.getParameterValues("elegidos");
+            String[] rechazados = request.getParameterValues("rechazados");
+            String cur = request.getParameter("cur");
+            String edi = request.getParameter("edi");
+            DtEdicion e1=null;
+            if(edi!=null && cur != null){
+                e1 = port.datosEdiciones(cur, edi);
             }
-            if(elegidos!=null && elegidos.length>=1){
-                port.cambiarEstadoEdicion(cur, edi, EstadoEdicion.ABIERTA);
+            if(e1!=null && elegidos.length<=e1.getCupoFijo()){
+                System.out.println("ME METI A INSCRIBIR");
+                if(elegidos!=null){
+                   for(String nombre : elegidos){
+                       if(elegidos.length>=1){
+                           port.modificarEstadoInscripcion(cur, edi, nombre, servidor.EstadoInscripcion.ACEPTADA);
+                       }
+                   }
+                }
+                if(rechazados!=null){
+                   for(String nombrer : rechazados){
+                       port.modificarEstadoInscripcion(cur, edi, nombrer,servidor.EstadoInscripcion.RECHAZADA);
+                   }
+               }
+               if(elegidos!=null && elegidos.length>=1){
+                   port.cambiarEstadoEdicion(cur, edi, EstadoEdicion.ABIERTA);
+               }
             }
             String nick2 = (String) request.getSession().getAttribute("usuario_logueado");
             if(nick2!=null && port.esDocente(nick2)){

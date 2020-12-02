@@ -15,6 +15,7 @@
                     $('#creditos').html(result.creditos);
                     $('#fechaReg').html(result.fechaReg);
                     $('#url').html(result.url);
+                    $('#calif').html(result.calificacion);
                     $('#edi').html(result.result1);
                     $('#prog').html(result.result2);
                     $('#result').html(result.result3);

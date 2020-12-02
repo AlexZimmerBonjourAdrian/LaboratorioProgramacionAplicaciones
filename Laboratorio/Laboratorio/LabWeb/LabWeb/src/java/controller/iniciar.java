@@ -39,6 +39,8 @@ public class iniciar extends HttpServlet {
         HttpSession session = request.getSession();
         String mobile = request.getParameter("mobile");
         request.getSession().setAttribute("mobile", mobile);
+        String home = System.getProperty("user.home");
+        System.out.println("ALALLA ES MI CASA" + home);
         if(mobile.equals("true")){
             System.out.println("ES MOVILLLL");
             response.sendRedirect("Home");

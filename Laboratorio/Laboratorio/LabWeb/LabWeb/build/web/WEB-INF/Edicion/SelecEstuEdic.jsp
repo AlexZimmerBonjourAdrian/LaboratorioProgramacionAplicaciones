@@ -86,6 +86,18 @@
                 });  
             });
         </script>
+        <script>
+            function validacion(){
+                var elegidos = $("input[name='elegidos']:checked").length;
+                if(elegidos<=0){
+                    alert("DEBE INGRESAR ALGUN ESTUDIANTE");
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+        </script>
     </head>
     <body class="left-menu">
         <div class="menu-wrapper">
@@ -98,7 +110,7 @@
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm">
-                            <form action="SelecEstuEdic" method="get">
+                            <form action="SelecEstuEdic" method="get" onsubmit="return validacion()">
                                 <div class="form-group">
                                     <label>Institutos:</label><br>               
                                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -139,7 +151,10 @@
                                     <table name="filas" id ="filas" class="table table-bordered">
                                     </table>    
                                 </div>    
-                                <input type="submit" class="btn btn-primary" value="Aceptar" id="boton"></input>
+                                <div class="form-group">
+                                    <span style="color:red" id="res">* Recuerde que una vez seleccionados los estudiantes no pueden cambiarse *</span>
+                                </div>
+                                <input type="submit" class="btn btn-danger" value="Aceptar" id="boton"></input>
                                 <a href="Home"><input type="button" class="btn btn-default" value="Cancelar"></a>
                             </form>
                         </div>

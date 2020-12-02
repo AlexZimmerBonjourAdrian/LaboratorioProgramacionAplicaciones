@@ -27,6 +27,9 @@
             $(document).ready(function(){
                 $('#cur').on("click", function(){
                     var cur = $('#cur').val();
+                    if(cur=="Seleccione un curso"){
+                        return;
+                    }
                     console.log("El curso seleccionado es: " + cur);
                     $.ajax({
                         async: false,
@@ -129,9 +132,6 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Fecha fin:</label> <h7 name="fechafin" id="fechafin"></h7>
-                                </div>
-                                <div class="form-group">
-                                    <label>Cupos disponibles:</label> <h7 name="cuposmax" id="cuposmax"></h7>
                                 </div>
                                 <div class="form-group">
                                     <label>Fecha de publicación:</label> <h7 name="fechapub" id="fechapub"></h7>

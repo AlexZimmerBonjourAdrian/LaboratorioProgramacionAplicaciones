@@ -111,6 +111,7 @@ public class ObjectFactory {
     private final static QName _AgregarCursoPrograma_QNAME = new QName("http://PRESENTACION/", "agregarCursoPrograma");
     private final static QName _ObtenerInstitutoCursoResponse_QNAME = new QName("http://PRESENTACION/", "obtenerInstitutoCursoResponse");
     private final static QName _CrearInscripcionEstudianteResponse_QNAME = new QName("http://PRESENTACION/", "crearInscripcionEstudianteResponse");
+    private final static QName _CheckPreviasResponse_QNAME = new QName("http://PRESENTACION/", "checkPreviasResponse");
     private final static QName _ListarDocentesInstituto_QNAME = new QName("http://PRESENTACION/", "listarDocentesInstituto");
     private final static QName _VisitasCursoResponse_QNAME = new QName("http://PRESENTACION/", "visitasCursoResponse");
     private final static QName _Altausuario_QNAME = new QName("http://PRESENTACION/", "altausuario");
@@ -127,6 +128,7 @@ public class ObjectFactory {
     private final static QName _ModificarDatosUsuario_QNAME = new QName("http://PRESENTACION/", "modificarDatosUsuario");
     private final static QName _DatosEdiciones_QNAME = new QName("http://PRESENTACION/", "datosEdiciones");
     private final static QName _ComentarEdicionResponse_QNAME = new QName("http://PRESENTACION/", "comentarEdicionResponse");
+    private final static QName _CheckPrevias_QNAME = new QName("http://PRESENTACION/", "checkPrevias");
     private final static QName _ObtenerUsuarioMailResponse_QNAME = new QName("http://PRESENTACION/", "obtenerUsuarioMailResponse");
     private final static QName _CursosProgramaResponse_QNAME = new QName("http://PRESENTACION/", "cursosProgramaResponse");
     private final static QName _CategoriasProgramas_QNAME = new QName("http://PRESENTACION/", "categoriasProgramas");
@@ -404,6 +406,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CheckPrevias }
+     * 
+     */
+    public CheckPrevias createCheckPrevias() {
+        return new CheckPrevias();
+    }
+
+    /**
      * Create an instance of {@link ObtenerUsuarioMailResponse }
      * 
      */
@@ -529,6 +539,14 @@ public class ObjectFactory {
      */
     public VisitasCursoResponse createVisitasCursoResponse() {
         return new VisitasCursoResponse();
+    }
+
+    /**
+     * Create an instance of {@link CheckPreviasResponse }
+     * 
+     */
+    public CheckPreviasResponse createCheckPreviasResponse() {
+        return new CheckPreviasResponse();
     }
 
     /**
@@ -2083,6 +2101,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckPreviasResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://PRESENTACION/", name = "checkPreviasResponse")
+    public JAXBElement<CheckPreviasResponse> createCheckPreviasResponse(CheckPreviasResponse value) {
+        return new JAXBElement<CheckPreviasResponse>(_CheckPreviasResponse_QNAME, CheckPreviasResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ListarDocentesInstituto }{@code >}}
      * 
      */
@@ -2224,6 +2251,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://PRESENTACION/", name = "comentarEdicionResponse")
     public JAXBElement<ComentarEdicionResponse> createComentarEdicionResponse(ComentarEdicionResponse value) {
         return new JAXBElement<ComentarEdicionResponse>(_ComentarEdicionResponse_QNAME, ComentarEdicionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CheckPrevias }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://PRESENTACION/", name = "checkPrevias")
+    public JAXBElement<CheckPrevias> createCheckPrevias(CheckPrevias value) {
+        return new JAXBElement<CheckPrevias>(_CheckPrevias_QNAME, CheckPrevias.class, null, value);
     }
 
     /**

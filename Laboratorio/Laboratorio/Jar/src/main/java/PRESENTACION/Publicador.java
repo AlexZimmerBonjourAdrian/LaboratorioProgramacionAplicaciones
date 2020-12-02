@@ -19,6 +19,7 @@ import Datatypes.EstadoEdicion;
 import Datatypes.EstadoInscripcion;
 import LOGICA.FabricaLab;
 import LOGICA.ISistema;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -56,7 +57,8 @@ public class Publicador {
    
    @WebMethod(exclude = true)
    public void publicar() throws IOException{
-        InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties") ;
+         String home = System.getProperty("user.home");
+        InputStream input = new FileInputStream(home + "\\config\\local_config.properties") ;
         Properties prop = new Properties();
         if (input == null) {
             System.out.println("Sorry, unable to find config.properties");
@@ -439,6 +441,9 @@ public class Publicador {
     @WebMethod
     public boolean checkEdicion(String curso, String edicion){
         return ICU.checkEdicion(curso, edicion);
+    }
+    public boolean checkPrevias(String nick, String curso){
+        return ICU.checkPrevias(nick, curso);
     }
 }
 

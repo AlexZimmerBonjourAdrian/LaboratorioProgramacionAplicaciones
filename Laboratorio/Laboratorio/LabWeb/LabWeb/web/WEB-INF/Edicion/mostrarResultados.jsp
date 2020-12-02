@@ -24,9 +24,9 @@
                     console.log("El curso seleccionado es: " + cur);
                     $.ajax({
                         async: false,
-                        type:'GET',
+                        type:'POST',
                         data:{cur: cur},
-                        url:'edicionesAbiertas',
+                        url:'listarAceptados',
                         success:function(result){
                             console.log(result);
                             $('#edi').html(result.result1);

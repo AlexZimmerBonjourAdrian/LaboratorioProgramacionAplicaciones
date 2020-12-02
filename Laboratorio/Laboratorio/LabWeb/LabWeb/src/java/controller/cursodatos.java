@@ -111,6 +111,8 @@ public class cursodatos extends HttpServlet {
             port.visitasCurso(curso);
         }
         
+        float calif = port.obtenerCalifCurso(curso);
+        String calificacion = Float.toString(calif);
         JSONObject j = new JSONObject(); 
         j.put("nombre", dtcur.getNombre());
         j.put("descripcion", dtcur.getDescripcion());
@@ -119,6 +121,7 @@ public class cursodatos extends HttpServlet {
         j.put("creditos", dtcur.getCantCred());
         j.put("fechaReg", dtcur.getFechaReg().toString());
         j.put("url", dtcur.getUrl());
+        j.put("calificacion", calificacion);
         j.put("result1",result1);
         j.put("result2",result2);
         j.put("result3",result3);

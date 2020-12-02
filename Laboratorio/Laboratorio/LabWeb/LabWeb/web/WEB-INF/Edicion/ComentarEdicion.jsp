@@ -39,6 +39,7 @@
                 var edi = $('#edi').val();
                 console.log(com.value);
                 $.ajax({
+                    async: false,
                     type:'POST',
                     data:{res: id, com: com.value, edi: edi},
                     url:'responderComentario',
@@ -46,6 +47,7 @@
                         
                     }
                 });
+                $('#edi').click();
             }
         </script>
         <script>
@@ -53,6 +55,11 @@
                 var com = document.getElementById(id);
                 $('#'+id).css("display", "block");
                 console.log(com.value);
+            }
+        </script>
+        <script>
+            function actualizar(){
+                $('#edi').click();
             }
         </script>
     </head>
@@ -91,7 +98,7 @@
                                             </div>
                                         </div>
                                     <div class="form-group">
-                                         <input type="submit" class="btn btn-primary" value="Comentar" id="boton"></input>
+                                         <input type="submit" class="btn btn-primary" value="Comentar" id="boton" onclick="actualizar()"></input>
                                          <a href="Home"><input type="button" class="btn btn-default" value="Cancelar"></a>
                                     </div>
                                 </div>

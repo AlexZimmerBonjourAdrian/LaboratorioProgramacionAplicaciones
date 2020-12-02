@@ -46,7 +46,20 @@ public class EdicionVigente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        servidor.PublicadorService service = new servidor.PublicadorService();
+        servidor.Publicador port = service.getPublicadorPort();
+        String curso = request.getParameter("cur");
+        String edi = port.checkEdicionCurso(curso);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+        JSONObject j = new JSONObject();
+        System.out.println("La edicion vigente es: "+edi);
+        String edicion = "<option>" + edi + "</option>";
+        if(edi==null){
+            edicion="";
+        }
+        j.put("edvig",edicion);
+        response.getWriter().write(j.toString());
     }
 
     /**

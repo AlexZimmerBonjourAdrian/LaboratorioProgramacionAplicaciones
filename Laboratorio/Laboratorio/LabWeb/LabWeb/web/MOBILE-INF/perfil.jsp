@@ -42,7 +42,7 @@
                                     if(edi!=null){
                                         for(servidor.DatosEdicion ed : edi){
                                 %>
-                                <a href="consultaediciondecurso?inst=<%=ed.getInstituto()%>&cur=<%=ed.getCurso()%>&ed=<%= ed.getEdicion()%>"><%=ed.getEdicion()%></a>&nbsp;&nbsp;<%if(nick2!=null && nick2.equals(usr.getNick()) && request.getSession().getAttribute("estado_sesion")==EstadoSesion.LOGIN_ESTUDIANTE){%><a href="listarInscripEdic">Ver inscripciones</a><%};%><br>
+                                <a href="consultaediciondecurso?inst=<%=ed.getInstituto()%>&cur=<%=ed.getCurso()%>&ed=<%= ed.getEdicion()%>"><%=ed.getEdicion()%></a>&nbsp;&nbsp;<br>
                                 <%
                                         }
                                     }

@@ -19,7 +19,23 @@
         </script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#cur').on("click", cargarEdiciones);  
+                $('#cur').on("click", function(){
+                    var cur = $('#cur').val();
+                    if(cur=="Seleccione un curso"){
+                        return;
+                    }
+                    console.log("El curso seleccionado es: " + cur);
+                    $.ajax({
+                        async: false,
+                        type:'POST',
+                        data:{cur: cur},
+                        url:'listarAceptados',
+                        success:function(result){
+                            console.log(result);
+                            $('#edi').html(result.result1);
+                        }
+                    });
+                });  
             });
         </script>
         <script type="text/javascript">
@@ -106,7 +122,7 @@
                                     <p>Fecha fin:</p> <h7 name="fechafin" id="fechafin"></h7>
                                 </div>
                                 <div class="form-group">
-                                    <p>Cupos maximos:</p> <h7 name="cuposmax" id="cuposmax"></h7>
+                                    <p>Cupos disponibles:</p> <h7 name="cuposmax" id="cuposmax"></h7>
                                 </div>
                                 <div class="form-group">
                                     <p>Fecha de publicación:</p> <h7 name="fechapub" id="fechapub"></h7>
@@ -118,7 +134,7 @@
                                 <br>
                                 <br>
                                 <input type="submit" class="btn btn-primary" value="Aceptar"></input>
-                                <a href="Home"><input type="button" class="btn btn-primary" value="Cancelar"></a>
+                                <a href="Home"><input type="button" class="btn btn-default" value="Cancelar"></a>
                             </form>
                         </div>
                     </div>

@@ -30,8 +30,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario <span class="fa fa-angle-down"></span></a>
                         <ul class="dropdown-menu">
-                            <% String user = (String) request.getSession().getAttribute("usuario_logueado"); %>
-                            <li><a href="consultausuario">Usuarios</a></li>
+                            <% String user = (String) request.getSession().getAttribute("usuario_logueado"); 
+                            if(user!=null){
+                            %>
+                                <li><a href="consultausuario?nick=<%=user%>">Consulta usuario</a></li>
+                            <%}%>
                         </ul>
                     </li>
                     <li class="dropdown">
